@@ -371,7 +371,7 @@ a collapsible block at the top **and** prepended to every prompt's `<pre>`.
 </style></head><body><div class="container">
   <h1>{{PROJECT_TITLE}}</h1>
   <div class="howto">Tick scenes as you finish — progress saves automatically.
-    Copy any prompt (Style Prefix + Characters + Scene + Cuts). Ask Claude to revise.</div>
+    Copy any prompt with the approved scene details and planned cuts, if any. Ask for revisions.</div>
   <details class="style-prefix"><summary>Global Style Prefix (applied to every prompt)</summary>
     <pre>{{STYLE_PREFIX_TEXT}}</pre></details>
   {{SCENES_HTML}}
@@ -420,6 +420,6 @@ scene number as a string):
   slots into
 - `higgsfield-audio` — `@music_track` beat-sync + diegetic-only convention
 - `higgsfield-character-design` — character sheets the `@`-glossary points at
-- `higgsfield-recall` — log kept/rejected take outcomes as you shoot the list
+- `higgsfield-recall` — recall prior outcomes; log kept/rejected takes only when this project uses the Higgsfield ledger
 - `../../templates/seedance/global-style-prefix.md` — the reusable prefix block +
   a per-scene override example

@@ -20,7 +20,9 @@ copy and machine syntax.
 For the named camera/motion preset library (Explosion, Werewolf, Air Bending,
 etc.) use `higgsfield-motion` instead.
 
-> **Not a spec sheet.** Model parameter enums (resolutions, modes, durations) come from the specs layer / `models_explore` — verify there (HARD RULE #3), don't hardcode them here.
+> **Not a spec sheet.** Consult the dated specs layer for Higgsfield model
+> parameters, then verify stale or disputed fields through the selected
+> executor's current schema (HARD RULE #3).
 
 ## QUICK FACTS
 - Two example flows: **classicMD** (smooth, elegant, cinematic) vs **highMD** (fast cuts, extreme dynamics, CGI energy) — use the one the brief calls for [→](#step-0--determine-the-flow-type)

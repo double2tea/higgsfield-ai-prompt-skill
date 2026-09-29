@@ -341,9 +341,9 @@ When the resolution is non-obvious, surface it. Tell the user which sub-skill no
 | Specific martial arts moves | Use general fighting energy instead of named moves |
 | Multiple @ Elements in action scenes | Use @ for static scenes, plain text for action |
 | Mixing identity + motion in one block | Separate into Identity Block + Motion Block (see above) |
-| Aspect ratio inside the prompt body | Set aspect in the Higgsfield UI / output-format header (per-model enum: e.g. Kling 3.0 accepts 16:9 / 9:16 / 1:1 only — check MCP `models_explore`). Describe framing in plain language ("full body" / "chest-up" / "wide establishing") not numerical ratios. |
+| Aspect ratio inside the prompt body | Set aspect in the selected Higgsfield executor's output-format field (per-model enum: e.g. the dated Kling 3.0 snapshot lists 16:9 / 9:16 / 1:1 — verify the current schema). Describe framing in plain language ("full body" / "chest-up" / "wide establishing") not numerical ratios. |
 
-> **Output ratio is an enum, not a free-form value — and anamorphic is a style register, not an output dimension.** Output aspect ratio is a hard, enumerated platform spec — Kling 3.0 emits `16:9 / 9:16 / 1:1` and nothing else. "Anamorphic" is a *cinematography register* (anamorphic lens flares, letterboxed compositional read, >2:1 framing aesthetic) that the model can render *within* a 16:9 output. "16:9 anamorphic" written as a single phrase in the prompt body is incoherent — pick one. Output ratio belongs in the header (and must be one of the enum values for the chosen model — check the MCP `models_explore` equivalent before assuming). Anamorphic style cues belong in the Look line ("anamorphic-style flares, letterboxed composition") *as a style request*, not as an output dimension.
+> **Output ratio is an enum, not a free-form value — and anamorphic is a style register, not an output dimension.** Output aspect ratio is a hard, enumerated platform spec — the dated Kling 3.0 snapshot lists `16:9 / 9:16 / 1:1`; verify the selected executor's current schema. "Anamorphic" is a *cinematography register* (anamorphic lens flares, letterboxed compositional read, >2:1 framing aesthetic) that the model can render *within* a 16:9 output. "16:9 anamorphic" written as a single phrase in the prompt body is incoherent — pick one. Output ratio belongs in the header and must match the current enum for the chosen model. Anamorphic style cues belong in the Look line ("anamorphic-style flares, letterboxed composition") *as a style request*, not as an output dimension.
 
 > **Negative constraints:** For a comprehensive list of artifacts to avoid (floating limbs,
 > face warping, flickering textures, etc.) and the prompt phrasing to prevent them, see
@@ -362,12 +362,12 @@ Use the current authorized attempts to distinguish recurring defects from varied
   (performance flat on one roll, camera off on another, physics odd on a third)
   → **possibly variable.** A same-input comparison may help when useful and authorized; varied failures alone do not prove the prompt is correct or authorize a batch. See `../higgsfield-troubleshoot/SKILL.md` § Stop-Rule Ladder and `../shared/house-rulings.md` P1-2 for the unresolved two-take case.
 
-You don't have to eyeball this. The ledger already classifies every reject as
-structural or stochastic, and `ratio <project>` prints a **verdict** per shot
+If the project uses the Higgsfield ledger and has enough recorded outcomes,
+`ratio <project>` classifies recorded rejects and prints a **verdict** per shot
 tag: `iterate` (structural-dominant), `batch+sel` (stochastic-dominant),
 `mixed`, or `low-n`. Below five logged rows (`LOW_N_THRESHOLD`) the split is
-noise — the ledger stays silent and you call it by eye. Read the verdict at the
-decision point; don't iterate against a `batch+sel` tag.
+noise — the ledger stays silent and you call it by eye. Treat a `batch+sel`
+tag as planning evidence, not as permission to run a batch.
 
 ### Batch-and-Select (Variance-Harvesting) — Not the Same as Stylistic Fan-Out
 

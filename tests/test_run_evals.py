@@ -69,16 +69,9 @@ TRAP_1080P = ("**Model**: Seedance 2.5\n**Mode**: t2v  **Aspect ratio**: 16:9  "
               "a gas stove, steam against morning window light. Static close-up.")
 
 
-def _premise_1080p_flip(specs):
+def test_trap_legal_under_current_specs_requires_reaudit(specs):
     s25 = run_evals.sl.resolve_model(specs, "seedance_2_5")
-    old = REPO / "specs" / "models_explore_snapshot_2026-08-07.json"
-    if s25 is None or "1080p" not in s25["resolutions"] or not old.exists():
-        pytest.fail("fixture premise gone: needs seedance_2_5 with 1080p in the "
-                    "current specs and the committed 2026-08-07 snapshot without it")
-
-
-def test_spec_driven_flip_is_named(specs):
-    _premise_1080p_flip(specs)
+    assert s25 is not None and "1080p" in s25["resolutions"]
     failures = run_evals.run_case(
         case([{"type": "enum_legal", "expect": "illegal"}], "seedance_2_5", TRAP_1080P),
         specs)
@@ -87,25 +80,11 @@ def test_spec_driven_flip_is_named(specs):
     assert "checker regression" not in failures[0]
 
 
-def test_no_historical_evidence_does_not_guess_cause(specs, monkeypatch):
-    monkeypatch.setattr(run_evals, "_prior_indexes", lambda: [], raising=False)
-    failures = run_evals.run_case(
-        case([{"type": "enum_legal", "expect": "illegal"}], "seedance_2_5", TRAP_1080P),
-        specs)
-    assert len(failures) == 1 and "re-audit the trap and checker" in failures[0]
-
-
-def test_legal_golden_flipped_by_specs_is_named(specs, monkeypatch):
-    # A golden that WAS legal under an earlier snapshot and is illegal now.
-    now = run_evals.sl.resolve_model(specs, "seedance_2_0")
-    earlier = dict(now, aspect_ratios=now["aspect_ratios"] + ["5:1"])
-    fake_index = {"seedance_2_0": earlier, "_ambiguous": {}}
-    monkeypatch.setattr(run_evals, "_prior_indexes",
-                        lambda: [("2026-01-01", fake_index)], raising=False)
+def test_legal_golden_with_illegal_current_enum_is_flagged(specs):
     golden = GOOD_RESPONSE.replace("16:9", "5:1")
     failures = run_evals.run_case(case([{"type": "enum_legal"}], "seedance_2_0", golden), specs)
     assert len(failures) == 1
-    assert "spec-driven flip" in failures[0] and "2026-01-01" in failures[0]
+    assert "illegal settings for seedance_2_0" in failures[0]
 
 
 def test_main_counts_errors_and_exits_nonzero(tmp_path, monkeypatch, capsys):

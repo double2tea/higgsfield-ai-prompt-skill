@@ -83,9 +83,9 @@ If the user has selected Higgsfield and provides a clear creative intent
 ("write me a prompt for a car chase at night") with no specific constraints,
 use these adjustable examples only where the brief leaves a choice open:
 
-> **Fast Path still requires reading `skills/higgsfield-prompt/SKILL.md` first — Fast Path means skip clarifying questions, NOT skip the file read.**
+> **Fast Path still requires reading `skills/higgsfield-prompt/SKILL.md` first.** Ask only when a missing choice materially affects the result or cost.
 
-| Parameter | Default |
+| Parameter | Adjustable example |
 |-----------|---------|
 | Aspect ratio | 16:9 |
 | Duration | 8s (Kling lanes — see Seedance exception below) |
@@ -136,6 +136,7 @@ For local generation, keep prompt craft and execution separate. A user-named pro
 | Generation Service configured provider/model | Installed `generation-service:generation-service` skill; it selects its current vendor/model route and owns job tracking. RunningHub remains its own route. |
 | 小云雀 / Pippit generation, processing, or Canvas | Installed `xyq-skill`; its CLI and current command docs own the operation. |
 | LibTV canvas generation/editing | Current LibTV MCP connection and capabilities; use `libtv-to-treatment` only for a director treatment, `libtv-blender-live-action` for that named Blender workflow, or `music-driven-product-ad` for that named ad workflow. |
+| Explicit Seed Audio / `seedaudio` standalone audio generation — SFX, ambience, music cues, speech, or mixed scenes | Installed `seedaudio` skill; its CLI and current Seed Audio/Qwen/StepAudio routes own the syntax, media handling, cost, recovery, and delivery. |
 | New commercial AI project setup or explicit project-kit refresh | Installed `commercial-ai-project-kit`; it initializes/updates project material and does not choose a generation provider or run generation. |
 | Cross-model identity, keyframe, face, surface-realism, or action-obedience failure | Installed `ai-video-realism` for diagnosis and repair, then the selected model writer for supported controls. |
 

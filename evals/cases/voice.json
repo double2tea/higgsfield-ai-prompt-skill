@@ -3,7 +3,7 @@
   "cases": [
     {
       "id": "audio-voice-change-element-voice",
-      "description": "voice_change takes no prompt; a cloned voice is used as voice_type element only once completed + is_audio_eligible; priced by duration (captured 2026-09-26 schema)",
+      "description": "voice_change takes no prompt; a cloned voice is used as voice_type element only once completed + is_audio_eligible; ask the selected executor for a current quote with the clip and voice attached (captured 2026-09-26 schema)",
       "request": "Swap the narrator's voice in my finished 20-second clip for the voice I cloned yesterday.",
       "response": "Routing to higgsfield-audio (§ Voice change and voice cloning).\n\n1. **Check the clone is ready** — `list_voices`: your voice must show `status: completed` and `is_audio_eligible: true`. A clone still `processing` is not usable yet.\n2. **Revoice** — `voice_change` with `video_id` = your clip, `voice_id` = the clone's id, `voice_type: element`. There is nothing to write: the tool takes no text, keeps the original timing and visuals, and takes the output size from the source.\n3. **Cost** — it is priced by length; request the selected executor’s current quote with the clip and voice attached; do not assume a rate from this example.",
       "assertions": [

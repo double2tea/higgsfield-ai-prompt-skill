@@ -101,8 +101,10 @@ the pairs share a backend is not stated anywhere — do not claim it.
 | A mesh that needs a new surface | `meshy_v5_retexture` | `text_style_prompt` or `image_style_url` (image wins when both are set); `enable_original_uv` default ON |
 | A photo of a person — body shape + pose | `sam_3_3d_body` | "Reconstruct human body shape and pose as a GLB"; per-person PLY meshes, 3D keypoints, Meta Human Representation (MHR) metadata |
 
-When unsure, the connector's own instruction is to call `models_explore(action:'recommend')`
-before any `generate_*` tool `[OFFICIAL — Higgsfield MCP server instructions, 2026-09-26]`.
+The captured Higgsfield MCP instructions recommended
+`models_explore(action:'recommend')` before `generate_*` calls
+`[OFFICIAL — Higgsfield MCP server instructions, 2026-09-26]`.
+For current execution, use the selected executor's live model schema.
 
 ---
 
@@ -343,8 +345,8 @@ pose and 3D keypoints — could supply a pose from a reference photo. Its GLB ca
 
 - **Catalog:** `../../specs/models_explore_snapshot_3d_2026-09-26.json`
   `[OFFICIAL — platform, 2026-09-26]` (17 models, `has_more: false`). The snapshot ages out
-  of the 30-day trust window on 2026-10-26 — after that, verify live (HARD RULE 3):
-  `models_explore(type:'3d')`.
+  of the 30-day trust window on 2026-10-26 — after that, verify through
+  the selected Higgsfield executor's current schema (HARD RULE 3).
 - **Tool contracts:** `generate_3d`, `animation_actions`, `scene_builder_3d_*`
   `[OFFICIAL — Higgsfield MCP tool schema, 2026-09-26]` — read from the connector's tool
   definitions; no tool was called.

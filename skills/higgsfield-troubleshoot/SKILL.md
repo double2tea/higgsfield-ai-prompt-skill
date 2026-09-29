@@ -28,7 +28,7 @@ metadata:
 - Continuation/extension defects: 12-row symptom → cause → single-repair-variable atlas (planned-vs-observed opening, motion-vector drop, prop contradictions, chain-depth drift…) [→](#sequence--continuation-failure-atlas)
 - Retry Ladder: diagnostic options for an authorized iteration, not an automatic paid sequence; verify source and mappings before choosing a repair [→](#retry-ladder--a-failed-take-edits-the-plan-not-just-the-dice)
 - Six stop numbers, one ladder: 2 same-flaw re-rolls → rewrite · 3 paid attempts (no declared budget) → named options · half a declared budget with no progress → change strategy · 4 v2v batches (ceiling) → prompt/source fault · 10–15 surgical iterations (declared budget) → simplify the shot · 65–100 generations per kept shot is a project benchmark, never a stop rule. The earliest tripwire wins; where 2 and 4 count the same v2v runs it is OPEN, default the earlier stop [→](#stop-rule-ladder--which-number-governs)
-- Log a confirmed fix when this project has selected the Higgsfield learning memory; check relevant memory when routed [→](#log-the-outcome--always)
+- Log a confirmed fix when this project has selected the Higgsfield learning memory; check relevant memory when routed [→](#log-the-outcome--when-selected)
 - Vision-grounded diagnosis (stills only): vision proposes the `reject_reason`, the human confirms — advisory until a class clears the agreement gate [→](#vision-grounded-diagnosis--classify-the-rejected-still-dont-guess)
 
 ## Common Problems & Fixes
@@ -389,7 +389,7 @@ How they compose:
 
 ---
 
-## Log the Outcome — Always
+## Log the Outcome — When Selected
 
 When the project uses the Higgsfield learning memory, a confirmed fix can
 help later sessions. After a confirmed fix, write it to that chosen memory

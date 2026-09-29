@@ -127,32 +127,8 @@ def _illegal_findings(response: str, spec: dict) -> list:
     return [f for f in findings if f.severity == "FAIL" and f.rule in ENUM_RULES]
 
 
-def _prior_indexes() -> list[tuple[str, dict]]:
-    """Historical flip attribution requires the removed spec generator.
-
-    Current-spec legality still runs; no earlier generated spec is inferred
-    from a raw snapshot.
-    """
-    return []
-
-
 def _current_snapshot(specs: dict) -> str:
     return specs.get("_snapshot_date") or "current"
-
-
-def _flip_origin(model: str, response: str, expect: str) -> str | None:
-    """Newest earlier snapshot under which this case's expectation HELD —
-    i.e. the snapshot it was last green against. None = it held under none."""
-    for stamp, index in _prior_indexes():
-        try:
-            spec = sl.resolve_model(index, model)
-        except sl.AmbiguousModelError:
-            continue
-        if spec is None:
-            continue
-        if bool(_illegal_findings(response, spec)) == (expect == "illegal"):
-            return stamp
-    return None
 
 
 def assert_enum_legal(case, response, params, specs) -> list[str]:
@@ -175,22 +151,8 @@ def assert_enum_legal(case, response, params, specs) -> list[str]:
     detail = "; ".join(f"{f.rule}({f.hit})" for f in illegal)
     now = _current_snapshot(specs)
     if expect == "legal" and illegal:
-        origin = _flip_origin(model, response, expect)
-        if origin:
-            return [f"spec-driven flip — this golden was legal against specs "
-                    f"snapshot {origin}; snapshot {now} makes it illegal for "
-                    f"{spec['id']}: {detail}. The platform changed since the case "
-                    f"was last green — re-audit the golden (Tier-2 rule: audit "
-                    f"evals/cases/ in the same PR as a spec refresh)."]
         return [f"illegal settings for {spec['id']}: {detail}"]
     if expect == "illegal" and not illegal:
-        origin = _flip_origin(model, response, expect)
-        if origin:
-            return [f"spec-driven flip — this trap held against specs snapshot "
-                    f"{origin} but snapshot {now} makes these settings legal for "
-                    f"{spec['id']}. The platform changed since the case was last "
-                    f"green, not the checker — re-audit the trap (Tier-2 rule: "
-                    f"audit evals/cases/ in the same PR as a spec refresh)."]
         return [f"trap case expected illegal settings for {spec['id']}, but none "
                 f"were flagged against current specs snapshot {now} — re-audit "
                 f"the trap and checker."]

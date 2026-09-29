@@ -2,6 +2,8 @@
 
 ## platform-cut — 2026-09-29
 
+- Added an explicit `seedaudio` route for standalone Seed Audio sound effects, ambience, music cues, speech, and mixed scenes; the installed executor keeps its own current syntax, cost, recovery, and delivery rules.
+- Second Grok pass gated the remaining memory writes, aligned live schema checks to the selected executor, restored Soul availability facts without setup steps, and removed unreachable historical flip-attribution code.
 - Final Grok review aligned Seedance language defaults, shotlist cuts, acting detail, motion-design execution, recall logging, and Soul character-reference guidance with the selected-platform rules. Rebuilt the index and removed the generated guide's Soul ID setup chapter while keeping character-sheet and model craft.
 - Repaired historical-spec test fixtures and stale CLI assertions after the spec-sync scripts were removed; the current suite and eval cases pass, with PDF dry-run still gated by optional `fpdf2`.
 - Removed remaining English-only prompt directions and mandatory negative-constraint, eye-cue, and brand-hold wording where they conflicted with the branch's scoped authoring rules.

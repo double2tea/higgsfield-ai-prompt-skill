@@ -64,7 +64,7 @@ def v335_tree(tmp_path_factory):
 
 @pytest.fixture(scope="module")
 def specs_2026_08_07(tmp_path_factory):
-    """Historical Seedance 2.5 facts from the committed 2026-08-07 snapshot."""
+    """Graft historical resolution/media roles needed by the registered claims."""
     d = tmp_path_factory.mktemp("specs_0807")
     old = json.loads((REPO / "specs" / "model-specs.json").read_text(encoding="utf-8"))
     snapshot = json.loads((REPO / "specs" / "models_explore_snapshot_2026-08-07.json")

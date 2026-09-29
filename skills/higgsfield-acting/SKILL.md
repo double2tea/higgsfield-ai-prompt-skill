@@ -35,7 +35,7 @@ prompt. It does not change camera, light, wardrobe, or grade.
 - Write the **objective** (a verb aimed at a partner), never the state — "make him confess", never "be angry" [→](#the-five-pillars-of-every-scene)
 - **When a scene needs changing tactics**, 2–4 visible beat changes can help: a pause, posture, tempo, or gaze shift. Preserve a deliberately still performance [→](#the-five-pillars-of-every-scene)
 - **Listening beats speaking.** The reaction starts *before* the partner's line ends; a hard question earns a micro-pause before the answer [→](#listening-and-reaction)
-- The body carries the biography: **center of gravity, tempo, openness, breath** — set all four before any psychology [→](#the-body)
+- When body direction is needed, **center of gravity, tempo, openness, breath** can make an inner state visible [→](#the-body)
 - **Business** — a physical task the hands are doing — kills theatricality; the strongest accent in a scene is the moment the character **stops** it [→](#the-body)
 - **Distance is drama**; a change of distance *is* a beat change. Status is what you DO, and status **breaks** are the most interesting thing in a performance [→](#the-body)
 - A **master profile** can collect stable character traits for a production that needs one; adapt only relevant details to a scene [→](#the-acting-master-profile)
@@ -219,12 +219,12 @@ re-derived 2026-08-22; source file not recorded]` The four markers above describ
 how a reaction *reads*; they do not give the listener anything to be doing between them,
 and a listener with no task is where the dead face comes back in a two-shot. Name the work:
 *decide whether he is serious · wait for the opening · protect the mood · catch him in the
-lie.* Every character in frame gets living eyes this way.
+lie.* Give a listener a visible task when the shot needs that cue.
 
 ## The body
 
-**Physical state before psychology.** Set four parameters for every character before any
-inner life:
+**Physical state before psychology.** For a performance problem that needs
+body direction, consider these four observable parameters:
 
 - **Center of gravity** — high (chest, chin: confidence, aggression, status) or low
   (shoulders, slouch: fatigue, fear, submission).

@@ -2006,9 +2006,8 @@ If the user tells you Seedance has flagged them multiple times in a row:
 2. **Run the preflight linter** on that exact text.
 3. **Apply the rewrite playbook** for every rule the linter hit.
 4. **Do a voice pass** (add Style & Mood, name the camera, present-tense physics).
-5. **Log the outcome** to the learning memory so future sessions benefit. These
-   are concrete steps, not optional polish — the memory system only learns if
-   outcomes actually get written:
+5. **If this project uses the Higgsfield learning memory, log a confirmed outcome**
+   so future sessions can benefit:
    - After a rewrite **passes Seedance's filter in a real generation**, log it
      as a confirmed workaround:
      `python3 scripts/seedance_lint.py --confirmed "<the prompt that passed>"`

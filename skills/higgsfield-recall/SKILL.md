@@ -205,9 +205,9 @@ python3 ../../scripts/higgsfield_memory.py log-gen <project> \
 
 ### Optional: log the routing (usage telemetry)
 
-HARD RULE #1 already makes you name the sub-skills you routed to on the first
-line of every response. When a production is tracking which skills actually earn
-their keep, persist that declaration:
+HARD RULE #1 names relevant sub-skills when routing a new authoring request;
+it does not require a badge on status or result replies. When a production
+chooses to track skill usage, persist that declaration:
 
 ```bash
 python3 ../../scripts/higgsfield_memory.py log-route --skills higgsfield-prompt,higgsfield-camera
@@ -246,8 +246,9 @@ To see current knowledge base size:
 python3 scripts/higgsfield_memory.py stats
 ```
 
-Empty databases = no recall benefit yet. Start logging failures with `higgsfield-troubleshoot`
-and the recall system gets smarter with every entry.
+Empty databases = no recall benefit yet. If the project selects Higgsfield
+learning memory, confirmed failures can be logged through
+`higgsfield-troubleshoot` for later recall.
 
 ---
 

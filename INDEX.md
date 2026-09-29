@@ -821,7 +821,7 @@ anchors instead of archaeology. Link format: `path#anchor`.
   - [Sequence & Continuation Failure Atlas](skills/higgsfield-troubleshoot/SKILL.md#sequence--continuation-failure-atlas)
   - [Retry Ladder — a failed take edits the plan, not just the dice](skills/higgsfield-troubleshoot/SKILL.md#retry-ladder--a-failed-take-edits-the-plan-not-just-the-dice)
   - [Stop-Rule Ladder — which number governs](skills/higgsfield-troubleshoot/SKILL.md#stop-rule-ladder--which-number-governs)
-  - [Log the Outcome — Always](skills/higgsfield-troubleshoot/SKILL.md#log-the-outcome--always)
+  - [Log the Outcome — When Selected](skills/higgsfield-troubleshoot/SKILL.md#log-the-outcome--when-selected)
   - [Vision-Grounded Diagnosis — Classify the Rejected Still, Don't Guess](skills/higgsfield-troubleshoot/SKILL.md#vision-grounded-diagnosis--classify-the-rejected-still-dont-guess)
   - [Related skills](skills/higgsfield-troubleshoot/SKILL.md#related-skills)
 
