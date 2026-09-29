@@ -125,7 +125,7 @@ Lock the look once, then inject it verbatim into every prompt (worksheet: `../..
 
 > *NO generic flooded-city teal-and-orange. NO neon. NO pristine surfaces — everything is salt-scarred. NO clear blue sky. NO photoreal celebrity faces. NO pure-black shadows; use deep indigo instead.*
 
-This Visual DNA — hex palette + forbidden list — is what gets pasted into prompts to keep a series consistent. See `higgsfield-soul` (Soul HEX) and `higgsfield-style` for how the color lock is applied at generation time.
+This Visual DNA — hex palette + forbidden list — is what gets pasted into prompts to keep a series consistent. See `higgsfield-style` for how the color lock is applied at generation time.
 
 ---
 
@@ -134,7 +134,7 @@ This Visual DNA — hex palette + forbidden list — is what gets pasted into pr
 This skill produces inputs; it does not generate. When the bible is locked, route forward:
 
 - **The prompt** → `higgsfield-prompt` (MCSLA structure). Inject the Visual DNA (hex + forbidden list) verbatim, and pull the subject from the character's Silhouette + Contradiction, the action from the relevant Story Spine beat.
-- **The model** → `model-guide.md` / `image-models.md`. For a character who recurs across many shots, train a **Soul ID / Soul Cast** identity (`higgsfield-soul`) rather than re-rolling one-offs; for a single hero image that won't reappear, a one-off generation is fine.
+- **The model** → `model-guide.md` / `image-models.md`. For a single hero image that won't reappear, a one-off generation is fine.
 - **Multi-shot sequences** → `higgsfield-cinema` (Cinema Studio) for shot-by-shot continuity; the Story Spine beats become the shot list.
 - **Generic prompts get generic characters.** A thin prompt ("a man's portrait, cyberpunk") cannot recover what the sheet would have supplied — the locked sheet is the difference between a function and a person on screen.
 
@@ -225,8 +225,7 @@ oversized one reads as fake.
 good sheet is a one-line edit on the model that holds inputs best (Nano Banana 2), not a
 re-prompt: `change the logo to the one in image two`. Re-prompting re-rolls everything that
 was already right. On the character's **identity base**, mask only the changed region back
-onto the untouched original (`../higgsfield-soul/SKILL.md` § The Untouched Base,
-`../shared/house-rulings.md` P2-3). Model routing per asset class: `../../image-models.md` § Routing by
+onto the untouched original (`../shared/house-rulings.md` P2-3). Model routing per asset class: `../../image-models.md` § Routing by
 Asset Class.
 
 ---
@@ -265,7 +264,6 @@ Six steps, in order — the user chooses at step 5; never skip ahead to the fina
 ### Direct the takes, then lock the winner
 
 - **Facial direction:** for muscle-level control of the audition takes (the jaw tension, the asymmetric almost-smile), hand the beats to `../higgsfield-facs/SKILL.md` — AU codes, not emotion labels.
-- **After the audition:** when a take proves the character is castable, lock that winner's identity with `../higgsfield-soul/SKILL.md` (Soul ID / Soul Cast) so every real scene starts from the version that can act — the lock-the-winner step of the `../../templates/ad-asset-prep.md` loop.
 
 ---
 
@@ -308,7 +306,6 @@ Fillable worksheets in `../../templates/character-design/` (hand them to the use
 
 ## Related skills
 - `higgsfield-prompt` — turns the locked sheet into an MCSLA generation prompt (the primary hand-off)
-- `higgsfield-soul` — Soul ID / Soul Cast for recurring-character consistency; Soul HEX for the palette lock
 - `higgsfield-cinema` — Cinema Studio multi-shot sequences; Story Spine → shot list
 - `higgsfield-style` — applying the Visual DNA / forbidden list at generation time
 - `model-guide.md` · `image-models.md` — picking the model for the character/scene

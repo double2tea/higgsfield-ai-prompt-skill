@@ -155,7 +155,6 @@ a single coherent scene where all elements appear correctly.
 ---
 
 ### Kling O1 Video Edit (Legacy — Edit Video tab)
-**Input video:** 3–10s · **Resolution:** 720p output · **Cost:** ~9 credits
 **Interface:** Separate "Edit Video" tab (not in the main model list) — upload existing video + optional up to 4 image/element references + text prompt
 **Auto settings toggle:** On = model determines best edit parameters automatically
 
@@ -296,10 +295,6 @@ identical parameter surfaces):
 | `generate_audio` | default `true` — native audio track |
 | `enable_thinking` | default `false` — "Let the model reason about the prompt before generating (slower, better prompt adherence)" |
 | media roles | `start_image`, `end_image`, `image_references`, `video_references`, `audio_references` |
-
-CLI rules (`higgsfield model get wan3_0`, 2026-09-26): `end_image` requires `start_image`;
-**`start_image` / `end_image` cannot be combined with any reference media** — a call is either a
-frames call or a references call; `duration` must be `-1` or ≥2.
 
 **Prime vs standard:** neither the catalog nor Alibaba's guide states how Prime differs. Do not
 invent a quality, speed, or price gap — present them as two ids with the same surface.
@@ -1158,8 +1153,7 @@ and none carries a quality judgment until real generations back it.
   continuation with synchronized audio." 5–20 s; 720p / 1080p; `generate_audio` (default on);
   roles `start_image`, `end_image`, `image_references`, `video_references`; aspect ratios auto /
   21:9 / **2:1** / 16:9 / 4:3 / 1:1 / 3:4 / 9:16 (2:1 appears on no other video model in the snapshot).
-- **FLUX 3 Video Edit** (`flux_3_video_edit`) — "Edit a video with a text prompt. **Uses the first
-  15 seconds at most; costs 1 credit per second of the processed clip.**" One `video_references`
+- **FLUX 3 Video Edit** (`flux_3_video_edit`) — "Edit a video with a text prompt." One `video_references`
   role, no resolution or aspect params.
 
 ### Gemini Omni Flash 1.1 (Google)

@@ -222,11 +222,6 @@ Two locks earn their place next to it:
 `[FIELD — AI-vs-VFX, 2026-08-08]` Location stills are the cheapest place in the whole
 pipeline to iterate and the most expensive place to get wrong.
 
-**The economics drive the method.** Seven credits buys one GPT Image 2 generation, or
-**56 Soul Cinema variations** — the build's figures; credit prices move, so verify live
-before quoting them. At that ratio the correct behaviour is not to write a better prompt —
-it is to batch wide, then judge.
-
 **Judge on light, before anything else.** The rejection reasons from the build, in the
 order they came up:
 

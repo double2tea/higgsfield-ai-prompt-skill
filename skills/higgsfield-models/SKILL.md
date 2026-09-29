@@ -55,8 +55,6 @@ Fast lookup — for detailed comparisons see the full tables below.
 | Transparent-background image | GPT Image 2.5 (`background: transparent`) | — |
 | Photo style transformation | Photodump (29 presets) | Low |
 
-**Pricing tiers:** Free (Soul 2.0; DoP Lite — not in the API catalog, verify in the UI) · Low (0.1–2 credits) · Mid (2–10 credits) · Premium (10+ credits). See the Credit Cost Reference below for exact per-model costs.
-
 ---
 
 ## Video Models — Comparison
@@ -98,7 +96,6 @@ Fast lookup — for detailed comparisons see the full tables below.
 | MiniMax H3 Max | — | — | — | — | 5–15s | — | "Fast" variant, 480p / 768p, same roles, `batch_size` 1–4. Not yet field-rated |
 | Happy Horse Video | — | — | — | — | 3–15s | — | T2V + single start frame, 720p / 1080p. Not yet field-rated |
 | FLUX 3 Video | — | — | — | — | 5–20s | ✅ | T2V, multi-frame I2V, continuation; native 2:1. Not yet field-rated |
-| FLUX 3 Video Edit | — | — | — | — | first 15s of source | — | Text edit of one video, 1 credit per processed second. Not yet field-rated |
 | Higgsfield DoP (Lite/Standard/Turbo) | ★★★☆☆ | ★★★☆☆ | ★★★★☆ | ★★★☆☆ | 3–5s | ❌ | I2V specialist, 50+ presets, optical physics — not in the API catalog, 2026-09-26 — verify in the live UI |
 
 ---
@@ -176,56 +173,8 @@ Is this image or video?
 
 ---
 
-## Image Models — Quick Selection
-
-| Need | Model | Credits |
-|------|-------|---------|
-| Fashion / cultural portrait | Soul 2.0 | Free |
-| Cinematic keyframe for I2V | Soul Cinema (`soul_cinematic`) · Soul Cinema Preview (no catalog model by that name, 2026-09-26 — verify in the live UI) | — · Low |
-| Consistent character identity (16:9) | Soul Cast | `budget` 10–500 |
-| Environment / location plate | Soul Location | — |
-| Cheapest generation | Z-Image | 0.15 |
-| Low-cost portrait | Soul 2.0 · Higgsfield Soul (not in the API catalog, 2026-09-26 — verify in the live UI) | Free · 0.5 |
-| Low-cost 2K square | Kling O1 Image (`kling_omni_image`) | 0.5 |
-| Native 4K / image series | Nano Banana Pro (4K) · Kling Image 3.0 (series; not in the API catalog, 2026-09-26 — verify in the live UI) | 2 at 1K (4K: verify) · — |
-| 4K + advanced editing | Nano Banana 2 (edits, to 4k) · Kling Image 3.0 Omni (not in the API catalog, 2026-09-26 — verify in the live UI) | 1.5 at 1K (4K: verify) · — |
-| Fast versatile 2K | Seedream 5.0 Lite | 1 |
-| Fast generation + instruction editing up to 2K | Seedream 5.0 Flash (not yet field-rated) | — |
-| 4K versatile | Seedream 4.5 | 1 |
-| Sketch-to-image (Draw) | Nano Banana | 1 |
-| Artistic / stylized | Seedream 5.0 Pro (stylized-2D) · Wan 2.2 (not in the API catalog, 2026-09-26 — verify in the live UI) | — · 1 |
-| Blend multiple references | Nano Banana Pro (14 refs) · Multi Reference (not in the API catalog, 2026-09-26 — verify in the live UI) | 2 · 1.5 |
-| Fast pro-quality + text rendering | Nano Banana 2 | 1.5 |
-| Budget NB2 (1k only, `thinking` MINIMAL/HIGH) | Nano Banana 2 Lite | — |
-| Transparent background · quality to `max` · 15 aspect ratios | GPT Image 2.5 (not yet field-rated) | — |
-| Complex prompts / text in image | GPT Image 2 · GPT Image 1.5 (left the API catalog after 2026-06-22 — verify in the live UI) | — · 2 |
-| Reference-based editing + best text rendering | OpenAI Hazel | — |
-| Max fidelity / Thinking mode / 14 refs | Nano Banana Pro | 2 |
-| xAI generation + editing | Grok Image / Grok Image 2.0 (not yet field-rated) | — |
-| Image editing / inpainting | Flux Kontext | varies |
-| Extend or crop the canvas per side | FLUX.2 Pro Outpaint (not yet field-rated) | — |
-| Photo style transformation (29 cartoon/illustration presets) | Photodump | Low |
-
 Full image model specs + UI controls → `../../image-models.md`
 Full Photodump preset library (29 named styles) → `../../photodump-presets.md`
-
----
-
-## Budget Tiers
-
-**Image models — by credit cost:**
-- **Free / near-free:** Soul 2.0 (5K gens) · Z-Image (0.15) · Face Swap (2 free)
-- **Budget (0.5–1):** Kling O1 Image · Seedream family · Nano Banana · Higgsfield Soul, Wan 2.2, Reve (these three: not in the API catalog, 2026-09-26 — verify in the live UI)
-- **Mid (1.5–2):** Nano Banana 2 · FLUX.2 Pro · Flux Kontext Max (UI tier — the API's `flux_kontext` is now named Flux Kontext) · NB Pro · Character Swap · Multi Reference, GPT Image (not in the API catalog, 2026-09-26 — verify in the live UI)
-- **Premium (5–6):** FLUX.2 Flex · FLUX.2 Max
-
-**General pricing tiers (video + image, approximate):**
-- **Free:** Soul 2.0 · DoP Lite (limited; not in the API catalog, 2026-09-26 — verify in the live UI)
-- **Low:** 0.1–2 credits per generation
-- **Mid:** 2–10 credits per generation
-- **Premium:** 10+ credits per generation
-
-For exact per-model video costs see the Credit Cost Reference in `../../model-guide.md`.
 
 ---
 
@@ -329,7 +278,6 @@ Cinema Studio 3.0 is a separate generation engine available on Business and Team
 | Aspect Ratios | 6 options | 7 options (+ 21:9 ultrawide) | Video: 7 options (Auto, 16:9, 9:16, 4:3, 3:4, 1:1, 21:9) · Image: 8 options (1:1, 3:4, 2:3, 9:16, 3:2, 4:3, 16:9, 21:9) |
 | Audio | On/Off | On/Off (native dual-channel stereo) | On/Off (generated alongside video) |
 | Shot Control | Manual multi-shot | Smart (auto) + Custom multi-shot | Video: 3-pill main UI (Genre / Style / Camera) · Image: Cinematic models picker (Soul Cinema default + Cinematic Characters / Locations / Cameras) — see `higgsfield-cinema` |
-| Generation Cost | Varies | 48 credits | Varies — see Higgsfield plan documentation |
 
 > For full Cinema Studio 3.0 documentation → see `higgsfield-cinema`
 

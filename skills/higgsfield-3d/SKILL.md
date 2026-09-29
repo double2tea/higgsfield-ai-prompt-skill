@@ -150,29 +150,7 @@ accuracy)".
 
 ---
 
-## The prompt field — two surfaces disagree
-
-- `[OFFICIAL — Higgsfield MCP tool schema, generate_3d, 2026-09-26]`: *"Optional text
-  guidance. Only sam_3_3d accepts a prompt (to disambiguate which object to lift). Other 3D
-  models ignore it."*
-- `[OFFICIAL — platform CLI 1.1.23, higgsfield model get <id> --json, 2026-09-26]`: `prompt`
-  is **required** on `meshy_v6_text_to_3d`, `hunyuan3d_v3_1_text_to_3d` and `tripo_3d`;
-  optional (default empty) on `sam_3_3d`; absent from every image-input, rig, remesh,
-  retexture and body model.
-
-The MCP sentence is accurate for the image-input models and cannot be literally true for
-text→3D (a text→3D job with its prompt ignored has no input). **Do not settle it by
-guessing:** for text→3D, send the prompt, and run `get_cost: true` first — the server
-returns `adjustments` showing what it did with the request before anything is spent. For
-texture direction on the image-input models, the fields are `texture_prompt` /
-`texture_image_url` (Meshy) — not `prompt`.
-
----
-
 ## Parameter rules the server enforces
-
-`[OFFICIAL — platform CLI 1.1.23, model get rules, 2026-09-26]` — each is a server-side
-constraint; breaking one rejects the job.
 
 | Model(s) | Rule |
 |---|---|
@@ -209,19 +187,12 @@ are ignored".
   actions** with ids in **0–696** — the ids are not contiguous, so never compute or guess
   one. The schema's named picks: idle `0`, walk `30` (Casual_Walk), run `16` (RunFast),
   jump `466` (Regular_Jump), wave `28` (Big_Wave_Hello), dance `64` (All_Night_Dance).
-- **Look it up:** MCP `animation_actions` (read-only, no job; groups WalkAndRun,
-  BodyMovements, DailyActions, Dancing, Fighting; each result carries a preview GIF — when
-  several fit, show the previews and let the user pick) or CLI
-  `higgsfield preset list animation-action --query walk`.
 - Rigging and animation each **add cost** (schema wording) — preflight.
 
 ---
 
 ## Cost and submission discipline
 
-- **Preflight is free:** MCP `generate_3d` with `get_cost: true` "preflights credits
-  without submitting"; CLI `higgsfield generate cost <model_id> [--param value]…`. Apply the
-  `adjustments` the server returns. This file lists no prices — they were not measured.
 - **Cost drivers the schema names:** texturing ("Costs more credits"), rigging and
   animation ("Adds cost"). `count` 1–4 multiplies the job.
 - **Timeouts:** "On a transport timeout the submission outcome may be unknown: do not
@@ -375,12 +346,10 @@ pose and 3D keypoints — could supply a pose from a reference photo. Its GLB ca
 - **Catalog:** `../../specs/models_explore_snapshot_3d_2026-09-26.json`
   `[OFFICIAL — platform, 2026-09-26]` (17 models, `has_more: false`). The snapshot ages out
   of the 30-day trust window on 2026-10-26 — after that, verify live (HARD RULE 3):
-  `models_explore(type:'3d')` or `higgsfield model get <id>`.
+  `models_explore(type:'3d')`.
 - **Tool contracts:** `generate_3d`, `animation_actions`, `scene_builder_3d_*`
   `[OFFICIAL — Higgsfield MCP tool schema, 2026-09-26]` — read from the connector's tool
   definitions; no tool was called.
-- **Prompt requirements and CEL rules:** `[OFFICIAL — platform CLI 1.1.23, higgsfield model
-  get <id> --json, 2026-09-26]` — free schema reads, no job created.
 - **Not known:** output quality, speed, price, how any 3D model handles faces, how a
   mesh-derived reference behaves in a video model, the Tripo view order, whether the
   duplicate Meshy ids share a backend. Nothing here was fired.

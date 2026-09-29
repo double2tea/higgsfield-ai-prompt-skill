@@ -29,7 +29,6 @@ These occur when the model loses track of who a character is across frames or ge
 
 | Artifact | Why it happens | Recommended prompt phrasing to prevent it |
 |----------|---------------|------------------------------------------|
-| **Face morphing / shifting** | No Soul ID reference, or conflicting appearance descriptions in the prompt | Use Soul ID for multi-shot work; remove contradictory appearance descriptors |
 | **Identity drift across shots** | Character description varies between prompts, or identity and motion mixed in one block | Copy-paste exact character description across all prompts; separate Identity Block from Motion Block (see `higgsfield-soul`) |
 | **Character swap (two characters)** | @ Elements in action scenes — model confuses which character is which | Use @ Elements only in static/slow scenes; use plain text for action; put hero character first in prompt |
 | **Face warping during camera moves** | Identity descriptors mixed with temporal/motion language cause the model to re-interpret the face each frame | Keep identity descriptors (face, clothing, body) in a static Identity Block; keep camera and motion in a separate Motion Block |

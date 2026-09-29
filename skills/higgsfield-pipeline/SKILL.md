@@ -644,49 +644,6 @@ Multi-Shot Manual → Morph-Cut and Smooth-Cut breathing room.
 
 ---
 
-## Pipeline B: Social Content Series (Streamlined Chain)
-
-**Goal:** Consistent weekly social posts with same character and aesthetic
-**Credits required:** Medium (Pro plan)
-**Time:** 30–60 minutes per post once Soul ID + Moodboard are set up
-
-```
-[1] SOUL ID          → Character locked once, reused forever
-[2] MOODBOARD        → Aesthetic locked once, appended to every prompt
-[3] GENERATE IMAGE   → Soul 2.0 or Nano Banana 2 for each post
-[4] ANIMATE          → Kling 2.6 I2V, simple motion per post
-[5] VIBE MOTION      → Caption/CTA overlay per post format
-```
-
-**Per-post prompt template (after Soul ID + Moodboard are established):**
-
-```
-[Soul ID character] is [specific action] at [specific location].
-[One specific visual detail that changes this post from the last.]
-Camera: [simple control — Dolly In / Arc / Overhead].
-Aspect: 9:16. Duration: 5s.
-[Moodboard style modifier — same every post.]
-```
-
-**Example series (3 posts, same character):**
-```
-Post 1: [Soul ID] sips coffee at a sun-drenched café terrace. Reading a book.
-         Camera: Dolly In. Aspect: 9:16.
-         Style: warm amber, shallow DOF, golden hour.
-
-Post 2: [Soul ID] walks through a quiet morning market, tote bag on shoulder.
-         Camera: slight Arc. Aspect: 9:16.
-         Style: warm amber, shallow DOF, golden hour.
-
-Post 3: [Soul ID] sits at a desk by a tall window, writing in a journal.
-         Camera: Dolly In. Aspect: 9:16.
-         Style: warm amber, shallow DOF, golden hour.
-```
-
-The style modifier is identical every time. Only the scene changes.
-
----
-
 ## Pipeline C: Product Campaign (Commercial Chain)
 
 **Goal:** Multi-asset product ad campaign — hero video + variants + social cuts
@@ -731,7 +688,6 @@ Style: Commercial quality, [clean/warm/dramatic]. [Ratio].
 
 **Goal:** A narrative short where every scene is a completely different animation style (paper cutout, French graphic novel, chibi, stop motion, manga, claymation, 2D-on-live-action, live action) but the hero character and key props stay consistent across all of them.
 
-**Credits required:** Medium-High (Pro or Business plan). Soul Cinema is cheap (~0.5 credits per 4-image batch); Seedance 2.0 is where the credits go.
 **Time:** 2–4 hours for an 8-scene short.
 
 **The core trick:** feed the **previous scene's video + prompt** into the next scene's planning step. This is how style can change radically scene-to-scene while character, props, and story continuity hold.
@@ -1101,10 +1057,6 @@ Save the full pipeline for multi-shot sequences. A single 5-second clip doesn't
 need 8 stages. Run it through standard generation → upscale → post.
 
 ---
-
-> **Identity vs. Motion:** In all pipeline stages involving Soul ID characters, split prompts
-> into Identity Block + Motion Block. The Identity Block stays identical across all stages;
-> only the Motion Block changes per shot. See `higgsfield-prompt` and `higgsfield-soul`.
 
 > **Negative constraints:** For artifacts specific to multi-shot workflows (identity drift,
 > scene continuity breaking, camera contradictions), see `../shared/negative-constraints.md` —

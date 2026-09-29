@@ -36,7 +36,6 @@ metadata:
 ### Problem: Character face is inconsistent or morphing
 **Cause:** No Soul ID reference; prompt has conflicting appearance descriptions
 **Fix:**
-- Create a Soul ID reference and use it in subsequent generations
 - Remove any appearance descriptions that contradict each other
 - For image-to-video: don't re-describe the face — let the input image carry it
 - Use Kling 3.0 for best character consistency (or Kling 2.6 if no audio needed)
@@ -174,7 +173,6 @@ Before generating, verify:
 - [ ] Model selected (or let Higgsfield default)
 - [ ] Prompt is under 200 words (short-form regime — skip for block-scaffold briefs)
 - [ ] No conflicting instructions
-- [ ] Soul ID referenced if character consistency needed
 - [ ] Motion preset named at end if using one
 - [ ] Identity Block separated from Motion Block (if Soul ID active)
 

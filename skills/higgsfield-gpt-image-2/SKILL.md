@@ -67,23 +67,6 @@ quality ranking is claimed.
   refinement pipeline — was gathered on 2.0 and does not transfer to 2.5 automatically.
 - **A Higgsfield workflow names `gpt_image_2`** — e.g. the MCP's bundled thumbnail-generation
   workflow routes its 3D-logo step to `gpt_image_2`.
-- **You need CLI mask inpainting on 2.0** — `mask` / `is_inpaint` are CLI-listed only (next table).
-
-### CLI ↔ MCP disagreement on `gpt_image_2`
-
-The two official Higgsfield surfaces describe `gpt_image_2` differently on 2026-09-26. Recorded as
-a disagreement — **neither surface is declared the winner**:
-
-| Field | MCP `models_explore` | CLI `higgsfield model get gpt_image_2` |
-|---|---|---|
-| Aspect ratios | 1:1, 4:3, 3:4, 16:9, 21:9, 9:16, 3:2, 2:3 | same **plus auto, 4:5, 5:4** |
-| `resolution` default | 1k | **2k** |
-| `quality` default | low | **high** |
-| `background` | not listed | auto / opaque / transparent |
-| `mask` / `is_inpaint` | not listed | listed |
-
-Until one is verified on a real generation: set `quality` and `resolution` explicitly on 2.0, and
-do not promise `background`, masks, or auto / 4:5 / 5:4 on `gpt_image_2` to an MCP user.
 
 ### Prompting status on 2.5
 

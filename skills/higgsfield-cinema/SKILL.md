@@ -1,6 +1,6 @@
 ---
 name: higgsfield-cinema
-description: "Guides users through professional filmmaking workflows in Higgsfield Cinema Studio, including creating multi-shot sequences, configuring optical stacks, applying color grading, managing Soul Cast AI actors, and structuring per-scene prompts with Director Panel camera movements. Use when the user mentions Cinema Studio, Cinema Studio 2.5, Cinema Studio 3.0, Cinema Studio 3.5, Cinema Studio 4.0 (`cinematic_studio_video_4_0` — its four modes, camera/lens/aperture/era/genre/pacing ids, light presets, color palette), Soul Cast, color grading, multi-shot video, shot sequences, storyboard workflow, Hero Frame, optical stack, keyframe interpolation, Elements system (@Characters/@Locations/@Props), Speed Ramp, Director Panel, Higgsfield Popcorn, Single Shot / Multi-Shot Auto / Multi-Shot Manual modes, Reference Anchor, Smart shot control, or any professional filmmaking workflow inside Higgsfield."
+description: "Guides users through professional filmmaking workflows in Higgsfield Cinema Studio, including creating multi-shot sequences, configuring optical stacks, applying color grading, managing and structuring per-scene prompts with Director Panel camera movements. Use when the user mentions Cinema Studio, Cinema Studio 2.5, Cinema Studio 3.0, Cinema Studio 3.5, Cinema Studio 4.0 (`cinematic_studio_video_4_0` — its four modes, camera/lens/aperture/era/genre/pacing ids, light presets, color palette), color grading, multi-shot video, shot sequences, storyboard workflow, Hero Frame, optical stack, keyframe interpolation, Elements system (@Characters/@Locations/@Props), Speed Ramp, Director Panel, Higgsfield Popcorn, Single Shot / Multi-Shot Auto / Multi-Shot Manual modes, Reference Anchor, Smart shot control, or any professional filmmaking workflow inside Higgsfield."
 user-invocable: true
 metadata:
   tags: [higgsfield, cinema-studio, cinema-studio-4, multi-shot, storyboard, popcorn, hero-frame, optical, elements, director-panel, speed-ramp, soul-cast, color-grading]
@@ -44,13 +44,11 @@ different from single-clip generation: you're building sequences, not individual
 |--|--------------------|--------------------|----------------------------------------|--------------------|
 | Output | Single clip | Multi-shot sequence | Multi-shot sequence | Multi-shot sequence |
 | Character consistency | Manual / Soul ID only | Reference Anchor system | @ reference system (up to 9 images) | @ reference system (extends 3.0) |
-| AI actor generation | Not available | Soul Cast — generate actors from parameters (no photos) | Soul Cast — General (2K) / Character (4K) / Location (4K) modes, 0.125 credits | Same Soul Cast surface — see 3.0 |
 | Camera control | Named presets | Director Panel (18 movements) | Director Panel + Smart (auto camera planning) | Camera Settings 4-axis panel (Camera Body / Lens / Focal Length / Aperture) — see Cinema Studio 3.5 section |
 | Optical physics | Not available | Full camera body + lens stack | Not available | Available — restored via Camera Settings panel (different vocabulary from 2.5 — see Cinema Studio 3.5 section) |
 | Color grading | Not available | Built-in suite (temp, contrast, grain, bloom, etc.) | Not available | Available — Color Palette axis in Style Settings panel (8 named palettes) |
 | Shot structure | One prompt = one clip | Up to 6 scenes, 12s total max, per-scene config | Smart (auto) + Custom multi-shot (up to 6 scenes, 15s) | Multi-shot supported — Duration 4s–15s |
 | 3D exploration | Not available | Gaussian splatting — move inside any generated image | Not available | Same as 3.0 (not available) |
-| Batch generation | Not available | Grid generation — up to 16 variations per credit | Not available | Configurable Batch Size (exploration multiplier) |
 | Storyboard | Not available | Higgsfield Popcorn integration | Not available | Same as 3.0 |
 | Speed control | Not available | Speed Ramp (6 modes) | Speed Ramp (7 modes + Bullet Time, Hero Moment) | Not separately tested in this release — see UI for 3.5-specific surface |
 | Genre | Style descriptions | 8 named genres | 7 genres (General, Action, Horror, Comedy, Noir, Drama, Epic) | Manual catalog (General, Action, Horror, Comedy, Noir, Drama, Epic + others surfaced in UI) |
@@ -101,13 +99,11 @@ If the user has already stated their version (e.g., "I'm using 3.0" or "Cinema S
 
 ## The 10-Step Cinema Studio 2.5 Workflow
 
-Cinema Studio 2.5 extends the pipeline in both directions: **pre-production** (Soul Cast +
-location prompt) before generation, and **post-production** (color grading) after.
+Cinema Studio 2.5 extends the pipeline in both directions: **pre-production** (location prompt) before generation, and **post-production** (color grading) after.
 
 ```
  1. SCRIPT        → Write or paste your scene description / shot list
- 2. SOUL CAST     → (New in 2.5) Generate AI actors from parameters or use saved Elements
- 3. REFERENCE     → Upload character photo → create Reference Anchor (or use Soul Cast actor)
+ 3. REFERENCE     → Upload character photo → create Reference Anchor
  4. ELEMENTS      → (Optional) Define @Characters, @Locations, @Props if needed
  5. OPTICAL STACK → Select camera body + lens + focal length + aperture (image mode)
  6. HERO FRAME    → Generate a key image that defines the visual tone
@@ -209,53 +205,6 @@ Build the element library before generation. For a project with recurring charac
 **Cross-shot continuity tip.** For continuation work, the **Image Generations** and **Video Generations** source tabs let you reference prior outputs from the same project — useful when a Character Element doesn't capture a specific look or pose that emerged from a particular generation. Pull the exact frame back in via the Generations tab rather than re-prompting from scratch.
 
 ---
-
-## Soul Cast — AI Actor Generation
-
-Soul Cast is Cinema Studio 2.5's character generation system — create AI actors from
-parameters instead of uploading photos. This is fundamentally different from Soul ID.
-
-### Soul Cast vs Soul ID
-
-| | Soul Cast | Soul ID |
-|--|-----------|---------|
-| Input | Parameter selection | 20+ photos of real person |
-| Purpose | Generate AI actors from scratch | Maintain consistency of a known face |
-| Photo required | No | Yes |
-| Powered by | Nano Banana 2 | — |
-
-### Soul Cast Parameter Categories (8 total)
-
-| # | Category | Options |
-|---|----------|---------|
-| 1 | **Genre** | Action, Adventure, Comedy, Drama, Thriller, Horror, Detective, Romance, Sci-Fi, Fantasy, War, Western, Historical, Sitcom (14 options) |
-| 2 | **Budget** | Production budget slider (in millions) — higher = refined blockbuster look, lower = raw/gritty |
-| 3 | **Era** | Decade selection starting from 1900s — grounds character in correct time period |
-| 4 | **Archetype** | Innocent, Everyman, Hero, Caregiver, Explorer, Rebel, Lover, Creator, Jester, Sage, Magician, Ruler (12 options) |
-| 5 | **Identity** | Gender, race, age |
-| 6 | **Physical Appearance** | Height, eye color, hair, facial hair, etc. |
-| 7 | **Details** | Scars, tattoos, freckles, other imperfections |
-| 8 | **Outfit** | Casual, Formal, High Fashion, Military, Sporty, Workwear, Vintage (7 styles) |
-
-### Key Features
-
-- Add up to **3 Soul Cast characters per keyframe** — choose from saved Elements or generate on the spot
-- **"Save to elements"** button to reuse a specific Soul Cast actor across projects
-- Every actor auto-generates a **backstory + character sheet** (personality traits, motivation, fear, flaw, strength)
-- Designed to eliminate the "plastic/waxy" AI look — excels at **skin textures and emotions**
-- Powered by the **Nano Banana 2** model under the hood
-
-### Soul Cast Workflow
-
-```
-1. Open Cinema Studio → Navigate to Soul Cast panel
-2. Set Genre + Era + Budget to establish the visual world
-3. Select Archetype + Identity + Physical Appearance
-4. Add Details (imperfections) + Outfit
-5. Generate → Review backstory + character sheet
-6. Save to Elements → Now available as @CharacterName across all shots
-7. Repeat for additional characters (up to 3 per keyframe)
-```
 
 ---
 
@@ -580,7 +529,6 @@ across all shots in a sequence — preventing the character drift that happens i
 1. Upload a clear, well-lit reference photo of your character
 2. Cinema Studio generates an anchor from it
 3. Every subsequent shot in the project references this anchor
-4. Combine with Soul ID for full face + geometry lock
 
 **Best practices:**
 - Use a front-facing, neutral expression photo for the anchor
@@ -707,9 +655,6 @@ recurring camera moves and a tight color palette absolutely does.
 A Hero Frame is a key image you generate before committing to video — it defines the
 visual tone, lighting, color, and composition of your sequence.
 
-**Why it matters:** Generating a Hero Frame first costs ~1 credit. Adjusting the video
-after generation costs full video credits. Get the look right on the image first.
-
 **Hero Frame workflow:**
 1. Describe your opening shot with full optical stack
 2. Generate as image (Soul 2.0 or Nano Banana 2)
@@ -801,20 +746,12 @@ generation becomes multiple shots.
 ## Grid Generation — Batch Variations
 
 Instead of generating one image at a time, Cinema Studio can produce **2×2, 3×3, or 4×4
-grids** — up to 16 variations from a single generation, charged as one credit.
-
-**Grid sizes:**
-| Grid | Variations | Cost |
-|------|-----------|------|
-| 2×2 | 4 images | 1 generation credit |
-| 3×3 | 9 images | 1 generation credit |
-| 4×4 | 16 images | 1 generation credit |
+grids** — up to 16 variations from a single generation.
 
 **When to use Grid Generation:**
 - Exploring compositions — generate 16 options, pick the best one
 - Character sheet creation — multiple poses/angles in one pass
 - A/B testing visual direction before committing to video
-- Cost-efficient iteration — spend 1 credit, get up to 16 options
 
 **Workflow with grids:**
 1. Write your prompt + configure optical stack
@@ -1134,11 +1071,6 @@ Different models perform differently inside Cinema Studio's environment:
 
 ---
 
-> **Identity vs. Motion:** In Cinema Studio, identity goes in the @ Element definition (or
-> Soul Cast parameters); motion goes in the prompt field. Never put face/clothing descriptors
-> in the prompt when @ Elements are active. See `higgsfield-prompt` and `higgsfield-soul`
-> for the full separation rule.
-
 > **Negative constraints:** For Cinema Studio–specific artifacts (prompt rejected, @ Element
 > character swap, 3D Mode holes, optical stack mismatch) and all general artifacts, see
 > `../shared/negative-constraints.md`.
@@ -1170,8 +1102,6 @@ Cinema Studio 3.0 is a separate generation engine from 2.5. Key differences:
 
 See the comparison table at the top for full 2.5 vs 3.0 differences. Key 3.0-specific details:
 
-- **Video:** up to 15s, 720p (may increase), 48 credits/generation
-- **Image (Soul Cast 3.0):** up to 4K (Character/Location) · 2K (General), 0.125 credits
 - **Genres (7):** General, Action, Horror, Comedy, Noir, Drama, Epic
 - **Speed Ramp (7):** Auto, Slow-mo, Ramp Up, Flash In, Flash Out, Bullet Time, Hero Moment
 - **Aspect Ratios (7):** Auto, 1:1, 3:4, 9:16, 4:3, 16:9, 21:9
@@ -1583,18 +1513,10 @@ Cinema Studio 3.5 exposes an **AI director toggle** in the bottom toolbar of the
 
 ## Cinema Studio 4.0
 
-`[OFFICIAL — platform CLI 1.1.23, higgsfield workflow get cinematic_studio_video_4_0 --json, 2026-09-26]`
 Display name **Cinema Studio 4.0**, job type `cinematic_studio_video_4_0`, output video.
 Everything in this section is the **parameter schema** — no 4.0 generation has been fired
 from this repo, and the 4.0 UI has not been inspected. Treat every "how to write for it"
 line below as a starting point derived from the schema, not a measured behavior.
-
-**Where it lives.** 4.0 is listed by `higgsfield workflow list` (the CLI's workflow
-catalog, beside `cinematic_studio_video_3_5` and `cinematic_studio_3_0`). It is **not** in
-the `models_explore` video catalog of 2026-09-26 (which carries `cinematic_studio_3_0`,
-`cinematic_studio_video` and `cinematic_studio_video_v2`), so `../../specs/model-specs.json`
-does not know it and `../../scripts/seedance_lint.py --model` cannot enum-check a 4.0
-header. Check settings against the table below by hand.
 
 ### Parameter surface
 
@@ -1617,21 +1539,7 @@ header. Check settings against the table below by hand.
 | `light_custom` | array \| null | null | Structure not published |
 | `color_palette` | object \| null | null | Structure not published |
 
-**Cost is computed from** `duration`, `mode`, `resolution` and `video_references` (the
-schema's `cost_params`). In 3.5 and 3.0 only `duration` + `resolution` priced a run — in
-4.0 the **mode and the video references move the price too**, so a `video_edit` or a
-video-referenced run can quote differently from a `t2v` run of the same length. Preflight
-the exact combination **by model id**, with the source clip attached: `higgsfield generate cost
-cinematic_studio_video_4_0 --prompt "…" --mode video_edit --video_references <clip> --resolution
-1080p --duration 8`. Only a prompt-only 480p 5s `t2v` estimate is verified (2026-09-26: 15 credits,
-no job created); the form with media attached is unverified. The `generate cost workflow <name>` form
-**rejects** this id ("Unknown workflow") although `workflow list` shows it. Local file paths
-passed to the estimate are auto-uploaded.
-
 ### What changed from 3.5 at the API
-
-Diffed field by field against `higgsfield workflow get cinematic_studio_video_3_5 --json`
-(same CLI, same day):
 
 | | Cinema Studio 3.5 (`cinematic_studio_video_3_5`) | Cinema Studio 4.0 (`cinematic_studio_video_4_0`) |
 |---|---|---|

@@ -4,7 +4,6 @@ The models and doctrine claims this library states **without a single O-Side gen
 them**, ordered by what each test would change. Nothing here has been fired. It is the plan for
 the day credits are available — not a record of results.
 
-**Costs** are `higgsfield generate cost` estimates taken **2026-09-26** on the CLI's API account
 (prompt-only, no media attached). `generate cost` creates no job (checked: the job list was
 identical before and after every estimate). Subscription credit pricing can differ from the API
 account, and attaching media can change a price — **re-run the estimate** (CLI `generate cost`,
@@ -44,7 +43,6 @@ route, model id, resolution, n, and date (tag `[MEASURED]`).
 ## Priority 3 — edit lanes (need a source clip; price depends on it)
 
 Seedance 2.5 `video_edit` and Cinema Studio 4.0 `video_edit` bill by the source duration;
-FLUX 3 Video Edit states 1 credit per second of the processed clip (first 15s at most). Kling 3.0
 Omni Edit, Gemini Omni Flash 1.1 `edit`, Genjutsu (`hf_mult_motion_control`,
 `hf_mult_replace_object`) and Ad Multiplier need the source attached for an estimate. Use one
 short (4–5s) source clip for every arm so the lanes compare on the same plate — the question is

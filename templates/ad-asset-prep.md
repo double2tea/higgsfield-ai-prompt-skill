@@ -282,12 +282,9 @@ The tutorial's model-hopping ladder [DEMO — Seedance-4K film tutorial,
    Nano Banana Pro** (also up to `4k`). Demonstrated on the tutorial's TV-remote
    prop sheet: GPT Image 2's version looked flat, the identical prompt in Nano
    Banana Pro brought depth and highlights.
-3. **Soul Cinema for locations and characters-from-scratch** — the cheapest
-   first pass at ~0.125 credits per image; the tutorial's on-screen pricing
-   showed **1 credit = 8 images** [DEMO — pricing shown on-screen; verify
-   against the current UI before promising it]. Note Soul Cinema tops out at
-   `2k` quality — when a sheet must be 4K, finish in GPT Image 2 or Nano
-   Banana Pro.
+3. **Soul Cinema for locations and characters-from-scratch.** Soul Cinema
+   tops out at `2k` quality — when a sheet must be 4K, finish in GPT Image 2
+   or Nano Banana Pro.
 
 The reason to spend here at all, in the tutorial's words: **"the better the
 input image, the sharper the final video."**

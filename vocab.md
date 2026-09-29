@@ -186,7 +186,7 @@ Key vocabulary:
 
 | Concern | What it is | Where it belongs in a prompt | Bound by |
 |---|---|---|---|
-| Output ratio | Hard platform spec — what the model actually emits | Header (e.g. "Aspect ratio: 16:9") | Per-model enum (Kling 3.0: 16:9 / 9:16 / 1:1; check `higgsfield model get <model>`) |
+| Output ratio | Hard platform spec — what the model actually emits | Header (e.g. "Aspect ratio: 16:9") | Per-model enum (Kling 3.0: 16:9 / 9:16 / 1:1) |
 | Anamorphic / 2.35:1 / 2.39:1 / Scope / Cinemascope | Cinematography register — anamorphic flares, letterboxed framing aesthetic | Look line, as a style request ("anamorphic-style flares, letterboxed composition") | Stylistic — the model renders the look within the chosen output ratio |
 
 Conflating these produces incoherent prompts. "16:9 anamorphic" requests two contradictory things at once. The model will either ignore one or produce uneven results. Separate them.
@@ -419,7 +419,6 @@ what recurs, not from what gets explained.
 
 | Term | Definition |
 |------|-----------|
-| Soul ID | Upload 20+ photos of a real person to train identity consistency across generations |
 | Soul Cast | Generate AI actors from parameters (no photos needed) — Cinema Studio 2.5 feature, powered by Nano Banana 2 |
 | Soul HEX | Extract color palettes from reference photos for brand-consistent, color-matched visuals |
 | Soul Cinema Preview | Higgsfield proprietary cinematic-grade image model, prompt-driven only, excels at close-ups — no catalog model by this name (2026-09-26); the catalog's `soul_cinematic` is Soul Cinema, documented as a distinct model |

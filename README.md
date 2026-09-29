@@ -5,6 +5,10 @@
 
 # Higgsfield AI Prompt Skill
 
+> **`platform-cut` branch:** based on `double2tea/higgsfield-ai-prompt-skill:main`. To bring in upstream changes, fetch `upstream` and merge or rebase `upstream/main` into this branch, review conflicts here, then push `platform-cut` to `origin`. Keep this cut isolated from the fork's `main`.
+>
+> **Removed packages:** `higgsfield-apps`, `higgsfield-assist`, `higgsfield-stack`, `higgsfield-workspaces`, `higgsfield-marketing-studio`, `higgsfield-content-factory`, `higgsfield-canvas`, `higgsfield-repurpose`, `higgsfield-vibe-motion`, `higgsfield-soul`, and `higgsfield-moodboard`; also removed `scripts/sync_specs.py`, `scripts/refresh_specs.py`, and `scripts/snapshot_crosscheck.py`. `higgsfield-soul` covered Higgsfield-specific character slots and Soul ID, Soul HEX, Soul Cast, and Soul Cinema operations; the package is removed as product-specific guidance. General character-sheet practice remains in `higgsfield-character-design`.
+
 A comprehensive Claude skill library for generating high-quality prompts on
 [Higgsfield AI](https://higgsfield.ai) — the cinematic video and image generation platform.
 
@@ -15,13 +19,12 @@ Transforms natural language requests into production-ready Higgsfield prompts us
 - Named camera controls and motion presets the platform recognizes
 - Model selection guidance across Kling 3.0 / 3.0 Omni / 3.0 Motion Control, Veo 3.1, Wan, Seedance 2.5 / 2.0, FLUX 3 Video, Minimax Hailuo, Higgsfield DoP, and more
 - Genre recipe templates for action, horror, romance, sci-fi, product ads, and more
-- Soul ID character consistency guidance + Character Sheet creation
+- Character Sheet creation
 - Troubleshooting for failed or poor generations
 - **Cinema Studio 2.5** advanced features: Soul Cast AI actors, built-in color grading, 3D Mode (Gaussian Splatting), Grid Generation, Resolution Settings, Frame Extraction Loop, Object & Person Insertion, Per-Character Emotions, Clustering, Five-View Location Reference Sheet, Reference Sheet Types (Motion / Outfit / Palette), Elements System with library surface (5 source tabs × 6 element categories)
 - **Cinema Studio 3.0** (Business/Team plan): native dual-channel stereo audio, Smart shot control, 15s max duration, 7 genres, @ reference patterns, Soul Cast 3.0
-- **Cinema Studio 4.0** (`cinematic_studio_video_4_0`, CLI workflow): the Seedance 2.5 four-mode surface (t2v / omni_reference / video_edit / video_extension) plus camera body / lens / aperture / era / genre / pacing and light / palette controls — schema-documented, not yet field-rated
+- **Cinema Studio 4.0** (`cinematic_studio_video_4_0`): the Seedance 2.5 four-mode surface (t2v / omni_reference / video_edit / video_extension) plus camera body / lens / aperture / era / genre / pacing and light / palette controls — schema-documented, not yet field-rated
 - **3D** (`higgsfield-3d`): image / multi-view / text → GLB meshes, rigging + a 678-clip animation library, remesh / retexture, 3D Jutsu scene projects, 3D turnarounds and staging blockouts
-- **Repurposing** (`higgsfield-repurpose`): Shorts Studio, Clipify, Virality Predictor, Video Analysis — with the paid / free split
 - **Cinema Studio 3.5**: three-pill main UI (Genre / Style / Camera), Style Settings panel (8 Color Palette / 6 Lighting / 9 Camera Moveset Style + Manual Style mode), Camera Settings four-axis panel (3 Camera Body / 5 Lens / 5 Focal Length including new 75mm / 3 Aperture), Image Mode with four Cinematic models picker (Soul Cinema default, Cinematic Characters, Cinematic Locations, Cinematic Cameras with 2.5 vocabulary)
 - **Seedance 2.0 prompting best practices** — Intent over Precision, Genre Router, I2V Gate, Anti-Slop, Physics Language, SCELA audio, Reference-Based / Continuation / Expand Shot / Edit Shot / Transformation prompt modes, Continuation Prompt Formula, the Iteration Rule
 - **Seedance 2.5 omni-reference director** — the four generation modes (`t2v` / `omni_reference` / `video_edit` / `video_extension`), explicit `@Image` / `@Video` / `@Audio` reference roles with exclusions, the five-step multi-reference workflow, 30-second staging with end states, timestamp pacing, bracket syntax for music / SFX / dialogue / subtitles, first-last-frame control (platform `start_image`/`end_image` in `omni_reference`, or declared in-prompt) and multi-keyframe control, storyboard grids, coarse-vs-fine blockout rendering, one-click video, seamless transitions, and a 2.0-vs-2.5 routing table
@@ -29,8 +32,6 @@ Transforms natural language requests into production-ready Higgsfield prompts us
 - **AI-VFX pipeline** — the production layer under Seedance 2.5, from Higgsfield's AI-vs-VFX challenge build: model routing per asset class (faces / creatures / clothing / locations), the plain-grey sheet law, two-close-up creature sheets, the face-lock crop, the size-ref frame for scale between two subjects, location batching selected on light, the `omni_reference` video-to-video lane (source ≥4s, duration = source) with its performance-inheritance clause, the four-batch stop rule and the i2v fallback with a deliberate empty-frame stitch point, and a slop catalog of the tells that give a shot away
 - **Acting director** — performance as behavior under pressure: objective / obstacle / tactics / beats / subtext, listening markers, body + status + proxemics, mandatory eye life, the 150–220-word acting master profile and its per-scene rewrite, the locked voice prompt, a 15-symptom atlas of bad acting, and a 0–5 performance scale
 - **GPT Image 2.0 prompt director** — three-format taxonomy (structured JSON for UI mockups / infographics / reference sheets, dense cinematic prose for single-subject scenes, auto-derive meta-prompt for theme-only concepts) plus reference-sheet and static-ad-recreation workflow satellites
-- **Higgsfield Canvas** — node-based / infinite-board workspace guidance: chaining prompts → images → videos, named canvas patterns, Shared Canvas live collaboration, build-free / generate-paid cost model
-- **Marketing Studio + Content Factory** — 9 DTC ad presets (UGC / Tutorial / Unboxing / Hyper Motion / TV Spot / Wild Card / Virtual Try-On) with 4–15s ad video, plus an end-to-end campaign pipeline (research → plan → generate → publish → report) with a cost-savings report
 - **Shared negative constraints reference** — categorized artifacts + prevention phrases (positive alternatives for 3.0); Kling 3.0 Motion Control failure diagnostic; Physics Rendering — Resolution Decision Matrix (cross-model 480p / 720p / 1080p routing rule for Seedance 2.0 + Cinema Studio 3.x)
 - **Identity vs. Motion separation** — hard rule for character consistency across shots
 - **Annotated templates library** — 10 genre templates with Cinema Studio 3.0 genre mappings, plus Seedance technique + character-design + text-overlay sub-libraries (19 files across 3 categories)
@@ -38,7 +39,7 @@ Transforms natural language requests into production-ready Higgsfield prompts us
 - **production-benchmarks.md** — Hell Grind 90-min Cannes feature reference, per-character iteration anchors, acceptance-rate calibration; what "production quality" means in practice
 - **FAILURE-MODES.md (Seedance)** — 15 named render failures documented with symptom + mechanism + counter for diagnosis-first iteration
 - **C-arc Building Complete AI Projects — 10-Step Methodology** — end-to-end pipeline from idea to delivered project; complements the genre/scene templates
-- **Expanded Seedance methodology + Soul refinement** — Iteration Rule + 6-Pass Diagnostic Sequence + Four Questions + Next-Shot Decision Tree + Bridging / Continuation / Repair working modes; Character Anchor Block + Two-Tool Refinement Pipeline for character consistency at production scale
+- **Expanded Seedance methodology** — Iteration Rule + 6-Pass Diagnostic Sequence + Four Questions + Next-Shot Decision Tree + Bridging / Continuation / Repair working modes; Character Anchor Block + Two-Tool Refinement Pipeline for character consistency at production scale
 
 ## Install
 
@@ -52,113 +53,6 @@ Drop the repo folder into your Cowork workspace. The skill dispatcher is at `SKI
 
 ### Claude.ai Projects
 Upload `SKILL.md` (root) as your project instruction base. Upload files from `skills/` as project documents.
-
-## Higgsfield Stack Integration
-
-This skill is the prompt-construction layer. Higgsfield ships official execution tooling — a CLI, an MCP custom connector, and a bundled skills package. They complement each other: this skill produces the prompt, their tooling executes it. None of their tooling is required for this skill to work — you can always paste prompts directly into higgsfield.ai. But if you want an end-to-end loop, you'll want one of the three.
-
-**A Higgsfield account is required** for any of the tooling below. Sign up at [higgsfield.ai](https://higgsfield.ai).
-
-### Higgsfield CLI
-
-Command-line tool for terminal-native agents (Claude Code, Codex, Cursor). Per Higgsfield's own guidance, prefer the CLI over the MCP if you're working in a terminal.
-
-- Repo: [github.com/higgsfield-ai/cli](https://github.com/higgsfield-ai/cli)
-- Install: `curl -fsSL https://raw.githubusercontent.com/higgsfield-ai/cli/main/install.sh | sh` or `brew install higgsfield-ai/tap/higgsfield`
-- Auth: `higgsfield auth login`
-
-### Higgsfield MCP
-
-Custom connector for claude.ai web and the Claude desktop app. Separate product from the CLI.
-
-- Connector URL: `https://mcp.higgsfield.ai/mcp`
-- Install: claude.ai → Settings → Connectors → Add custom connector → paste the URL above → sign in
-
-### Higgsfield Bundled Skills
-
-Markdown skill bundle for agents that consume Cowork-style skills. All three skills drive the CLI under the hood.
-
-- Repo: [github.com/higgsfield-ai/skills](https://github.com/higgsfield-ai/skills)
-- Install: `npx skills add higgsfield-ai/skills`
-- Skills included: `higgsfield-generate`, `higgsfield-soul`, `higgsfield-product-photoshoot`
-- Invoke: `/higgsfield:generate`, `/higgsfield:soul`, `/higgsfield:product-photoshoot`
-
-### End-to-end example
-
-How the layers fit together for a real request:
-
-```
-USER:    "Make me a cinematic chase scene through a night market.
-          Use my trained Soul character — reference_id abc123."
-   ↓
-THIS SKILL — higgsfield-ai-prompt-skill
-   • routes to higgsfield-prompt + higgsfield-camera + higgsfield-soul
-   • picks Kling 3.0 (character-focused, supports --soul-id)
-   • applies MCSLA: model, camera preset, subject, look, action
-   • appends shared negative constraints
-   • outputs a production-grade Higgsfield prompt
-   ↓
-PRE-FLIGHT (optional, recommended for Veo / Kling / Seedance video):
-
-   SCHEMA VERIFY (recommended for any model you haven't called recently):
-   CLI path:        higgsfield model get kling3_0
-                    → returns schema: aspect_ratio enum, duration range,
-                      mode/sound options, media roles
-   MCP path:        models_explore(action="get", model_id="kling3_0")
-                    → returns same schema as CLI
-
-   COST ESTIMATE (no job submitted):
-   MCP path:        generate_video(..., get_cost: true)
-                    → returns credit cost + adjustments block
-
-   CLI path:        higgsfield generate cost kling3_0 \
-                      --prompt "<prompt from this skill>" \
-                      --aspect_ratio 16:9 \
-                      --duration 8
-                    # (add reference flags as needed: --soul-id, --start-image,
-                    #  --end-image — consult `higgsfield model get kling3_0`
-                    #  for supported media roles)
-
-   Bundled skills:  drop to CLI for the cost check (same auth, same workspace),
-                    then invoke /higgsfield:generate
-
-   Optional account checks (same data across surfaces):
-   MCP path:        balance / transactions tools
-   CLI path:        higgsfield account status
-                    higgsfield account transactions --size 50
-
-   Note: 2.35:1 is anamorphic STYLE vocabulary, not a valid Kling 3.0 output
-         ratio. Output ratios are platform-bounded: 16:9 / 9:16 / 1:1 only.
-   ↓
-HIGGSFIELD STACK — one of three execution surfaces:
-
-   CLI path:
-     higgsfield generate create kling3_0 \
-       --prompt "<prompt from this skill>" \
-       --aspect_ratio 16:9 \
-       --duration 8 \
-       --wait
-     # (add reference flags as needed: --soul-id, --start-image, --end-image —
-     #  consult `higgsfield model get kling3_0` for supported media roles)
-
-   Bundled skills path:
-     /higgsfield:generate — takes the prompt as its --prompt argument,
-     formats the CLI call above under the hood
-
-   MCP path (claude.ai web/desktop):
-     Claude invokes the Higgsfield connector with the prompt as input
-   ↓
-USER:    Result URL returned. Iterate if needed (this skill's
-         iteration discipline applies regardless of execution surface).
-```
-
-The layer split holds in every case: this skill always produces the prompt, the Higgsfield stack always handles the generation call. None of the three execution paths reach back into prompt construction; this skill never shells out to their CLI or API.
-
-> Full preflight discipline — when to surface it, marketing-studio caveat, CLI naming gotchas (`account status`, not `balance`), and the plan-tier-vs-surface framing — lives in [`skills/higgsfield-stack/SKILL.md`](skills/higgsfield-stack/SKILL.md) § Preflight discipline.
-
-### Coexistence rules
-
-For the full coexistence rules, detection signals, naming-collision callouts, and handoff templates, see [`skills/higgsfield-stack/SKILL.md`](skills/higgsfield-stack/SKILL.md).
 
 ## Structure
 
@@ -183,9 +77,6 @@ For the full coexistence rules, detection signals, naming-collision callouts, an
 │   ├── seedance_lint.py              ← Seedance preflight linter
 │   ├── validate.py                   ← Pre-release validation script
 │   ├── build_index.py                ← Regenerates INDEX.md + checks QUICK FACTS anchors
-│   ├── sync_specs.py                 ← Regenerates specs/ from a models_explore snapshot
-│   ├── refresh_specs.py              ← Spec-drift tripwire (live CLI vs baseline; params, ranges, media roles)
-│   ├── snapshot_crosscheck.py        ← Two-way structural check: models_explore snapshot vs live CLI
 │   ├── preflight.py                  ← Free any-model platform-constraint preflight (enums + CEL rules, fails closed)
 │   ├── claims_lint.py                ← Doctrine claims vs today's specs (registry: evals/spec-claims.json)
 │   ├── repo_walk.py                  ← Repo file walks that skip agent worktrees
@@ -238,25 +129,13 @@ For the full coexistence rules, detection signals, naming-collision callouts, an
     ├── higgsfield-camera/SKILL.md        ← All camera controls + usage
     ├── higgsfield-motion/SKILL.md        ← Named motion presets library
     ├── higgsfield-style/SKILL.md         ← Visual styles + color grades + lighting
-    ├── higgsfield-soul/SKILL.md          ← Soul ID character consistency
     ├── higgsfield-audio/SKILL.md         ← Audio prompting + Cinema Studio 3.0 native audio
-    ├── higgsfield-apps/SKILL.md          ← One-click Apps guide
     ├── higgsfield-recipes/SKILL.md       ← Genre scene templates
     ├── higgsfield-troubleshoot/SKILL.md  ← Fix failing generations
-    ├── higgsfield-assist/SKILL.md        ← General assistant + platform guidance
     ├── higgsfield-mixed-media/SKILL.md   ← Mixed media + hybrid generation
-    ├── higgsfield-moodboard/SKILL.md     ← Moodboard creation workflows
     ├── higgsfield-pipeline/SKILL.md      ← Multi-step generation pipelines
-    ├── higgsfield-canvas/SKILL.md        ← Node-based Canvas workspace + named patterns + Shared Canvas
-    ├── higgsfield-content-factory/
-    │   ├── SKILL.md                      ← Campaign pipeline (research → plan → generate → publish → report)
-    │   └── publish-and-report-workflow.md ← Publish + cost-savings report satellite
-    ├── higgsfield-marketing-studio/
-    │   ├── SKILL.md                      ← Marketing Studio: 9 ad presets + 4–15s ad video
-    │   └── cross-surface-workflow.md     ← ms_image / DTC Ads cross-surface workflow
     ├── higgsfield-recall/SKILL.md        ← Recall + regeneration patterns
     ├── higgsfield-3d/SKILL.md            ← 3D meshes (image / multi-view / text → GLB), rigging, 3D Jutsu scenes
-    ├── higgsfield-repurpose/SKILL.md     ← Finished video in: Shorts Studio, Clipify, Virality Predictor, Video Analysis
     ├── higgsfield-cinema/SKILL.md        ← Cinema Studio 2.5 + 3.0 + 3.5 + 4.0 (Soul Cast, Color Grading, 3D Mode, Smart Mode, @ References, Native Audio, three-pill UI, Image Mode, Cinematic models picker)
     ├── higgsfield-seedance/
     │   ├── SKILL.md                      ← Seedance 2.0 prompt director + content-filter preflight
@@ -270,8 +149,6 @@ For the full coexistence rules, detection signals, naming-collision callouts, an
     │   └── VFX-PIPELINE.md               ← AI-VFX pipeline: asset routing, size-ref frame, omni_reference v2v, slop catalog
     ├── higgsfield-acting/SKILL.md        ← Performance craft: objective, beats, eye life, master profile
     ├── higgsfield-scene-engine/SKILL.md  ← Structural scene audit: goal · obstacle · tactic · reversal · value shift
-    ├── higgsfield-vibe-motion/SKILL.md   ← Vibe-based motion direction
-    └── higgsfield-workspaces/SKILL.md    ← Workspace-first decision layer (Cinema Studio / Lipsync / Draw-to-Video / Viral Hub presets / Click to Ad / Higgsfield Audio)
 ```
 
 ## Generation Ledger
@@ -292,30 +169,9 @@ Tags and reject reasons come from controlled vocabularies (`db/ledger/README.md`
 rows are append-only with superseding corrections; `ratio` splits structural vs
 stochastic rejections and flags `low-n` rows instead of faking precision.
 
-## Maintenance — two activation steps
+## Maintenance
 
-Two capabilities ship **inactive on purpose** and need a one-time setup.
-
-### 1. Activate the scheduled spec-drift check
-
-`.github/workflows/spec-drift.yml` runs `scripts/refresh_specs.py` weekly to catch when
-Higgsfield changes a model's lineup or capabilities before the 30-day staleness
-warning would. It ships **dormant** until you give it the Higgsfield CLI
-credentials as a repo secret:
-
-```bash
-higgsfield auth login                 # if not already authenticated locally
-gh secret set HIGGSFIELD_CREDENTIALS < ~/.config/higgsfield/credentials.json
-```
-
-Then run it once manually (Actions tab → **spec-drift** → *Run workflow*) to
-confirm the CLI-install step resolves on the runner. After that it's automatic:
-**fresh** → nothing; **drift** → it opens/updates a GitHub issue with next steps;
-**auth expired** → the job fails so GitHub notifies you to re-run
-`higgsfield auth login` and refresh the secret. The credentials live only in the
-GitHub secret — they are never committed.
-
-### 2. Let routing telemetry accumulate before pruning
+### Let routing telemetry accumulate before pruning
 
 `log-route` / `routing` (in `scripts/higgsfield_memory.py`) record which sub-skills each
 request opens, so "which skills are load-bearing, which to retire" becomes a
@@ -336,9 +192,6 @@ acting on the tail. A small sample is not evidence a skill is dead.
 
 **Specific:**
 > "I need a horror prompt using VHS style, Dutch angle camera, and the Horror Face preset"
-
-**With reference:**
-> "I have a Soul ID character. Write 3 different scene prompts with her — office, party, rooftop"
 
 **Model question:**
 > "Should I use Kling 3.0 or Seedance 2.0 for a large-scale battle scene?"
