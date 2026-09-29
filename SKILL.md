@@ -138,6 +138,7 @@ For local generation, keep prompt craft and execution separate. A user-named pro
 | 小云雀 / Pippit generation, processing, or Canvas | Installed `xyq-skill`; its CLI and current command docs own the operation. |
 | LibTV canvas generation/editing | Current LibTV MCP connection and capabilities; use `libtv-to-treatment` only for a director treatment, `libtv-blender-live-action` for that named Blender workflow, or `music-driven-product-ad` for that named ad workflow. |
 | New commercial AI project setup or explicit project-kit refresh | Installed `commercial-ai-project-kit`; it initializes/updates project material and does not choose a generation provider or run generation. |
+| Cross-model identity, keyframe, face, surface-realism, or action-obedience failure | Installed `ai-video-realism` for diagnosis and repair, then the selected model writer for supported controls. |
 
 If a local skill is unavailable, say so and resolve the intended platform before execution; do not silently change providers. For selected providers, go straight to their executor with the user's approved prompt and references. Prompt design may borrow relevant guidance here, but never force an emotion beat, edit cut, paid retry, or batch without a brief-specific reason and authorization.
 
