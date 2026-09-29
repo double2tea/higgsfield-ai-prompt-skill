@@ -424,7 +424,7 @@ scene number as a string):
 - `higgsfield-pipeline` — upstream multi-shot production planning the shotlist
   slots into
 - `higgsfield-audio` — `@music_track` beat-sync + diegetic-only convention
-- `higgsfield-soul` — locked character sheets the `@`-glossary points at
+- `higgsfield-character-design` — character sheets the `@`-glossary points at
 - `higgsfield-recall` — log kept/rejected take outcomes as you shoot the list
 - `../../templates/seedance/global-style-prefix.md` — the reusable prefix block +
   a per-scene override example

@@ -62,7 +62,7 @@ warm-amber-on-cool-blue grade; a cyberpunk sequence where neon-to-base-light
 ratio stays fixed across 15 cuts; a brand campaign where a signature accent
 color appears in every shot regardless of subject. Pairs naturally with the
 Soul Hex color system and curated moodboards in
-`../../higgsfield-moodboard/SKILL.md`.
+[archived upstream higgsfield-moodboard source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-moodboard/SKILL.md).
 
 ### Product Reference Sheet
 

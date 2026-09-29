@@ -31,7 +31,7 @@
       "id": "gpt2-cli-mcp-disagreement-no-winner",
       "description": "GPT Image 2's background param is a recorded CLI-vs-MCP disagreement — the answer must not pick a winner",
       "request": "Does GPT Image 2 support transparent backgrounds on Higgsfield?",
-      "response": "Routing to higgsfield-gpt-image-2 (§ CLI ↔ MCP disagreement on `gpt_image_2`).\n\nThe two Higgsfield surfaces disagree. The CLI (`higgsfield model get gpt_image_2`) lists a `background` param with a transparent option; the MCP `models_explore` list for the same id does not. Neither is verified against a real generation yet, so I won't promise it on GPT Image 2. For a transparent background use GPT Image 2.5 (`background: transparent`), which both surfaces agree on.",
+      "response": "Routing to higgsfield-gpt-image-2 (§ CLI ↔ MCP disagreement on `gpt_image_2`).\n\nThe two Higgsfield surfaces disagree. The historical CLI schema listed a `background` param with a transparent option; the MCP `models_explore` snapshot for the same id did not. Neither is verified against a real generation yet, so I won't promise it on GPT Image 2. For a transparent background use GPT Image 2.5 (`background: transparent`), which both surfaces agree on.",
       "assertions": [
         {"type": "regex_present", "pattern": "(?i)surfaces disagree"},
         {"type": "regex_present", "pattern": "\\bCLI\\b"},

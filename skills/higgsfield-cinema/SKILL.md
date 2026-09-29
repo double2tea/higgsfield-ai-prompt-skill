@@ -623,7 +623,7 @@ shots, the sheet is cheaper than re-describing it every time and dramatically
 more consistent than relying on prompt text alone. Single-shot details — a
 one-time prop, a background extra, a one-off lighting cue — don't earn a sheet.
 
-The character sheet (see `../higgsfield-soul/SKILL.md` → Character Sheet
+The character sheet (see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) → Character Sheet
 Creation) and the Location Reference Sheet above already cover identity and
 architecture. The three sheet types below extend the same pattern to the rest
 of the production:
@@ -637,11 +637,11 @@ before building any of them; the family table below says which property each one
 
 | Sheet | Locks | Lives in |
 |-------|-------|----------|
-| Character | Identity, face, build, distinguishing marks | `../higgsfield-soul/SKILL.md` (Soul ID, character sheet creation) |
+| Character | Identity, face, build, distinguishing marks | [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) (Soul ID, character sheet creation) |
 | Location | Architecture, light, color treatment, key environmental details | Location Reference Sheets, above |
 | Motion / Camera | Camera path or motion rhythm reused across shots | `references/reference-sheet-types.md` |
 | Outfit / Material | Wardrobe — fabric, color, fit, motion behavior | `references/reference-sheet-types.md` |
-| Palette / Mood | Color and tonal mood across the whole project | `references/reference-sheet-types.md` + `../higgsfield-moodboard/SKILL.md` |
+| Palette / Mood | Color and tonal mood across the whole project | `references/reference-sheet-types.md` + [archived upstream higgsfield-moodboard source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-moodboard/SKILL.md) |
 | Product | Product geometry, branding placement, material/surface, multi-view layout | `references/reference-sheet-types.md` |
 
 Build the sheets the project actually needs. A short ad with one character in
@@ -1349,7 +1349,7 @@ What a draft CANNOT validate (re-rolled fresh every generation):
 - Camera micro-trajectory — the exact path within the named move
 - Beat timing inside the clip
 
-**The documented transfer mechanism for a look you want to keep is the Hero Frame** (`../higgsfield-assist/SKILL.md`) plus **start/end-frame pinning** (§ Keyframe Interpolation in this file) — pin the frame, not the roll. And fine-detail judgments (smoke threads, inscription legibility, reflections) must be **re-checked at final resolution**: 480p hides exactly the detail those judgments are about.
+**The documented transfer mechanism for a look you want to keep is the Hero Frame** ([archived upstream higgsfield-assist source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-assist/SKILL.md)) plus **start/end-frame pinning** (§ Keyframe Interpolation in this file) — pin the frame, not the roll. And fine-detail judgments (smoke threads, inscription legibility, reflections) must be **re-checked at final resolution**: 480p hides exactly the detail those judgments are about.
 
 **Sound prompting:** When Sound is On, audio is generated natively alongside video in a single pass. For prompting audio behavior in detail (dialogue, SFX, ambient, music), see `../higgsfield-audio/SKILL.md`.
 
@@ -1430,7 +1430,7 @@ The image-mode model picker has two groups: **Cinematic models** (studio-native 
 
 > ⚠ Note: the Featured list also contains a separately-named model called **Higgsfield Soul Cinema**, which is distinct from the Cinematic-list **Soul Cinema** despite the similar names. The two are not interchangeable.
 
-For Soul Cinema identity prompting and reference workflow, see `../higgsfield-soul/SKILL.md`.
+For Soul Cinema identity prompting and reference workflow, see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md).
 
 #### Aspect ratios — 8 options
 
@@ -1452,13 +1452,13 @@ The four Cinematic models share the same Cinema Studio shell but specialize in d
 
 Soul Cinema is the default Cinematic model and the right starting point when you do not have a specific reason to pick one of the others. It is general-purpose cinematic image generation: scene-setting, hero frames for a Soul ID character in a defined environment, mood-driven keyframes, single-image generations where intent is "make this look cinematic" rather than "make this character expressive" or "make this location atmospheric." Soul Cinema is also the model that pairs with the Soul Cinema enhancer toggle and short-prompt style exploration documented in `../higgsfield-pipeline/SKILL.md` Pipeline E (the enhancer-driven multi-style short-film workflow).
 
-Pick Soul Cinema when: you want a balanced cinematic frame, you are exploring style with the enhancer ON and short prompts, you are generating I2V keyframes that will be animated downstream, or you are working with a Soul ID identity reference and want the platform's general cinematic look. Avoid Soul Cinema when you specifically need maximum facial expression fidelity (use Cinematic Characters) or maximum environmental atmosphere (use Cinematic Locations). For Soul Cinema-specific identity prompting and reference workflow, see `../higgsfield-soul/SKILL.md` § Soul Cinema as the CS 3.0/3.5 default image model.
+Pick Soul Cinema when: you want a balanced cinematic frame, you are exploring style with the enhancer ON and short prompts, you are generating I2V keyframes that will be animated downstream, or you are working with a Soul ID identity reference and want the platform's general cinematic look. Avoid Soul Cinema when you specifically need maximum facial expression fidelity (use Cinematic Characters) or maximum environmental atmosphere (use Cinematic Locations). For Soul Cinema-specific identity prompting and reference workflow, see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Soul Cinema as the CS 3.0/3.5 default image model.
 
 ##### Cinematic Characters — expressive faces and styling
 
 Cinematic Characters specializes in performance-driven portraiture: micro-expression fidelity, wardrobe and styling detail, character close-ups where the face is doing the dramatic work. The picker description ("expressive faces and detailed styling") is the operating intent — this model weights the generation toward facial structure, eye direction, mouth tension, hair geometry, and clothing texture more than toward environmental atmosphere or wide-establishing-shot composition.
 
-Pick Cinematic Characters when: the face carries the shot (reaction beats, emotional climax, character intro close-ups), you are pulling micro-expression direction from `../higgsfield-soul/SKILL.md` (Deadpan Neutral, Quiet Devastation, Predator Glare, etc.), or wardrobe and styling specifics are part of the prompt and you need them rendered with fidelity. Avoid Cinematic Characters when the shot is wide and the character is small in frame (use Soul Cinema or Cinematic Locations), or when explicit camera-body / lens / focal-length control matters more than facial expression (use Cinematic Cameras). Pair naturally with the micro-expression library in `../higgsfield-soul/SKILL.md` and the Identity vs Motion separation rule when a Soul ID is active.
+Pick Cinematic Characters when: the face carries the shot (reaction beats, emotional climax, character intro close-ups), you are pulling micro-expression direction from [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) (Deadpan Neutral, Quiet Devastation, Predator Glare, etc.), or wardrobe and styling specifics are part of the prompt and you need them rendered with fidelity. Avoid Cinematic Characters when the shot is wide and the character is small in frame (use Soul Cinema or Cinematic Locations), or when explicit camera-body / lens / focal-length control matters more than facial expression (use Cinematic Cameras). Pair naturally with the micro-expression library in [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) and the Identity vs Motion separation rule when a Soul ID is active.
 
 ##### Cinematic Locations — environments and atmosphere
 
@@ -1490,7 +1490,7 @@ The picker also exposes a **+ Save setup** button — a configured Camera Body +
 
 #### See also
 
-- **Soul Cinema identity prompting** — `../higgsfield-soul/SKILL.md`
+- **Soul Cinema identity prompting** — [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md)
 - **2.5 camera vocabulary** — § Optical Physics Engine earlier in this file (the same vocabulary that Cinematic Cameras uses)
 - **Five-View Location Sheet workflow** — § Location Reference Sheets earlier in this file (image-mode work pairs naturally with location-sheet generation)
 - **Featured-model documentation** — `../higgsfield-models/MODELS-DEEP-REFERENCE.md` (per-engine specs for the third-party models surfaced in the picker)
@@ -1622,7 +1622,7 @@ The matrix has **two axes**: the physics of the shot AND the delivery context. R
 
 ## Related skills
 - `higgsfield-prompt` — MCSLA formula, Identity/Motion separation, 512-char awareness
-- `higgsfield-soul` — Soul ID + Soul Cast character consistency
+- `higgsfield-character-design` — character sheets and consistency
 - `higgsfield-pipeline` — Full production pipeline (Cinema Studio is one stage)
 - `higgsfield-camera` — Standard camera presets (Cinema Studio uses Director Panel instead)
 - `higgsfield-style` — Visual styles (Cinema Studio has built-in color grading)

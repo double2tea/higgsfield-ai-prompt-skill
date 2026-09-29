@@ -36,8 +36,8 @@ server enforces, and the two uses that matter to this repo's film work: a consis
 multi-angle reference, and a physical staging reference.
 
 It is a **routing and discipline layer**, the same as the rest of this library: it picks
-the model and writes the inputs; the execution surface (MCP connector, CLI, web UI) runs
-the job — see `../higgsfield-stack/SKILL.md`.
+the model and writes the inputs; the selected executor verifies its current schema and runs
+the job.
 
 **Everything here comes from the platform's own schemas** (provenance at the end). No 3D
 job and no 3D Jutsu edit has been run from this repo. There are no quality rankings, speed
@@ -52,9 +52,8 @@ tutorial: 3D Jutsu's Python surface is documented only as far as its tool contra
 ## The catalog — 17 models, six jobs
 
 `[OFFICIAL — platform, 2026-09-26]` — `../../specs/models_explore_snapshot_3d_2026-09-26.json`.
-`../../scripts/sync_specs.py` has no 3D type yet, so there is no generated 3D spec table: this
-table is read straight from the snapshot. Names and providers are as the snapshot states
-them.
+There is no generated 3D spec table: this table is read straight from the
+committed snapshot. Names and providers are as the snapshot states them.
 
 | Job | Model id | Snapshot name · provider | Input |
 |---|---|---|---|
@@ -203,8 +202,7 @@ are ignored".
   exception is the `model_url` field on rig / remesh / retexture, which is a URL — for
   remesh and retexture the snapshot says to upload the GLB through the media API with
   `type=file` and pass the returned URL.
-- Surface choice and the general two-step preflight: `../higgsfield-stack/SKILL.md`
-  § Preflight discipline.
+- Surface choice and preflight: use the selected executor's current schema and cost quote.
 
 ---
 
@@ -278,7 +276,7 @@ construction. That is the property worth testing.
 **What is not known — say it, don't paper over it:**
 
 - Whether a textured mesh holds a **face's** identity. For faces this library's route is
-  Soul ID and character sheets (`../higgsfield-soul/SKILL.md`); a mesh render is not a
+  Soul ID and character sheets ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md)); a mesh render is not a
   substitute until someone measures it.
 - Whether a rendered-CG reference **bleeds its render look** into a photoreal video. The
   staging-reference work measured that a graphic-looking reference *can* bleed, and closed
@@ -288,7 +286,7 @@ construction. That is the property worth testing.
   the case with the least to lose.
 
 Higgsfield's own image-side turnaround path is its `character-sheet` workflow — see
-`../higgsfield-stack/SKILL.md` § Higgsfield's bundled workflows for when to hand off to it.
+[archived upstream higgsfield-stack source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-stack/SKILL.md) § Higgsfield's bundled workflows for when to hand off to it.
 
 ---
 
@@ -356,8 +354,8 @@ pose and 3D keypoints — could supply a pose from a reference photo. Its GLB ca
 
 ## Related skills
 
-- `../higgsfield-stack/SKILL.md` — execution surfaces, preflight, and Higgsfield's own `character-sheet` workflow
+- Root `SKILL.md` — execution routing and preflight; verify the current provider schema
 - `../higgsfield-gpt-image-2/SKILL.md` — reference sheets and image edits (the "edit the image first" step)
-- `../higgsfield-soul/SKILL.md` — face identity (the route a mesh does not replace)
+- `../higgsfield-character-design/SKILL.md` — face identity and character sheets (a mesh does not replace these)
 - `../higgsfield-cinema/SKILL.md` — Cinema Studio 2.5 3D Mode (Gaussian splats — a different "3D")
 - `../../templates/seedance/staging-reference.md` · `../../templates/seedance/top-down-map.md` — the staging doctrine Film use 2 plugs into

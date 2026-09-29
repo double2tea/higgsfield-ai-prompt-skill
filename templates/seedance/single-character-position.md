@@ -44,7 +44,7 @@ Final frame: [composition at last frame].
 - **Identity + position + depth + orientation + pose + gaze + contact
   points + state lock + facial expression** are the 10 attributes of
   the Character Anchor Block — see
-  `../../skills/higgsfield-soul/SKILL.md` § Character Anchor Block
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block
   for the full attribute structure
 - **One dominant action + Motion** separation prevents the multi-
   motion overload failure — see
@@ -57,7 +57,7 @@ Final frame: [composition at last frame].
   version with cross-character relationships
 - `top-down-map.md` (sibling template) — meta-prompt to pre-visualize
   position before filling this template
-- `../../skills/higgsfield-soul/SKILL.md` § Character Anchor Block —
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block —
   10-attribute per-character structure
 - `../../skills/higgsfield-seedance/SKILL.md` § Frame Coordinate
   System — position vocabulary

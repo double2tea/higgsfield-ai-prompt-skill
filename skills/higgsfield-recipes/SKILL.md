@@ -309,7 +309,7 @@ Apply Monstrosity preset for the transformation sequence.
 > Content Filter/Safety; Character-focused → Face/Identity.
 
 > **Identity vs. Motion:** For recipes involving Soul ID characters, split the output into
-> Identity Block + Motion Block. See `higgsfield-prompt` and `higgsfield-soul` for the rule
+> Identity Block + Motion Block. See `higgsfield-prompt` and `higgsfield-character-design` for the rule
 > and examples.
 
 ---
@@ -319,6 +319,6 @@ Apply Monstrosity preset for the transformation sequence.
 - `higgsfield-camera` — Camera controls referenced in recipes
 - `higgsfield-motion` — Motion presets referenced in recipes
 - `higgsfield-style` — Visual styles and color grades
-- `higgsfield-soul` — Soul ID for character-consistent sequences
+- `higgsfield-character-design` — character sheets for consistent sequences
 - `higgsfield-models` — Model selection per recipe type
 - `templates/` — Annotated prompt templates expand on these recipes with line-by-line breakdowns

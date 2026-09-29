@@ -34,7 +34,7 @@ directory. All entries dated **2026-09-26** unless marked.
   `../higgsfield-seedance/HELL-GRIND.md` § The core problem `[OFFICIAL — Hell Grind brief]`.
 - **Side B — minimal text beside the reference:** `../higgsfield-seedance/SKILL.md` § Tag naming +
   minimal reference text `[OFFICIAL — Higgsfield prompt-writter.skill]`;
-  `../higgsfield-soul/SKILL.md` § Prompt economy `[EMPIRICAL — Joey]`.
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Prompt economy `[EMPIRICAL — Joey]`.
 - **Not a side on volume:** the Higgsfield Studio breakdowns `[FIELD]` and `negative-constraints.md`
   § Face / Identity Artifacts ("copy-paste the exact character description") back **verbatim**
   wording — which both sides already agree on — not how much of it goes in.
@@ -137,14 +137,14 @@ directory. All entries dated **2026-09-26** unless marked.
   start frame, a look variant with its own name) may be re-passed (the Studio Look re-pass),
   and is never used as the identity base or as a reference plate.
 - **Sides:** `../higgsfield-seedance/HELL-GRIND.md` § Point changes `[OFFICIAL]` +
-  `../higgsfield-soul/SKILL.md` § The Untouched Base `[FIELD — ONEIRIC + ADILIADA]` · the one-line
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Untouched Base `[FIELD — ONEIRIC + ADILIADA]` · the one-line
   Nano Banana 2 fix, `../higgsfield-seedance-2-5/VFX-PIPELINE.md` § Stage 1 and
   `../higgsfield-character-design/SKILL.md` § Sheet Construction Laws `[FIELD — AI-vs-VFX]` ·
-  `../higgsfield-soul/SKILL.md` § Studio Look re-pass (Mr. Core methodology).
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Studio Look re-pass (Mr. Core methodology).
 - **OPEN:** whether one full Nano Banana 2 pass alone measurably softens a sheet.
 - **Default:** make the point edit with the one-liner, then **mask the changed region back onto
   the original**. The mask costs minutes; a softened base is paid for in every shot that reads it.
-- **Siblings pointed at the default:** `../higgsfield-soul/SKILL.md` § Two-Tool Refinement
+- **Siblings pointed at the default:** [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Two-Tool Refinement
   Pipeline (GPT Image 2 edits on the anchor sheet — a whole-frame *adjust lighting* has no region
   to mask back, so it belongs on a derived look frame) and `../../templates/ad-asset-prep.md`
   § 3 (erasing the duplicate face in GPT Image 2).
@@ -154,14 +154,14 @@ directory. All entries dated **2026-09-26** unless marked.
 - **Ruling:** **OPEN — unmeasured**, no default. (A default — drop the grain — was given earlier
   in this release and withdrawn: it rested on "a grain-free plate costs at most some
   uniformity", which weighs one side's risk only.)
-- **Sides:** `../higgsfield-soul/SKILL.md` § The Reference Plate — the capture phrase keeps *soft
+- **Sides:** [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Reference Plate — the capture phrase keeps *soft
   natural film grain* as the anti-AI-uniformity signal `[EMPIRICAL — Joey]` ·
   `../higgsfield-seedance/HELL-GRIND.md` § The character sheet — grain baked into the sheet
   travels into every scene and the character stops reacting to new light `[OFFICIAL — Hell
   Grind]`.
 - **Why no default:** both failures are inherited by every shot that reads the plate — baked
   grain cannot be removed per shot; an AI-uniform plate (plastic skin) softens every shot alike
-  (`../higgsfield-soul/SKILL.md` § The Untouched Base guards that texture). Neither is clearly
+  ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Untouched Base guards that texture). Neither is clearly
   cheaper. Shared by both sides: Axis-1 skin detail fully on ("real skin with visible pores, no
   retouch"). Decide per project, pin it once, never vary it across one character's plates.
 - **Settling probe:** one sheet with and without the clause, same scene prompt, grain read on the
@@ -266,7 +266,7 @@ both prompts** — `../higgsfield-seedance/FAILURE-MODES.md` § Walking is the h
   (`../../templates/seedance/staging-reference.md`, top box).
 - **Fixed:** `../higgsfield-seedance/FAILURE-MODES.md` § A fight generated as separate clips
   comes back choppy called it "first-frame geometry"; it is attached **last**, position only — a
-  drawing in the first-frame role becomes frame one. `../higgsfield-workspaces/SKILL.md` § Draw
+  drawing in the first-frame role becomes frame one. [archived upstream higgsfield-workspaces source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-workspaces/SKILL.md) § Draw
   to Video / Sketch to Video ("the sketch carries composition and blocking") is now scoped to
   that workspace and points here. The house A/B's record is incomplete, so `../../SKILL.md`,
   `../higgsfield-seedance/SKILL.md` and the staging eval now say "one incomplete-record run",
@@ -306,13 +306,13 @@ beside it — a file named `image_1` would sit in the character's slot.
 - **Ruling:** SCOPE on the shade and the face law; **OPEN** on the contact shadow, with a default.
 - **Canonical home:** `../../templates/ad-asset-prep.md` § Design for win rate. The sheet
   surfaces that name a background shade point to it — including, since the v3.38.0 review,
-  `../higgsfield-soul/SKILL.md` § Split-Panel Outfit-Change Sheet, `../higgsfield-gpt-image-2/reference-sheet-workflow.md`
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Split-Panel Outfit-Change Sheet, `../higgsfield-gpt-image-2/reference-sheet-workflow.md`
   (`#DCDCDC`) and `../higgsfield-cinema/references/reference-sheet-types.md`.
 - **Shade:** light to mid neutral grey, one pinned hex per project; three stated mechanisms
   (nothing competes · low edge contrast · a boring sheet keeps reacting to scene light) are
   compatible.
 - **OPEN:** "only a soft contact shadow" `[FIELD — harvest]` vs a flat field with no contact
-  shadow (`../higgsfield-soul/SKILL.md` § The Reference Plate `[EMPIRICAL]`). Default for a plate
+  shadow ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Reference Plate `[EMPIRICAL]`). Default for a plate
   read as a reference: the flat field — a contact shadow is baked light every shot inherits.
 - **Headless figure:** remove every visible full-body face; Hell Grind removes the front head
   only, AI-vs-VFX crops all — both leave one readable face.
@@ -323,7 +323,7 @@ beside it — a file named `image_1` would sit in the character's slot.
   AI-vs-VFX build routes "clothing, wardrobe changes, branded garments" to GPT Image 2
   (`../higgsfield-seedance-2-5/VFX-PIPELINE.md` § Stage 1 `[FIELD — AI-vs-VFX]`); one tutorial
   comparison picked Seedream 5.0 Pro for costume **texture and wear** on a from-scratch sheet
-  (`../higgsfield-soul/SKILL.md` § Pick the Sheet Model per JOB `[DEMO]`). Neither source splits
+  ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Pick the Sheet Model per JOB `[DEMO]`). Neither source splits
   by job. One `[HOUSE]` reading would make both true — **edits** on an existing sheet → GPT
   Image 2, **texture from scratch** → Seedream 5.0 Pro — but it is an inference, not a default,
   and the source rows label it as one (`../higgsfield-seedance-2-5/VFX-PIPELINE.md`,

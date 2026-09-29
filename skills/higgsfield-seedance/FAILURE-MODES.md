@@ -607,7 +607,7 @@ majority of preventable failures before credit burn.
   Failure Atlas — symptom → single-repair-variable table for
   chained/continuation defects (this catalog covers single-clip
   render failures; the atlas covers the joins)
-- `../higgsfield-soul/SKILL.md` § Character Sheet Creation —
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation —
   upstream character-anchoring discipline that prevents character-
   drift failures
 - `../higgsfield-pipeline/SKILL.md` § Master Production Chain —

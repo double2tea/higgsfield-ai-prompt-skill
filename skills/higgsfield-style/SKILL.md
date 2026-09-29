@@ -280,6 +280,6 @@ construction).
 ## Related skills
 - `higgsfield-camera` — Camera controls to pair with styles
 - `higgsfield-mixed-media` — Artistic style overlays (non-photorealistic)
-- `higgsfield-moodboard` — Moodboard + Soul Hex for project-level style locking
+- `higgsfield-character-design` — character and style reference sheets
 - `higgsfield-cinema` — Cinema Studio built-in color grading suite
 - `templates/` — Annotated genre-specific prompt templates with style examples

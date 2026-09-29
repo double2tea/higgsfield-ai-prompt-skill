@@ -223,7 +223,7 @@ a performance; the generic prompt produces AI-video.
 
 > **Preset library alternative.** For named micro-expression presets
 > that drop into a prompt without first-principles decomposition,
-> see `../higgsfield-soul/SKILL.md` § Micro-Expressions. The catalog
+> see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions. The catalog
 > covers most common emotional registers with locked physical
 > descriptors. Use the decompose-from-first-principles rule above
 > when no preset matches; use the preset library when one does.
@@ -717,7 +717,7 @@ Scenes start already in progress unless the user explicitly says "starts with…
 ---
 
 ## Related skills
-- `higgsfield-soul` — Character consistency, Soul ID, micro-expressions
+- `higgsfield-character-design` — character consistency and reference sheets; `higgsfield-facs` — facial expression direction
 - `higgsfield-camera` — All named camera controls
 - `higgsfield-style` — Visual styles, color grades, lighting
 - `higgsfield-models` — Model selection

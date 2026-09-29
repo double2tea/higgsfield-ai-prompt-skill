@@ -50,7 +50,7 @@ Final frame: [composition at last frame].
 ## What goes in each field
 
 - **Identity** matches a Soul ID character handle (see
-  `../../skills/higgsfield-soul/SKILL.md` § Character Anchor Block
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block
   for the 10-attribute per-character structure this template consumes)
 - **Screen position** pairs qualitative anchor + percentage notation
   per `../../skills/higgsfield-seedance/SKILL.md` § Frame Coordinate
@@ -91,7 +91,7 @@ copy and adjust per cut rather than re-specifying.
   blocking note this template consumes
 - `worked-example-two-character.md` (sibling) — concrete end-to-end
   fill of this template structure
-- `../../skills/higgsfield-soul/SKILL.md` § Character Anchor Block —
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block —
   the 10-attribute per-character structure
 - `../../skills/higgsfield-seedance/SKILL.md` § Frame Coordinate
   System + § Spatial Layout Block — the vocabulary + block this

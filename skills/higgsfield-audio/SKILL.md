@@ -742,7 +742,7 @@ Music: a lonely muted trumpet fades in under the rain, wistful but hopeful.
 The live standalone-audio catalog, reconciled against the models_explore
 snapshot of **2026-09-26** (`../../specs/models_explore_snapshot_audio_2026-09-26.json`;
 generated table: `../../specs/AUDIO-MODEL-SPECS.md`, machine twin
-`../../specs/audio-model-specs.json` — regenerate with `python3 scripts/sync_specs.py --type audio`).
+`../../specs/audio-model-specs.json`; verify current parameters with the selected provider before execution).
 The 2026-09-26 pull carries the same six models as 2026-08-01; the **only** change is
 `qwen_audio_tts` gaining `batch_size` (1–4, default 1 — "Number of independent
 variations to generate") `[OFFICIAL — platform, 2026-09-26]`.
@@ -831,7 +831,7 @@ the 2026-09-26 snapshot; verify live before quoting pricing or availability.)
   original timing, so lip-sync timing should survive the swap. Whether it does is untested;
   check the first clip before batching.
 - Post-production voice replacement belongs with the other finished-video surfaces —
-  `../higgsfield-repurpose/SKILL.md` § Where the neighbouring jobs live.
+  [archived upstream higgsfield-repurpose source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-repurpose/SKILL.md) § Where the neighbouring jobs live.
 
 ### Post-generation voice-over — Supercomputer workflow [DEMO]
 
@@ -849,5 +849,5 @@ already locked and only narration is missing.
 - `higgsfield-models` — Which models support native audio
 - `higgsfield-troubleshoot` — Audio failure diagnosis
 - `higgsfield-cinema` — Cinema Studio audio workflow with Kling 3.0
-- `higgsfield-vibe-motion` — Motion graphics with audio (different from AI-generated audio)
-- `higgsfield-repurpose` — other surfaces that take a finished video in (Shorts Studio, Clipify, Virality Predictor, Video Analysis)
+- `higgsfield-motion-design` — Motion graphics with audio (different from AI-generated audio)
+- `higgsfield-pipeline` — workflows that consume finished video

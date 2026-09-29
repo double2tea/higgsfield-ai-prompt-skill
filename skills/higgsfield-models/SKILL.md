@@ -297,7 +297,7 @@ bounds — verify before promising a long take. Not yet field-rated; full surfac
 ## Related skills
 - `higgsfield-prompt` — MCSLA formula, prompt structure
 - `higgsfield-cinema` — Cinema Studio model selection
-- `higgsfield-assist` — Credit optimization and plan selection
+- `higgsfield-pipeline` — project workflow and resource planning
 - `higgsfield-audio` — Audio-capable model details
 - `higgsfield-gpt-image-2` — GPT Image 2 / 2.5 prompting and when to prefer 2.5
 - `templates/` — Annotated templates with per-genre model recommendations

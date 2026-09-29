@@ -80,13 +80,13 @@ scene and stops reacting to new light. (Naming the look in the video prompts ove
 assets that already carry it is the opposite of `SKILL.md` § Bake it into the asset, one
 studio's practice — OPEN, no default, `../shared/house-rulings.md` P2-6. The grey-background and one-readable-face laws are
 stated once, with every source's shade and mechanism, in `../../templates/ad-asset-prep.md`
-§ Design for win rate. `../higgsfield-soul/SKILL.md` § The Reference Plate's capture phrase
+§ Design for win rate. [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Reference Plate's capture phrase
 adds *soft natural film grain* to a plate; that disagreement is OPEN, with no default, in
 `../shared/house-rulings.md` P2-4.)
 
 **Sheets read best with a large portrait in 3/4 view** — face turned slightly, not straight-on.
 
-> Complements `../higgsfield-soul/SKILL.md` § Character Sheet Creation (the Soul-ID route to
+> Complements [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation (the Soul-ID route to
 > the same goal) and `../../templates/ad-asset-prep.md` (asset prep generally). The headless
 > front panel and the boring-on-purpose rule are the Hell Grind additions. This sheet removes
 > only the **front** figure's head (the back view shows no face); the AI-vs-VFX build crops
@@ -107,7 +107,7 @@ The model makes the point edit; the final is always assembled with masks on top 
 original.
 
 > **Scope** (`../shared/house-rulings.md` P2-3). This governs the **identity base** —
-> `../higgsfield-soul/SKILL.md` § The Untouched Base holds the same line. The one-line Nano
+> [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Untouched Base holds the same line. The one-line Nano
 > Banana 2 fix in `../higgsfield-seedance-2-5/VFX-PIPELINE.md` § Stage 1 is compatible with it
 > as long as the changed region comes back onto the untouched original through a mask;
 > whether a single full pass on its own measurably degrades a sheet is unmeasured here.
@@ -581,7 +581,7 @@ down to a team of one.
 - `ENGINE-RULES.md` — the hard rendering constraints
 - `PRODUCTION-PATTERNS.md` — tutorial-demonstrated patterns from the same source family
 - `../higgsfield-acting/SKILL.md` — the performance system the CHARACTER ACTING block encodes
-- `../higgsfield-soul/SKILL.md` — Soul ID character sheets and multi-character consistency
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) — Soul ID character sheets and multi-character consistency
 - `../higgsfield-shotlist-director/SKILL.md` — the connected-shotlist form of "one dictionary
   of names for the whole project"
 - `../higgsfield-recall/SKILL.md` — the iteration log

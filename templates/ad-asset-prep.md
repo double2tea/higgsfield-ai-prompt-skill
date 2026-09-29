@@ -48,7 +48,7 @@ selection time.
   - **One disagreement, recorded.** The harvested human-sheet prompts keep
     "only a soft contact shadow" [FIELD]; the reference-plate doctrine wants
     a flat field with no floor and no contact shadow
-    (`../skills/higgsfield-soul/SKILL.md` § The Reference Plate [EMPIRICAL]).
+    ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Reference Plate [EMPIRICAL]).
     Unmeasured here (`../skills/shared/house-rulings.md` P3-1). A contact
     shadow is baked lighting that every downstream shot inherits, so for a
     plate that will be **read as a reference** the flat field is the
@@ -56,7 +56,7 @@ selection time.
 
   This bullet is the canonical home of the grey rule; the sheet workflows in
   `../skills/higgsfield-gpt-image-2/reference-sheet-workflow.md`,
-  `../skills/higgsfield-soul/SKILL.md` § Character Sheet Creation,
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation,
   `../skills/higgsfield-character-design/SKILL.md` § Sheet Construction Laws,
   `../skills/higgsfield-seedance-2-5/VFX-PIPELINE.md` § Stage 1 and
   `../skills/higgsfield-seedance/HELL-GRIND.md` point here.
@@ -73,7 +73,7 @@ selection time.
   full-body panel. No source reports a difference between them; keep the back
   head when the hair matters. Casting a real person: erase the body panels'
   heads and paste the photograph into the portrait panel
-  (`../skills/higgsfield-soul/SKILL.md` § The Hybrid Sheet). This bullet is
+  ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Hybrid Sheet). This bullet is
   the canonical home; `../skills/higgsfield-seedance/HELL-GRIND.md`,
   `../skills/higgsfield-seedance-2-5/VFX-PIPELINE.md` § The face-lock crop and
   `../skills/higgsfield-character-design/SKILL.md` § Sheet Construction Laws
@@ -83,7 +83,7 @@ selection time.
   the empty-plate rule.
 - **One clean subject per sheet** — a single, unambiguous thing to lock onto.
   (The one deliberate exception: crowd work, where you *want* a multi-character
-  VARIETY lineup sheet — see `../skills/higgsfield-soul/SKILL.md`
+  VARIETY lineup sheet — see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md)
   § Variety Sheets.)
 
 Higher win rate compounds: cheaper iteration, fewer regenerations, more keeper
@@ -103,7 +103,7 @@ Close-up (locks the face) **+** full-body front/back (locks the build), on a
 **grey background**, generated in **Soul Cinema** for the best photoreal skin
 texture. One clear face + one full body is the hard floor per character — never
 ship a character on a single image ("so Seedance doesn't have to guess").
-See `../skills/higgsfield-soul/SKILL.md` § Character Sheet Creation.
+See [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation.
 
 ### 3. Lock one face — erase the duplicate
 
@@ -121,7 +121,7 @@ One face left → the video model stops drifting between faces. The erase is a
 GPT Image 2 pass over the sheet, and every such pass softens skin: if this
 sheet is the character's **identity base**, mask only the erased region back
 onto the untouched original (§ 5 below;
-`../skills/higgsfield-soul/SKILL.md` § The Untouched Base;
+[archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Untouched Base;
 `../skills/shared/house-rulings.md` P2-3).
 
 ### 4. Outfit design loop — 10 ideas → mix and recolor
@@ -143,7 +143,7 @@ combine into one prompt. Keep the face, skin, and background unchanged.
 
 Every GPT Image edit softens Soul-grade skin toward flat "AI slop." The fast
 manual fix is a layer-mask composite — see
-`../skills/higgsfield-soul/SKILL.md` § Two-Tool Refinement Pipeline (the
+[archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Two-Tool Refinement Pipeline (the
 layer-mask composite worked example).
 
 ### 6. Multi-state variants — bake the state in on purpose
@@ -172,7 +172,7 @@ Frame 1 face portrait · Frame 2 **ghost-mannequin outfit display** ("garments
 hold the natural shape of an invisible body — no head, no hands, no skin
 visible") so wardrobe is its own decoupled panel · Frame 3 back view — thin
 white dividers, equal frames. (The repo's canonical ghost-mannequin recipe:
-`../skills/higgsfield-soul/SKILL.md` § Split-Panel Outfit-Change Sheet.)
+[archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Split-Panel Outfit-Change Sheet.)
 
 ### 7. Prop sheets (objects skip the motion test)
 
@@ -205,7 +205,7 @@ generation** [DEMO]. Two plate disciplines:
   Patterns → populated-plate reuse; and when the crowd **is** the location
   — a festival, a packed arena — where an empty plate makes every shot prompt
   re-invent the throng. The full test is in
-  `../skills/higgsfield-soul/SKILL.md` § Variety Sheets.)
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Variety Sheets.)
 - **Pin the sun before you pick.** A master plate should fix the light — its
   direction, height and quality — so it cannot jump between generations.
   Everything else in the scene inherits from it; a plate with ambiguous light
@@ -291,7 +291,7 @@ input image, the sharper the final video."**
 
 ## Related
 
-- `../skills/higgsfield-soul/SKILL.md` — character sheets + the anti-slop composite
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) — character sheets + the anti-slop composite
 - `../skills/higgsfield-gpt-image-2/SKILL.md` + `…/reference-sheet-workflow.md` +
   `…/static-ads-workflow.md` — product/prop sheets, location editing
 - `../skills/higgsfield-shotlist-director/SKILL.md` — where these locked assets

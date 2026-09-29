@@ -29,10 +29,10 @@ These occur when the model loses track of who a character is across frames or ge
 
 | Artifact | Why it happens | Recommended prompt phrasing to prevent it |
 |----------|---------------|------------------------------------------|
-| **Identity drift across shots** | Character description varies between prompts, or identity and motion mixed in one block | Copy-paste exact character description across all prompts; separate Identity Block from Motion Block (see `higgsfield-soul`) |
+| **Identity drift across shots** | Character description varies between prompts, or identity and motion mixed in one block | Copy-paste exact character description across all prompts; separate Identity Block from Motion Block (see `higgsfield-character-design`) |
 | **Character swap (two characters)** | @ Elements in action scenes — model confuses which character is which | Use @ Elements only in static/slow scenes; use plain text for action; put hero character first in prompt |
 | **Face warping during camera moves** | Identity descriptors mixed with temporal/motion language cause the model to re-interpret the face each frame | Keep identity descriptors (face, clothing, body) in a static Identity Block; keep camera and motion in a separate Motion Block |
-| **Wrong expression / frozen face** | No micro-expression direction, or conflicting emotion cues | Use specific micro-expression terms (see `higgsfield-soul`); one emotion per shot |
+| **Wrong expression / frozen face** | No micro-expression direction, or conflicting emotion cues | Use specific micro-expression terms (see `higgsfield-facs`); one emotion per shot |
 | **Plastic / waxy skin** | Wrong model for character work, or over-smoothed description | Use Kling 3.0 or Soul Cast for realistic skin; add "natural skin texture, subtle imperfections" |
 
 ---

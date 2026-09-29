@@ -11,7 +11,7 @@
 
 **Local routing:** The root skill keeps Simplified Chinese as the default for new writing and preserves user copy, machine syntax, and approved execution prompts. For generation, an explicitly selected RunningHub app/model, Generation Service provider, 小云雀/Pippit task, or LibTV canvas goes to that installed executor and its current schema. `commercial-ai-project-kit` is for project setup or an explicit kit refresh; it does not select a generation provider. Optional craft guidance here does not require extra emotion beats, cuts, retries, or batches. These local integrations are used only when their corresponding skills or tools are installed.
 
-**Tooling status:** This branch preserves the v3.40 model snapshots and reference text. The old spec-sync and drift entry points are removed. `scripts/validate.py`, `scripts/preflight.py`, and parts of the inherited tests/evals still depend on the removed scripts and need a separate tooling cleanup before this branch can claim release-gate readiness.
+**Tooling status:** This branch preserves the v3.40 model snapshots and reference text. The removed spec-sync and drift entry points are no longer called by the remaining tooling. Snapshot validation checks recorded source provenance and age; it cannot regenerate byte-for-byte snapshots without the removed scripts. Links labeled “archived upstream” document provenance only and are not active skill routes.
 
 A comprehensive Claude skill library for generating high-quality prompts on
 [Higgsfield AI](https://higgsfield.ai) — the cinematic video and image generation platform.
@@ -47,10 +47,9 @@ Transforms natural language requests into production-ready Higgsfield prompts us
 
 ## Install
 
-### Claude Code
-```bash
-git clone --branch platform-cut https://github.com/double2tea/higgsfield-ai-prompt-skill.git ~/.claude/skills/higgsfield
-```
+### CC Switch (Codex and Claude Code)
+
+Add `https://github.com/double2tea/higgsfield-ai-prompt-skill` as a skill repository on branch `platform-cut`, then install the root `higgsfield` skill and enable it for Codex and Claude Code. Keep CC Switch as the installation manager so both clients use the same version.
 
 ### Claude Cowork
 Drop the repo folder into your Cowork workspace. The skill dispatcher is at `SKILL.md` in the repo root.

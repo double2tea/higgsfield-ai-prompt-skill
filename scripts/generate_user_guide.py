@@ -5,7 +5,7 @@ Version metadata is read from the root SKILL.md frontmatter at build time.
 Sub-skill list at Section 24 is discovered by filesystem walk of skills/.
 Per-sub-skill description text remains hardcoded in SUB_SKILL_DESCRIPTIONS
 below to preserve the PDF's editorial voice (entries refreshed at v3.7.12
-to add higgsfield-stack and update higgsfield-soul + higgsfield-seedance).
+to add platform routing and update character-design + higgsfield-seedance).
 
 Derived content (v3.37.0+): counts and inventories that used to be
 hard-coded -- and drifted for twelve releases -- are read from disk at build
@@ -391,7 +391,7 @@ def build_pdf(dry_run: bool = False):
             "1. What Is This?",
             "2. What Can It Do?",
             "3. How to Install",
-            "4. Running the Prompt -- CLI / MCP / Bundled Skills / Paste  NEW",
+            "4. Running the Prompt",
             "5. Quick Start -- Your First Prompt",
             "6. The MCSLA Formula",
             "7. Choosing a Model",
@@ -490,57 +490,35 @@ def build_pdf(dry_run: bool = False):
         pdf.ln(3)
         pdf.body_text(
             "Once the skill is installed, you'll need to know where to run the prompts it produces. "
-            "See Section 4 for the four execution paths.")
+            "See Section 4 for execution guidance.")
 
         # --- 4. RUNNING THE PROMPT --- NEW SECTION (v3.7.12) ---
         pdf.add_page()
-        pdf.section_title("4. Running the Prompt -- CLI / MCP / Bundled Skills / Paste")
+        pdf.section_title("4. Running the Prompt")
         pdf.new_tag()
         pdf.ln(5)
         pdf.body_text(
             "This skill writes prompts. Higgsfield runs them. The two halves are separate by "
             "design -- Claude does prompt construction and production discipline; Higgsfield "
             "handles auth, file upload, job submission, and result delivery. Once Claude has "
-            "produced a prompt for you, you have four ways to actually run it.")
+            "produced an approved prompt for you, run it with the selected installed executor "
+            "or paste it into the platform interface.")
 
-        pdf.subsection_title("The four execution surfaces")
-
-        pdf.bold_text("Higgsfield CLI (terminal-native)")
-        pdf.body_text(
-            "Command-line tool for terminal-native agents -- Claude Code, Codex, Cursor. "
-            "Authenticate with `higgsfield auth login` (device flow). If you're working in Claude "
-            "Code or Codex, prefer the CLI over the MCP -- it uses long-lived API tokens rather "
-            "than the MCP's interactive OAuth, which holds up better in headless and scripted "
-            "contexts. Install via Homebrew (`brew install higgsfield-ai/tap/higgsfield`) or the "
-            "install script at the `higgsfield-ai/cli` GitHub repo.")
+        pdf.subsection_title("Execution surfaces")
 
         pdf.bold_text("Higgsfield MCP custom connector")
         pdf.body_text(
-            "MCP connector for claude.ai web and the Claude desktop app. Separate product from "
-            "the CLI. Connector URL: `https://mcp.higgsfield.ai/mcp`. Install via claude.ai "
-            "Settings -> Connectors -> Add custom connector. Single OAuth sign-in, no token "
-            "management. Best fit for conversational generation inside the Claude desktop app "
-            "or claude.ai web.")
-
-        pdf.bold_text("Higgsfield bundled skills")
-        pdf.body_text(
-            "Markdown skill bundle for agents that consume Cowork-style skills. Three skills: "
-            "`higgsfield-generate`, `higgsfield-soul`, `higgsfield-product-photoshoot`. Install "
-            "via `npx skills add higgsfield-ai/skills`. Invoke with `/higgsfield:generate`. All "
-            "three drive the CLI under the hood, so they inherit the CLI's auth model and "
-            "behavior.")
+            "MCP connector for claude.ai web and the Claude desktop app. Verify the live tool "
+            "schema and available model before submitting a prompt.")
 
         pdf.bold_text("Paste into higgsfield.ai (no install required)")
         pdf.body_text(
-            "The always-works fallback. Copy the prompt Claude produced, paste into "
-            "higgsfield.ai, and generate. No CLI, no MCP, no skill package -- works on any plan, "
-            "any device. Slower for iteration than the other three, but the path with zero "
-            "install overhead.")
+            "Copy the approved prompt into the selected platform interface and verify the "
+            "model settings before generating.")
 
         pdf.callout(
-            "All four surfaces share one credit pool and one job queue. Queue priority is your "
-            "plan tier (Plus / Ultra / Business / Team), NOT the choice of surface. Pick the "
-            "surface that matches your environment, not the queue you imagine.")
+            "Check the selected executor's current cost estimate and queue behavior before "
+            "submitting a paid generation.")
 
         pdf.subsection_title("Pre-Flight: check cost before you generate")
         pdf.body_text(
@@ -552,21 +530,19 @@ def build_pdf(dry_run: bool = False):
 
         pdf.body_text(
             "Claude knows enough about Higgsfield to sound right without actually being right. "
-            "Verification surfaces are sitting right there -- the CLI's `model get` command, the "
-            "MCP's `models_explore` tool -- and they're cheap. Use them before the cost call, "
+            "Verification surfaces are available through the selected provider's current "
+            "model schema. Use them before the cost call, "
             "not after a failed submission.")
 
-        w_pf = [25, 75, 70]
-        pdf.table_row(["Step", "MCP", "CLI"], w_pf, bold=True, fill=True)
+        w_pf = [30, 140]
+        pdf.table_row(["Step", "Selected executor"], w_pf, bold=True, fill=True)
         pdf.table_row(
             ["1. Schema verify",
-             'models_explore(action="get", model_id="<model>")',
-             "higgsfield model get <model>"],
+             "Current model schema and accepted parameters"],
             w_pf)
         pdf.table_row(
             ["2. Cost estimate",
-             "generate_image / generate_video with get_cost: true",
-             "higgsfield generate cost <model> [--param value]..."],
+             "Current quote or preflight for the exact settings"],
             w_pf)
         pdf.ln(3)
 
@@ -740,10 +716,9 @@ def build_pdf(dry_run: bool = False):
 
         pdf.subsection_title("Iteration-budget projection")
         pdf.body_text(
-            "Worked example for sizing a credit budget against a shot: a single Kling 3.0 8s "
-            "generation at 16:9 std mode costs 16 credits. The 1.5% video-acceptance anchor implies "
-            "roughly 67 attempts on average to land one keeper. At 16 credits per attempt, that's "
-            "about 1,000 credits per finished shot. Multiply by shot count for multi-shot sequences.")
+            "Use the selected executor's current quote for the exact model settings, then size "
+            "the authorized attempt budget from the shot's measured acceptance rate. Multiply by "
+            "the planned shot count only after confirming the scope and current quote.")
         pdf.body_text(
             "The discipline isn't to surface the multiplied number every time -- it's to read "
             "single-shot cost in the context of iteration cost, not as an absolute. Preflight a shot "
@@ -837,7 +812,7 @@ def build_pdf(dry_run: bool = False):
         pdf.table_row(["Aspect Ratios", "6 options", "7 (+ 21:9 ultrawide)"], w2)
         pdf.table_row(["Audio", "On/Off", "On/Off (native stereo)"], w2)
         pdf.table_row(["Shot Control", "Manual multi-shot", "Smart + Custom"], w2)
-        pdf.table_row(["Generation Cost", "Varies", "48 credits"], w2)
+        pdf.table_row(["Generation Cost", "Verify current quote", "Verify current quote"], w2)
         pdf.ln(3)
         pdf.callout("Resolution limits for Cinema Studio 3.0 are subject to change. If you need higher resolution now, use Cinema Studio 2.5.")
 
@@ -967,8 +942,8 @@ def build_pdf(dry_run: bool = False):
             "flares, letterboxed composition, >2:1 framing aesthetic) that the model can render "
             "WITHIN any output ratio. Writing '16:9 anamorphic' as a single phrase in the prompt "
             "body is incoherent -- pick one. Output ratio belongs in the header (and must be one of "
-            "the enum values for the chosen model -- check `higgsfield model get <model>` or the "
-            "MCP `models_explore` equivalent before assuming). Anamorphic style cues belong in the "
+            "the enum values for the chosen model -- check the selected provider's current "
+            "schema before assuming). Anamorphic style cues belong in the "
             "Look line, as a style request, not as an output dimension.")
         w_ar2 = [55, 75, 40]
         pdf.table_row(["Concern", "Where it belongs", "Bound by"], w_ar2, bold=True, fill=True)
@@ -1095,7 +1070,7 @@ def build_pdf(dry_run: bool = False):
             "narrative shot generation began (see Section 9 for the full per-character iteration "
             "anchor). When to stick with one tool: characters appearing in only a handful of shots "
             "don't justify the two-tool overhead -- a single Soul Cinema pass suffices.")
-        pdf.bullet("Multi-Form State Tracking -- when a character changes state across the project (wounds, costume changes, transformations), generate a separate anchor sheet per state. Full discipline in the higgsfield-soul sub-skill.")
+        pdf.bullet("Multi-Form State Tracking -- when a character changes state across the project (wounds, costume changes, transformations), generate a separate anchor sheet per state. See higgsfield-character-design.")
 
         # --- 15. IDENTITY VS MOTION ---
         pdf.add_page()
@@ -1302,7 +1277,7 @@ def build_pdf(dry_run: bool = False):
         features = [
             ("Soul Cast -- AI Actor Generation (2.5 + 3.0)",
              "Generate AI actors from 8 parameter categories (Genre, Budget, Era, Archetype, Identity, "
-             "Physical Appearance, Details, Outfit). In Cinema Studio 3.0 (Business/Team): General (2K) / Character (4K) / Location (4K) modes, 0.125 credits per image."),
+             "Physical Appearance, Details, Outfit). In Cinema Studio 3.0 (Business/Team): General (2K) / Character (4K) / Location (4K) modes."),
             ("Built-in Color Grading (2.5 only)",
              "Color temperature, contrast, saturation, sharpness, film grain, exposure, bloom -- "
              "applied to keyframes before video generation. Not available in Cinema Studio 3.0."),
@@ -1376,11 +1351,9 @@ def build_pdf(dry_run: bool = False):
         faqs = [
             ("Do I need a Higgsfield account?",
              "Yes -- this skill writes prompts for you, but you paste and run them on higgsfield.ai."),
-            ("Do I need the Higgsfield CLI installed?",
-             "No -- the skill works regardless of execution surface. The CLI is one of four ways to "
-             "run the prompts Claude writes for you. Most casual users paste directly into "
-             "higgsfield.ai. Heavy users on Claude Code or Codex benefit from the CLI's long-lived "
-             "API tokens (better in headless and scripted contexts than the MCP's interactive OAuth). "
+            ("How do I run a finished prompt?",
+             "Use the selected installed executor or paste the approved prompt into the platform "
+             "interface. Verify the current model schema and cost before a paid submission. "
              "See Section 4 for the full picture."),
             ("Which Claude plan do I need?",
              "Any plan works -- Free, Pro, or Team. The skill loads as project instructions."),

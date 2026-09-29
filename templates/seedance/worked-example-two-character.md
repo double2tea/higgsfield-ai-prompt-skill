@@ -87,7 +87,7 @@ Final frame: Roco one step closer, Lulu's back touching the fence,
 
 - `multi-character-anchor.md` — the template this example fills
 - `top-down-map.md` — pre-visualize before filling the template
-- `../../skills/higgsfield-soul/SKILL.md` § Character Anchor Block —
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block —
   per-character 10-attribute structure
 - `../../skills/higgsfield-seedance/SKILL.md` § Spatial Layout Block —
   the prompt-body block this example assembles

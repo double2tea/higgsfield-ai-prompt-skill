@@ -61,7 +61,7 @@ cold blue fill. 2.35:1 anamorphic.
 
 ## Common mistakes
 1. **"A beautiful/handsome person"** — unmeasurable. Describe bone structure, skin texture, expression, clothing.
-2. **Describing the face AND giving vigorous motion** — "she laughs and spins and runs" with detailed face description causes drift. For expressive movement, use micro-expression terms from `higgsfield-soul`.
+2. **Describing the face AND giving vigorous motion** — "she laughs and spins and runs" with detailed face description causes drift. For expressive movement, use micro-expression terms from `higgsfield-facs`.
 
 ## Variations
 - **Dialogue intro**: Add speech in quotes: `He says quietly: "It's done."` Use Kling 3.0 for native lip-sync

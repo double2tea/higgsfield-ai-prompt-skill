@@ -483,7 +483,6 @@ def test_agreement_cli_renders():
 
 def test_a_hand_added_tombstone_is_not_trusted(tmp_path, monkeypatch):
     import shutil
-    import sync_specs
     specs = tmp_path / "specs"
     shutil.copytree(REPO / "specs", specs)
     doc = json.loads((specs / "retired-model-ids.json").read_text(encoding="utf-8"))
@@ -497,7 +496,7 @@ def test_a_hand_added_tombstone_is_not_trusted(tmp_path, monkeypatch):
            "outcome": "kept", "draft_tier": False}
     problems = hm.validate_ledger_row(row, "_demo", set(), set(), hm.load_specs_models())
     assert any("not in specs" in p for p in problems), problems
-    assert sync_specs.retired_is_stale(specs) is True          # validate --strict goes red
+    assert "totally_made_up_model" not in hm.load_retired_ids()
     # the proven tombstones still keep history valid
     assert "llm_text" in hm.load_specs_models()
 

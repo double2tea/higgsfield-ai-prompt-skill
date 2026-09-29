@@ -44,4 +44,4 @@ What this world is NOT — list the generic defaults to avoid:
 
 ## Hand off
 This Visual DNA (hex palette + forbidden list) gets pasted **verbatim** into every generation prompt.
-→ `higgsfield-prompt` (build the prompt) · `higgsfield-soul` (Soul HEX color lock + Soul ID for recurring characters) · `model-guide.md` (pick the model).
+→ `higgsfield-prompt` (build the prompt) · `higgsfield-character-design` (character sheet for recurring characters) · `model-guide.md` (pick the model).

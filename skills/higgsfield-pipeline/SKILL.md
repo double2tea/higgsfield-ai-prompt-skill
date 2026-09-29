@@ -150,7 +150,7 @@ work in order gives you control over each handoff.
 > copilot (Higgsfield Assist at higgsfield.ai/chat) trained
 > specifically on Higgsfield's tools and workflows. For quick
 > in-platform prompt generation and platform-navigation questions,
-> see `../higgsfield-assist/SKILL.md`. For upstream project
+> see [archived upstream higgsfield-assist source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-assist/SKILL.md). For upstream project
 > staging across multiple sessions, an external GPT (Claude,
 > ChatGPT) running this 10-step methodology is the better fit
 > because state carries across the full project, not just the
@@ -197,7 +197,7 @@ prompt rather than collapsing into it.
 > the prompt-level separation within a single shot — Identity (who
 > is in frame) from Motion (what they do and how the camera moves)
 > — see `../higgsfield-prompt/SKILL.md` § Identity vs. Motion
-> Separation Rule and `../higgsfield-soul/SKILL.md` § Identity vs.
+> Separation Rule and [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Identity vs.
 > Motion Separation. Different axes of the same overall
 > composition problem; both apply.
 
@@ -238,7 +238,7 @@ Three rules of thumb make a Project Bible work in practice:
 > document you maintain across the project. Two common downstream
 > realizations of the Bible inside Higgsfield: (i) the Character
 > section feeds into a Soul ID character sheet, see
-> `../higgsfield-soul/SKILL.md` § Character Sheet Creation for the
+> [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation for the
 > multi-angle reference approach; (ii) Characters, Locations, and
 > Props feed into Cinema Studio's @ Elements system, see
 > `../higgsfield-cinema/SKILL.md` § Elements System for the
@@ -309,7 +309,7 @@ stable.
 > The 7-module taxonomy is a finer-grained sibling of the
 > Identity-vs-Motion separation rule used in single-shot prompts.
 > For Soul ID single-shot work, the 2-block separation in
-> `../higgsfield-soul/SKILL.md` § Identity vs. Motion Separation
+> [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Identity vs. Motion Separation
 > (also `../higgsfield-prompt/SKILL.md` § Identity vs. Motion
 > Separation Rule) is sufficient — "Character identity block"
 > here aliases their "Identity Block." The 7-module taxonomy adds
@@ -599,10 +599,10 @@ The system handles sync automatically.
 
 ---
 
-### Stage 6 — Vibe Motion Overlay (Optional)
+### Stage 6 — Motion Graphics Overlay (Optional)
 
 Add motion graphic layers — titles, captions, lower thirds, CTAs — on top of
-your generated video clips. See `higgsfield-vibe-motion` skill for full detail.
+your generated video clips. Use an installed motion-graphics executor when the overlay must remain editable.
 
 **Common additions at this stage:**
 - Scene title cards (can be cut in before each scene)
@@ -1066,9 +1066,9 @@ need 8 stages. Run it through standard generation → upscale → post.
 
 ## Related skills
 - `higgsfield-prompt` — MCSLA formula, Identity/Motion separation
-- `higgsfield-soul` — Soul ID character consistency
+- `higgsfield-character-design` — character-sheet consistency
 - `higgsfield-cinema` — Cinema Studio workflow (alternative to manual pipeline)
 - `higgsfield-models` — Model selection per pipeline stage
-- `higgsfield-vibe-motion` — Motion graphics for overlay stages
+- `higgsfield-motion-design` — motion graphics direction for overlay stages
 - `higgsfield-recall` — Pre-generation memory check before each stage
 - `templates/` — Annotated genre-specific templates for pipeline starting points

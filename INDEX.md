@@ -469,7 +469,7 @@ anchors instead of archaeology. Link format: `path#anchor`.
     - [Stage 3 — Animate by Scene Type](skills/higgsfield-pipeline/SKILL.md#stage-3--animate-by-scene-type)
     - [Stage 4 — Recast (Character Swap)](skills/higgsfield-pipeline/SKILL.md#stage-4--recast-character-swap)
     - [Stage 5 — Lipsync / Audio](skills/higgsfield-pipeline/SKILL.md#stage-5--lipsync--audio)
-    - [Stage 6 — Vibe Motion Overlay (Optional)](skills/higgsfield-pipeline/SKILL.md#stage-6--vibe-motion-overlay-optional)
+    - [Stage 6 — Motion Graphics Overlay (Optional)](skills/higgsfield-pipeline/SKILL.md#stage-6--motion-graphics-overlay-optional)
     - [Stage 7 — Upscale](skills/higgsfield-pipeline/SKILL.md#stage-7--upscale)
     - [Stage 8 — Assembly](skills/higgsfield-pipeline/SKILL.md#stage-8--assembly)
   - [Pipeline C: Product Campaign (Commercial Chain)](skills/higgsfield-pipeline/SKILL.md#pipeline-c-product-campaign-commercial-chain)

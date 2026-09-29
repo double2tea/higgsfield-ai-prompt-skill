@@ -1,6 +1,6 @@
 ---
 name: higgsfield-motion-design
-description: "End-to-end motion-design / animated-ad creation flow on Higgsfield via the MCP connector. Use when the user wants to create motion design, animate a logo, make a video from an image, build an animated ad or brand promo, turn a product into motion, or says 'make a motion', 'motion design', 'animate this', 'make a video from my logo', 'animated brand', 'motion graphics', 'brand motion', 'kinetic graphics', 'promo video', or 'ad video'. Drives a storyboard-first pipeline: brief → storyboard sheet (GPT Image 2) → video (Seedance 2.0) — an AI-generated pixel video clip. Distinct from higgsfield-motion (the named camera/motion preset library) and from higgsfield-vibe-motion (deterministic Remotion code with crisp text); use vibe-motion instead when the text/logo must stay perfectly crisp, editable, and deployable as code."
+description: "End-to-end motion-design / animated-ad creation flow on Higgsfield via the MCP connector. Use when the user wants to create motion design, animate a logo, make a video from an image, build an animated ad or brand promo, turn a product into motion, or says 'make a motion', 'motion design', 'animate this', 'make a video from my logo', 'animated brand', 'motion graphics', 'brand motion', 'kinetic graphics', 'promo video', or 'ad video'. Drives a storyboard-first pipeline: brief → storyboard sheet (GPT Image 2) → video (Seedance 2.0) — an AI-generated pixel video clip. Distinct from higgsfield-motion (the named camera/motion preset library) ; when text or logos must remain editable, route to an installed code-motion executor."
 user-invocable: true
 metadata:
   tags: [higgsfield, motion-design, animated-ad, logo-animation, brand, motion-graphics, storyboard, classicMD, highMD]
@@ -112,8 +112,8 @@ Present the render and ask: **Love it ✅** (done) · **Different edit** (regene
 
 ## Related skills
 - `higgsfield-motion` — the named camera/motion preset library (different skill)
-- `higgsfield-vibe-motion` — deterministic Remotion **code** motion graphics (crisp text, exact colors, deployable). Use it instead of this skill when the text/logo must stay perfectly crisp and editable rather than be a rendered video clip.
+- For crisp, editable text and logo animation, route to an installed code-motion tool with its current schema.
 - `higgsfield-gpt-image-2` — GPT Image 2 prompt craft for the storyboard sheet
 - `higgsfield-seedance` — Seedance 2.0 prompt formula, modes, and preflight linter
-- `higgsfield-marketing-studio` — one-click product-ad surface (alternative to this manual flow)
-- `higgsfield-apps` — MCP connector tooling (media upload, job display, balance)
+- `higgsfield-pipeline` — product-ad workflow planning
+- The selected executor — media upload, job status, and balance

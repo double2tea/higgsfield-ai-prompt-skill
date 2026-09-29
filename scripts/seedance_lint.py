@@ -509,9 +509,8 @@ def snapshot_age_finding(index: dict) -> "Finding | None":
         return Finding(
             "INFO", "stale-specs-snapshot", f"{stamp} ({age}d old)",
             "Specs snapshot exceeds the 30-day trust window (root SKILL.md "
-            "HARD RULES 3/7) — enum verdicts below may be stale. Verify live "
-            "(`higgsfield model get <model>` / models_explore) and refresh "
-            "via scripts/sync_specs.py.")
+            "HARD RULES 3/7) — enum verdicts below may be stale. Verify the "
+            "selected execution provider's current model schema.")
     return None
 
 
@@ -821,8 +820,8 @@ def _platform_findings(text: str, settings: Settings, spec: dict,
             "INFO", "platform-rules-not-on-record", spec["id"],
             f"{spec['name']} has no platform rules on record in "
             f"specs/cli_baseline.json (captured {captured}) — its cross-parameter "
-            f"rules were NOT checked. Verify live with `higgsfield model get "
-            f"{spec['id']} --json`, or refresh the baseline."))
+            f"rules were NOT checked. Verify against the selected provider's "
+            f"current schema before execution."))
         return findings
     if not rules:
         return findings                  # on record: the CLI gives it no rules
@@ -877,7 +876,7 @@ def _platform_findings(text: str, settings: Settings, spec: dict,
             findings.append(Finding(
                 "WARN", "platform-rule-unchecked", r.rule.cel,
                 f"The preflight evaluator could not check this rule ({r.detail}) — "
-                f"verify live with `higgsfield model get {spec['id']} --json`. "
+                f"verify against the selected provider's current schema. "
                 f"Not counted as a pass."))
         elif r.status == "UNKNOWN" and media is None:
             unknown_media.update(d for d in r.depends_on
@@ -899,10 +898,9 @@ def _platform_findings(text: str, settings: Settings, spec: dict,
 
 
 def _mode_pairing_findings(spec: dict, settings: Settings) -> list[Finding]:
-    """Cross-parameter rules stated in prose that sync_specs cannot extract.
+    """Cross-parameter rules from committed specs that need explicit checks.
 
-    sync_specs.py only lifts constraints whose wording it recognizes AND whose
-    tokens are legal enum values elsewhere in the same model. Seedance 2.5's
+    Seedance 2.5's
     `extension_mode` rule ("required for mode 'video_extension' and not allowed
     otherwise") and its video_edit parameter-ignoring rule are stated in prose
     the extractor does not match, so they are encoded here — keyed off the
@@ -1349,7 +1347,7 @@ def main() -> int:
         age_finding = snapshot_age_finding(index)
         if not index:
             print(f"ERROR: specs file missing or invalid: {args.specs} — "
-                  f"run: python3 scripts/sync_specs.py", file=sys.stderr)
+                  "restore the committed spec file", file=sys.stderr)
             return 2
         try:
             spec = resolve_model(index, args.model)

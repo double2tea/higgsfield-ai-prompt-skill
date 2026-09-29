@@ -25,7 +25,7 @@ normal case. This table is the routing; the per-model sections below are the ref
 | Human character sheet, face matching | **Nano Banana 2** | Strongest face match on the platform |
 | Small corrective edits to an existing asset | **Nano Banana 2** | Holds its input images best — switch *to* it for a one-line fix instead of re-prompting the whole sheet |
 | Fantasy creature / non-human character sheet | **Seedream 5.0** (the build does not say Lite or Pro) | Best at fantasy creatures |
-| Clothing, wardrobe changes, branded garments | **GPT Image 2** | Handles clothing best. (`[HOUSE]` note, not the build's words: for costume texture on a from-scratch sheet one other production picked Seedream 5.0 Pro — `skills/higgsfield-soul/SKILL.md` § Pick the Sheet Model per JOB; the edits-vs-from-scratch split is one reading, not a default — OPEN, `skills/shared/house-rulings.md` P3-2; compare 2–3 models per sheet) |
+| Clothing, wardrobe changes, branded garments | **GPT Image 2** | Handles clothing best. (`[HOUSE]` note, not the build's words: for costume texture on a from-scratch sheet one other production picked Seedream 5.0 Pro — [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Pick the Sheet Model per JOB; the edits-vs-from-scratch split is one reading, not a default — OPEN, `skills/shared/house-rulings.md` P3-2; compare 2–3 models per sheet) |
 | Locations and environment stills | **Soul Cinema** | Most cinematic frames; GPT skews yellow, Nano Banana makes locations too clean and too symmetrical |
 
 - - **Fix, don't rebuild.** A warped logo or a colour cast on an otherwise-good sheet is a
@@ -285,7 +285,7 @@ When NBP is generating location-anchored shots, three patterns recur in producti
 
 **Workflow positioning:**
 
-NBP is the strongest single image model on the platform for sharpness, multi-element composition, and text rendering. For **high-investment characters** that will appear across many shots, the two-tool pipeline outperforms NBP alone: Soul Cinema for initial character generation + GPT Image 2 for refinement editing. See `skills/higgsfield-soul/SKILL.md` § Two-Tool Refinement Pipeline for the split-by-task discipline and the ~600 + ~200 = ~800 generations anchor from the Hell Grind production.
+NBP is the strongest single image model on the platform for sharpness, multi-element composition, and text rendering. For **high-investment characters** that will appear across many shots, the two-tool pipeline outperforms NBP alone: Soul Cinema for initial character generation + GPT Image 2 for refinement editing. See [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Two-Tool Refinement Pipeline for the split-by-task discipline and the ~600 + ~200 = ~800 generations anchor from the Hell Grind production.
 
 ---
 

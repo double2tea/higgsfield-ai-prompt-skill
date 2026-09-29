@@ -348,9 +348,9 @@ into:
 - **Static ads** — as the product reference in `static-ads-workflow.md`
   (Mode A reference swap).
 - **Marketing Studio video** — register it as a product so generations hold
-  product fidelity (see `../higgsfield-marketing-studio/SKILL.md` § 6).
+  product fidelity (see [archived upstream higgsfield-marketing-studio source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-marketing-studio/SKILL.md) § 6).
 - **Soul / character work** — the same identity-lock discipline applies to
-  character turnaround sheets (see `../higgsfield-soul/SKILL.md`
+  character turnaround sheets (see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md)
   § Character Sheet Creation).
 
 ## 8. Source acknowledgment

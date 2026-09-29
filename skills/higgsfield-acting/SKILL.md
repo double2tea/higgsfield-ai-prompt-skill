@@ -50,7 +50,7 @@ prompt. It does not change camera, light, wardrobe, or grade.
 |---|---|---|
 | **Craft** — why the character does anything | **this skill** | objective, obstacle, tactics, beats, subtext, status, business |
 | Muscle | `../higgsfield-facs/SKILL.md` | facial Action Unit codes (AU12, AU6…) |
-| Named expressions | `../higgsfield-soul/SKILL.md` § Micro-Expressions | expression vocabulary for identity work |
+| Named expressions | [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions | expression vocabulary for identity work |
 | Production form | `../higgsfield-seedance/HELL-GRIND.md` § Two extra blocks | the CHARACTER ACTING block this output fills |
 | Backstory | `../higgsfield-character-design/SKILL.md` | who the character is before any scene exists |
 | Structure | `../higgsfield-scene-engine/SKILL.md` | whether the scene earns its credits — it uses *goal*, *obstacle* and *tactic* at the plot level; the term map is in its § Where this sits before prompting |
@@ -630,6 +630,6 @@ it will be pasted verbatim into the audio field.
   dialogue construction, and the micro-life rules
 - `../higgsfield-seedance-2-5/SKILL.md` — 2.5's observable-cue emotional direction
 - `../higgsfield-facs/SKILL.md` — muscle-level facial control by Action Unit code
-- `../higgsfield-soul/SKILL.md` — identity consistency and micro-expression vocabulary
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) — identity consistency and micro-expression vocabulary
 - `../higgsfield-character-design/SKILL.md` — the story bible upstream of any profile
 - `../higgsfield-audio/SKILL.md` — where the locked voice prompt is delivered

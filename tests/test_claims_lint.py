@@ -64,15 +64,14 @@ def v335_tree(tmp_path_factory):
 
 @pytest.fixture(scope="module")
 def specs_2026_08_07(tmp_path_factory):
-    """A specs dir as it stood at the 2026-08-07 snapshot (video regenerated
-    from the committed snapshot; image/audio copied — no s25 claim reads them)."""
-    import sync_specs
-    snap = REPO / "specs" / "models_explore_snapshot_2026-08-07.json"
-    if not snap.exists():
-        pytest.fail("fixture premise gone: the committed 2026-08-07 snapshot is missing")
+    """Historical 720p-only Seedance 2.5 spec for the doctrine plant."""
     d = tmp_path_factory.mktemp("specs_0807")
-    (d / "model-specs.json").write_text(sync_specs.emit_json(sync_specs.build_spec(snap)),
-                                        encoding="utf-8")
+    old = json.loads((REPO / "specs" / "model-specs.json").read_text(encoding="utf-8"))
+    old["snapshot_date"] = "2026-08-07"
+    for model in old["models"]:
+        if model["id"] == "seedance_2_5":
+            model["resolutions"] = ["480p", "720p"]
+    (d / "model-specs.json").write_text(json.dumps(old), encoding="utf-8")
     for name in ("image-model-specs.json", "audio-model-specs.json", "3d-model-specs.json"):
         shutil.copy(REPO / "specs" / name, d / name)
     return d

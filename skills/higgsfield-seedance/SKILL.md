@@ -556,7 +556,7 @@ reference is the real one:
   change, or a plate or diagram regenerated — and a changed asset is a **new asset with a new
   name, never an overwrite**. One character in a dorm room and the same character in a
   hospital bed are two assets of one man. The identity discipline behind that split lives in
-  `../higgsfield-soul/SKILL.md` § The Untouched Base; this bullet is only the naming half of
+  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § The Untouched Base; this bullet is only the naming half of
   it. A location carries a version too once its plate is regenerated — the staging-side form
   (`@loc_…_v2` beside `@staging_…_v2`) bumps only the tag whose image changed.
 - Tags are arbitrary strings, so mixed case is safe and **consistency is the only rule**.
@@ -950,7 +950,7 @@ reference"` (crowd lineup sheet, the clone-army fix) — are catalogued in
 Locks main-character identity across shots — face, build, distinguishing
 marks. Almost always an image reference; for highest consistency, use
 the Soul ID character sheet documented in
-`../higgsfield-soul/SKILL.md` § Character Sheet Creation.
+[archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation.
 
 Pattern in a Seedance prompt:
 
@@ -1726,7 +1726,7 @@ is not a workflow Seedance supports.
 | Content-filter pass/fail | |
 
 To carry a look you approved into the final render, use the documented
-transfer mechanism: the **Hero Frame** (`../higgsfield-assist/SKILL.md`)
+transfer mechanism: the **Hero Frame** ([archived upstream higgsfield-assist source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-assist/SKILL.md))
 plus **start/end-frame pinning** (start_image / end_image reference roles —
 see § Reference Roles above). Pin the frame, not the roll. Fine-detail
 judgments must be **re-checked at final resolution** — 480p hides exactly

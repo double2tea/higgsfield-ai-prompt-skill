@@ -1,5 +1,12 @@
 # Changelog
 
+## platform-cut — 2026-09-29
+
+- Removed active routes into the eleven platform-specific packages cut from this branch; kept archived upstream links where they document model or production provenance.
+- Replaced operational Higgsfield CLI commands and stale cost quotes in the generated user guide and eval examples with current-executor schema and quote checks.
+- Adapted preflight, validation, memory, and eval tooling to read committed snapshots after the three spec refresh scripts were removed. Snapshot source and age checks remain; byte-for-byte regeneration is unavailable in this cut.
+- Directed Codex and Claude Code installation through CC Switch on the fork's `platform-cut` branch.
+
 ## v3.40.0 — 2026-09-26
 
 **Model-catalog drift: every recommended model name checked against the live catalog.** On

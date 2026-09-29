@@ -456,7 +456,7 @@ Style: Cinematic, Kodak Vision3 500T, desaturated teal shadows, warm highlights.
 ## Related skills
 - `higgsfield-camera` — Video camera controls (this skill covers still-image composition)
 - `higgsfield-style` — Visual styles and lighting techniques
-- `higgsfield-soul` — Soul ID for character-consistent image series
+- `higgsfield-character-design` — character sheets for consistent image series
 - `higgsfield-cinema` — Cinema Studio optical physics engine for image generation
 - `higgsfield-models` — Image model selection (Soul 2.0, Nano Banana, Seedream, etc.)
 - `templates/` — Annotated genre-specific prompt templates

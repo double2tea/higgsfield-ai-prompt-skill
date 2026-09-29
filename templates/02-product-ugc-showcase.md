@@ -43,7 +43,7 @@ Sound: gentle liquid pour, soft ceramic texture.
 - **Temporal/Consistency**: One camera movement for the reveal, one for the detail shot — don't combine
 - **Content Filter/Safety**: Never use brand names — describe the product by appearance only
 
-> **Identity/Motion separation:** If a person appears in this shot and you're using Soul ID, split the prompt into Identity Block and Motion Block per the rule in `higgsfield-soul`. See template 06 (Portrait/Character Intro) for the full pattern.
+> **Identity/Motion separation:** If a person appears in this shot, keep the character description separate from action direction. See template 06 (Portrait/Character Intro) for the full pattern.
 
 ## Common mistakes
 1. **Naming the brand** — "A Nike sneaker" gets filtered. Say "a white athletic sneaker with a minimal swoosh-like logo" (or no logo at all).

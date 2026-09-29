@@ -201,5 +201,5 @@ Result: Diverse content, unified by a consistent artistic treatment.
 ## Related skills
 - `higgsfield-style` — Cinematic styles (photorealistic territory; Mixed Media is artistic territory)
 - `higgsfield-motion` — Motion presets (different from Mixed Media presets)
-- `higgsfield-moodboard` — Moodboard for project-level style consistency
+- `higgsfield-style` — project-level style consistency
 - `templates/` — Annotated genre templates

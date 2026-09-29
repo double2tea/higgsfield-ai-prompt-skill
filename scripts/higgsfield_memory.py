@@ -242,8 +242,8 @@ _LEDGER_OPTIONAL = {"mode", "resolution", "aspect", "duration_s", "internal_cuts
                     "vision_reason", "vision_evidence"}
 
 
-# Every generated spec the ledger accepts model ids from, plus the append-only
-# retired-id tombstones (see scripts/sync_specs.py). Until v3.37.0 only the
+# Every committed spec the ledger accepts model ids from, plus the append-only
+# retired-id tombstones. Until v3.37.0 only the
 # VIDEO specs were read, so every image/audio generation was rejected, and a
 # model leaving the catalog (llm_text, 09-26) would turn append-only history red.
 SPEC_FILES = ("model-specs.json", "image-model-specs.json",
@@ -293,16 +293,37 @@ def _current_spec_ids() -> set:
 
 
 def load_retired_ids() -> set:
-    """The PROVEN retired-id tombstones (sync_specs.proven_retired): an id a
-    committed snapshot carried and no newest snapshot does. A hand-added
-    tombstone is not trusted — it used to whitelist any id in the ledger.
-    Fails closed: an unreadable tombstone file or snapshot history yields
-    no retired ids (history rows then turn red loudly, never silently green)."""
+    """Trust a retired id only when its named complete snapshot carried it.
+
+    The committed current specs must no longer carry the id or an alias.
+    Missing or malformed proof fails closed rather than whitelisting a hand-
+    added tombstone in the append-only ledger.
+    """
     try:
-        import sync_specs
-        return set(sync_specs.proven_retired(SPECS_ROOT))
-    except (OSError, ValueError, AttributeError, ImportError):
+        retired = json.loads((SPECS_ROOT / RETIRED_FILE).read_text(encoding="utf-8"))["retired"]
+    except (OSError, ValueError, KeyError, TypeError):
         return set()
+    if not isinstance(retired, dict):
+        return set()
+    current = _current_spec_ids()
+    proven = set()
+    for mid, info in retired.items():
+        if not isinstance(info, dict) or mid in current:
+            continue
+        source = info.get("last_snapshot")
+        if not isinstance(source, str) or not source.startswith("models_explore_snapshot_") \
+                or "/" in source or "\\" in source:
+            continue
+        try:
+            dump = json.loads((SPECS_ROOT / source).read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        items = dump.get("items") if isinstance(dump, dict) else None
+        if isinstance(dump, dict) and dump.get("has_more") is False and isinstance(items, list) \
+                and len(items) >= 3 and any(isinstance(m, dict) and m.get("id") == mid
+                                            for m in items):
+            proven.add(mid)
+    return proven
 
 
 def ledger_path(project: str) -> Path:
@@ -402,7 +423,7 @@ def validate_ledger_row(row: dict, project: str, prior_ids: set,
     # hand later (`ts` is caller-supplied, the file is plain JSON). Only the
     # write path (log_gen_row) refuses new retired-id rows. Upgrade path:
     # reject rows whose ts is later than the first snapshot that no longer
-    # carries the id (sync_specs tombstone + snapshot dates), or have
+    # carries the id (retired-id tombstone + snapshot dates), or have
     # log_gen_row sign rows so a hand-appended row is detectable.
     if model_ids:
         if model not in model_ids:
@@ -814,7 +835,7 @@ def log_gen_row(project: str, fields: dict) -> dict:
     if not model_ids:
         raise LedgerError("no specs/*model-specs.json readable — "
                           "the ledger validates model ids against the specs "
-                          "layer (run: python3 scripts/sync_specs.py --type <t>)")
+                          "layer (restore the committed specs or verify the selected provider)")
     path = ledger_path(project)
     db = load_ledger(path)
 

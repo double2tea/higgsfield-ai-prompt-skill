@@ -58,9 +58,14 @@ from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
-# The CLI's media-role params (start_image, image_references, mask, …): the
-# same test the tripwire and the cross-check use.
-from refresh_specs import is_media_role as is_cli_media_param
+# Media-role names in the committed baseline. Keep this read-only preflight
+# independent of the removed live CLI refresh tooling.
+MEDIA_ROLE_RE = re.compile(
+    r"^(?:mask|image|video|audio|start_image|end_image|input_\w+|\w+_references?)$")
+
+
+def is_cli_media_param(name: str) -> bool:
+    return bool(MEDIA_ROLE_RE.match(name or ""))
 
 ROOT = Path(__file__).resolve().parent.parent
 SPECS_DIR = ROOT / "specs"
@@ -774,7 +779,7 @@ def load_baseline(path: Path = BASELINE_DEFAULT) -> dict:
     Every top-level section that is a {model_id: entry} map is read — not a
     fixed video/image/audio list — so a regenerated baseline that grows a new
     catalog (3D) is covered without an edit here. Rule entries may be plain
-    CEL strings (the refresh_specs.py shape) or {"cel", "message"} dicts (the
+    CEL strings or {"cel", "message"} dicts (the
     raw `model get --json` shape).
 
     A model is "on record" only when its entry CARRIES a `rules` list — an
@@ -980,13 +985,13 @@ class DurationPolicy:
 def duration_policy(spec: dict) -> DurationPolicy | None:
     """The legal duration surface of one spec model.
 
-    sync_specs normalizes wan3_0's `duration` to {min: -1, max: 30} — the -1
+    The committed spec represents wan3_0's `duration` as {min: -1, max: 30} — the -1
     is NOT a length but the smart-duration sentinel ("-1 to let the model
     choose … billed as 10 seconds"); the real length range (2–30) lives only
     in the parameter description. A negative min is therefore read as the
     sentinel and the true floor re-derived from the description; if it can't
     be, lengths are reported UNCHECKED rather than passed. A spec that carries
-    an explicit {"smart": -1} key (the proposed sync_specs shape) is honored."""
+    an explicit {"smart": -1} key is honored."""
     d = spec.get("duration")
     if not d:
         return None
@@ -1332,9 +1337,9 @@ def run_preflight(model_arg: str, params: dict, media: dict, *,
     snap = snaps.get(otype) if otype in snaps else \
         max((d for d in snaps.values() if d), default=None)
     if captured and snap and captured < snap:
-        notes.append(f"CLI baseline rules captured {captured} predate the specs "
-                     f"snapshot {snap} — rules may be stale; refresh with "
-                     "scripts/refresh_specs.py --update-baseline")
+        notes.append(f"Committed CLI baseline rules captured {captured} predate "
+                     f"the specs snapshot {snap} — verify current rules with the "
+                     "selected execution provider before submission")
     return PreflightReport(model_id, checks, results, notes, rules_on_record)
 
 
@@ -1366,7 +1371,7 @@ def render_report(rep: PreflightReport, strict: bool = False) -> str:
     if rep.verdict() == "UNCHECKED":
         lines.append("  Some constraints could not be verified"
                      + (" — --strict: failing." if strict else
-                        " — verify live (`higgsfield model get <id> --json`)."))
+                        " — verify against the selected provider's current schema."))
     return "\n".join(lines)
 
 

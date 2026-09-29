@@ -69,7 +69,7 @@
 | Model | Quality | Faces | Style range | Speed | Best for |
 |-------|---------|-------|-------------|-------|----------|
 | Soul 2.0 | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★★★☆ | Fashion, portrait, aesthetic |
-| Soul Cinema Preview | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★★★☆ | Cinematic keyframes, close-ups, film grain — **no catalog model by this name as of the 2026-09-26 snapshot; may be UI-only — verify in the live UI before recommending**; the catalog's `soul_cinematic` is *Soul Cinema*, which the repo documents as a distinct model (`skills/higgsfield-soul/SKILL.md` § Soul Cinema) |
+| Soul Cinema Preview | ★★★★★ | ★★★★★ | ★★★☆☆ | ★★★★☆ | Cinematic keyframes, close-ups, film grain — **no catalog model by this name as of the 2026-09-26 snapshot; may be UI-only — verify in the live UI before recommending**; the catalog's `soul_cinematic` is *Soul Cinema*, which the repo documents as a distinct model ([archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Soul Cinema) |
 | Soul Cast | ★★★★☆ | ★★★★★ | ★★★☆☆ | ★★★☆☆ | Consistent cinematic character identity (16:9, `budget` 10–500) |
 | Soul Location | ★★★★☆ | — | ★★★☆☆ | ★★★★☆ | Environment / location generation, 9 aspect ratios incl. 21:9 + 9:21 |
 | Kling Image 3.0 | ★★★★★ | ★★★★★ | ★★★★☆ | ★★★★☆ | Native 4K, series mode, storyboarding — **not in the API catalog as of the 2026-09-26 snapshot; may be UI-only — verify in the live UI before recommending** |

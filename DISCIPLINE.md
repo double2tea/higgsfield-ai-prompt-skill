@@ -74,7 +74,7 @@ the iteration loop tests against.
 **When to apply:** Any multi-shot or multi-character output; any work
 that needs to hold consistency across cuts.
 
-**Demonstrated in:** `skills/higgsfield-soul/SKILL.md` § Character
+**Demonstrated in:** [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character
 Anchor Block (10-attribute pre-shot lock) + `skills/higgsfield-
 seedance/SKILL.md` § Frame Coordinate System + § Per-Image Role
 Convention.
@@ -117,7 +117,7 @@ never edits — history is append-only.
 
 **Demonstrated in:** `db/ledger/README.md` (schema + controlled
 vocabularies) + `skills/higgsfield-recall/SKILL.md` § Log the Generation
-Result (agent-side hook) + `skills/higgsfield-assist/SKILL.md` § Quote
+Result (agent-side hook) + [archived upstream higgsfield-assist source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-assist/SKILL.md) § Quote
 From the Ledger, Not From Vibes (read path).
 
 ## Tier 2 — Output Discipline
@@ -225,8 +225,8 @@ operational context (tool selection, failure modes, workflow
 positioning).
 
 **Demonstrated in:** `image-models.md` § Nano Banana Pro Workflow
-positioning (two-tool pipeline routing baked in) + `skills/
-higgsfield-soul/SKILL.md` § Two-Tool Refinement Pipeline (~600 + ~200
+positioning (two-tool pipeline routing baked in) + the archived upstream Soul
+two-tool refinement example (~600 + ~200
 generations anchor baked into pipeline framing).
 
 ### Anti-Bombast

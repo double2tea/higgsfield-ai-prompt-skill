@@ -303,9 +303,9 @@ What this template demonstrates: educational / clean-label register (confident, 
 When this satellite's workflow doesn't apply, route to:
 
 - **General-purpose GPT Image 2.0 prompts** → [parent SKILL.md](SKILL.md). The three-format taxonomy (Format A JSON / Format B prose / Format C meta-prompt) covers everything that isn't ad-format recreation.
-- **Marketing Studio video ad workflows** → [higgsfield-marketing-studio](../higgsfield-marketing-studio/SKILL.md). When the user wants a 4-15s ad video rather than a static image ad.
-- **Brand-kit-aware DTC ad image generation (Higgsfield-native)** → [the Marketing Studio cross-surface-workflow.md](../higgsfield-marketing-studio/cross-surface-workflow.md) § 3 covers `ms_image` / "DTC Ads" — Higgsfield's native image-generation surface for ad work. When brand-kit consistency across many images matters more than the reference-ad-recreation pattern this satellite documents.
-- **The broader cross-surface workflow for end-to-end ad campaigns** → [the Marketing Studio cross-surface-workflow.md](../higgsfield-marketing-studio/cross-surface-workflow.md) § 2 documents Adil's full four-surface recipe (GPT Image 2.0 → Soul Cinema → Nano Banana Pro → Marketing Studio) for end-to-end campaign production. The brand-identity reuse pattern there is the parallel to the brand-vs-structure separation rule documented in this satellite's § 4.
+- **Video ad workflows** → [pipeline SKILL.md](../higgsfield-pipeline/SKILL.md). Select and verify the actual video model with the chosen executor.
+- **Brand-kit-aware DTC ad images** → `ms_image` / "DTC Ads" is a Higgsfield-specific surface; verify it with the current executor before use.
+- **End-to-end campaigns** → [pipeline SKILL.md](../higgsfield-pipeline/SKILL.md). The brand-identity reuse pattern parallels the brand-vs-structure separation rule in this satellite's § 4.
 
 ---
 

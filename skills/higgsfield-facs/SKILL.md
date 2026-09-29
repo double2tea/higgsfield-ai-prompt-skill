@@ -1,6 +1,6 @@
 ---
 name: higgsfield-facs
-description: "Controls facial expressions in Seedance 2.0 with FACS (Facial Action Coding System) Action Unit codes — muscle-level direction (AU12 = lip-corner puller, AU6 = cheek raiser) instead of emotion labels. Use whenever the user wants precise facial acting, a forced/uncanny/mixed expression, micro-performance in a close-up, monologue or dialogue facial beats, a 'which AU code for anger/fear/disgust' answer, or to generate a FACS reference sheet for a character. Pairs with higgsfield-soul Micro-Expressions (named expressions), higgsfield-audio (dialogue + lip-sync), and higgsfield-gpt-image-2 (the reference-sheet image)."
+description: "Controls facial expressions in Seedance 2.0 with FACS (Facial Action Coding System) Action Unit codes — muscle-level direction (AU12 = lip-corner puller, AU6 = cheek raiser) instead of emotion labels. Use whenever the user wants precise facial acting, a forced/uncanny/mixed expression, micro-performance in a close-up, monologue or dialogue facial beats, a 'which AU code for anger/fear/disgust' answer, or to generate a FACS reference sheet for a character. Pairs with higgsfield-character-design (character references), higgsfield-audio (dialogue + lip-sync), and higgsfield-gpt-image-2 (the reference-sheet image)."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, seedance-2.0, facs, action-units, facial-expression, micro-expression, dialogue, lip-sync, performance]
@@ -67,7 +67,7 @@ Three layers, increasing resolution:
 
 | Layer | Surface | Granularity |
 |---|---|---|
-| Named expression | `../higgsfield-soul/SKILL.md` § Micro-Expressions (Suppressed Smile, Cold Calculation…) | A whole emotion in one label |
+| Named expression | [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions (Suppressed Smile, Cold Calculation…) | A whole emotion in one label |
 | Behavior channel | `../../vocab.md` § Emotion as Visible Behavior — Channels (breath, jaw tension, eye behavior…) | Emotion → observable behavior |
 | **Action Unit (this skill)** | AU codes | Emotion → **named muscle** |
 
@@ -367,7 +367,7 @@ of them is still [EMPIRICAL].
 mask is genuine-smile muscles (AU6+AU12) fighting fear muscles (AU1+AU7) in the
 same frame; "bitter amusement" is AU12 with no AU6 plus a faint AU4. Build a
 blend by listing the AUs of both emotions and letting the conflict read — that is
-the FACS path to `../higgsfield-soul/SKILL.md` § Micro-Expressions like
+the FACS path to [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions like
 Suppressed Smile and Nervous Composure.
 
 ---
@@ -557,7 +557,7 @@ fully commits to either; the audience reads both at once.
 - `../higgsfield-seedance/SKILL.md` — the base prompt grammar every FACS prompt
   obeys (six slots, Prompt-Craft Laws, preflight linter, § Voice Rewrite "physics
   not emotion" — FACS is its muscle-level case)
-- `../higgsfield-soul/SKILL.md` § Micro-Expressions — 19 named expressions; FACS
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions — 19 named expressions; FACS
   is the precise-control layer beneath them
 - `../higgsfield-audio/SKILL.md` § Audio as a Conditioning Input — the
   `[AUDIO: Xs]` block + lip-sync for dialogue FACS

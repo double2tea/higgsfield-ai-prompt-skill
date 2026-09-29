@@ -27,6 +27,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent  # scripts/ → repo root
 SPECS_DIR = ROOT / "specs"
 SPECS_JSON = SPECS_DIR / "model-specs.json"
+SPEC_JSON_FILES = {"video": "model-specs.json", "image": "image-model-specs.json",
+                   "audio": "audio-model-specs.json", "3d": "3d-model-specs.json"}
 SNAPSHOT_MAX_AGE_DAYS = 30
 
 # model-guide.md row names that don't normalize directly to a snapshot model
@@ -601,67 +603,66 @@ def _snapshot_age_gate(label: str, stamp: str, age: int):
     default mode it stays a warning."""
     if age > SNAPSHOT_MAX_AGE_DAYS:
         detail = (f"{stamp}, {age}d old (> {SNAPSHOT_MAX_AGE_DAYS}) — "
-                  "re-dump models_explore into specs/ and rerun sync_specs.py")
+                  "review the current provider schema and refresh the committed snapshot")
         if STRICT:
             check(False, f"{label} fresh", detail)
         else:
             warn(f"{label} is {age} days old (>{SNAPSHOT_MAX_AGE_DAYS})",
-                 "re-dump models_explore into specs/ and rerun sync_specs.py")
+                 "review the current provider schema and refresh the committed snapshot")
     else:
         check(True, f"{label} fresh ({stamp}, {age}d old)")
 
 
-def check_specs_regeneration(sync_specs) -> bool:
-    """Every spec type (video/image/audio/3d) regenerated from its NEWEST
-    snapshot must byte-match the committed files; the retired-id tombstones
-    must be complete. A type with neither snapshot nor spec is a TODO (warn);
-    a spec without a snapshot is a failure. Returns True when all passed."""
-    all_ok = True
-    for t in sync_specs.TYPES:
-        json_path = sync_specs.output_paths(t, SPECS_DIR)[1]
+def check_specs_sources() -> None:
+    """Check committed spec files against their named source snapshots.
+
+    The removed generator's byte-for-byte regeneration check is unavailable;
+    this check proves only that each committed output names a complete source.
+    """
+    for output_type, filename in SPEC_JSON_FILES.items():
+        path = SPECS_DIR / filename
+        if not check(path.exists(), f"{output_type} specs present", filename):
+            continue
         try:
-            snap, stale = sync_specs.stale_outputs(t, SPECS_DIR)
-        except FileNotFoundError:
-            if t == "video" or json_path.exists():
-                all_ok &= check(False, f"{t} specs generated from a {t} snapshot",
-                                f"no {t} snapshot in specs/ — dump models_explore "
-                                f"(type={t}) and run python3 scripts/sync_specs.py --type {t}")
-            else:
-                warn(f"{t}-model specs are TODO (no type={t} snapshot yet)",
-                     f"dump models_explore type={t} into specs/ when ready")
+            spec = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as e:
+            check(False, f"{output_type} specs parse", str(e))
             continue
-        except Exception as e:  # noqa: BLE001 — report, don't crash the validator
-            all_ok &= check(False, f"{t} specs regeneration check", f"{type(e).__name__}: {e}")
+        if not isinstance(spec, dict):
+            check(False, f"{output_type} specs shape", "expected a JSON object")
             continue
-        detail = ""
-        if stale:
-            try:
-                cited = json.loads(json_path.read_text(encoding="utf-8")).get("snapshot_file")
-            except (OSError, json.JSONDecodeError):
-                cited = None
-            detail = f"stale: {', '.join(stale)}"
-            if cited and cited != snap.name:
-                detail += f" (generated from {cited}; newest snapshot is {snap.name})"
-            detail += f" — rerun python3 scripts/sync_specs.py --type {t}"
-        all_ok &= check(not stale, f"{t} specs match regeneration from newest snapshot "
-                                   f"({snap.name})", detail)
-    retired_stale = sync_specs.retired_is_stale(SPECS_DIR)
-    problems = sync_specs.retired_problems(SPECS_DIR) if retired_stale else []
-    all_ok &= check(not retired_stale,
-                    f"specs/{sync_specs.RETIRED_FILE} tombstones every retired model id, "
-                    "each proven by the snapshot history",
-                    "" if not retired_stale else
-                    "; ".join(problems[:4]) + " — rerun python3 scripts/sync_specs.py "
-                    "(it keeps every proven entry and drops unproven ones)")
-    return all_ok
+        source = spec.get("snapshot_file")
+        expected = (f"models_explore_snapshot_{spec.get('snapshot_date')}.json"
+                    if output_type == "video" else
+                    f"models_explore_snapshot_{output_type}_{spec.get('snapshot_date')}.json")
+        if not check(source == expected, f"{output_type} snapshot provenance",
+                     f"recorded {source!r}; expected {expected!r}"):
+            continue
+        pattern = (r"models_explore_snapshot_\d{4}-\d{2}-\d{2}\.json" if output_type == "video"
+                   else rf"models_explore_snapshot_{output_type}_\d{{4}}-\d{{2}}-\d{{2}}\.json")
+        candidates = sorted(p.name for p in SPECS_DIR.iterdir() if re.fullmatch(pattern, p.name))
+        check(bool(candidates) and source == candidates[-1],
+              f"{output_type} specs name newest snapshot",
+              f"recorded {source!r}; newest {candidates[-1] if candidates else '(none)'}")
+        snapshot = SPECS_DIR / source
+        if not check(snapshot.is_file(), f"{output_type} source snapshot exists", source):
+            continue
+        try:
+            dump = json.loads(snapshot.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as e:
+            check(False, f"{output_type} source snapshot parses", str(e))
+            continue
+        check(isinstance(dump, dict) and dump.get("has_more") is False
+              and isinstance(dump.get("items"), list) and bool(dump["items"]),
+              f"{output_type} source snapshot is complete",
+              "has_more must be false and items nonempty")
 
 
 def check_typed_snapshot_ages(types=("image", "audio", "3d")):
     """Snapshot age per generated spec file — same trust line for every type.
     Until v3.2x only the video file aged out loudly; 3d joined in v3.37.0."""
-    import sync_specs
     for t in types:
-        path = sync_specs.output_paths(t, SPECS_DIR)[1]
+        path = SPECS_DIR / SPEC_JSON_FILES[t]
         label = f"{t} specs snapshot"
         if not path.exists():
             # A missing spec file has no age to check — that is UNCHECKED,
@@ -669,7 +670,7 @@ def check_typed_snapshot_ages(types=("image", "audio", "3d")):
             # is always strict); a missing video spec always fails.
             if t == "video" or STRICT:
                 check(False, f"{label} present", f"{path.name} missing — its age "
-                      "cannot be checked; run python3 scripts/sync_specs.py --type " + t)
+                      "cannot be checked; restore or review its source snapshot")
             else:
                 warn(f"{label} not checked", f"{path.name} missing")
             continue
@@ -683,9 +684,9 @@ def check_typed_snapshot_ages(types=("image", "audio", "3d")):
 
 
 def check_model_specs():
-    """The specs layer: present, fresh, regenerable, and not contradicted."""
+    """The committed specs layer: present, sourced, fresh, and not contradicted."""
     if not check(SPECS_JSON.exists(), "specs/model-specs.json exists",
-                 "" if SPECS_JSON.exists() else "run: python3 scripts/sync_specs.py"):
+                 "" if SPECS_JSON.exists() else "restore the committed specs file"):
         return
     try:
         spec = json.loads(SPECS_JSON.read_text(encoding="utf-8"))
@@ -702,17 +703,17 @@ def check_model_specs():
         return
     _snapshot_age_gate("video specs snapshot", spec["snapshot_date"], age)
 
-    # Generated files must match a regeneration from EACH type's NEWEST
-    # snapshot. Two holes closed in v3.37.0: only video was ever regenerated
-    # (a hand-edited image/audio spec passed), and it was rebuilt from the
-    # snapshot the JSON names ITSELF — so a newer dump committed without a
-    # sync passed too. Now every type is rebuilt from find_snapshot().
+    check_specs_sources()
+    retired_path = SPECS_DIR / "retired-model-ids.json"
     try:
-        import sync_specs
-    except ImportError as e:
-        check(False, "sync_specs.py imports", str(e))
-        return
-    check_specs_regeneration(sync_specs)
+        retired = json.loads(retired_path.read_text(encoding="utf-8"))["retired"]
+    except (OSError, json.JSONDecodeError, KeyError, TypeError) as e:
+        check(False, "retired-id record parses", str(e))
+    else:
+        import higgsfield_memory as hm
+        check(isinstance(retired, dict) and set(retired) == hm.load_retired_ids(),
+              "retired ids have snapshot proof",
+              "an id is not proven by its named complete snapshot or remains current")
 
     # model-guide.md numbers must not contradict the snapshot.
     guide = ROOT / "model-guide.md"
@@ -1025,8 +1026,7 @@ def main():
     global STRICT
     STRICT = args.strict
     if args.snapshot_age:
-        # Auth-free staleness gate for the weekly spec-drift job: always strict
-        # (a stale snapshot is the failure this mode exists to surface).
+        # Read-only staleness gate for the committed snapshots.
         STRICT = True
         print("\n[ SPEC SNAPSHOT AGE — all types, strict ]")
         check_typed_snapshot_ages(("video", "image", "audio", "3d"))
@@ -1067,7 +1067,7 @@ def main():
         "model-guide.md", "image-models.md", "vocab.md",
         "prompt-examples.md", "photodump-presets.md",
         "production-benchmarks.md",
-        "scripts/higgsfield_memory.py", "scripts/sync_specs.py",
+        "scripts/higgsfield_memory.py",
         "scripts/build_index.py", "INDEX.md",
         "specs/model-specs.yaml", "specs/model-specs.json", "specs/MODEL-SPECS.md",
         "db/filter-memory.json", "db/quality-memory.json",

@@ -56,7 +56,6 @@ ENUM_RULES = {"ar-not-supported", "resolution-not-supported", "mode-not-supporte
               "platform-rule", "media-role-not-supported"}
 VERDICT_ORDER = {"PASS": 0, "WARN": 1, "FAIL": 2}
 VALID_EXPECT = ("legal", "illegal")
-_SNAPSHOT_RE = re.compile(r"models_explore_snapshot_(\d{4}-\d{2}-\d{2})\.json")
 
 
 class HarnessError(Exception):
@@ -66,7 +65,7 @@ class HarnessError(Exception):
 def _spec_index() -> dict:
     index = sl.load_specs(SPECS_PATH)
     if not index:
-        raise SystemExit(f"specs missing/invalid: {SPECS_PATH} — run python3 scripts/sync_specs.py")
+        raise SystemExit(f"specs missing/invalid: {SPECS_PATH} — restore the committed specs file")
     return index
 
 
@@ -130,36 +129,13 @@ def _illegal_findings(response: str, spec: dict) -> list:
     return [f for f in findings if f.severity == "FAIL" and f.rule in ENUM_RULES]
 
 
-_PRIOR_CACHE: list | None = None
-
-
 def _prior_indexes() -> list[tuple[str, dict]]:
-    """(snapshot date, spec index) for every committed video snapshot OLDER
-    than the one specs/model-specs.json was generated from, newest first.
-    Built with sync_specs (read-only) — no git history needed, so it works on
-    a shallow CI checkout. A snapshot the current generator can't read is
-    skipped."""
-    global _PRIOR_CACHE
-    if _PRIOR_CACHE is not None:
-        return _PRIOR_CACHE
-    out: list[tuple[str, dict]] = []
-    try:
-        import sync_specs
-        current = json.loads(SPECS_PATH.read_text(encoding="utf-8")).get("snapshot_file", "")
-        cur = _SNAPSHOT_RE.fullmatch(current)
-        dated = sorted((m.group(1), p) for p in SPECS_DIR.glob("models_explore_snapshot_*.json")
-                       if (m := _SNAPSHOT_RE.fullmatch(p.name)))
-        for stamp, path in reversed(dated):
-            if cur and stamp >= cur.group(1):
-                continue
-            try:
-                out.append((stamp, sl.index_spec(sync_specs.build_spec(path))))
-            except Exception:  # noqa: BLE001 — an unreadable old snapshot is skipped
-                continue
-    except Exception:  # noqa: BLE001 — attribution is advisory; never crash a run
-        out = []
-    _PRIOR_CACHE = out
-    return out
+    """Historical flip attribution requires the removed spec generator.
+
+    Current-spec legality still runs; no earlier generated spec is inferred
+    from a raw snapshot.
+    """
+    return []
 
 
 def _current_snapshot(specs: dict) -> str:

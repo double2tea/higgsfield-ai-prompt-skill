@@ -246,7 +246,7 @@ LIVE_RULES = Path(__file__).parent / "fixtures" / "cli_rules_live_2026-09-26.jso
 LINT = Path(__file__).resolve().parents[1] / "scripts" / "seedance_lint.py"
 NO_RULES = {"rules": {}}
 
-WAN3 = {  # shape of specs/model-specs.json wan3_0 as sync_specs emits it (2026-09-26)
+WAN3 = {  # shape of committed specs/model-specs.json wan3_0 (2026-09-26)
     "id": "wan3_0", "name": "Wan 3.0", "aliases": [], "modes": [],
     "aspect_ratios": ["auto", "16:9", "9:16", "1:1", "4:3", "3:4"],
     "resolutions": ["480p", "720p", "1080p"], "constraints": [],

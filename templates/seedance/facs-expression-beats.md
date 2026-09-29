@@ -65,7 +65,7 @@ Beat 3 ([Y-Zs]): [AU codes] (...)
   recipes, worked examples, the not-a-guarantee provenance rule
 - `../../skills/higgsfield-audio/SKILL.md` § Audio as a Conditioning Input —
   `[AUDIO: Xs]` dialogue + lip-sync
-- `../../skills/higgsfield-soul/SKILL.md` § Micro-Expressions — named expressions
+- [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions — named expressions
   that decompose to AU combos
 - `single-character-position.md` (sibling template) — when blocking, not the
   face, is the content

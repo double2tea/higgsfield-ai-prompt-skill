@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> `platform-cut` retains the v3.40 model snapshots but has not yet adapted `validate.py`, `preflight.py`, or the inherited tests/evals to the removal of the spec-sync and drift scripts. The release gate listed below is currently unavailable; do not report this branch as release-ready from those commands.
+> `platform-cut` retains the v3.40 model snapshots. The remaining tooling reads the committed snapshots directly; source checks verify provenance and age, not byte-for-byte regeneration. The release gate below requires a separate run before any release claim.
 
 ## Project Overview
 
@@ -34,8 +34,8 @@ scripts/                  ← Python tooling (run from the repo root)
   ├── generate_user_guide.py ← Release PDF generator (+ validate_user_guide.py,
   │                         sub_skill_descriptions.py)
   └── build_index.py      ← Regenerates INDEX.md + checks QUICK FACTS anchors
-specs/                    ← Machine-readable model specs (generated — never hand-edit;
-                            video + image + audio + 3d, each generated from a dated
+specs/                    ← Committed machine-readable model specs (never hand-edit;
+                            video + image + audio + 3d, each derived from a dated
                             models_explore snapshot; retired-model-ids.json keeps
                             ledger history valid after a model leaves the catalog)
 INDEX.md                  ← Generated heading index of every SKILL.md

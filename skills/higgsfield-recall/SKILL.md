@@ -267,5 +267,5 @@ and the recall system gets smarter with every entry.
 ## Related skills
 - `higgsfield-troubleshoot` — Diagnose and fix specific failures (feeds recall DB)
 - `higgsfield-prompt` — MCSLA formula, Identity/Motion separation
-- `higgsfield-soul` — Character drift prevention (common recall topic)
+- `higgsfield-character-design` — Character drift prevention (common recall topic)
 - `higgsfield-models` — Model-specific failure patterns
