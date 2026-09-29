@@ -1,6 +1,6 @@
 ---
 name: higgsfield-seedance
-description: "Rewrites scene descriptions using professional cinematography language, structures prompts with a six-slot formula (camera + subject + action + setting + style + lighting), and diagnoses content filter rejections via a preflight linter. Use whenever the user asks for a Seedance 2.0 / Seedance Pro prompt, describes a scene for Seedance generation, mentions Seedance, reports a Seedance generation failure or flagged prompt, or is burning credits on Seedance regenerations."
+description: "Use when Seedance 2.0 or Seedance Pro is the selected prompt dialect, or when a generated take on that model needs diagnosis. Covers its cinematography language, prompt structure, and content-filter preflight. A generic Seedance mention or another provider selection does not override an approved prompt or select the Higgsfield executor."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, seedance-2.0, seedance-pro, content-filter, prompt, director, flagged]

@@ -1,6 +1,6 @@
 ---
 name: higgsfield-acting
-description: "Writes the character-performance layer of a video prompt as behavior under pressure, not displayed emotion — objective, obstacle, tactics, beats, subtext, listening, body/status/proxemics, and mandatory eye life. Produces a reusable 150–220-word acting master profile per character plus a per-scene rewrite of it, and a locked voice prompt. Use whenever a prompt needs acting, performance, or emotion direction; whenever characters read wooden, dead-eyed, or 'AI'; whenever a character must stay themselves across many shots; or when the user asks for character behavior, mannerisms, tics, a gait, or how someone reacts. Pairs with higgsfield-facs (muscle-level AU codes) and higgsfield-seedance (the prompt the paragraph goes into)."
+description: "Use when the user asks for character performance or a Higgsfield video shot has a diagnosed acting problem. Offers objective, obstacle, tactics, listening, body and gaze cues, plus an optional reusable acting profile and scene adaptation. Add only the beats and expression detail supported by the brief; pair with higgsfield-facs or the selected model writer when needed."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, acting, performance, character, behavior, emotion, subtext, beats, eye-life, voice, ensemble, master-profile]
@@ -10,6 +10,11 @@ metadata:
 ---
 
 # Higgsfield Acting Director
+
+**Scope:** Use the performance methods below when the brief calls for acting direction
+or a generated performance has a specific problem. Beat counts, the master-profile
+format, eye cues, and the self-check are techniques for those cases, not required
+additions to every prompt. Preserve the user's approved emotional register and shot.
 
 `[OFFICIAL — Higgsfield "Hell Grind" open-source brief]` — the performance system behind
 Higgsfield's 95-minute AI feature film, adapted to this repo's prompt surfaces. That tag

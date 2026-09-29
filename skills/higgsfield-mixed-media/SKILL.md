@@ -1,9 +1,10 @@
 ---
 name: higgsfield-mixed-media
 description: >
-  Use when the user asks about Mixed Media, wants to apply artistic preset styles
-  to an image (Noir, Sketch, Paper, Canvas, Particles, Neon, etc.), combine
-  multiple artistic treatments, or create stylized non-photorealistic outputs.
+  Use for Higgsfield Mixed Media preset selection or artistic style direction
+  when that surface is selected. Covers Noir, Sketch, Paper, Canvas, Particles,
+  Neon, and combined treatments; a generic stylization request does not select
+  Higgsfield as the executor.
 user-invocable: true
 metadata:
   tags: [higgsfield, mixed-media, presets, artistic, noir, sketch, particles, style]

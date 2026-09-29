@@ -1,11 +1,10 @@
 ---
 name: higgsfield-pipeline
 description: >
-  Use when the user wants to create a complete multi-shot video, asks how to chain
-  Higgsfield tools together, wants to build a short film or branded content series,
-  asks "what's the full workflow", needs to connect Popcorn → image → video → Recast
-  → audio → assembly, or wants to understand how the platform works as a production
-  system rather than isolated tools.
+  Use when the user asks to plan a multi-shot Higgsfield production or chain its
+  tools together: Popcorn → image → video → Recast → audio → assembly. This is
+  platform workflow guidance; a generic film or branded-content request does
+  not select Higgsfield as the executor.
 user-invocable: true
 metadata:
   tags: [higgsfield, pipeline, workflow, chain, production, multi-shot, short-film, popcorn, recast]

@@ -1,6 +1,6 @@
 ---
 name: higgsfield-seedance-2-5
-description: "Seedance 2.5 prompt director — the omni-reference dialect. Routes the four generation modes (t2v / omni_reference / video_edit / video_extension), writes explicit @Image/@Video/@Audio reference roles with exclusions, stages 30-second videos into end-state beats, and covers video editing, forward/backward extension, first-last-frame and multi-keyframe control, storyboard grids, blockout rendering, and seamless transitions. Use whenever the user asks for a Seedance 2.5 prompt, mentions Seedance 2.5 / Dreamina / Jimeng, wants a clip longer than 15s on Seedance, wants to EDIT or EXTEND an existing video rather than generate a new one, or supplies more than a handful of image/video/audio references. For Seedance 2.0 (4K, `mode=fast`, or a genre hint) use higgsfield-seedance instead."
+description: "Use when Seedance 2.5 is selected for prompt writing, editing, or extension. Covers its four documented modes and @Image/@Video/@Audio reference roles, plus optional staging and storyboard techniques. Dreamina or Jimeng alone does not select this Higgsfield route; use the chosen provider schema and the requested duration."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, seedance-2.5, dreamina, jimeng, omni-reference, video-edit, video-extension, multi-reference, long-video, keyframes, storyboard, blockout, transitions]

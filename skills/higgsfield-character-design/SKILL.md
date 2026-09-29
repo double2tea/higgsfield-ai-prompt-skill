@@ -1,6 +1,6 @@
 ---
 name: higgsfield-character-design
-description: "Pre-production story-and-character development for Higgsfield projects — the upstream layer that decides WHAT to prompt before any model runs. Use when the user wants to build a character, design a world, develop a story or premise, create a character sheet / character bible / story bible, lock a visual style or 'visual DNA', plan a multi-shot narrative with consistent characters, or says things like 'help me design a character', 'build the world', 'I need a backstory', 'make this character consistent across shots', 'develop my film/series concept', or 'I keep getting generic AI characters'. Routes the locked outputs into higgsfield-prompt + the right model. Adapted from Higgsfield's official character-design framework by @vavavinca."
+description: "Use when a Higgsfield project needs character, world, premise, story bible, visual identity, or multi-shot character consistency before prompt writing. Offers reusable character-sheet methods and routes approved designs to the chosen model writer. A generic story or character-development request may borrow the craft methods without selecting Higgsfield as the executor. Adapted from Higgsfield's character-design framework by @vavavinca."
 user-invocable: true
 metadata:
   tags: [higgsfield, character-design, story, worldbuilding, character-sheet, story-bible, visual-dna, pre-production, consistency, narrative]

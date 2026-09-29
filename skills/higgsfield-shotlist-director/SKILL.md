@@ -1,6 +1,6 @@
 ---
 name: higgsfield-shotlist-director
-description: "Turns a brief, script, scene breakdown, treatment, or story idea into ONE connected director's shotlist for Seedance 2.0 — a single editable HTML artifact with a global Style Prefix, an @-asset glossary, and named per-scene prompts (1a, 1b, 2a…) each in Style → Characters → Scene → CUT 1..N form. Use whenever the user says 'make a shotlist', 'break this script into prompts', 'generate Seedance prompts for this ad/film', 'turn this brief into a shot list', 'director's shotlist', or wants many connected scene prompts rather than one. Also use to revise an existing shotlist (edit-once-propagates: 'change the style prefix everywhere', 'rewrite scene 4', 'split prompt 6'). Each prompt targets 15s; longer scenes split across 1a/1b/1c under one scene number."
+description: "Use when the user requests a connected shotlist for a selected Seedance 2.0 production. Can produce one editable HTML artifact with shared style and asset references plus numbered scene prompts. The 15-second envelope and CUT blocks are workflow options, not requirements for every scene; preserve the requested duration, format, and approved edit plan."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, seedance-2.0, shotlist, director, style-prefix, ad, commercial, artifact, html]
@@ -10,6 +10,10 @@ metadata:
 ---
 
 # Higgsfield Shotlist Director
+
+**Scope:** The 15-second prompts and `CUT` blocks below describe a Seedance 2.0
+shotlist workflow. Keep a requested or approved duration and edit plan; one
+uninterrupted shot is valid. Confirm current limits with the selected executor.
 
 Turn a brief into **one connected shotlist** — not a pile of separate prompts.
 The deliverable is a single editable HTML artifact the user opens in a browser,
@@ -34,7 +38,7 @@ prompts that all inherit both.
 - Continuity carries exits too: an **Off-screen line** (exit side + last state) per just-departed character keeps re-entry direction legal [→](#per-scene-prompt-law)
 - **Edit-once-propagates**: change the prefix once → it changes in every prompt; per-scene **override** lets one scene break the global look [→](#edit-once-and-per-scene-override)
 - Differentiators over a bare shotlist generator: **preflight linter**, **reference-role lanes**, **Elements `@`-auto-attach**, **failure-mode awareness**, **acceptance-rate logging** [→](#what-makes-this-outclass-a-bare-generator)
-- English prompt text only (Seedance expects English), even if the user writes in another language [→](#workflow)
+- Default to Simplified Chinese for new prompt text; preserve user text and machine syntax. Translate for execution only when the selected mode has a verified language requirement [→](#workflow)
 
 ---
 
@@ -333,10 +337,12 @@ into the rest of the repo, which is the whole point:
    default.
 3. **Build the `@`-glossary.** One entry per recurring asset; multi-state variants
    get their own locked entry.
-4. **Block the scenes.** Number them; decide how many 15s prompts each beat needs
-   (honest assessment — a 40s confession is `5a/5b/5c`).
-5. **Write each prompt** in the per-scene law (Style → Characters → Scene → CUT
-   1..N), in **English** even if the user wrote in another language.
+4. **Block the scenes.** Number them; divide a long beat only when the requested
+   duration and selected mode require it.
+5. **Write each prompt** with the style, characters, and scene detail it needs.
+   Use `CUT` blocks only for planned edits. Default to Simplified Chinese;
+   preserve user copy and machine syntax. Translate for execution only when
+   the selected mode has a verified language requirement.
 6. **Preflight every prompt** and flag high-risk shots.
 7. **Generate the HTML** (skeleton below) and present it.
 8. **On revisions**, re-render the file with edits applied; preserve numbering.

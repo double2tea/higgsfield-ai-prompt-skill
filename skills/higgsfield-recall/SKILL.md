@@ -1,13 +1,11 @@
 ---
 name: higgsfield-recall
 description: >
-  Use this skill AUTOMATICALLY before writing any Higgsfield prompt. Query the memory
-  databases for relevant past failures and pre-apply known fixes before the user even
-  hits generate. Triggers include: any request to write a Higgsfield prompt, any use
-  of the higgsfield-prompt skill, any mention of generating a video or image on
-  Higgsfield, any MCSLA prompt construction. This skill should run SILENTLY in the
-  background — don't announce it, just apply what's known. If the databases are empty,
-  skip silently and proceed with normal prompt generation.
+  Use when authoring a new Higgsfield prompt that matches a known past failure,
+  when the user asks to recall earlier results, or when a project has selected
+  the Higgsfield generation ledger. Query relevant memory once and apply only
+  evidence that fits the current request. Status, recovery, and approved-prompt
+  execution do not trigger a new recall or ledger write.
 user-invocable: true
 metadata:
   tags: [higgsfield, recall, memory, pre-check, filter, quality, prompt, generate]
@@ -24,12 +22,9 @@ metadata:
 
 ## Purpose
 
-Before writing any Higgsfield prompt, query both memory databases to find relevant
-past failures. Apply known fixes silently — the user should never have to remember what
-broke before. The system remembers for them.
-
-**This skill runs automatically** as part of any Higgsfield prompt generation.
-It does not interrupt the workflow unless it finds something relevant.
+When a new prompt matches a known failure, the user asks for recall, or the project
+selects this ledger, query relevant memory once. Apply only fixes supported by a
+relevant record; preserve approved prompt text and execution flow.
 
 **Bootstrap status:** The databases ship with seed entries covering the most common
 failure patterns (character drift, VHS style ignored, I2V static output, camera conflicts,
@@ -40,11 +35,10 @@ as the user logs new failures.
 
 ## When to Run
 
-Run a recall check whenever:
-- Writing or improving a Higgsfield prompt (any type)
-- The user mentions a topic, character, action, or style that could match past failures
-- The prompt contains terms that historically triggered content filters
-- The model being selected has previously produced poor results for this type of shot
+Run a recall check when:
+- The user asks to recall earlier results, or this project uses the ledger
+- A new Higgsfield prompt matches a known filter or quality failure
+- The selected model has a recorded failure relevant to this shot
 
 **Do NOT announce running the recall check.** Just run it, apply what's relevant,
 and proceed. Only surface findings when they directly change the prompt.
@@ -161,7 +155,7 @@ For these queries, surface the full relevant entries with:
 
 ---
 
-## Pre-Generation Checklist (run mentally before every prompt)
+## Pre-Generation Checklist (for a routed recall check)
 
 Before finalizing any prompt, check:
 

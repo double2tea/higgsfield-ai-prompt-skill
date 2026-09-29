@@ -1,14 +1,11 @@
 ---
 name: higgsfield
 description: >
-  Use this skill whenever the user asks anything about Higgsfield AI — writing or
-  refining video/image prompts, choosing a model (Kling, Veo, Wan, Seedance,
-  Minimax Hailuo, DoP, Soul, Nano Banana, Seedream, Flux, GPT Image, etc.), camera
-  controls, named motion presets, Cinema Studio 2.5/3.0,
-  troubleshooting failed generations, Photodump,
-  or any mention of higgsfield.ai. Also trigger on generic "write me a video prompt"
-  or "make me an AI video prompt" requests when Higgsfield is the user's configured
-  platform.
+  Use for Higgsfield prompt authoring, model and camera selection, Cinema Studio,
+  Photodump, or diagnosis of a Higgsfield generation. For generic video/image
+  prompt requests, use it only when Higgsfield is the selected platform. Approved
+  prompt execution, job status, recovery, and downloads route to the selected
+  executor without restarting prompt authoring.
 user-invocable: true
 metadata:
   tags: [higgsfield, video, image, prompt, cinematic, AI, filmmaking, motion, camera]
@@ -352,19 +349,19 @@ asking a bookkeeping question. For a requested ledger row, use
 | `higgsfield-motion` | Named preset requests (Explosion, Werewolf, VFX, etc.) |
 | `higgsfield-style` | Visual style / aesthetic questions |
 | `higgsfield-character-design` | Pre-production story bible — premise / world / 9-question character / story spine / visual DNA (before prompting) |
-| `higgsfield-scene-engine` | Scene/sequence structural audit — Goal / Obstacle / Tactic / Reversal / Value Shift (before spending credits) |
+| `higgsfield-scene-engine` | Optional scene/sequence structural audit — Goal / Obstacle / Tactic / Reversal / Value Shift |
 | `higgsfield-recipes` | Genre scene templates |
 | `higgsfield-troubleshoot` | Failed generations / quality issues |
 | `higgsfield-mixed-media` | Artistic preset overlays (Noir, Sketch, Particles, etc.) |
-| `higgsfield-cinema` | Cinema Studio 2.5 + 3.0 + 3.5 / Soul Cast / color grading / optical physics / multi-shot / Elements / Smart mode / @ references / Style Settings / Camera Settings / Manual Style |
+| `higgsfield-cinema` | Cinema Studio / color grading / optical physics / multi-shot / Elements / Smart mode / @ references / Style Settings / Camera Settings / Manual Style |
 | `higgsfield-pipeline` | Multi-shot workflow / tool chaining / full production pipeline |
-| `higgsfield-motion-design` | Animated-ad flow brief → storyboard → Seedance video (**AI pixel render**, not code; classicMD/highMD) |
-| `higgsfield-recall` | Pre-generation memory check / apply past failure fixes |
+| `higgsfield-motion-design` | Optional animated-ad storyboard flow; choose the video or code-motion executor from the brief |
+| `higgsfield-recall` | Recall relevant past failures when requested, matched, or selected for the project |
 | `higgsfield-audio` | Audio design, dialogue, SFX, ambient sound for audio-capable models |
 | `higgsfield-seedance` | Seedance 2.0 / Pro prompt director + content-filter preflight linter (+ `HELL-GRIND.md`, Higgsfield's open-sourced feature-film pipeline) |
-| `higgsfield-seedance-2-5` | Seedance 2.5 omni-reference dialect — the four modes (t2v / omni_reference / video_edit / video_extension), reference-role grammar, 30s staging, editing + forward/backward extension, keyframes, storyboards, blockouts, transitions (+ `VFX-PIPELINE.md`, the AI-VFX production pipeline: asset-class model routing, size-ref frame, the `omni_reference` v2v lane, the four-batch rule, the slop catalog) |
-| `higgsfield-seedance-vfx` | Video-to-video footage transformation for Seedance 2.0 — preserve a real subject + camera move, add a VFX element / swap the environment / drop a photoreal creature / relight to match / sync a timed zoom, run in std 4K |
-| `higgsfield-acting` | Character performance as behavior under pressure — objective / obstacle / tactics / beats / subtext, body + status + proxemics, mandatory eye life, the 150–220-word acting master profile and its per-scene rewrite, locked voice prompt |
+| `higgsfield-seedance-2-5` | Seedance 2.5 omni-reference dialect — generation/edit/extension modes, reference-role grammar, optional staging, keyframes, storyboards, blockouts, transitions, and VFX planning |
+| `higgsfield-seedance-vfx` | Video-to-video footage transformation for a selected Seedance 2.0 route — preserve a real subject + camera move, add VFX / swap the environment / relight to match |
+| `higgsfield-acting` | Character performance as behavior under pressure — objective / obstacle / tactics / subtext, with optional acting profile, beat and gaze detail |
 | `higgsfield-shotlist-director` | Brief/script → one connected Seedance shotlist (style prefix + `@`-glossary + named per-scene prompts) as editable HTML |
 | `higgsfield-facs` | FACS Action Unit codes for precise facial expressions in Seedance 2.0 — forced/uncanny/mixed expressions, close-up dialogue facial acting, emotion→AU recipes, FACS reference sheets |
 | `higgsfield-3d` | 3D meshes (image / multi-view / text → GLB), rigging + animation, remesh / retexture, 3D Body, 3D Jutsu scene projects, 3D turnarounds and 3D staging blockouts |

@@ -3,14 +3,11 @@ name: higgsfield-audio
 description: >
   Use when the user asks about audio in Higgsfield videos, needs to add dialogue
   or lip-sync, wants sound effects or ambient sound in generated video, asks about
-  music or BGM in output, or is using any audio-capable model (Kling 3.0, Seedance
-  1.5 Pro, Seedance 2.0, Veo 3/3.1, Grok Video / Grok Imagine). Also use when the user's
-  prompt would benefit from audio direction but they haven't mentioned it.
-  Also use when the user wants standalone audio — a soundtrack, ambience bed,
-  multi-speaker scene audio (Seed Audio 1.0), or text-to-speech voiceover.
-  Also use to swap or revoice the speaker in an existing video (voice_change),
-  or to clone / create a reusable voice (create_voice → a voice_type 'element'
-  voice usable in TTS and voice change).
+  music or BGM in output, or explicitly wants audio direction for an audio-capable
+  Higgsfield model. Do not add an audio track solely because the model supports one.
+  For a selected Higgsfield audio surface, also covers standalone soundtracks,
+  ambience, multi-speaker audio (Seed Audio 1.0), text-to-speech, voice change,
+  and reusable voices. Generic audio work uses its selected provider.
 user-invocable: true
 metadata:
   tags: [higgsfield, audio, dialogue, lip-sync, SFX, ambient, sound, BGM, music, voice, seed-audio, scene-audio, TTS, voice-change, voice-clone]

@@ -2,6 +2,7 @@
 
 ## platform-cut — 2026-09-29
 
+- Scoped skill descriptions to selected Higgsfield authoring and corrected automatic recall, mandatory acting detail, fixed 15-second cuts, English-only shotlists, and generic platform-routing claims; retained the production techniques as optional methods.
 - Removed active routes into the eleven platform-specific packages cut from this branch; kept archived upstream links where they document model or production provenance.
 - Replaced operational Higgsfield CLI commands and stale cost quotes in the generated user guide and eval examples with current-executor schema and quote checks.
 - Adapted preflight, validation, memory, and eval tooling to read committed snapshots after the three spec refresh scripts were removed. Snapshot source and age checks remain; byte-for-byte regeneration is unavailable in this cut.

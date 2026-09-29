@@ -1,6 +1,6 @@
 ---
 name: higgsfield-motion-design
-description: "End-to-end motion-design / animated-ad creation flow on Higgsfield via the MCP connector. Use when the user wants to create motion design, animate a logo, make a video from an image, build an animated ad or brand promo, turn a product into motion, or says 'make a motion', 'motion design', 'animate this', 'make a video from my logo', 'animated brand', 'motion graphics', 'brand motion', 'kinetic graphics', 'promo video', or 'ad video'. Drives a storyboard-first pipeline: brief → storyboard sheet (GPT Image 2) → video (Seedance 2.0) — an AI-generated pixel video clip. Distinct from higgsfield-motion (the named camera/motion preset library) ; when text or logos must remain editable, route to an installed code-motion executor."
+description: "Use for a Higgsfield motion-design or animated-ad video when Higgsfield is the selected platform. Offers a storyboard-first path from brief to reference sheet to generated clip. For crisp editable text or logos, route to an installed code-motion executor. The chosen executor owns current models, upload, cost, and job status."
 user-invocable: true
 metadata:
   tags: [higgsfield, motion-design, animated-ad, logo-animation, brand, motion-graphics, storyboard, classicMD, highMD]
@@ -11,15 +11,20 @@ metadata:
 
 # Higgsfield Motion Design
 
-A full motion-design creation flow run through the Higgsfield MCP connector. Follow the steps in order, be concise and direct, and **reply in the user's language**. This skill is the guided *ad/brand-motion* pipeline — for the named camera/motion preset library (Explosion, Werewolf, Air Bending, etc.) use `higgsfield-motion` instead.
+A motion-design planning example originally written for the Higgsfield MCP connector.
+Use its storyboard and visual-direction techniques when relevant; the selected
+executor owns current tools, models, permissions, costs, and job state. Preserve
+the user's requested pace, cuts, and output format. Reply in the user's language.
+For the named camera/motion preset library (Explosion, Werewolf, Air Bending,
+etc.) use `higgsfield-motion` instead.
 
 > **Not a spec sheet.** Model parameter enums (resolutions, modes, durations) come from the specs layer / `models_explore` — verify there (HARD RULE #3), don't hardcode them here.
 
 ## QUICK FACTS
-- Two flows: **classicMD** (smooth, elegant, cinematic) vs **highMD** (fast cuts, extreme dynamics, CGI energy) — pick before anything else [→](#step-0--determine-the-flow-type)
+- Two example flows: **classicMD** (smooth, elegant, cinematic) vs **highMD** (fast cuts, extreme dynamics, CGI energy) — use the one the brief calls for [→](#step-0--determine-the-flow-type)
 - Ask **all** brief questions in ONE message — never split intake into rounds [→](#step-1--brief-intake-one-message)
-- Storyboard = **one** image: a single grid sheet with all N panels via GPT Image 2 — never N separate images [→](#step-3--generate-the-storyboard)
-- Final video = **Seedance 2.0** (`seedance_2_0`); confirm the model id with `models_explore` if unsure [→](#step-4--generate-the-video)
+- The original example uses one GPT Image 2 storyboard grid; choose reference format with the selected executor [→](#step-3--generate-the-storyboard)
+- The original example uses Seedance 2.0; confirm the selected model and schema with the executor [→](#step-4--generate-the-video)
 - highMD rule: no realistic humans — silhouettes, chrome figures, or 3D abstract shapes only [→](#notes--rules)
 - highMD rule: the logo lock is a static hold proportional to clip length (~1s / ~2s / ~2–3s for 5 / 10 / 15s) [→](#step-4--generate-the-video)
 

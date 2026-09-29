@@ -1,6 +1,6 @@
 ---
 name: higgsfield-facs
-description: "Controls facial expressions in Seedance 2.0 with FACS (Facial Action Coding System) Action Unit codes — muscle-level direction (AU12 = lip-corner puller, AU6 = cheek raiser) instead of emotion labels. Use whenever the user wants precise facial acting, a forced/uncanny/mixed expression, micro-performance in a close-up, monologue or dialogue facial beats, a 'which AU code for anger/fear/disgust' answer, or to generate a FACS reference sheet for a character. Pairs with higgsfield-character-design (character references), higgsfield-audio (dialogue + lip-sync), and higgsfield-gpt-image-2 (the reference-sheet image)."
+description: "Use FACS Action Unit vocabulary to describe precise facial acting for a selected Seedance prompt or character reference sheet. The AU codes are directing language, not a verified model parameter. Apply expression detail only when the user asks for it or a diagnosed shot needs it; pair with higgsfield-acting, higgsfield-character-design, or the selected image writer as relevant."
 user-invocable: true
 metadata:
   tags: [higgsfield, seedance, seedance-2.0, facs, action-units, facial-expression, micro-expression, dialogue, lip-sync, performance]

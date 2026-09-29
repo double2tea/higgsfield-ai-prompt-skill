@@ -1,13 +1,15 @@
 ---
 name: higgsfield-models
 description: >
-  Use when the user asks which model to use, wants to compare models,
-  or needs guidance on selecting between Kling, Wan (incl. Wan 3.0),
+  Use when choosing or comparing models available through Higgsfield, including
+  Kling, Wan (incl. Wan 3.0),
   Seedance (incl. 2.5), Veo 3, Minimax Hailuo / MiniMax H3, FLUX 3 Video,
   Gemini Omni Flash, Soul, Nano Banana, GPT Image 2.5, or other Higgsfield
   engines — including which lane edits existing footage (video_edit, Kling
   3.0 Omni Edit, FLUX 3 Video Edit, Genjutsu, Ad Multiplier) and which
-  models make one clip longer than 15s.
+  models make one clip longer than 15s. Verify current availability and schemas
+  with the selected executor before generation; generic model selection does
+  not imply a Higgsfield job.
 user-invocable: true
 metadata:
   references:

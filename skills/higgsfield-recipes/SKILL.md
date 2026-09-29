@@ -1,9 +1,10 @@
 ---
 name: higgsfield-recipes
 description: >
-  Use when the user wants a genre-specific scene template, starting point for
-  a type of video (action, horror, romance, product ad, documentary, sci-fi,
-  dance, etc.), or asks for prompt examples for a specific style of content.
+  Use when writing a genre-specific Higgsfield prompt or when the user asks
+  for a Higgsfield scene template. Covers action, horror, romance, product ads,
+  documentary, sci-fi, and dance examples. A generic genre request does not
+  select Higgsfield as the executor.
 user-invocable: true
 metadata:
   tags: [higgsfield, recipes, templates, genre, action, horror, romance, ad, sci-fi]

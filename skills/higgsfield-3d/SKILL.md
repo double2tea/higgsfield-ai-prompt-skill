@@ -1,6 +1,6 @@
 ---
 name: higgsfield-3d
-description: "Use when the user wants a 3D model, mesh or GLB out of Higgsfield — image-to-3D, multi-view-to-3D, text-to-3D, rigging or animating a mesh, remesh / retopology, retexture, or 3D Body (human shape + pose from one photo) — or mentions 3D Jutsu / Scene Builder 3D (private Blender scene projects built through Python). Also use for a 3D turnaround of a character or prop as a consistent multi-angle reference, or a physical 3D blockout rendered as a staging reference for a video shot. Names that trigger it: generate_3d, sam_3_3d, image_to_3d, multi_image_to_3d, meshy_v7_image_to_3d, tripo_h3_1_image_to_3d, tripo_h3_1_multiview_to_3d, hunyuan3d_v3_image_to_3d, meshy_v6_text_to_3d, hunyuan3d_v3_1_text_to_3d, tripo_3d, 3d_rigging, meshy_v5_remesh, meshy_v5_retexture, sam_3_3d_body, animation_actions, scene_builder_3d_*."
+description: "Use for a selected Higgsfield 3D surface: image-, multi-view-, or text-to-3D, mesh rigging, animation, remesh, retexture, 3D Body, or 3D Jutsu. Covers its dated model schemas and film uses such as a 3D turnaround or staging blockout. A generic 3D request alone does not select Higgsfield as the executor."
 user-invocable: true
 metadata:
   tags: [higgsfield, 3d, glb, mesh, image-to-3d, multi-view, text-to-3d, rigging, animation, remesh, retexture, 3d-body, 3d-jutsu, scene-builder, blender, turnaround, staging-reference]

@@ -559,7 +559,7 @@ anchors instead of archaeology. Link format: `path#anchor`.
     - [Step 4: Apply findings silently](skills/higgsfield-recall/SKILL.md#step-4-apply-findings-silently)
     - [Step 5: Surface findings only when material](skills/higgsfield-recall/SKILL.md#step-5-surface-findings-only-when-material)
   - [Manual Recall (User-Initiated)](skills/higgsfield-recall/SKILL.md#manual-recall-user-initiated)
-  - [Pre-Generation Checklist (run mentally before every prompt)](skills/higgsfield-recall/SKILL.md#pre-generation-checklist-run-mentally-before-every-prompt)
+  - [Pre-Generation Checklist (for a routed recall check)](skills/higgsfield-recall/SKILL.md#pre-generation-checklist-for-a-routed-recall-check)
   - [Log the Generation Result — One Question, One Command](skills/higgsfield-recall/SKILL.md#log-the-generation-result--one-question-one-command)
     - [Optional: log the routing (usage telemetry)](skills/higgsfield-recall/SKILL.md#optional-log-the-routing-usage-telemetry)
     - [Read the verdict before re-rolling](skills/higgsfield-recall/SKILL.md#read-the-verdict-before-re-rolling)

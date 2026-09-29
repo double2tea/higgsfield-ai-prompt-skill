@@ -1,6 +1,6 @@
 ---
 name: higgsfield-scene-engine
-description: "Tests whether a scene is structurally worth generating before any shot is prompted — a five-element engine of Goal, Obstacle, Tactic, Reversal, and Value Shift. Use when the user has a scene, sequence, beat outline, or script and wants it audited or strengthened; when a sequence generates cleanly but lands flat and nobody can say why; when shots look good individually but the run of them does not build; or when the user asks 'is this scene working', 'what's weak here', or 'why doesn't this land'. Upstream of prompting — it decides WHICH shots deserve the credits, not how to write them. Pairs with higgsfield-character-design (who the characters are) and higgsfield-shotlist-director (turning the settled scene into shots)."
+description: "Use when the user asks to audit or strengthen a scene, sequence, beat outline, or script before prompting. Checks goal, obstacle, tactic, reversal, and value shift as an optional story diagnostic; it does not impose a scene rewrite or generation gate on an approved brief."
 user-invocable: true
 metadata:
   tags: [higgsfield, story, scene, structure, sequence, audit, dramaturgy, pre-production, reversal, value-shift]
