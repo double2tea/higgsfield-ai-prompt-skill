@@ -16,7 +16,7 @@ metadata:
 - 17 3D models in the 2026-09-26 snapshot, six jobs: single image→3D, multi-view→3D, text→3D, rig, remesh / retexture, 3D Body [→](#the-catalog--17-models-six-jobs)
 - **THE law:** the mesh reproduces only what is in the source image — to add or change props, clothing or held objects, edit the IMAGE first, then convert the edited result [→](#the-source-image-law)
 - Multi-view beats single-view for geometry: 2–4 views of the same subject → `multi_image_to_3d` / `tripo_h3_1_multiview_to_3d` [→](#multi-view-beats-single-view)
-- The `prompt` field: the MCP schema says only `sam_3_3d` accepts one; the CLI marks it REQUIRED on the three text→3D models — send it there, confirm with `get_cost` [→](#the-prompt-field--two-surfaces-disagree)
+- The `prompt` field: the MCP schema says only `sam_3_3d` accepts one; the CLI marks it REQUIRED on the three text→3D models — send it there, confirm with `get_cost` [→](#parameter-rules-the-server-enforces)
 - Server-enforced rules: animation needs rigging; texture options need texturing ON; Hunyuan std caps the prompt at 200 characters and has no PBR [→](#parameter-rules-the-server-enforces)
 - Rig + animate: humanoids rig best; `animation_action_id` comes from a 678-action library (ids 0–696, not contiguous — look up, never guess) [→](#rigging-and-animation)
 - `get_cost: true` preflights for free; never auto-resubmit after a transport timeout [→](#cost-and-submission-discipline)

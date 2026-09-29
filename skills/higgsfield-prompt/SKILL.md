@@ -17,7 +17,7 @@ metadata:
 - I2V: describe ONLY what moves or changes, never what's already in the image [→](#image-to-video-i2v)
 - Keep prompts under 200 words — **short-form MCSLA regime only**; block-scaffold production prompts replace the cap with structural lint (HARD RULE 8 carve-out); Cinema Studio has a hard 512-character cap [→](#high-performing-prompt-patterns)
 - 1 primary action per clip, 1–2 secondary max; Fast Motion Trick: render in Slow Mo, speed up in post [→](#one-action-per-scene)
-- Never leave a generic emotion ("sad"/"angry") in a prompt — decompose into muscle movements, breath, eyes, skin [→](#generic-emotion-decomposition--which-kind-of-x)
+- Clarify an ambiguous emotion with only the observable cues needed; stillness may be right [→](#generic-emotion-decomposition--which-kind-of-x)
 - Soul ID / recurring characters: split every prompt into Identity Block + Motion Block — never mix them [→](#identity-vs-motion-separation-rule)
 - Conflict order when sub-skills disagree: explicit user direction > scene archetype > emotion-sync [→](#conflict-resolution-between-sub-skills)
 - Aspect ratio is a per-model enum set in the UI/header, never in the prompt body — verify via `../../specs/model-specs.yaml` [→](#common-prompt-mistakes)
@@ -30,7 +30,7 @@ metadata:
 - Seedance/CS 3.0 has NO negative-prompt syntax — phrase as positive constraints [→](#no-negative-prompts)
 - Dialogue cap: ~25–30 spoken words fit in 15 seconds — keep the power-shift line, convert the rest to behavior [→](#dialogue-archetypes)
 - Engine limits: ≤3 characters tracked across cuts; exit-frame = gone; off-screen = nonexistent; avoid reflections [→](#character--spatial-rules)
-- Every cut must change BOTH shot size AND camera character [→](#double-contrast-cut-rule-mandatory)
+- Contrast in shot size or camera character is optional; preserve approved cuts and continuous takes [→](#double-contrast-cut-rule-optional)
 - Age-blind rule: never boy/girl/child/kid/young/teen/little — describe by role, clothing, action [→](#age-blind-character-rule)
 - Scenes start already in progress unless the user says "starts with…" or "ends with…" [→](#default-in-medias-res)
 
@@ -201,16 +201,7 @@ renders cleaner physics in slow motion.
 
 ## Generic-Emotion Decomposition — Which kind of X?
 
-Never leave a generic emotion in a prompt. "Sad" / "angry" /
-"surprised" / "scared" / "thoughtful" / "in love" — each is at least
-three or four distinct physical realizations, and the model renders
-a different version depending on which one your prompt invites. A
-prompt that says only "she looks surprised" produces a different
-shot every regeneration and degrades adherence across batches.
-
-The rule: decompose the generic emotion into specific muscle
-movements, breath, eyes, and skin. If you can't decompose
-confidently, ask the user to choose a variant.
+When an emotion is ambiguous or the acting is affected, connect it to a story trigger and the smallest useful visible response. An emotion label may remain; it need not expand into simultaneous muscle, breath, eye, and skin instructions. Stillness and delayed reaction may be correct. Ask only when choosing a reaction would materially change the approved intent.
 
 Clarification template — offer when the script or user supplies a
 generic emotion you cannot decompose without inventing detail:
@@ -364,24 +355,14 @@ When the resolution is non-obvious, surface it. Tell the user which sub-skill no
 
 ## Before You Iterate — Is the Miss Systematic or Stochastic?
 
-At a ~1.5% video / ~1% image acceptance bar, **most misses are variance, not a
-broken prompt.** Serial single-variable iteration is the right tool for a
-*systematic* miss — the prompt is genuinely wrong. Run it on a *stochastic*
-miss and you're "fixing" a prompt that was already right, burning credits to
-re-roll the same dice one at a time. So decide the fork **before** you touch the
-prompt:
+Use the current authorized attempts to distinguish recurring defects from varied misses. Published project acceptance ratios are not a general baseline. Recurrence can implicate assets, shot design, provider capability, or wording; variation does not prove the prompt is correct. Inspect the failure before choosing a comparison:
 
 - **Are the misses all failing the same way?** (identity drifts every time,
   wardrobe contaminates every time, the cut count is always wrong) →
-  **systematic.** The prompt is wrong. Iterate it, one variable at a time (next
-  section).
+  **recurring.** Check the owning asset or control layer, then test a targeted repair within the authorized scope.
 - **Are they failing in varied ways, with the occasional near-hit?**
   (performance flat on one roll, camera off on another, physics odd on a third)
-  → **stochastic.** The prompt is right; the roll wasn't. **Stop touching the
-  prompt. Lock it, fire a batch, and cull.** (When only two takes exist and both
-  failed, the troubleshoot Retry Ladder reads a second failure as over-packing
-  instead — OPEN, no default: `../higgsfield-troubleshoot/SKILL.md` § Stop-Rule
-  Ladder, `../shared/house-rulings.md` P1-2.)
+  → **possibly variable.** A same-input comparison may help when useful and authorized; varied failures alone do not prove the prompt is correct or authorize a batch. See `../higgsfield-troubleshoot/SKILL.md` § Stop-Rule Ladder and `../shared/house-rulings.md` P1-2 for the unresolved two-take case.
 
 You don't have to eyeball this. The ledger already classifies every reject as
 structural or stochastic, and `ratio <project>` prints a **verdict** per shot
@@ -392,7 +373,7 @@ decision point; don't iterate against a `batch+sel` tag.
 
 ### Batch-and-Select (Variance-Harvesting) — Not the Same as Stylistic Fan-Out
 
-When the verdict is stochastic, the move is **variance-harvesting**: hold the
+When a diagnosed variable miss and the authorized scope make batching useful, **variance-harvesting** holds the
 **same locked prompt** constant, roll N at once (grid generation / Batch Size in
 Cinema Studio; DoP Lite for cheap rolls — not in the API catalog, 2026-09-26 — verify in the live UI), and cull to the keeper. This is the
 opposite of the stylistic-fan-out exception in the next section — that varies N
@@ -705,12 +686,12 @@ These are hard rendering constraints of the Seedance 2.0 engine — violating th
 - **Intent + named technique, not biomechanics.** ✅ "spinning back kick connects." ❌ "left forearm rotates 45° to deflect the incoming hook at wrist level." If the user names a move, preserve it. If they describe joint mechanics, compress to the move's intent.
 - **Force and direction, not destruction sequence.** ✅ "driven into the car, metal buckling." ❌ "thrown into side door, glass shatters, uses rebound to sweep leg."
 
-### Double-contrast cut rule (mandatory)
+### Double-contrast cut rule (optional)
 
-Every cut must change **both** shot size AND camera character. The scale runs `extreme wide → wide → medium → MCU → close-up → ECU`. Camera character: `Handheld | Static | Stabilized tracking | Crane | Aerial` — never repeat across a cut.
+Change shot size and/or camera character when it supports the intended edit. Matching coverage can be correct; preserve approved cuts and continuous takes. Do not add a cut solely to create contrast. The scale runs `extreme wide → wide → medium → MCU → close-up → ECU`. Camera character examples: `Handheld | Static | Stabilized tracking | Crane | Aerial`.
 
-**Bad (same camera character):** MS handheld → CU handheld
-**Good (both change):** MS handheld → ECU static-locked
+**Matching coverage:** MS handheld → CU handheld
+**Stronger contrast:** MS handheld → ECU static-locked
 
 ### Inserts — causally motivated, named subject
 

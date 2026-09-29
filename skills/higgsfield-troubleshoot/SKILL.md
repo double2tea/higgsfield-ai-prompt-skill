@@ -19,14 +19,14 @@ metadata:
 - Kling 3.0 Motion Control failures are almost always upstream of the prompt: reference clip, character image, or orientation/scene-source settings [→](#motion-control-failures-kling-30)
 - Pre-generation checklist: subject, action, named camera preset, style, grade, aspect, <200 words (short-form regime) [→](#pre-generation-checklist)
 - Seedance/Cinema Studio symptom table + diagnostic flowchart: blurry = overspecified; chaotic camera = One-Move Rule violated; wrong character = prompt text contradicts the reference — delete the contradicting text first; delete ALL appearance text only on a start-frame / I2V shot (P1-1) [→](#cinema-studio-30--seedance-20-diagnostic-tree)
-- Every delivered take gets ONE of five verdicts before anything re-fires: keep / fix-in-post / edit / re-roll / rewrite [→](#take-triage--five-verdicts-for-a-delivered-take)
-- Two takes with the same flaw = rewrite, by rule; different flaws per roll = stochastic → batch-and-cull, not rewrite — against Retry Ladder rung 2 when both takes failed: OPEN, no default (§ Stop-Rule Ladder) [→](#take-triage--five-verdicts-for-a-delivered-take)
+- For an authorized iteration, classify the take before choosing among keep / fix-in-post / edit / re-roll / rewrite [→](#take-triage--five-verdicts-for-a-delivered-take)
+- Recurring flaws call for diagnosis of the owning layer; varied flaws do not by themselves authorize a batch. The two-failed-take reading remains OPEN (§ Stop-Rule Ladder) [→](#take-triage--five-verdicts-for-a-delivered-take)
 - Re-roll = same prompt again, unchanged — no seed parameter on this surface; every roll is a fresh sample [→](#take-triage--five-verdicts-for-a-delivered-take)
 - Change exactly one variable between takes so causality stays readable [→](#one-variable-per-retake)
-- Declare the take budget AND a written "good enough" bar before take one; half-budget with no progress forces a strategy change [→](#attempt-budget--declared-before-take-one-heuristic)
+- For a planned production iteration, use the user's take budget and acceptance bar to decide when a strategy change is useful [→](#attempt-budget--declared-before-take-one-heuristic)
 - The shot log is the ledger row — one line per take, changed variable in `notes` [→](#the-shot-log-is-the-ledger-row)
 - Continuation/extension defects: 12-row symptom → cause → single-repair-variable atlas (planned-vs-observed opening, motion-vector drop, prop contradictions, chain-depth drift…) [→](#sequence--continuation-failure-atlas)
-- Retry Ladder: 4 terminating rungs — re-run once verbatim → treat 2nd failure as over-packing (when the two failures differ, Take Triage reads them as stochastic: OPEN, no default — § Stop-Rule Ladder) → switch model for that shot → stop after 3 paid attempts with named options [→](#retry-ladder--a-failed-take-edits-the-plan-not-just-the-dice)
+- Retry Ladder: diagnostic options for an authorized iteration, not an automatic paid sequence; verify source and mappings before choosing a repair [→](#retry-ladder--a-failed-take-edits-the-plan-not-just-the-dice)
 - Six stop numbers, one ladder: 2 same-flaw re-rolls → rewrite · 3 paid attempts (no declared budget) → named options · half a declared budget with no progress → change strategy · 4 v2v batches (ceiling) → prompt/source fault · 10–15 surgical iterations (declared budget) → simplify the shot · 65–100 generations per kept shot is a project benchmark, never a stop rule. The earliest tripwire wins; where 2 and 4 count the same v2v runs it is OPEN, default the earlier stop [→](#stop-rule-ladder--which-number-governs)
 - Log EVERY confirmed fix to learning memory, and check memory first before troubleshooting [→](#log-the-outcome--always)
 - Vision-grounded diagnosis (stills only): vision proposes the `reject_reason`, the human confirms — advisory until a class clears the agreement gate [→](#vision-grounded-diagnosis--classify-the-rejected-still-dont-guess)
@@ -233,25 +233,17 @@ Cinema Studio 3.0's generation engine produces ~90% usable output. If outputs ar
 ## Take Triage — Five Verdicts for a Delivered Take
 
 `[EMPIRICAL — Emily2040/seedance-2.0 skill (MIT), re-derived 2026-08-09]`
-The sections above repair outright failure. Most real takes land in between —
-partially good — and the expensive habit is treating every flaw as a
-regeneration. Before anything re-fires, every delivered take gets exactly one
-of five verdicts:
+The sections above repair outright failure. Many takes are partially good; treating every flaw as a regeneration wastes attempts. When the user asks for diagnosis or an authorized iteration, classify the take before choosing one of five possible responses:
 
 | Verdict | When | Next move |
 |---------|------|-----------|
 | **Keep** | The thing this shot is FOR is delivered and nothing is fatal | Lock it, log it, move on. Perfection in secondary details is post's job |
 | **Fix in post** | The flaw lives in the editor's domain: color, on-screen text, sound mix, trim, a few unstable frames at the ends | Never burn takes on what an edit fixes in minutes |
 | **Edit, don't regenerate** | Composition and timing are right; exactly one layer is wrong and an edit surface supports it | Repair only the failing layer — the editor-not-regenerator mindset (`../higgsfield-seedance/SKILL.md` § Keyframe Workflow; `../higgsfield-pipeline/SKILL.md` Pipeline E Stage 2) |
-| **Re-roll** | The prompt is right; the sample was unlucky | Same prompt again, unchanged — every roll is fresh on this surface (no seed parameter; `../higgsfield-seedance/SKILL.md` § Drafts Validate the Prompt, Not the Take). With enough ledger history, let the fork verdict decide iterate-vs-batch instead of eyeballing (`higgsfield-recall` § Read the verdict) |
-| **Rewrite** | The same flaw appears in two takes | Systematic, not luck — **two takes with the same flaw = rewrite, by rule**. Diagnose (tables above; `../higgsfield-seedance/FAILURE-MODES.md`), change the prompt |
+| **Re-roll** | The source, settings, and prompt check out; a sample-specific flaw remains | Consider the same prompt again only within authorized attempts; keep the current job receipt and do not infer permission from the diagnosis. |
+| **Rewrite** | A recurring flaw is traced to prompt wording | Diagnose against the source, settings, and `../higgsfield-seedance/FAILURE-MODES.md`, then change the relevant prompt clause. |
 
-The rewrite tripwire cuts both ways: the same flaw twice means stop re-rolling
-into the same wall, but *different* flaws on every roll mean the miss is
-stochastic — that's batch-and-cull territory, not a rewrite
-(`../higgsfield-prompt/SKILL.md` § Before You Iterate). When two *failed* takes
-differ, the Retry Ladder below reads them the other way (over-packed → split);
-that disagreement is recorded OPEN, with no default, in § Stop-Rule Ladder.
+Repeated flaws merit diagnosis of the owning layer, not automatic prompt rewriting. Different flaws do not prove stochastic variation or authorize batch-and-cull (`../higgsfield-prompt/SKILL.md` § Before You Iterate). The two-failed-take disagreement remains OPEN, with no default, in § Stop-Rule Ladder.
 When the verdict is
 re-roll or rewrite and the failure keeps recurring, escalation is governed by
 the Retry Ladder below.
@@ -328,9 +320,7 @@ same wall.
 
 ## Retry Ladder — a failed take edits the plan, not just the dice
 
-`[EMPIRICAL — MiniMax H3 skill corpus, re-derived 2026-08-09]` When a take fails or drifts and the
-diagnostic tree confirms the references and mappings were right, escalate in this order.
-Each rung terminates — never loop on one rung:
+`[EMPIRICAL — MiniMax H3 skill corpus, re-derived 2026-08-09]` The ladder below records one production's repair options after the references and mappings check out. Its order and attempt counts are not a required paid sequence. Select a response from the observed defect, current executor, and authorized scope; never loop or silently retry:
 
 1. **Re-run once, quoting the reference map verbatim.** The original role + exclusion
    lines, unedited. If the mapping was right, one clean re-roll is legitimate variance.

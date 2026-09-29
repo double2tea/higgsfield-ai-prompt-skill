@@ -9,6 +9,10 @@
 >
 > **Removed packages:** `higgsfield-apps`, `higgsfield-assist`, `higgsfield-stack`, `higgsfield-workspaces`, `higgsfield-marketing-studio`, `higgsfield-content-factory`, `higgsfield-canvas`, `higgsfield-repurpose`, `higgsfield-vibe-motion`, `higgsfield-soul`, and `higgsfield-moodboard`; also removed `scripts/sync_specs.py`, `scripts/refresh_specs.py`, and `scripts/snapshot_crosscheck.py`. `higgsfield-soul` covered Higgsfield-specific character slots and Soul ID, Soul HEX, Soul Cast, and Soul Cinema operations; the package is removed as product-specific guidance. General character-sheet practice remains in `higgsfield-character-design`.
 
+**Local routing:** The root skill keeps Simplified Chinese as the default for new writing and preserves user copy, machine syntax, and approved execution prompts. For generation, an explicitly selected RunningHub app/model, Generation Service provider, 小云雀/Pippit task, or LibTV canvas goes to that installed executor and its current schema. `commercial-ai-project-kit` is for project setup or an explicit kit refresh; it does not select a generation provider. Optional craft guidance here does not require extra emotion beats, cuts, retries, or batches. These local integrations are used only when their corresponding skills or tools are installed.
+
+**Tooling status:** This branch preserves the v3.40 model snapshots and reference text. The old spec-sync and drift entry points are removed. `scripts/validate.py`, `scripts/preflight.py`, and parts of the inherited tests/evals still depend on the removed scripts and need a separate tooling cleanup before this branch can claim release-gate readiness.
+
 A comprehensive Claude skill library for generating high-quality prompts on
 [Higgsfield AI](https://higgsfield.ai) — the cinematic video and image generation platform.
 
@@ -45,7 +49,7 @@ Transforms natural language requests into production-ready Higgsfield prompts us
 
 ### Claude Code
 ```bash
-git clone https://github.com/OSideMedia/higgsfield-ai-prompt-skill ~/.claude/skills/higgsfield
+git clone --branch platform-cut https://github.com/double2tea/higgsfield-ai-prompt-skill.git ~/.claude/skills/higgsfield
 ```
 
 ### Claude Cowork

@@ -20,29 +20,31 @@ metadata:
 
 # Higgsfield AI Prompt Skill
 
-**Language rule:** Reply in whatever language the user writes in.
+**Local language rule:** Default to Simplified Chinese for newly written prompts (including copyable prompt blocks), headings, reference-role descriptions, diagnoses, and QC notes unless the user explicitly requests another language. Preserve the approved language of dialogue and on-screen copy. Keep user-provided text, reference handles, asset IDs, paths, API fields, enum values, and other machine syntax exact. Never silently translate or revise an approved execution prompt. If the selected executor has a verified language requirement, explain it and keep the Chinese review text separate from a faithful execution translation; do not assume English performs better without evidence for that model and mode.
+
+**Scope of the checks below:** Apply Higgsfield authoring checks when creating or substantively revising a Higgsfield prompt. A ready, approved prompt goes directly to its selected execution skill unchanged; a status, recovery, or download request does not restart prompt authoring. User-approved copy, assets, model, duration, and technique take precedence over optional craft heuristics. Use a risk-specific negative constraint only when the failure it addresses is relevant. Do not add emotion, cuts, retries, or batches to satisfy a generic recipe. Treat local iteration counts and batch advice as options tied to diagnosed evidence and the user's authorized scope, not mandatory steps.
 
 ---
 
 ## HARD RULES — pre-delivery checklist
 
-These rules apply to every Higgsfield response. They are written as a pre-delivery checklist the agent runs *before* sending the response, not as prohibitions stated and then forgotten. The failure mode they prevent is **plausibility-over-verification** — producing a response that looks correct because the agent's training data knows the rough shape of Higgsfield work, rather than because the agent actually read the skill files and verified the platform's ground truth.
+These rules apply to new Higgsfield prompt authoring within the scope above. They are written as a pre-delivery checklist. The failure mode they prevent is **plausibility-over-verification** — producing a response that looks correct because the agent's training data knows the rough shape of Higgsfield work, rather than because the agent actually read the skill files and verified the platform's ground truth.
 
 **Before delivering any Higgsfield response, confirm in this order:**
 
-1. **Routing line present.** First line of response names which sub-skills you routed to (e.g. "Routing to higgsfield-prompt + higgsfield-camera for an Atmosphere push-in"). One line, then the work. Missing routing line = response is incomplete; add it.
+1. **Useful routing line.** When routing to a sub-skill for new authoring, name the sub-skills used in one line. Do not repeat the badge on every status/result reply or reopen creative skills for execution of an approved prompt.
 
-2. **Routed sub-skills opened and read in this conversation.** Match the user's ask to the routing table below, open the matching sub-skill files with the read tool, and READ them. Root `SKILL.md` and `skills/higgsfield-prompt/SKILL.md` are mandatory at minimum on any prompt request. Grepped snippets do not satisfy this rule. Full reads do. If your only access to root `SKILL.md` or `skills/higgsfield-prompt/SKILL.md` in this conversation came from grep results, you have not satisfied this rule — open the file. Platform vocabulary, preset names, and model parameters must come from the files because this platform's lineup changes between releases.
+2. **Routed sub-skills opened and read in this conversation.** For new Higgsfield prompt authoring, match the user's ask to the routing table below, open `skills/higgsfield-prompt/SKILL.md` and the matching specialist files with the read tool, and READ them. Grepped snippets do not satisfy this rule. Platform vocabulary, preset names, and model parameters must come from the selected platform's files or verified schema because its lineup changes between releases. An external provider's approved prompt uses that provider's writer and executor without an extra Higgsfield rewrite.
 
 3. **Named vocabulary verified, not invented.** Camera preset names, motion preset names, model names, and MCP tool parameter names all come from the skill files or from verification. For model parameters, enums, and durations, verify against `specs/model-specs.yaml` first — it is generated from a dated `models_explore` snapshot (see `snapshot_date` inside the file); if the snapshot is stale (>30 days), verify live instead with `models_explore`. If you found yourself thinking "this preset is probably called Y" — stop. Read the file or verify it. Plausibility is not validity. Do not substitute generic video-prompt vocabulary for named Higgsfield presets; do not invent model versions, camera presets, or motion-preset names. If the user names one you don't see in the skill files, say so and ask for clarification.
 
-4. **MCSLA structure intact on video prompts.** Model · Camera · Subject · Look · Action. Five layers, every video prompt, unless the user explicitly opted out.
+4. **MCSLA structure on new short-form Higgsfield video prompts.** Model · Camera · Subject · Look · Action. Keep a selected model-specific dialect or approved prompt in its own structure; do not add these headings solely for conformity.
 
-5. **Shared negative constraints appended.** Pull positive-phrasing prevention phrases from `skills/shared/negative-constraints.md`. Do not paraphrase from training; use the exact phrasing from the file. (Kling 3.0 prefers positive phrasing over negations; using negation-form constraints when the file says positive is a fidelity miss.)
+5. **Relevant negative constraints.** When a newly drafted prompt has a concrete artifact risk, consult `skills/shared/negative-constraints.md` and use the applicable phrase, respecting the selected model's wording. Do not append boilerplate to an approved execution prompt.
 
-6. **Aspect ratio is an enum, not a free-form value.** Check the model's allowed ratios against `specs/model-specs.yaml` before writing them into the header; if the snapshot is stale (>30 days), verify live via `models_explore`. Example of why this matters: Seedance 2.0 supports native 21:9, Kling 3.0 does not. Anamorphic / 2.35:1 / 2.39:1 are *style register* vocabulary for the Look line, not output ratios. See `vocab.md` § Aspect Ratio: output spec vs. style register. In a multi-shot Seedance sequence whose location plates carry a baked lens, whether the optics words still belong in the video prompt (Style Prefix included) is OPEN — one studio drops them, Hell Grind keeps the look in both (`skills/higgsfield-seedance/SKILL.md` § Bake it into the asset; `skills/shared/house-rulings.md` P2-6).
+6. **Aspect ratio is an enum, not a free-form value.** For Higgsfield execution, check the model's allowed ratios against `specs/model-specs.yaml`; when the needed field is missing or disputed, verify it against the current Higgsfield schema. For another platform, its executor owns the current schema. Seedance 2.0 supports native 21:9, Kling 3.0 does not. Anamorphic / 2.35:1 / 2.39:1 are *style register* vocabulary for the Look line, not output ratios. See `vocab.md` § Aspect Ratio: output spec vs. style register. In a multi-shot Seedance sequence whose location plates carry a baked lens, whether the optics words still belong in the video prompt (Style Prefix included) is OPEN — one studio drops them, Hell Grind keeps the look in both (`skills/higgsfield-seedance/SKILL.md` § Bake it into the asset; `skills/shared/house-rulings.md` P2-6).
 
-7. **Prompt under 200 words — short-form regime only.** Soft cap from MCSLA section. Going over is a signal you're padding rather than locking — tighten. **Regime exception:** block-scaffold production prompts (`skills/higgsfield-seedance/SKILL.md` § Official Prompt Architecture) replace the word cap with structural lint — harvested production Seedance briefs run 218–2,059-word medians depending on register `[FIELD — 13-project community harvest, 2026-07-18]`. The cap governs single-shot MCSLA prompts; a block-scaffold prompt over 200 words is not a rule-7 violation.
+7. **Review length in the chosen regime.** The 200-word MCSLA guideline is a soft editing cue for new single-shot prompts, not a provider limit or a reason to truncate approved content. Block-scaffold production prompts (`skills/higgsfield-seedance/SKILL.md` § Official Prompt Architecture) use structural review instead — harvested production Seedance briefs run 218–2,059-word medians depending on register `[FIELD — 13-project community harvest, 2026-07-18]`. Enforce only the current executor's verified input limits.
 
 **If any of items 1–7 are missing or unverified, the response is incomplete. Complete them before sending, not after.**
 
@@ -126,6 +128,18 @@ budget constraints, client work), **confirm before generating:**
 ---
 
 ### Route to the Right Skill
+
+For local generation, keep prompt craft and execution separate. A user-named provider, app, model, or existing project selection takes priority. The selected execution skill owns current syntax, media bindings, parameters, authorization, cost, submission, recovery, and delivery. Do not substitute Higgsfield catalog IDs, CLI commands, credit prices, or schemas for another platform's contract. Reuse a confirmed schema and job receipt; do not resubmit a job merely because status is uncertain. This library's model and production references remain available for creative planning when relevant.
+
+| Selected task or platform | Route to |
+|---------------------------|----------|
+| RunningHub model or saved AI App | Installed `runninghub` skill; keep its region and saved app schema, and let it submit and recover the job. |
+| Generation Service configured provider/model | Installed `generation-service:generation-service` skill; it selects its current vendor/model route and owns job tracking. RunningHub remains its own route. |
+| 小云雀 / Pippit generation, processing, or Canvas | Installed `xyq-skill`; its CLI and current command docs own the operation. |
+| LibTV canvas generation/editing | Current LibTV MCP connection and capabilities; use `libtv-to-treatment` only for a director treatment, `libtv-blender-live-action` for that named Blender workflow, or `music-driven-product-ad` for that named ad workflow. |
+| New commercial AI project setup or explicit project-kit refresh | Installed `commercial-ai-project-kit`; it initializes/updates project material and does not choose a generation provider or run generation. |
+
+If a local skill is unavailable, say so and resolve the intended platform before execution; do not silently change providers. For selected providers, go straight to their executor with the user's approved prompt and references. Prompt design may borrow relevant guidance here, but never force an emotion beat, edit cut, paid retry, or batch without a brief-specific reason and authorization.
 
 | User wants | Route to |
 |------------|----------|

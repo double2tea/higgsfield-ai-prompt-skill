@@ -14,7 +14,7 @@ on:
 
 permissions:
   contents: read
-  actions: read   # the spec-drift schedule-state check reads workflow state
+  actions: read
 
 jobs:
   validate:
@@ -72,19 +72,3 @@ jobs:
 
       - name: Run eval harness
         run: python3 scripts/validate.py --evals
-
-      - name: Scheduled spec-drift tripwire still enabled?
-        # GitHub docs: "In a public repository, scheduled workflows are
-        # automatically disabled when no repository activity has occurred in
-        # 60 days." The first push after such a gap lands here — warn loudly
-        # (never fail: a disabled schedule is not a defect in this change).
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          STATE=$(gh api "repos/${{ github.repository }}/actions/workflows/spec-drift.yml" --jq .state 2>/dev/null || echo unknown)
-          case "$STATE" in
-            active) echo "spec-drift.yml schedule is active" ;;
-            unknown) echo "::notice::could not read spec-drift.yml state (token scope?) — check Actions → spec-drift manually" ;;
-            *) echo "::warning::spec-drift.yml is '$STATE' — the weekly tripwire is not running. Re-enable: gh workflow enable spec-drift.yml (or Actions → spec-drift → Enable workflow)." ;;
-          esac
