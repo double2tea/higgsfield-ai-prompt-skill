@@ -109,8 +109,9 @@ used so the user can adjust if they want something different.
 
 ### Full Path — Production Requests
 
-When the user signals production-grade intent (Cinema Studio, multi-shot, specific model,
-budget constraints, client work), **confirm before generating:**
+For production work (Cinema Studio, multi-shot, specific model, budget constraints,
+client work), read these fields from the request or approved project settings. Ask only
+when a missing choice materially changes the output or cost:
 
 **Required:**
 - **Generation type**: Image / Video / App (one-click)
@@ -171,7 +172,7 @@ If a local skill is unavailable, say so and resolve the intended platform before
 | Short film, branded content, Popcorn → video → assembly | `higgsfield-pipeline` |
 | Animated AD / brand promo as an **AI-generated video** built brief → storyboard sheet → Seedance ("make a motion", "motion design ad", "animate my logo into a video", "promo/ad video", classicMD/highMD) | `higgsfield-motion-design` |
 | Pre-generation memory check, apply past failure fixes | `higgsfield-recall` |
-| User reports a generation result (kept/rejected/flagged) — log it to the ledger | `higgsfield-recall` |
+| User reports a generation result (kept/rejected/flagged) and this project uses the Higgsfield ledger | `higgsfield-recall` |
 | Audio design, dialogue cues, SFX, ambient sound | `higgsfield-audio` |
 | **Standalone audio generation** — soundtrack, ambience bed, multi-speaker scene audio, Seed Audio 1.0 (`seed_audio`), TTS voiceover / narration as its own deliverable | `higgsfield-audio` |
 | Swap or revoice the speaker in a finished video (`voice_change`), or clone / create a reusable voice (`create_voice` → `voice_type: element`) | `higgsfield-audio` |
@@ -201,7 +202,7 @@ The routing table says *where*; this says *how much*. Loads are cumulative — e
 | Any Seedance prompt | + `skills/higgsfield-seedance/SKILL.md` (+ the matching `templates/seedance/` file when the request is technique-shaped) |
 | Multi-scene / sequence / script breakdown | + `higgsfield-shotlist-director` + `higgsfield-pipeline` |
 | Model choice unclear or contested | + `higgsfield-models` + `specs/` (the generated spec for the output type) |
-| User reports a generation result | + `higgsfield-recall` (ledger write) |
+| User reports a generation result for a project using the Higgsfield ledger | + `higgsfield-recall` (ledger write) |
 | A Seedance render failed (not filtered) | + `skills/higgsfield-seedance/FAILURE-MODES.md` + `skills/higgsfield-troubleshoot/SKILL.md` |
 | Anything else | one routing-table row → that sub-skill; resist loading more than the row names |
 
@@ -296,22 +297,22 @@ Quick summary — five layers, every prompt:
 **Output rules:**
 - Output a clean, ready-to-paste prompt — no meta-commentary after
 - Do not explain what every line does unless the user asks
-- Always name the camera control and motion preset explicitly
+- For a new Higgsfield video prompt, name a verified camera control or motion preset when it serves the brief
 
 ---
 
-## Generation Ledger — log every result
+## Generation Ledger — when selected for the project
 
-Every generation attempt the user reports — kept, rejected, or filter-flagged —
-gets one row in `db/ledger/<project>.json`. The denominator (successes too,
-not just failures) is what turns the memory system into takes-per-kept ratios
-and credit budgets.
+When this project's chosen record is the Higgsfield ledger, record each reported
+generation attempt — kept, rejected, or filter-flagged — once in
+`db/ledger/<project>.json`. RunningHub, Generation Service, and other executors
+retain their own job receipts; do not duplicate them into this ledger. The
+denominator (successes too, not just failures) supports takes-per-kept ratios.
 
-**The 5-second rule:** when the user reports a result, ask at most ONE
-question ("keep or reject — what failed?") and write the row yourself with
-one `scripts/higgsfield_memory.py log-gen` command. Never ask twice; never present a
-form. Full workflow: `skills/higgsfield-recall/SKILL.md` § Log the Generation
-Result.
+**The 5-second rule for a selected ledger:** record a known verdict once. If
+the take has not been selected, leave the verdict pending review instead of
+asking a bookkeeping question. For a requested ledger row, use
+`skills/higgsfield-recall/SKILL.md` § Log the Generation Result.
 
 ---
 

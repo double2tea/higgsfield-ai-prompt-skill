@@ -156,10 +156,11 @@ Upload `SKILL.md` (root) as your project instruction base. Upload files from `sk
 
 ## Generation Ledger
 
-Every generation attempt — kept, rejected, or filter-flagged — gets one row in
-`db/ledger/<project>.json`, logged by the agent in ≤5 seconds (one question,
-one command — never a form). After ~30–40 rows a production has empirical
-takes-per-kept ratios per shot type instead of vibes:
+When the Higgsfield ledger is the project's chosen record, each reported
+generation attempt — kept, rejected, or filter-flagged — gets one row in
+`db/ledger/<project>.json`. RunningHub, Generation Service, and other selected
+executors keep their own job receipts without duplicate ledger entries. After
+~30–40 rows a production can estimate takes-per-kept ratios per shot type:
 
 ```bash
 python3 scripts/higgsfield_memory.py log-gen adze --model seedance_2_0 \

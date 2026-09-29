@@ -7,6 +7,7 @@
 - Adapted preflight, validation, memory, and eval tooling to read committed snapshots after the three spec refresh scripts were removed. Snapshot source and age checks remain; byte-for-byte regeneration is unavailable in this cut.
 - Directed Codex and Claude Code installation through CC Switch on the fork's `platform-cut` branch.
 - Kept the old local fidelity route by pointing to the separately installed `ai-video-realism` method and the selected model writer; the duplicate `higgsfield-fidelity` shim is not copied.
+- Scoped the Higgsfield ledger to projects that select it; external executors retain their own receipts without duplicate logging or extra approval rounds.
 
 ## v3.40.0 — 2026-09-26
 
