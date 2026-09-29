@@ -38,7 +38,7 @@ metadata:
 - Native **4K** is available in `mode=std` only; `mode=fast` (Seedance 2.0 Fast) caps at 480p/720p — in Cinema Studio the model is still capped at 1080p [→](#pre-flight-linter)
 - Always preflight: `python3 scripts/seedance_lint.py --preflight --model seedance_2_0 "<prompt>"` — enums come from `../../specs/model-specs.json` (fast+1080p/4K and Kling 21:9 are auto-caught) [→](#pre-flight-linter)
 - 480p drafts validate the prompt, NOT the take — no seed param; pin Hero Frame + start/end frames to carry a look [→](#drafts-validate-the-prompt-not-the-take)
-- ZH prompts: hard 1,800-char cap; ZH antislop list enforced by the linter [→](#multi-language-prompt-workarounds)
+- ZH prompts: optional 1,800-character editing cue, reported as INFO; ZH antislop phrases reported by the linter [→](#multi-language-prompt-workarounds)
 - Flagged prompt → rewrite playbook per linter rule, then voice pass [→](#the-rewrite-playbook)
 - Repeated flags → full loop-breaker procedure + LOG THE OUTCOME (`--confirmed` / `add-quality`) [→](#when-the-user-is-already-in-a-failure-loop)
 
@@ -151,10 +151,10 @@ instructions and starts sampling them diffusely.
   move opens it.
 
 **Relationship to the two length numbers.** This 50–80-word figure is the
-*coherence optimum*. The >180-word figure in § Pre-flight Linter is a *different
-axis* — the filter/encoder risk ceiling (>220 often hard-fails the text
-encoder). 50–80 is where to sit; ~180 is where it starts to break. They don't
-conflict.
+*coherence heuristic*. The 180/220-word figures in § Pre-flight Linter are
+optional short-form editing cues, not verified filter/encoder limits. Use them
+to review clarity when drafting; preserve approved content and enforce only
+the selected executor's current verified input limits.
 
 **Relationship to the six-slot formula.** The six slots guarantee the filter
 sees a *complete* scene (presence). The attention model governs *weight* (order
@@ -1678,8 +1678,8 @@ three passes into one PASS/WARN/FAIL report:
 - **Raw violence verbs** (fight, attack, kill, shoot, blood, gore, stab)
 - **Age markers** (child, kid, young, teen, boy, girl — Seedance is age-blind)
 - **Note-to-friend voice** (no Style/Mood, no Camera, no Lighting sections)
-- **Overlength** (>180 words is risk territory; >220 words often hard-fails
-  on the text encoder, not the filter)
+- **Length advice (INFO)** — optional 180/220-word short-form editing cues;
+  no provider limit is inferred and approved text is preserved
 - **Conflicting instructions** (moving + frozen, bright + dark, etc.)
 
 **2. Structural lint** (with `--model <id>`; driven by `../../specs/model-specs.json`,
@@ -1688,7 +1688,8 @@ never guessed) — the expensive failure class:
 - Declared shot count ("strictly N shots" / 严格N个镜头) vs actual
   `【镜头N】`/`[Shot N]` block count
 - Timed beats (`[0-4s]`) summing past the declared duration / model max
-- ZH prompts over the 1,800-character hard cap; ZH antislop phrases
+- ZH prompts over the optional 1,800-character house editing cue (INFO);
+  ZH antislop phrases
 - `@handle` used before its declaration line
 - Aspect ratio / resolution / mode / duration outside the model's enum —
   catches Seedance `fast`+1080p (fast cannot output 1080p) and Kling 3.0
@@ -1901,11 +1902,11 @@ Group shot rows into one prompt when ALL of these hold:
 - Continuous emotional / temporal unit (no time skip, no major mood
   pivot)
 - Combined runtime fits within the 15s Seedance cap
-- The grouped prompt text stays within practical generation limits —
-  for ZH prompts the 1,800-character hard cap; for EN block prompts
-  there is no character analogue (production medians run far longer —
-  § Field calibration). The once-circulating "~2,500 characters"
-  budget is ZH-derived doctrine, not an EN limit.
+- The grouped prompt fits the selected executor's current verified input
+  limits. The 1,800-character ZH house cue is optional editing advice;
+  EN block prompts have no verified character analogue here (production
+  medians run far longer — § Field calibration). The once-circulating
+  "~2,500 characters" budget is ZH-derived doctrine, not an EN limit.
 
 Split into separate prompts when any of these fire: hard cut
 between locations (e.g. apartment → flashback), major character

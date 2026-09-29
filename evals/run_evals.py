@@ -211,6 +211,12 @@ ASSERTIONS = {
 ERROR_PREFIX = "harness ERROR: "
 
 
+def missing_skill_routes(text: str) -> list[str]:
+    return [f"routing target missing: {name}"
+            for name in sorted(set(re.findall(r"\bhiggsfield-[a-z0-9-]+\b", text)))
+            if not (ROOT / "skills" / name / "SKILL.md").is_file()]
+
+
 def run_case(case: dict, specs: dict) -> list[str]:
     """Failure strings for one case; harness errors carry ERROR_PREFIX."""
     response = case.get("response")
@@ -222,7 +228,8 @@ def run_case(case: dict, specs: dict) -> list[str]:
     if not assertions:
         return [ERROR_PREFIX + "case has no assertions — it would pass having "
                 "checked nothing"]
-    failures = []
+    routing_lines = "\n".join(re.findall(r"^Routing to[^\n]*", response, re.M))
+    failures = missing_skill_routes(routing_lines)
     for assertion in assertions:
         kind = assertion.get("type")
         fn = ASSERTIONS.get(kind)
@@ -256,7 +263,7 @@ def main() -> int:
             if args.case and case["id"] != args.case:
                 continue
             total += 1
-            failures = run_case(case, specs)
+            failures = missing_skill_routes(doc.get("skill", "")) + run_case(case, specs)
             is_error = any(f.startswith(ERROR_PREFIX) for f in failures)
             mark = "✗" if failures else "✓"
             print(f"  {mark} [{doc.get('skill', path.stem)}] {case['id']}"

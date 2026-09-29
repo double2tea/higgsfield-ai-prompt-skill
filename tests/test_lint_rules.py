@@ -38,8 +38,11 @@ def test_filter_fail_rules(prompt, rule):
     assert rule in fails(sl.lint(prompt))
 
 
-def test_overlength_fails_short_form():
-    assert "overlength" in fails(sl.lint("word " * 230))
+@pytest.mark.parametrize("count,rule", [(200, "long"), (230, "overlength")])
+def test_short_form_length_is_advisory(count, rule):
+    findings = sl.lint("word " * count)
+    assert rule not in fails(findings) | warns(findings)
+    assert rule in {f.rule for f in findings if f.severity == "INFO"}
 
 
 # ── Regime detection (HARD RULE 8 carve-out) ────────────────────────────────
@@ -73,8 +76,10 @@ def test_block_regime_keeps_content_rules():
     assert "real-person-name" in fails(sl.lint(hot))
 
 
-def test_regime_override_forces_short():
-    assert "overlength" in fails(sl.lint(BLOCK_PROMPT, regime="short"))
+def test_regime_override_uses_short_form_length_cue():
+    findings = sl.lint(BLOCK_PROMPT, regime="short")
+    assert "overlength" not in fails(findings) | warns(findings)
+    assert "overlength" in {f.rule for f in findings if f.severity == "INFO"}
 
 
 def test_shot_as_film_noun_passes():
@@ -191,9 +196,13 @@ def test_declared_shots_without_structure_warns():
         sl.structural_lint(text, sl.Settings(), None))
 
 
-def test_zh_overlength():
-    text = "汉" * (sl.ZH_CHAR_CAP + 1)
-    assert "zh-overlength" in fails(sl.structural_lint(text, sl.Settings(), None))
+@pytest.mark.parametrize("model_id", [None, "seedance_2_0", "kling3_0"])
+def test_zh_length_is_advisory_for_any_model(mini_spec, model_id):
+    text = "汉" * (sl.ZH_CHAR_GUIDELINE + 1)
+    spec = spec_for(mini_spec, model_id) if model_id else None
+    findings = sl.structural_lint(text, sl.Settings(), spec)
+    assert "zh-overlength" not in fails(findings) | warns(findings)
+    assert "zh-overlength" in {f.rule for f in findings if f.severity == "INFO"}
 
 
 def test_zh_antislop_warns():

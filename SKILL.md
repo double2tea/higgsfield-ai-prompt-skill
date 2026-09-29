@@ -265,7 +265,7 @@ Quick summary — five layers, every prompt:
 
 **Core rules:**
 - Be specific — name camera presets, describe VFX concretely
-- Keep prompts under 200 words (short-form regime — block-scaffold production prompts follow their own structural rules, HARD RULE 8)
+- Use 200 words as an optional editing cue for new short-form prompts; preserve approved text and apply only verified executor limits (HARD RULE 7).
 - Subject → Action → Camera → Style is the most reliable order
 
 ---

@@ -179,8 +179,8 @@ ANTISLOP_ZH = [
     "视觉盛宴", "光影交响", "完美呈现", "极致体验", "引人入胜", "震撼人心", "巧妙融合",
 ]
 
-# ZH prompt hard cap (chars). Source: docs/Seedance 2 Skill.md output contract.
-ZH_CHAR_CAP = 1800
+# Optional ZH house-format editing cue, not a verified provider input limit.
+ZH_CHAR_GUIDELINE = 1800
 CJK_RE = re.compile(r"[一-鿿]")
 
 # Shot-block markers. The 【镜头N】 ("shot N") marker is a community
@@ -531,7 +531,7 @@ SHOT_BLOCK_RES = [re.compile(r"【\s*镜头\s*(\d+)\s*】"),
 
 # Canonical block-scaffold labels (skills/higgsfield-seedance § Official
 # Prompt Architecture → Block order). A prompt opening on these blocks is the
-# production regime: structure replaces the word cap (HARD RULE 8 carve-out),
+# production regime: structure replaces short-form length cues (HARD RULE 7),
 # so the short-form length rules must not fire on it.
 BLOCK_SCAFFOLD_LABELS = [
     "SCENE CONTEXT", "ACTIVE REFERENCES", "LOCATION MAP",
@@ -649,12 +649,12 @@ def structural_lint(text: str, settings: Settings, spec: dict | None,
 
     # ── ZH house-format checks ───────────────────────────────────────────
     if CJK_RE.search(text):
-        if len(text) > ZH_CHAR_CAP:
+        if len(text) > ZH_CHAR_GUIDELINE:
             findings.append(Finding(
-                "FAIL", "zh-overlength", f"{len(text)} chars",
-                f"ZH prompts hard-cap at {ZH_CHAR_CAP} characters "
-                "(docs/Seedance 2 Skill.md output contract). Cut scene-setting "
-                "prose; keep blocking, camera, and audio cues."))
+                "INFO", "zh-overlength", f"{len(text)} chars",
+                f"Above the optional {ZH_CHAR_GUIDELINE}-character ZH house "
+                "editing cue, not a verified provider limit. Preserve approved "
+                "text; enforce only the selected executor's current input limits."))
         zh_hits = [t for t in ANTISLOP_ZH if t in text]
         if zh_hits:
             findings.append(Finding(
@@ -998,8 +998,8 @@ def lint(prompt: str, regime: str = "auto") -> list[Finding]:
     if regime == "block":
         findings.append(Finding(
             "INFO", "block-scaffold-regime", "",
-            "Block-scaffold production prompt detected — short-form word caps "
-            "suspended (HARD RULE 8 regime exception; harvested production "
+            "Block-scaffold production prompt detected — short-form length cues "
+            "suspended (HARD RULE 7; harvested production "
             "briefs run 218–2,059-word medians). All content-filter and "
             "structural rules still apply. Force with --regime short|block "
             "if the detection is wrong."
@@ -1049,12 +1049,10 @@ def lint(prompt: str, regime: str = "auto") -> list[Finding]:
 
     if regime == "short" and word_count > 220:
         findings.append(Finding(
-            "FAIL", "overlength", f"{word_count} words",
-            "Over 220 words often hard-fails the text encoder on short-form "
-            "prompts. Cut to 30–180 words (Style & Mood + camera + action), "
-            "or restructure as a block-scaffold production prompt "
-            "(skills/higgsfield-seedance § Official Prompt Architecture) — "
-            "the word cap does not govern that regime."
+            "INFO", "overlength", f"{word_count} words",
+            "Above the optional 220-word short-form editing cue, not a verified "
+            "provider limit. Review clarity when drafting; preserve approved "
+            "text and enforce only the selected executor's current input limits."
         ))
 
     # ── WARN rules ──────────────────────────────────────────────────────────
@@ -1086,11 +1084,11 @@ def lint(prompt: str, regime: str = "auto") -> list[Finding]:
             "'[0-2s]' / '[2-4s]'. An empty or half-open bracket reads as noise."
         ))
 
-    if regime == "short" and word_count > 180:
+    if regime == "short" and 180 < word_count <= 220:
         findings.append(Finding(
-            "WARN", "long", f"{word_count} words",
-            "Over 180 words is risk territory for short-form prompts. Trim "
-            "the least essential details before generating."
+            "INFO", "long", f"{word_count} words",
+            "Above the optional 180-word short-form editing cue. Review clarity "
+            "when drafting; this does not authorize changing approved text."
         ))
 
     if word_count < 15:
@@ -1316,10 +1314,10 @@ def main() -> int:
                              "lint → learning-memory recall, one report")
     parser.add_argument("--regime", choices=["auto", "short", "block"],
                         default="auto",
-                        help="Prompt regime: 'short' = single-shot MCSLA (word "
-                             "caps apply), 'block' = block-scaffold production "
-                             "prompt (word caps suspended per HARD RULE 8 "
-                             "regime exception). Default 'auto' detects from "
+                        help="Prompt regime: 'short' = single-shot MCSLA (optional "
+                             "length cues), 'block' = block-scaffold production "
+                             "prompt (short-form cues suspended per HARD RULE 7). "
+                             "Default 'auto' detects from "
                              "canonical block labels / shot markers.")
     parser.add_argument("--project", default="default",
                         help="Generation-ledger project for the --log bridge "

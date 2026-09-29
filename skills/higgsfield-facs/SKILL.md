@@ -14,10 +14,11 @@ metadata:
 Direct a face the way an animator does — by **muscle**, not by mood. FACS (the
 Facial Action Coding System) names each facial movement as an **Action Unit**:
 `AU12` is the lip-corner puller (smile), `AU6` is the cheek raiser, `AU4` is the
-brow lowerer. Put those codes in a Seedance 2.0 prompt and the model renders the
-corresponding action. It is the highest-resolution facial control available on
-the platform, and it is where forced smiles, uncanny faces, mixed emotions, and
-honest micro-performance in close-up dialogue come from.
+brow lowerer. Use those codes as anatomical directing vocabulary in a Seedance
+2.0 prompt. Practitioner examples report useful expression control, but the
+model's interpretation is empirical and may miss individual units. This is a
+way to specify forced smiles, mixed emotions, and close-up micro-performance;
+it is not a documented or deterministic model control.
 
 > **This skill is a facial-control layer on top of `../higgsfield-seedance/SKILL.md`.**
 > Every FACS prompt is still a Seedance prompt — six-slot formula, Prompt-Craft
@@ -28,11 +29,11 @@ honest micro-performance in close-up dialogue come from.
 ## QUICK FACTS
 *Routing aids — read the linked sections for the actual rules.*
 - FACS = facial expressions as **Action Unit codes** (muscle movements), not emotion labels; you write the codes into the prompt [→](#what-facs-is)
-- **Provenance split:** the AU vocabulary is standard human science; Seedance's *interpretation* of codes in a prompt is **[EMPIRICAL]** — high success rate, **not a guarantee** [→](#provenance-and-the-not-a-guarantee-rule)
+- **Provenance split:** the AU vocabulary is standard human science; Seedance's *interpretation* of codes in a prompt is **[EMPIRICAL]** — practitioner reports without a measured success rate, **not a guarantee** [→](#provenance-and-the-not-a-guarantee-rule)
 - **Plan first.** Decide the 3–4 expressions you need → generate a FACS sheet for *only those* → write the codes. Generating the full 49-AU sheet and cherry-picking is the anti-pattern [→](#the-plan-first-workflow)
-- **3–4 expressions max per generation.** Accuracy drops as you stack more AUs into one clip [→](#step-2--put-au-codes-in-the-seedance-prompt)
+- **3–4 expressions is a practitioner starting heuristic**, not a model cap; dense AU stacks may reduce adherence [→](#step-2--put-au-codes-in-the-seedance-prompt)
 - Two specification styles — **codes-only** (`AU12`) vs **codes + short anatomical description**; test both, neither is universally better [→](#step-2--put-au-codes-in-the-seedance-prompt)
-- The reference sheet is a **labelled-grid image** (GPT Image 2 / Nano Banana Pro); the LLM can **mislabel AUs**, so iterate and verify [→](#step-1--generate-the-facs-reference-sheet)
+- The reference sheet is a **labelled-grid image** (GPT Image 2 / Nano Banana Pro); an image model can **mislabel AUs**, so verify the selected sheet [→](#step-1--generate-the-facs-reference-sheet)
 - The character photo is **optional** — codes work without it; attach it only for identity consistency [→](#step-2--put-au-codes-in-the-seedance-prompt)
 - Common emotions decompose to standard AU recipes (Duchenne smile = AU6+AU12; sadness = AU1+AU4+AU15) [→](#emotion--au-recipes)
 - The payoff is **dialogue / monologue**: AU-per-beat schedule, combined with the `[AUDIO: Xs]` lip-sync block; every line gets pre / during / post-line beats [→](#dialogue--monologue-facial-acting)
@@ -89,20 +90,20 @@ Two different kinds of claim live in this skill — keep them apart:
 - **Seedance's interpretation of AU codes is [EMPIRICAL].** The `seedance_2_0`
   spec exposes **no FACS field, no expression enum, nothing facial** (verified
   against the spec snapshot, 2026-06-27). So "write `AU12` and get a smile" is a
-  *prompt convention the model happens to interpret well* — not a documented
-  capability. Practitioner report: success rate is **high**, but **codes do not
+  *prompt convention supported by practitioner examples* — not a documented
+  capability. Those reports provide no measured success rate. **Codes do not
   guarantee** the exact expression, and a multi-AU prompt may render most but
   not all of the units.
 
-**The rule:** present FACS as a strong heuristic, and let the repo's iteration
-discipline (`../higgsfield-prompt/SKILL.md` § The Iteration Rule) confirm it on
-the user's own material. Same provenance class as the Seedance Prompt-Craft Laws
+**The rule:** present FACS as a practitioner heuristic; when generation is
+authorized, review its interpretation on the user's own material. Same
+provenance class as the Seedance Prompt-Craft Laws
 (`../higgsfield-seedance/SKILL.md` § Prompt-Craft Laws). Never tell the user a
 FACS prompt is deterministic.
 
-> If a future Seedance spec adds a real facial/expression parameter, the
-> spec-drift tripwire should catch it — at which point this "no model field"
-> claim is what needs updating.
+> Check the selected executor's current schema before relying on the dated
+> snapshot. If it adds a facial/expression parameter, update the "no model
+> field" claim and use that documented parameter separately from prompt codes.
 
 ---
 
@@ -134,7 +135,7 @@ The three steps:
 The sheet is **optional**. Codes work in a text-to-video prompt with no image at
 all (the practitioner generated whole videos from codes alone). Generate a sheet
 when you need the *character's* face to stay consistent across shots — same
-reason you'd use a Soul ID sheet.
+reason you'd use a character identity reference sheet.
 
 ---
 
@@ -183,9 +184,9 @@ Include these Action Units (one captioned panel each):
 
 (The full category→AU list to draw from is in § AU Code Reference below.)
 
-### The LLM can mislabel AUs — verify
+### The image model can mislabel AUs — verify
 
-The image model is *an LLM* — it can put the wrong muscle under a code. The
+The image model can put the wrong muscle under a code. The
 sample sheet that circulates labels nostril dilation **`AU82`**, while standard
 FACS (and the practitioner's own dialogue example) uses **`AU38`** for the same
 action; `AU8` (lips toward each other) appears in real prompts but is absent from
@@ -213,11 +214,11 @@ Laws, preflight linter. FACS only changes the face specification.
 Neither is universally better. **Test both on your material** — codes-only is
 terser and often enough; add descriptions for the units the model drops.
 
-### The hard limits
+### Practitioner heuristics
 
-- **3–4 expressions max per generation.** Accuracy falls as you stack AUs — more
-  expressions in one prompt means more the model renders approximately. A clip
-  built on 3–4 well-chosen beats lands far more reliably than one cramming 10.
+- **Start with 3–4 expressions when the shot needs them.** This is a practitioner
+  heuristic, not a verified model limit. Dense AU stacks may be rendered
+  approximately; the appropriate number depends on the shot.
   (The 14-beat example below works *because* each beat is short and singular —
   but expect some beats to read only partially.)
 - **The character photo is optional.** Codes function with no image (text-to-
@@ -380,9 +381,9 @@ extends the same muscle-level discipline to **throat, breath, skin, and
 posture**. These recipes drop into the PERFORMANCE section of a block prompt
 alongside (or instead of) AU codes.
 
-**These are menus, not checklists.** The 3–4-expressions-per-generation cap
-and the 1–2-AUs-per-beat rule apply to physical beats by the same logic —
-stacking degrades accuracy. Pick the **2–4 tells** that carry the beat from
+**These are menus, not checklists.** The 3–4-expression and 1–2-AU-per-beat
+figures are practitioner heuristics, not verified model caps. Dense stacks may
+reduce adherence. Pick the **2–4 tells** that carry the beat from
 the recipe below; the eight-item anger recipe is the vocabulary to choose
 from, never a stack to render at once:
 

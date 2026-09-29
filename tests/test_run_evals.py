@@ -64,6 +64,23 @@ def test_well_formed_case_still_passes(specs):
     assert run_evals.run_case(c, specs) == []
 
 
+def test_missing_routed_skill_is_rejected(specs):
+    response = "Routing to higgsfield-removed-test.\n\n" + GOOD_RESPONSE
+    failures = run_evals.run_case(
+        case([{"type": "word_count", "max": 200}], response=response), specs)
+    assert failures == ["routing target missing: higgsfield-removed-test"]
+
+
+def test_missing_owner_skill_fails_main(tmp_path, monkeypatch, capsys):
+    doc = {"skill": "higgsfield-removed-test", "cases": [
+        case([{"type": "word_count", "max": 200}])]}
+    (tmp_path / "t.json").write_text(json.dumps(doc), encoding="utf-8")
+    monkeypatch.setattr(run_evals, "CASES_DIR", tmp_path)
+    monkeypatch.setattr(sys, "argv", ["run_evals.py"])
+    assert run_evals.main() == 1
+    assert "routing target missing: higgsfield-removed-test" in capsys.readouterr().out
+
+
 TRAP_1080P = ("**Model**: Seedance 2.5\n**Mode**: t2v  **Aspect ratio**: 16:9  "
               "**Duration**: 10s  **Resolution**: 1080p\n\nA kettle reaches boil on "
               "a gas stove, steam against morning window light. Static close-up.")
