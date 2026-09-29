@@ -1,8 +1,8 @@
 ---
 name: higgsfield-style
 description: >
-  Use when the user asks about visual styles, aesthetics, color grades, film looks,
-  or how to set the tone and atmosphere of a Higgsfield generation.
+  Use when Higgsfield is the selected platform and the user asks about visual
+  styles, aesthetics, color grades, film looks, or generation atmosphere.
 user-invocable: true
 metadata:
   tags: [higgsfield, style, VHS, cinematic, anamorphic, color, aesthetic]

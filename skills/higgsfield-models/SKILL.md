@@ -188,7 +188,6 @@ Catalog-backed rows cite `[OFFICIAL — platform, snapshot 2026-09-26]` (media r
 | Feature | Available on |
 |---------|-------------|
 | Native audio (dialogue, SFX, ambient) | Kling 3.0/2.6 · Seedance 2.5/2.0/2.0 Mini/1.5 Pro · Ad Multiplier · Wan 3.0/Prime · FLUX 3 Video · Gemini Omni Flash / 1.1 · Veo 3/3.1/3.1 Lite · Wan 2.7 · Grok Video · Cinema Studio 3.0 / 4.0 · (Kling 3.0 Omni, Wan 2.5 — not in the API catalog, 2026-09-26 — verify in the live UI) |
-| Soul ID character slot | Soul 2.0 · GPT Image, Higgsfield Soul (not in the API catalog, 2026-09-26 — verify in the live UI) |
 | @ Elements syntax | Seedream 4.5/5.0 Lite · Nano Banana Pro · Cinema Studio |
 | Draw (sketch-to-image) | Nano Banana · Nano Banana Pro |
 | Video editing (existing footage) | Seedance 2.5 `video_edit` · Cinema Studio 4.0 `video_edit` · Kling 3.0 Omni Edit · FLUX 3 Video Edit · Gemini Omni Flash 1.1 `edit` · Genjutsu replace-object · Ad Multiplier (many variants) · Kling O1 Video Edit (UI-only legacy) → `../../model-guide.md` § Edit-Lane Chooser |
@@ -202,7 +201,6 @@ Catalog-backed rows cite `[OFFICIAL — platform, snapshot 2026-09-26]` (media r
 | Soul Cast AI actors (General 2K / Character 4K / Location 4K) | Cinema Studio 3.0 (Business/Team) |
 | Built-in color grading | Cinema Studio 2.5 (full grading suite) · Cinema Studio 3.5 (Color Palette axis in Style Settings — 8 named palettes) |
 | Native dual-channel stereo audio | Cinema Studio 3.0 (Business/Team) · Kling 3.0 · Seedance 2.0/1.5 Pro · Veo 3/3.1 · Wan 2.7 · (Kling 3.0 Omni, Wan 2.5 — not in the API catalog) |
-| Soul HEX color matching | Soul 2.0 · Cinema Studio 2.5 · Soul Cinema Preview (no catalog model by that name — verify in the live UI) |
 | Native 4K image series | Kling Image 3.0 — not in the API catalog, 2026-09-26 — verify in the live UI (native 4K alone: Nano Banana Pro) |
 | Style presets + Color Transfer | Soul 2.0 (the CLI forbids `style_id` + image references in one Soul 2.0 call — see `../../image-models.md` § Soul 2.0) |
 | Transparent-background image output | GPT Image 2.5 `background: transparent` (the CLI also lists `background` on GPT Image 2 — see `../../image-models.md` § GPT Image 2) |

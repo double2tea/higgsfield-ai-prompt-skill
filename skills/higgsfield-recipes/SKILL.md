@@ -309,9 +309,9 @@ Apply Monstrosity preset for the transformation sequence.
 > categories in `../shared/negative-constraints.md`. Action recipes → Body/Motion; Horror →
 > Content Filter/Safety; Character-focused → Face/Identity.
 
-> **Identity vs. Motion:** For recipes involving Soul ID characters, split the output into
-> Identity Block + Motion Block. See `higgsfield-prompt` and `higgsfield-character-design` for the rule
-> and examples.
+> **Identity vs. Motion:** For a recurring character with identity drift,
+> consider separate identity and motion notes when the approved prompt format
+> supports them. See `higgsfield-prompt` and `higgsfield-character-design`.
 
 ---
 

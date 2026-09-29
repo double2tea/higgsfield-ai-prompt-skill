@@ -16,14 +16,16 @@ The user attaches a real clip (or describes one) and wants a Seedance prompt tha
 creature, or syncing a timed camera move to a line. For a scene built from scratch, use
 `../../skills/higgsfield-seedance/SKILL.md` instead.
 
-Always run these in **Seedance 2.0, `mode=std`, 4K** (native 4K needs std; fast caps at
-720p; Cinema Studio caps at 1080p).
+For a selected Seedance 2.0 transform that needs maximum detail, consider
+`mode=std`, 4K after checking the current schema and the approved brief.
 
 ---
 
 ## The skeleton
 
-Output plain-text English, no markdown inside the prompt, easy to copy:
+New prompt text defaults to plain-text Simplified Chinese unless the user
+requests another language. Preserve user copy and machine syntax; translate
+for execution only if the selected model or mode requires it:
 
 ```text
 @source: Original <clip> — <subject, wardrobe, setting, action>. Preserve identity, face,

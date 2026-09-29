@@ -41,18 +41,18 @@ Apply Horror Face preset in the mirror reflection.
 
 ## Negative constraints to include
 - **Content Filter/Safety**: Describe atmosphere ("dread", "unsettling", "something is wrong") not explicit gore. Use motion presets for horror VFX.
-- **Face/Identity**: If using Soul ID, keep face description clean and separate from the horror effect.
+- **Face/Identity**: If using a character reference, keep face description clean and separate from the horror effect.
 - **Temporal/Consistency**: Slow camera movements work best for horror — fast cuts break the tension build.
 
 ## Common mistakes
 1. **Describing explicit gore/injury** — gets blocked by content filters. Describe the dread and atmosphere, let the viewer's imagination do the work.
 2. **Too many scares in one clip** — one "wrong detail" per generation. Stack them across a sequence, not in a single shot.
 
-> **Identity/Motion separation:** When this horror scene features a Soul ID character, use the following block structure.
+> **Identity/Motion separation:** When this horror scene features a referenced character, use the following block structure.
 
-### Identity Block (if using Soul ID character)
+### Identity Block (if using referenced character)
 ```
-The Soul ID character — pale complexion, dark circles under eyes, wearing
+The referenced character — pale complexion, dark circles under eyes, wearing
 a grey oversized sweater, dark hair loose.
 ```
 

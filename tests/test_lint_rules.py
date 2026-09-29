@@ -132,8 +132,10 @@ def test_duration_out_of_range(mini_spec):
 
 
 def test_requires_constraint(mini_spec):
-    lite = spec_for(mini_spec, "veo3_1_lite")
-    # 1080p requires duration=8 (snapshot-extracted)
+    lite = dict(spec_for(mini_spec, "veo3_1_lite"), constraints=[{
+        "param": "resolution", "value": "1080p", "requires": {"duration": "8"},
+        "source": "test constraint: 1080p requires duration=8",
+    }])
     s = sl.Settings(resolution="1080p", duration=6)
     assert "constraint-requires" in fails(sl.structural_lint(CLEAN, s, lite))
     s_ok = sl.Settings(resolution="1080p", duration=8)

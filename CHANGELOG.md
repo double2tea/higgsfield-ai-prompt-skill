@@ -2,6 +2,8 @@
 
 ## platform-cut — 2026-09-29
 
+- Final Grok review aligned Seedance language defaults, shotlist cuts, acting detail, motion-design execution, recall logging, and Soul character-reference guidance with the selected-platform rules. Rebuilt the index and removed the generated guide's Soul ID setup chapter while keeping character-sheet and model craft.
+- Repaired historical-spec test fixtures and stale CLI assertions after the spec-sync scripts were removed; the current suite and eval cases pass, with PDF dry-run still gated by optional `fpdf2`.
 - Removed remaining English-only prompt directions and mandatory negative-constraint, eye-cue, and brand-hold wording where they conflicted with the branch's scoped authoring rules.
 - Scoped skill descriptions to selected Higgsfield authoring and corrected automatic recall, mandatory acting detail, fixed 15-second cuts, English-only shotlists, and generic platform-routing claims; retained the production techniques as optional methods.
 - Removed active routes into the eleven platform-specific packages cut from this branch; kept archived upstream links where they document model or production provenance.

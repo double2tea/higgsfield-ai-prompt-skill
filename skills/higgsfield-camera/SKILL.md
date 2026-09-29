@@ -1,8 +1,8 @@
 ---
 name: higgsfield-camera
 description: >
-  Use when the user asks about camera movements, shot types, or how to describe
-  camera behavior in a Higgsfield prompt. Contains all named camera controls
+  Use when Higgsfield is the selected platform and the user asks about camera
+  movements, shot types, or camera behavior. Contains named camera controls
   with descriptions, best use cases, and example prompt phrases.
 user-invocable: true
 metadata:

@@ -33,7 +33,7 @@ These rules apply to new Higgsfield prompt authoring within the scope above. The
 
 2. **Routed sub-skills opened and read in this conversation.** For new Higgsfield prompt authoring, match the user's ask to the routing table below, open `skills/higgsfield-prompt/SKILL.md` and the matching specialist files with the read tool, and READ them. Grepped snippets do not satisfy this rule. Platform vocabulary, preset names, and model parameters must come from the selected platform's files or verified schema because its lineup changes between releases. An external provider's approved prompt uses that provider's writer and executor without an extra Higgsfield rewrite.
 
-3. **Named vocabulary verified, not invented.** Camera preset names, motion preset names, model names, and MCP tool parameter names all come from the skill files or from verification. For model parameters, enums, and durations, verify against `specs/model-specs.yaml` first — it is generated from a dated `models_explore` snapshot (see `snapshot_date` inside the file); if the snapshot is stale (>30 days), verify live instead with `models_explore`. If you found yourself thinking "this preset is probably called Y" — stop. Read the file or verify it. Plausibility is not validity. Do not substitute generic video-prompt vocabulary for named Higgsfield presets; do not invent model versions, camera presets, or motion-preset names. If the user names one you don't see in the skill files, say so and ask for clarification.
+3. **Named vocabulary verified, not invented.** Camera preset names, motion preset names, model names, and MCP tool parameter names all come from the skill files or from verification. For Higgsfield model parameters, enums, and durations, consult `specs/model-specs.yaml` first — it records a dated snapshot (see `snapshot_date`); if stale (>30 days), verify through the selected Higgsfield executor's current schema. For another platform, that platform's executor owns verification. If you found yourself thinking "this preset is probably called Y" — stop. Read the file or verify it. Plausibility is not validity. Do not substitute generic video-prompt vocabulary for named Higgsfield presets; do not invent model versions, camera presets, or motion-preset names. If the user names one you don't see in the skill files, say so and ask for clarification.
 
 4. **MCSLA structure on new short-form Higgsfield video prompts.** Model · Camera · Subject · Look · Action. Keep a selected model-specific dialect or approved prompt in its own structure; do not add these headings solely for conformity.
 
@@ -79,8 +79,9 @@ Rules:
 
 ### Fast Path — Simple Creative Requests
 
-If the user provides a clear creative intent ("write me a prompt for a car chase at night")
-with no specific constraints, **generate immediately** using these sensible defaults:
+If the user has selected Higgsfield and provides a clear creative intent
+("write me a prompt for a car chase at night") with no specific constraints,
+use these adjustable examples only where the brief leaves a choice open:
 
 > **Fast Path still requires reading `skills/higgsfield-prompt/SKILL.md` first — Fast Path means skip clarifying questions, NOT skip the file read.**
 
@@ -92,15 +93,15 @@ with no specific constraints, **generate immediately** using these sensible defa
 | Video model | Kling 3.0 (character-focused) or Seedance 2.0 (action/scale/references) |
 | Image model | Soul 2.0 (portrait) or Nano Banana 2 (everything else) |
 
-Do not ask clarifying questions. Deliver a ready-to-paste prompt. Mention the defaults
-used so the user can adjust if they want something different.
+Ask only when a missing choice would materially change the result or cost.
+Mention any assumptions used so the user can adjust them.
 
 > **Seedance exception:** Seedance 2.0 never gets a silently defaulted runtime
 > (`skills/higgsfield-seedance/SKILL.md` — always ask, never default). On Fast
 > Path that means: if the user named no duration, route video to Kling 3.0;
 > pick Seedance 2.0 only when the request names a duration — or when the user
-> asked for Seedance by name, in which case state the assumed runtime as the
-> first adjustable default in the delivery.
+> asked for Seedance by name, in which case ask for the runtime if it is
+> required by the selected mode and absent from the brief.
 
 > If you did not read `skills/higgsfield-prompt/SKILL.md` earlier in this conversation, read it now before writing the prompt.
 
@@ -142,7 +143,7 @@ If a local skill is unavailable, say so and resolve the intended platform before
 
 | User wants | Route to |
 |------------|----------|
-| Write or improve a prompt | `higgsfield-prompt` + relevant sub-skills |
+| Write or improve a prompt for selected Higgsfield execution | `higgsfield-prompt` + relevant sub-skills |
 | Develop a character / world / story / premise before prompting, build a character sheet / story bible, lock a visual style ("visual DNA"), keep a character consistent across many shots, or "I keep getting generic AI characters" | `higgsfield-character-design` |
 | Audit or strengthen a scene / sequence / beat outline before generating it, or "is this scene working", "what's weak here", "why doesn't this land" | `higgsfield-scene-engine` |
 | Cinematic still image prompt (shot framing, angles) | `higgsfield-image-shots` |
@@ -166,8 +167,8 @@ If a local skill is unavailable, say so and resolve the intended platform before
 | Cinema Studio 3.0 Smart mode, @ references, native audio | `higgsfield-cinema` |
 | Cinema Studio 3.5 — three-pill UI, Style Settings, Camera Settings, Manual Style, AI director toggle | `higgsfield-cinema` |
 | Multi-shot workflow, chaining tools, full production pipeline | `higgsfield-pipeline` |
-| Short film, branded content, Popcorn → video → assembly | `higgsfield-pipeline` |
-| Animated AD / brand promo as an **AI-generated video** built brief → storyboard sheet → Seedance ("make a motion", "motion design ad", "animate my logo into a video", "promo/ad video", classicMD/highMD) | `higgsfield-motion-design` |
+| Short film, branded content, Popcorn → video → assembly on Higgsfield | `higgsfield-pipeline` |
+| Animated AD / brand promo on selected Higgsfield execution, built brief → storyboard sheet → video ("make a motion", "motion design ad", "animate my logo into a video", "promo/ad video", classicMD/highMD) | `higgsfield-motion-design` |
 | Pre-generation memory check, apply past failure fixes | `higgsfield-recall` |
 | User reports a generation result (kept/rejected/flagged) and this project uses the Higgsfield ledger | `higgsfield-recall` |
 | Audio design, dialogue cues, SFX, ambient sound | `higgsfield-audio` |
@@ -341,7 +342,7 @@ asking a bookkeeping question. For a requested ledger row, use
 
 | Skill | Trigger |
 |-------|---------|
-| `higgsfield-prompt` | Any prompt writing or refinement request |
+| `higgsfield-prompt` | New Higgsfield prompt writing or refinement request |
 | `higgsfield-image-shots` | Cinematic image prompts — shot framing, angles, composition |
 | `higgsfield-gpt-image-2` | GPT Image 2.0 / 2.5 prompts — when to prefer 2.5 (transparent background, xhigh/max), three-format taxonomy (JSON / prose / meta-prompt), UI mockups, infographics, reference sheets, static-ad recreation |
 | `higgsfield-models` | "Which model should I use?" / model comparison / edit-lane, long-take (>15s) and motion-transfer choosers |

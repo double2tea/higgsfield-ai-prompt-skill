@@ -16,7 +16,7 @@ this template is used instead of inline spatial fragments.
 ```text
 [At/from N seconds] N characters in frame.
 
-Character A — [identity, Soul ID handle].
+Character A — [identity, approved reference handle].
   Screen position: [left third / center / right third],
   x-position [%], y-position [%], frame occupancy [%].
   Depth layer: [foreground / midground / background].
@@ -29,7 +29,7 @@ Character A — [identity, Soul ID handle].
   State lock: [emotional or physical state — calm, exhausted,
     injured, soaked].
 
-Character B — [identity, Soul ID handle].
+Character B — [identity, approved reference handle].
   [...same fields...]
 
 Cross-character relationships:
@@ -49,9 +49,7 @@ Final frame: [composition at last frame].
 
 ## What goes in each field
 
-- **Identity** matches a Soul ID character handle (see
-  [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Anchor Block
-  for the 10-attribute per-character structure this template consumes)
+- **Identity** matches the approved character reference; use `../../skills/higgsfield-character-design/SKILL.md` for the character sheet.
 - **Screen position** pairs qualitative anchor + percentage notation
   per `../../skills/higgsfield-seedance/SKILL.md` § Frame Coordinate
   System (vocab.md § Editing Syntax bracket notation ships in v3.7.7

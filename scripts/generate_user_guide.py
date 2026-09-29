@@ -400,7 +400,7 @@ def build_pdf(dry_run: bool = False):
             "10. Cinema Studio 2.5",
             "11. Cinema Studio 3.0 (Business/Team Plan)",
             "12. Prompting Best Practices (Seedance 2.0)",
-            "13. Soul ID -- Character Consistency",
+            "13. Character Consistency",
             "14. Character Sheet Creation",
             "15. Identity vs. Motion Separation",
             "16. Genre Recipes",
@@ -460,7 +460,7 @@ def build_pdf(dry_run: bool = False):
             "Apply Seedance 2.0 prompting best practices: Intent over Precision, Genre Router, I2V Gate, Anti-Slop check",
             "Use 3D Mode (Gaussian Splatting) to explore scenes from new angles",
             "Generate batch variations with Grid Generation (2x2 and 4x4)",
-            "Help you maintain character consistency with Soul ID and Character Sheets",
+            "Help you maintain character consistency with approved references and character sheets",
             "Apply named camera controls and motion presets",
             "Troubleshoot failed or poor-quality generations with a diagnostic tree",
             "Optimize your credit usage",
@@ -768,20 +768,19 @@ def build_pdf(dry_run: bool = False):
         pdf.body_text(
             "Cinema Studio is Higgsfield's professional filmmaking environment. It gives you control over "
             "optical physics, multi-shot sequences, character elements, Soul Cast AI actors, and built-in color grading.")
-        pdf.subsection_title("The 10-step workflow:")
+        pdf.subsection_title("Example production workflow:")
         w3 = [15, 40, 115]
         pdf.table_row(["Step", "What you do", "Details"], w3, bold=True, fill=True)
         steps = [
             ("1", "Script", "Write your scene description / shot list"),
-            ("2", "Soul Cast", "Generate AI actors from parameters (no photos needed)"),
-            ("3", "Reference", "Upload character photo or use Soul Cast actor as Reference Anchor"),
-            ("4", "Elements", "Define @Characters, @Locations, @Props"),
-            ("5", "Optical Stack", "Choose camera body + lens + focal length + aperture"),
-            ("6", "Hero Frame", "Generate a key image to lock the visual tone"),
-            ("7", "Color Grade", "Apply color grading to keyframes before video generation"),
-            ("8", "Camera Config", "Set Director Panel movement + Speed Ramp + Duration"),
-            ("9", "Shot Mode", "Single Shot, Multi-Shot Auto, or Multi-Shot Manual"),
-            ("10", "Generate", "Run generation and export"),
+            ("2", "Reference", "Use an approved character reference when the selected mode supports it"),
+            ("3", "Elements", "Define @Characters, @Locations, @Props when needed"),
+            ("4", "Optical Stack", "Choose camera body + lens + focal length + aperture"),
+            ("5", "Hero Frame", "Prepare a key image to lock the visual tone if needed"),
+            ("6", "Color Grade", "Apply color grading to keyframes when requested"),
+            ("7", "Camera Config", "Set Director Panel movement + Speed Ramp + Duration when needed"),
+            ("8", "Shot Mode", "Choose Single Shot or a planned Multi-Shot mode"),
+            ("9", "Generate", "Use the selected executor after cost and submission approval"),
         ]
         for s in steps:
             pdf.table_row(list(s), w3)
@@ -999,12 +998,13 @@ def build_pdf(dry_run: bool = False):
             "position don't need the full block -- a single qualitative-plus-percentage anchor "
             "inside the description suffices.")
 
-        # --- 13. SOUL ID ---
+        # --- 13. CHARACTER CONSISTENCY ---
         pdf.add_page()
-        pdf.section_title("13. Soul ID -- Character Consistency")
+        pdf.section_title("13. Character Consistency")
         pdf.body_text(
-            "Soul ID keeps a character looking the same across multiple generations. Upload a clear "
-            "reference photo, create a Soul ID, and every future prompt can reference that same character.")
+            "A clear reference image and a stable character sheet help a recurring character "
+            "remain consistent across shots. Choose the reference workflow supported by the "
+            "selected model and executor.")
         pdf.subsection_title("Best Practices for the Reference Photo:")
         pdf.bullet("Front-facing or 3/4 angle -- full face visible")
         pdf.bullet("Even lighting -- no harsh shadows")
@@ -1025,23 +1025,23 @@ def build_pdf(dry_run: bool = False):
         pdf.section_title("14. Character Sheet Creation")
         pdf.body_text(
             "A character sheet is a multi-angle reference image showing the same character from several "
-            "viewpoints -- front, 3/4, side profile, and back. It gives Soul ID far more geometry data "
+            "viewpoints -- front, 3/4, side profile, and back. It gives the selected model more geometry data "
             "than a single photo.")
         pdf.bullet("Generate your character using your preferred model")
         pdf.bullet("Use Grid Generation (2x2 or 4x4) to produce multiple variations")
         pdf.bullet("Use 3D Mode to orbit and capture front, side, and 3/4 angles")
         pdf.bullet("Arrange the best angles into a single composite reference image")
-        pdf.bullet("Upload as your Soul ID reference")
+        pdf.bullet("Use as an approved reference when the selected model supports it")
 
         pdf.subsection_title("Character Anchor Block (per-shot, 10 attributes)")
         pdf.body_text(
             "Character Sheet Creation above is build-time -- the multi-angle identity reference "
-            "that goes into Soul ID. The Character Anchor Block is shot-time -- the per-shot "
+            "used by the selected model. The Character Anchor Block is shot-time -- the per-shot "
             "prompt structure that locks how that character appears IN a specific shot. The two "
             "work together: the sheet defines the identity, the block places that identity inside "
             "the frame for each shot.")
         pdf.body_text("A complete anchor block names, per character in frame, ten attributes:")
-        pdf.bullet("Identity -- which character (matches a Soul ID handle when references are present)")
+        pdf.bullet("Identity -- which character (matches the approved reference when present)")
         pdf.bullet("Screen position -- qualitative anchor + percentage notation paired (see Section 12 Frame Coordinate System)")
         pdf.bullet("Depth layer -- foreground / midground / background")
         pdf.bullet("Frame occupancy -- % of frame area the character fills")
@@ -1076,8 +1076,9 @@ def build_pdf(dry_run: bool = False):
         pdf.add_page()
         pdf.section_title("15. Identity vs. Motion Separation")
         pdf.body_text(
-            "When Soul ID or character consistency is involved, every prompt must be split into two "
-            "clearly labeled blocks:")
+            "When a recurring character drifts despite an approved reference, separating static "
+            "identity notes from motion can help. Use two blocks when they fit the selected "
+            "model and the approved prompt format:")
         pdf.bold_text("Identity Block -- Static visual descriptors ONLY")
         pdf.bullet("Face features, skin tone, body type, distinguishing marks")
         pdf.bullet("Clothing, accessories, color palette")
@@ -1091,7 +1092,7 @@ def build_pdf(dry_run: bool = False):
         pdf.bold_text("Example (Good -- separated):")
         pdf.code_block(
             "Identity Block:\n"
-            "The Soul ID character -- sharp cheekbones, auburn hair shoulder-length,\n"
+            "The reference character -- sharp cheekbones, auburn hair shoulder-length,\n"
             "wearing a blue trench coat with silver buttons, lean athletic build.\n\n"
             "Motion Block:\n"
             "She runs through a rain-soaked alley, coat flapping behind her.\n"
@@ -1189,7 +1190,7 @@ def build_pdf(dry_run: bool = False):
         pdf.section_title("20. Troubleshooting")
         w11 = [55, 115]
         pdf.table_row(["Problem", "Quick Fix"], w11, bold=True, fill=True)
-        pdf.table_row(["Character face keeps changing", "Soul ID + character sheet + Identity/Motion separation"], w11)
+        pdf.table_row(["Character face keeps changing", "Approved reference + sheet; separate identity/motion if useful"], w11)
         pdf.table_row(["Video is static / not animating", "Describe ONLY what changes (I2V Gate rule)"], w11)
         pdf.table_row(["Camera movement ignored", "Use exact preset name (e.g. 'Dolly In')"], w11)
         pdf.table_row(["Style not applying", "Put style at end; use One Style Anchor Rule"], w11)
@@ -1275,9 +1276,6 @@ def build_pdf(dry_run: bool = False):
         pdf.section_title("23. Cinema Studio Advanced Features")
 
         features = [
-            ("Soul Cast -- AI Actor Generation (2.5 + 3.0)",
-             "Generate AI actors from 8 parameter categories (Genre, Budget, Era, Archetype, Identity, "
-             "Physical Appearance, Details, Outfit). In Cinema Studio 3.0 (Business/Team): General (2K) / Character (4K) / Location (4K) modes."),
             ("Built-in Color Grading (2.5 only)",
              "Color temperature, contrast, saturation, sharpness, film grain, exposure, bloom -- "
              "applied to keyframes before video generation. Not available in Cinema Studio 3.0."),

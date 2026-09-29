@@ -14,7 +14,9 @@ metadata:
 A motion-design planning example originally written for the Higgsfield MCP connector.
 Use its storyboard and visual-direction techniques when relevant; the selected
 executor owns current tools, models, permissions, costs, and job state. Preserve
-the user's requested pace, cuts, and output format. Reply in the user's language.
+the user's requested pace, cuts, and output format. New prompt text defaults to
+Simplified Chinese unless the user requests another language; preserve supplied
+copy and machine syntax.
 For the named camera/motion preset library (Explosion, Werewolf, Air Bending,
 etc.) use `higgsfield-motion` instead.
 
@@ -22,11 +24,11 @@ etc.) use `higgsfield-motion` instead.
 
 ## QUICK FACTS
 - Two example flows: **classicMD** (smooth, elegant, cinematic) vs **highMD** (fast cuts, extreme dynamics, CGI energy) — use the one the brief calls for [→](#step-0--determine-the-flow-type)
-- Ask **all** brief questions in ONE message — never split intake into rounds [→](#step-1--brief-intake-one-message)
+- Ask only for missing decisions that affect the brief, grouped in one message when practical [→](#step-1--brief-intake-one-message)
 - The original example uses one GPT Image 2 storyboard grid; choose reference format with the selected executor [→](#step-3--generate-the-storyboard)
 - The original example uses Seedance 2.0; confirm the selected model and schema with the executor [→](#step-4--generate-the-video)
 - highMD rule: no realistic humans — silhouettes, chrome figures, or 3D abstract shapes only [→](#notes--rules)
-- highMD rule: the logo lock is a static hold proportional to clip length (~1s / ~2s / ~2–3s for 5 / 10 / 15s) [→](#step-4--generate-the-video)
+- A highMD logo hold can scale to the clip length when the approved edit calls for one [→](#step-4--generate-the-video)
 
 ---
 
@@ -44,28 +46,33 @@ If the request makes the flow obvious, proceed silently. If ambiguous, ask once:
 
 ## STEP 1 — Brief intake (one message)
 
-Ask all of these in a **single** message (never split into rounds). Save every answer before proceeding:
+Confirm only decisions missing from the brief. Group related questions when
+practical; do not ask again for an approved choice:
 
 1. **Existing assets?** — Yes (upload logo / product photo / reference) · No (help me create the visual)
-2. **Duration** — 5s (teaser / logo sting) · 10s (standard post / stories) · 15s (promo / product video)
+2. **Duration** — use the requested runtime; 5s / 10s / 15s are examples only
 3. **Frame format** — 16:9 (horizontal) · 9:16 (vertical Reels/TikTok/Stories) · 1:1 (square feed)
 4. **Mood / style** *(free input)* — e.g. energetic, minimalist, luxury, technological, atmospheric, aggressive, cinematic
 5. **Brand / product name and tagline** *(if any)*
-6. **Storyboard frames** — 6 (standard) · 8 (detailed) · 9 (maximum coverage)
+6. **Storyboard frames** — choose a count only if the brief calls for a sheet; 6 / 8 / 9 are examples
 
 ---
 
 ## STEP 2 — Asset handling
 
-**If the user HAS assets:** when the client is an Apps UI-capable surface, call `media_upload_widget` immediately so they can attach the local file (remote MCP cannot read chat attachments). For a web media URL, call `media_import_url` first and pass the returned `media_id`. Then proceed to Step 3.
+**If the user has assets:** use the selected executor's current upload or
+reference workflow and preserve the approved asset roles.
 
-**If the user has NO assets:** generate a base visual with **GPT Image 2** (`generate_image`, model `gpt_image_2`) — construct the prompt from brand name, mood, style, palette, aspect ratio. Display the result with `job_display`, ask "Does this work or want changes?", regenerate if needed, then proceed once approved.
+**If the user has no assets:** plan a base visual from brand name, mood, style,
+palette, and aspect ratio if the project needs one. Generate it only through
+the selected executor with the required cost and submission authorization.
 
 ---
 
 ## STEP 3 — Generate the storyboard
 
-The core creative step. Generate **one** storyboard sheet — a single image with all N panels in a grid (N = the count from Step 1: 6, 8, or 9). Do **not** generate N separate images.
+For a storyboard-led brief, one sheet with N panels is a useful example.
+Choose the format and panel count from the approved production plan.
 
 In the original GPT Image 2 example, one storyboard grid uses the approved asset as a reference. If a grid fits the brief, keep panels visually consistent and give each a distinct moment and clear subject state. Choose the image tool, panel count, and any caption with the selected executor and user brief.
 
@@ -80,20 +87,27 @@ Each panel: [camera angle], [motion state], [mood/lighting]. Style: [cinematic /
 Consistent color palette throughout. Clean storyboard design, thin borders between panels.
 ```
 
-Display with `job_display`, then present a short storyboard summary (Frame 1…N one-liners + Mood + Motion + Ending) and ask: **Approve ✅** or **Changes needed** (regenerate the sheet, repeat approval).
+Present a short storyboard summary (Frame 1…N one-liners + Mood + Motion +
+Ending). Revise or render the sheet when the user asks; use the selected
+executor for any generation and its job receipt.
 
 ---
 
 ## STEP 4 — Generate the video
 
-Once the storyboard is approved, generate the final video with **Seedance 2.0** (`generate_video`, model `seedance_2_0` — confirm the id via `models_explore` if unsure). Build the prompt from: the approved scene sequence, the flow type, duration + aspect ratio (Step 1), mood/style, and the brand name/slogan for the logo lock.
+For an approved video plan, draft the prompt from the scene sequence, flow
+type, duration, aspect ratio, mood/style, and any requested brand reveal.
+The selected executor chooses the current model, schema, cost check, submission,
+and job display. Seedance 2.0 is the original example, not a required model.
 
 - **classicMD:** `smooth motion design, [scene flow], elegant transitions, [mood] atmosphere, cinematic camera movement, [duration]s, brand reveal at end: [brand], [aspect ratio]`
 - **highMD:** `high-intensity kinetic motion, [scene flow], extreme camera speed, aggressive match-cuts, peak-action freeze frames, [mood] CGI aesthetic, neon contrast, [duration]s, hard-stop logo lock: [brand], [aspect ratio]`
 
 For highMD, a final static brand/logo hold is an option when the brief calls for one; scale it to the clip length.
 
-Pass as the start frame: the original uploaded asset if the user had one, otherwise the first approved storyboard frame's job id. Seedance 2.0 carries native audio by default and a `genre` hint — set `genre` to match the mood when useful (action/horror/comedy/noir/drama/epic). Display with `job_display`.
+If a start frame is part of the approved plan, supply the approved asset
+through the selected executor's reference mechanism. For Seedance 2.0, a
+`genre` hint can support the intended mood when useful.
 
 > **Resolution note:** Seedance 2.0 reaches 4K only in `mode=std`; `mode=fast` caps at 720p. See `higgsfield-seedance` / the specs layer.
 
@@ -101,19 +115,21 @@ Pass as the start frame: the original uploaded asset if the user had one, otherw
 
 ## STEP 5 — Review & iterate
 
-Present the render and ask: **Love it ✅** (done) · **Different edit** (regenerate, same storyboard) · **Different style** (back to Step 1) · **Another version** (a second variation with a slight prompt change).
+Present the render and collect specific feedback. Revise the plan or submit
+another paid generation only when the user requests it.
 
 ---
 
 ## Notes & rules
 
-- Ask **all** Step 1 questions at once; never split intake.
-- **Storyboard = one grid image** via GPT Image 2; never N separate images. No separate moodboard step — go brief → storyboard.
-- **Image model:** GPT Image 2 (`gpt_image_2`). **Video model:** Seedance 2.0 (`seedance_2_0`).
-- **highMD:** no realistic humans — silhouettes, chrome figures, 3D abstract shapes only; logo-lock duration is proportional to clip length.
+- Ask only for the missing Step 1 decisions.
+- A single storyboard grid is one useful format, not a required generation step.
+- GPT Image 2 (`gpt_image_2`) and Seedance 2.0 (`seedance_2_0`) are original examples; the selected executor owns model choice.
+- **highMD:** silhouettes, chrome figures, and 3D abstract shapes are available styles; add a logo hold only if the brief calls for it.
 - **classicMD logo** can appear as opener, closer, or both — ask if unspecified.
-- Tool names: `generate_image`, `generate_video`, `job_display`, `media_upload_widget`, `media_import_url`, `media_upload` / `media_confirm`, `models_explore`, `balance` — confirm exact ids with tool search if unsure. Check credits with `balance` if the user seems concerned about usage.
-- Match the user's language throughout. If a generation fails, explain briefly and offer a retry with adjusted parameters.
+- Use the selected executor's current tools for upload, generation, cost,
+  status, and recovery. Explain a failed generation; submit another attempt
+  only when the user approves it.
 
 ## Related skills
 - `higgsfield-motion` — the named camera/motion preset library (different skill)

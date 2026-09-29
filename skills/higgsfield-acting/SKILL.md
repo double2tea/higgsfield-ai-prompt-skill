@@ -38,14 +38,14 @@ prompt. It does not change camera, light, wardrobe, or grade.
 - The body carries the biography: **center of gravity, tempo, openness, breath** — set all four before any psychology [→](#the-body)
 - **Business** — a physical task the hands are doing — kills theatricality; the strongest accent in a scene is the moment the character **stops** it [→](#the-body)
 - **Distance is drama**; a change of distance *is* a beat change. Status is what you DO, and status **breaks** are the most interesting thing in a performance [→](#the-body)
-- The **master profile** is 150–220 words, one paragraph, fixed block order, written once per character and then rewritten per scene — never pasted [→](#the-acting-master-profile)
+- A **master profile** can collect stable character traits for a production that needs one; adapt only relevant details to a scene [→](#the-acting-master-profile)
 - Every tic carries a **trigger**; every mask carries a **crack** — at least one "However, when X…" clause per profile [→](#the-acting-master-profile)
 - **For a diagnosed dead stare**, give the eyes a task aimed at the partner; gaze shifts, blink quality, and catchlights can make that task legible [→](#eye-life)
-- Scene adaptation **transforms, never deletes**: a behavior that can't physically happen is displaced into another outlet, not removed [→](#scene-adaptation)
+- Scene adaptation can translate a behavior into a physically possible outlet when that behavior matters to the approved scene [→](#scene-adaptation)
 - The **voice prompt is locked** — one per character, from one voice bible, never adapted per scene; on 2.0 pasted verbatim into the audio field each time they speak, on 2.5 written in the character's role sentence, not the audio field, because the reused sheet carries the voice (once per prompt or once per project is OPEN, no default — P2-2) [→](#voice--fixed-identity-never-adapted)
 - **States, not transitions.** Models fail process and nail state: "mid-throw, arm extended", not "reaches in, pulls out, winds up" — for a peak reached through a reversing process; simple same-direction motion that must fill the clip is chained instead [→](#states-not-transitions)
 - Ensemble reactions travel in a **wave, never in sync**; the strong are still and quiet, the weak fidget and shout [→](#ensemble-and-space)
-- 15 named bad-acting symptoms with prompt-level fixes, and a 0–5 self-check scale — **aim every hero shot at 4+** [→](#the-atlas-of-bad-acting)
+- 15 named bad-acting symptoms with prompt-level fixes, and an optional 0–5 self-check scale for diagnosed performance problems [→](#the-atlas-of-bad-acting)
 
 ---
 
@@ -84,8 +84,8 @@ not "expressive faces."
 
 ## The five pillars of every scene
 
-Every character in every scene decomposes into five elements. If one is missing, the
-performance falls apart.
+For a scene that needs acting diagnosis, these five elements offer a useful
+reading. Add only the details that the brief or observed performance calls for.
 
 **1. Objective.** What the character wants IN THIS SCENE, RIGHT NOW, FROM A SPECIFIC PERSON.
 Always a verb aimed at the partner: *make him confess* · *beg a week's extension* ·
@@ -97,17 +97,18 @@ across the whole story, with every scene objective a step toward it.
 opposite; witnesses in the room; two hours to deadline) or internal (pride won't let them
 beg; they don't believe their own words). Always answer *what happens if I do NOT get what I
 want?* — and the answer must frighten the character. The higher the cost of failure, the
-more taut the scene.
+more taut the scene when that pressure fits the story.
 
 **3. Tactics.** The concrete method of pursuing the objective right now, as an action verb:
 *press · charm · shame · plead · provoke · bargain · threaten · stall*. When a tactic fails,
-a living person **changes** it. One tactic for a whole scene is dead acting.
+a living person may **change** it when the situation changes. A sustained tactic
+can also be intentional.
 
 **4. Beats.** The smallest unit of action: the stretch during which the character wants one
 thing and pursues it one way. A beat ends when the objective is achieved, the tactic fails,
 new information arrives, or the balance of power shifts. **Every beat change must be VISIBLE
 in behavior** — a pause, a change of posture, a change of speech tempo, a shift of gaze. A
-good scene has **2–4 beat changes**.
+scene may have **2–4 beat changes** when its dramatic shape calls for them.
 
 **5. Subtext.** What the character actually thinks and wants, as opposed to what they say.
 Subtext is **not performed** — it leaks out on its own when the character plays the true
@@ -288,11 +289,11 @@ collapse*, or *enter low and flip the room*.
 
 ## The acting master profile
 
-Every recurring character gets **one** master profile — the permanent source of truth about
-how they act. Written once, then adapted per scene. Target: **150–220 words, one flowing
-paragraph**, fully observable and filmable.
+When a production needs a shared acting reference for a recurring character,
+one master profile can record stable behavior. The **150–220-word**, one-paragraph
+format below is an example; adapt only the details relevant to each scene.
 
-**Block order is fixed:**
+**Example block order:**
 
 ```
 Character acting as [NAME]. [Build, physique, posture — the body as a document of their
@@ -308,7 +309,7 @@ when [emotional trigger], [the transformation — how the posture, gait, and fac
 [Optional: the softening target — the one person or thing that makes the face genuinely soften].
 ```
 
-**Rules for each block:**
+**Guidance when using these blocks:**
 
 1. **Only observable behavior.** Every inner state needs a body marker. Never "he is nervous" —
    write the trembling lower lip, the heavy swallow, the long inhale through the mouth and
@@ -324,7 +325,7 @@ when [emotional trigger], [the transformation — how the posture, gait, and fac
    dominant swagger that crumbles into a childlike slouch when rejected; stern discipline that
    melts into a radiant smile at one specific person. **Every profile carries at least one
    "However, when X — …" clause.** A character playing two truths at once is the difference
-   between a puppet and a person.
+   between a puppet and a person when the approved characterization calls for it.
 5. **One softening target.** Where it fits, give the face exactly one person, animal, or object
    it genuinely softens for. One — not two. This humanizes without diluting.
 6. **No wardrobe.** Clothing lives in the scene/look block, never in the acting profile. The
@@ -342,8 +343,8 @@ when [emotional trigger], [the transformation — how the posture, gait, and fac
 
 ## Eye life
 
-**Dead eyes are the number-one tell of AI-generated acting.** Every character gets continuous,
-naturalistic ocular life, in the profile *and* in every scene.
+**Dead eyes can signal AI-generated acting.** When gaze is the identified
+problem, direct naturalistic ocular life in the profile or relevant scene.
 
 - **Micro-saccades and gaze targeting** on whatever they attend to; the gaze keeps moving —
   eyes drift, flick away in thought, scan to a detail and settle back. They never lock frozen.
@@ -373,8 +374,9 @@ one HARD reset-blink* — is the cheapest way to buy a living face in a static s
 
 ## Scene adaptation
 
-The master profile is who the character IS. For each scene, **rewrite it into the moment** —
-never paste it.
+The master profile is who the character IS. When a scene needs a distinct acting
+direction, adapt relevant details to that moment; preserve an approved profile
+when it already serves the shot.
 
 1. **Present characters only.** An acting paragraph only for characters actually in the shot.
    No character in frame → no paragraph.
@@ -530,10 +532,14 @@ A self-check on the paragraph before it ships.
   plays TWO truths simultaneously** — helps and hates it; apologizes and defends; loves and has
   already left. One clean emotion without contradiction reads as synthetic on a close-up.
 
-**Aim every hero shot at 4+.** A paragraph that self-checks at 2 or below gets rewritten before
-it ships.
+For a hero performance that needs diagnosis, the 0–5 scale can help identify
+what is missing. Rewriting depends on the brief and observed result.
 
 ## Pre-send checklist
+
+Use this checklist for an acting-direction deliverable when those elements
+are requested or a specific performance problem supports them. It is not a
+requirement to insert every cue into every prompt.
 
 - [ ] Objective as a verb aimed at a partner — for every character in frame
 - [ ] Obstacle and stakes exist; the cost of failure is real

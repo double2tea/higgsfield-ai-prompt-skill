@@ -52,9 +52,9 @@ Apply Plasma Explosion preset at the detonation moment.
 - **Transformation**: Use Cyborg or Turning Metal preset, Crash Zoom In on the transformation point
 - **Space exterior**: Seedance 2.0 or Minimax Hailuo 2.3 + Super Dolly Out, "vast starfield, tiny ship approaching a planet"
 
-### Identity Block (if using Soul ID character)
+### Identity Block (if using an approved character reference)
 ```
-The Soul ID character — scarred face, shaved head, tactical body armor with shoulder-mounted
+The reference character — scarred face, shaved head, tactical body armor with shoulder-mounted
 flashlight, dark under-eye fatigue, determined expression.
 ```
 

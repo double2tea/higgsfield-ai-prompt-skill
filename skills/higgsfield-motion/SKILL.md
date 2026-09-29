@@ -1,8 +1,8 @@
 ---
 name: higgsfield-motion
 description: >
-  Use when the user wants to apply a named Higgsfield motion preset, asks about
-  VFX presets, transformation effects, elemental effects, or transition presets.
+  Use when Higgsfield is the selected platform and the user wants a named
+  Higgsfield motion, VFX, transformation, elemental, or transition preset.
   Contains the full named preset library with descriptions and prompt usage.
 user-invocable: true
 metadata:

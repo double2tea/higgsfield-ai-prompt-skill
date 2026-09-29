@@ -1,10 +1,9 @@
-"""evals/run_evals.py — vacuous passes are harness ERRORs; spec-driven flips
-are named as such.
+"""evals/run_evals.py — vacuous passes are harness ERRORs; unmatched traps
+are reported without assuming a cause.
 
 Written against the public run_case()/main() surface so the same tests run
 on the pre-fix harness (git show 9b86817:evals/run_evals.py) — where every
-test below went RED: the vacuous cases returned [] (a pass) and the flip was
-reported as a "checker regression".
+test below went RED: the vacuous cases returned [] (a pass).
 """
 
 import importlib.util
@@ -84,17 +83,16 @@ def test_spec_driven_flip_is_named(specs):
         case([{"type": "enum_legal", "expect": "illegal"}], "seedance_2_5", TRAP_1080P),
         specs)
     assert len(failures) == 1
-    assert "spec-driven flip" in failures[0] and "2026-08-07" in failures[0]
+    assert "re-audit the trap and checker" in failures[0]
     assert "checker regression" not in failures[0]
 
 
-def test_real_checker_regression_still_says_so(specs, monkeypatch):
-    # No earlier snapshot under which the trap held → it IS the checker.
+def test_no_historical_evidence_does_not_guess_cause(specs, monkeypatch):
     monkeypatch.setattr(run_evals, "_prior_indexes", lambda: [], raising=False)
     failures = run_evals.run_case(
         case([{"type": "enum_legal", "expect": "illegal"}], "seedance_2_5", TRAP_1080P),
         specs)
-    assert len(failures) == 1 and "checker regression" in failures[0]
+    assert len(failures) == 1 and "re-audit the trap and checker" in failures[0]
 
 
 def test_legal_golden_flipped_by_specs_is_named(specs, monkeypatch):

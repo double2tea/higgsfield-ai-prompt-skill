@@ -950,8 +950,7 @@ reference"` (crowd lineup sheet, the clone-army fix) — are catalogued in
 
 Locks main-character identity across shots — face, build, distinguishing
 marks. Almost always an image reference; for highest consistency, use
-the Soul ID character sheet documented in
-[archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation.
+the character-sheet method in `../higgsfield-character-design/SKILL.md`.
 
 Pattern in a Seedance prompt:
 
@@ -2028,8 +2027,10 @@ is the loop that wastes hours.
 
 ## Multi-Language Prompt Workarounds
 
-Seedance prompts default to English. This section documents historical
-language-level workarounds for specific Seedance platform states.
+New prompts default to Simplified Chinese unless the user requests another
+language. This section documents historical language-level workarounds for
+specific Seedance platform states; use a different execution language only
+when the selected model or mode has a verified requirement.
 
 ### Chinese (as of 2026-05-17)
 
@@ -2040,11 +2041,9 @@ teams used Chinese prompts to compress ~5× more directive content
 into the same character budget — the decisive workaround on long
 multi-shot prompts that otherwise hit the cap.
 
-The workaround was a launch-window optimization, not a permanent
-convention. If a long Seedance prompt keeps hitting the cap and
-English compression has been exhausted, the Chinese-density path has
-shipped before — verify the cap state in the current Seedance UI
-before reaching for it.
+The density workaround was a launch-window observation, not a permanent
+language rule. If a long prompt hits a verified current cap, shorten it
+without changing the user's approved meaning or language preference.
 
 ---
 

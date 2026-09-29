@@ -13,7 +13,7 @@ User asks for a character intro, portrait, close-up, emotional moment, reaction 
 
 ### Identity Block
 ```
-The Soul ID character — a broad-shouldered man, weathered skin, deep-set eyes,
+The reference character — a broad-shouldered man, weathered skin, deep-set eyes,
 salt-and-pepper stubble, wearing a worn leather jacket over a dark henley.
 A thin scar across the left eyebrow.
 ```
@@ -27,7 +27,7 @@ Style: Cinematic. Crushed blacks, single sodium-vapour key light from the right,
 cold blue fill. 2.35:1 anamorphic.
 ```
 
-### Combined prompt (for non-Soul ID use)
+### Combined prompt (without a separate identity reference)
 ```
 Model: Kling 3.0
 Aspect: 16:9 | Duration: 8s | Style: Cinematic
@@ -47,7 +47,7 @@ cold blue fill. 2.35:1 anamorphic.
 |---------------|-------------|
 | "broad-shouldered, weathered skin, deep-set eyes" | Observable physical traits — not "handsome" or "attractive", and not an age (build and skin carry what an age number would) |
 | "salt-and-pepper stubble" | Texture detail the model renders well at close range |
-| "thin scar across the left eyebrow" | Distinguishing mark — helps Soul ID lock identity |
+| "thin scar across the left eyebrow" | Distinguishing mark — helps a reference lock identity |
 | "rain-soaked harbour dock at night" | Specific environment with atmospheric conditions |
 | "collar turned up against the driving rain" | Small physical action reveals character without dialogue |
 | "slow Dolly In from medium-wide to medium close-up" | Gradual intimacy build — starts environmental, ends personal |
@@ -56,8 +56,8 @@ cold blue fill. 2.35:1 anamorphic.
 
 ## Negative constraints to include
 - **Face/Identity**: Keep all face/body descriptors in the Identity Block. Keep camera and motion in the Motion Block. Mixing them causes face warping.
-- **Temporal/Consistency**: For multi-shot character work, copy the Identity Block verbatim across all prompts.
-- **Body/Motion**: One emotion per shot. Don't ask for "angry then sad then surprised."
+- **Temporal/Consistency**: For multi-shot character work, keep approved identity details consistent across prompts.
+- **Body/Motion**: Keep the requested emotional arc; avoid contradictory cues in the same beat.
 
 ## Common mistakes
 1. **"A beautiful/handsome person"** — unmeasurable. Describe bone structure, skin texture, expression, clothing.

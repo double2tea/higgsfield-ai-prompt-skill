@@ -54,7 +54,7 @@ Style: Cinematic, bright office lighting, high-key, neutral tones. 9:16.
 
 ### Identity Block (if recurring character)
 ```
-The Soul ID character — round face, large expressive eyes, slightly disheveled hair,
+The reference character — round face, large expressive eyes, slightly disheveled hair,
 wearing a wrinkled button-up with the sleeves rolled. Perpetually tired.
 ```
 

@@ -236,13 +236,13 @@ Three rules of thumb make a Project Bible work in practice:
 > lives in your own files alongside the Master Script — it's the
 > document you maintain across the project. Two common downstream
 > realizations of the Bible inside Higgsfield: (i) the Character
-> section feeds into a Soul ID character sheet, see
-> [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Character Sheet Creation for the
-> multi-angle reference approach; (ii) Characters, Locations, and
+> section feeds into a character sheet, see
+> `../higgsfield-character-design/SKILL.md` for the reference-planning
+> approach; (ii) Characters, Locations, and
 > Props feed into Cinema Studio's @ Elements system, see
 > `../higgsfield-cinema/SKILL.md` § Elements System for the
 > `@CharacterName` / `@LocationName` / `@PropName` workflow. The
-> Bible is the upstream artifact; the Soul ID sheet and Cinema
+> Bible is the upstream artifact; the character sheet and Cinema
 > Studio Elements are tool-side realizations of it.
 
 ### Step 06 — Give Every Scene One Job
@@ -307,10 +307,9 @@ stable.
 > **Prompt Modules as finer-grained sibling of Identity/Motion.**
 > The 7-module taxonomy is a finer-grained sibling of the
 > Identity-vs-Motion separation rule used in single-shot prompts.
-> For Soul ID single-shot work, the 2-block separation in
-> [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Identity vs. Motion Separation
-> (also `../higgsfield-prompt/SKILL.md` § Identity vs. Motion
-> Separation Rule) is sufficient — "Character identity block"
+> For a recurring character whose identity drifts, the optional 2-block
+> layout in `../higgsfield-prompt/SKILL.md` § Identity vs. Motion
+> Separation Rule can help — "Character identity block"
 > here aliases their "Identity Block." The 7-module taxonomy adds
 > a layer for multi-shot projects where camera, lighting, and
 > style each warrant their own reusable block.

@@ -40,7 +40,7 @@ Style: Cinematic. Cold blue shadows, warm amber market light, high contrast. 16:
 ## Negative constraints to include
 - **Body/Motion**: Limit to 1 primary action + 1 secondary. Don't ask for a chase + fight + explosion in one clip.
 - **Temporal/Consistency**: Use one camera movement per shot. Don't combine Action Run + Bullet Time in a single generation — chain them as separate clips.
-- **Face/Identity**: If using Soul ID, separate identity description from motion description.
+- **Face/Identity**: If using an approved character reference, separate identity description from motion description.
 
 > **Identity/Motion separation:** If a person appears in this shot, keep the character description separate from action direction. See template 06 (Portrait/Character Intro) for the full pattern.
 

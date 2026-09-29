@@ -53,9 +53,9 @@ Apply Glow Trace preset — her movement leaves a trail of white light.
 - **Slow/emotional dance**: Dolly In instead of Orbit, "minimal movement, arms reaching", Cinematic + shallow DOF
 - **Music video energy**: Crash Zoom In on beat drops, Apply Color Rain preset, fast cuts (separate generations per beat)
 
-### Identity Block (if using Soul ID)
+### Identity Block (if using an approved character reference)
 ```
-The Soul ID character — athletic build, braided hair pulled back tight,
+The reference character — athletic build, braided hair pulled back tight,
 barefoot, wearing a white flowing contemporary dance costume.
 ```
 

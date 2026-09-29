@@ -1,8 +1,8 @@
 ---
 name: higgsfield-troubleshoot
 description: >
-  Use when a Higgsfield generation fails, produces poor quality, looks wrong,
-  doesn't match the prompt, or the user needs to fix or improve an output.
+  Use when Higgsfield is the selected platform and a generation fails,
+  looks wrong, or needs a targeted quality diagnosis.
 user-invocable: true
 metadata:
   tags: [higgsfield, troubleshoot, fix, quality, failure, improve]
@@ -24,17 +24,17 @@ metadata:
 - Re-roll = same prompt again, unchanged — no seed parameter on this surface; every roll is a fresh sample [→](#take-triage--five-verdicts-for-a-delivered-take)
 - Change exactly one variable between takes so causality stays readable [→](#one-variable-per-retake)
 - For a planned production iteration, use the user's take budget and acceptance bar to decide when a strategy change is useful [→](#attempt-budget--declared-before-take-one-heuristic)
-- The shot log is the ledger row — one line per take, changed variable in `notes` [→](#the-shot-log-is-the-ledger-row)
+- When this project uses the Higgsfield ledger, its shot log is one row per reported take [→](#the-shot-log-is-the-ledger-row)
 - Continuation/extension defects: 12-row symptom → cause → single-repair-variable atlas (planned-vs-observed opening, motion-vector drop, prop contradictions, chain-depth drift…) [→](#sequence--continuation-failure-atlas)
 - Retry Ladder: diagnostic options for an authorized iteration, not an automatic paid sequence; verify source and mappings before choosing a repair [→](#retry-ladder--a-failed-take-edits-the-plan-not-just-the-dice)
 - Six stop numbers, one ladder: 2 same-flaw re-rolls → rewrite · 3 paid attempts (no declared budget) → named options · half a declared budget with no progress → change strategy · 4 v2v batches (ceiling) → prompt/source fault · 10–15 surgical iterations (declared budget) → simplify the shot · 65–100 generations per kept shot is a project benchmark, never a stop rule. The earliest tripwire wins; where 2 and 4 count the same v2v runs it is OPEN, default the earlier stop [→](#stop-rule-ladder--which-number-governs)
-- Log EVERY confirmed fix to learning memory, and check memory first before troubleshooting [→](#log-the-outcome--always)
+- Log a confirmed fix when this project has selected the Higgsfield learning memory; check relevant memory when routed [→](#log-the-outcome--always)
 - Vision-grounded diagnosis (stills only): vision proposes the `reject_reason`, the human confirms — advisory until a class clears the agreement gate [→](#vision-grounded-diagnosis--classify-the-rejected-still-dont-guess)
 
 ## Common Problems & Fixes
 
 ### Problem: Character face is inconsistent or morphing
-**Cause:** No Soul ID reference; prompt has conflicting appearance descriptions
+**Possible cause:** Missing approved character reference or conflicting appearance descriptions
 **Fix:**
 - Remove any appearance descriptions that contradict each other
 - For image-to-video: don't re-describe the face — let the input image carry it
@@ -174,7 +174,7 @@ Before generating, verify:
 - [ ] Prompt is under 200 words (short-form regime — skip for block-scaffold briefs)
 - [ ] No conflicting instructions
 - [ ] Motion preset named at end if using one
-- [ ] Identity Block separated from Motion Block (if Soul ID active)
+- [ ] If identity drift persists, consider separate identity and motion notes in the selected model's format
 
 ---
 
@@ -391,8 +391,8 @@ How they compose:
 
 ## Log the Outcome — Always
 
-Troubleshooting that isn't logged is troubleshooting the next session repeats.
-After ANY confirmed fix from this skill, write it to the learning memory
+When the project uses the Higgsfield learning memory, a confirmed fix can
+help later sessions. After a confirmed fix, write it to that chosen memory
 (`../../scripts/higgsfield_memory.py`, databases in `../../db/`):
 
 - **Filter workaround confirmed** (the rewritten prompt passed in a real
@@ -406,9 +406,8 @@ After ANY confirmed fix from this skill, write it to the learning memory
 - **Project-specific lessons**: add `--project <name>` to keep them scoped
   under `../../db/projects/` instead of global memory.
 
-Before troubleshooting, also CHECK memory first — that's `higgsfield-recall`'s
-job (`query-filter` / `query-quality`); the preflight's MEMORY RECALL section
-does it automatically.
+For a routed recall check, consult relevant memory first via
+`higgsfield-recall` (`query-filter` / `query-quality`).
 
 ---
 
@@ -427,17 +426,17 @@ multi-motion) are out of scope here; they need frame-by-frame review
 
 **The chain:**
 
-1. **Capture.** Get the still in hand. Local image → read it directly. Web URL →
-   `media_import_url` (never pass a raw URL). Cowork local file → the upload
-   widget. Outputs are not auto-saved, so capture is an explicit step.
+1. **Capture.** Get the still in hand. Read a local image directly; use the
+   selected executor's reference or import workflow for remote media.
 2. **Classify against the `reject_reason` enum** (the table below). Note what you
    see in one line (the `vision_evidence`).
 3. **No clean home → `other` + note.** Some visible failures (warped hand, FPS
    drift) have no exact enum value. Route to `other` with the evidence note;
    **never force-fit** a near-miss. If the `other` pile grows, that's the data
    that justifies a future enum-extension PR.
-4. **Confirm, then log.** Surface the proposal — *"vision says `physics` (warped
-   left hand, center frame); confirm or correct?"* — then:
+4. **Confirm, then log if this project chose the Higgsfield ledger.** Surface
+   the proposal — *"vision says `physics` (warped left hand, center frame);
+   confirm or correct?"* — then, when that ledger is selected:
    ```bash
    python3 ../../scripts/higgsfield_memory.py log-gen <project> --model <id> \
      --tags <shot_tags> --outcome rejected --reason <confirmed> \

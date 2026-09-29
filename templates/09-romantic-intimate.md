@@ -39,7 +39,7 @@ Ambient: quiet city hum, distant traffic, gentle wind.
 | "quiet city hum, distant traffic" | Ambient audio creates intimacy — the world is far away |
 
 ## Negative constraints to include
-- **Face/Identity**: If using Soul ID for both characters, use separate Identity Blocks for each. Reference clearly ("Character A" and "Character B").
+- **Face/Identity**: If using approved references for both characters, use separate Identity Blocks for each. Reference clearly ("Character A" and "Character B").
 - **Body/Motion**: One tender gesture per shot. Don't stack "he touches her face, holds her hand, pulls her close" — one moment, held.
 - **Temporal/Consistency**: Slow camera movements only. Fast cuts destroy romantic tension.
 

@@ -23,7 +23,7 @@ needs filter-safety, mode selection, or engine rules, defer to it.
 > up to 1080p, up to 30 s, many references, platform start/end frames in `omni_reference` —
 > the lane is
 > `omni_reference` with the clip attached as a video reference, and its production doctrine
-> (source ≥ 4 s, duration = source, the four-batch rule, the performance-inheritance clause)
+> (source ≥ 4 s, duration = source, the performance-inheritance clause)
 > lives in `../higgsfield-seedance-2-5/VFX-PIPELINE.md`.
 
 > **This skill is a video-to-video layer on top of `../higgsfield-seedance/SKILL.md`.**
@@ -36,7 +36,7 @@ needs filter-safety, mode selection, or engine rules, defer to it.
 ## QUICK FACTS
 *Routing aids — read the linked sections for the actual rules.*
 - The one job: **preserve** everything that makes the source recognizable, **change** only the named element; repeat the fragile guardrail ("face and identity unchanged") at the end [→](#the-core-idea-preserve-then-change-one-thing)
-- Run it in **Seedance 2.0, mode std, 4K** — faces, lip-sync and fine detail hold at 4K where they warp at 1080p (`fast` can't do 4K; Cinema Studio caps at 1080p) [→](#resolution-run-it-in-4k)
+- For a Seedance 2.0 transform that needs maximum detail, consider **mode std, 4K** after checking the selected executor's current schema; the 4K fidelity claim is practitioner experience [→](#resolution-run-it-in-4k)
 - `@source` declares the clip as the base (not a style ref); add `@creature`/`@element` only when a real texture keeps getting faked [→](#prompt-anatomy-transform-variant)
 - **Three levels** of difficulty: L1 swap the world · L2 change an element in-frame · L3 full handheld cinematic [→](#three-levels)
 - Two modes: **add an element** to the plate, or **replace the environment** around a preserved subject [→](#two-transformation-modes)
@@ -45,7 +45,7 @@ needs filter-safety, mode selection, or engine rules, defer to it.
 - Timed zoom synced to a line: anchor it **twice** — semantic (`On the line "…"`) + numeric (`At about Ts`); see `references/dialogue-timing.md` [→](#timed-camera-moves-synced-to-dialogue)
 - Prepended-intro budget: `total − intro = surviving window` for the source performance; recompute on every change [→](#duration-discipline)
 - Generate the transformed **start frame** first to lock the look before spending video credits; see `references/first-frame.md` [→](#first--start-frame-workflow)
-- Output is **plain-text English**, no markdown inside the prompt, easy to copy [→](#output-format)
+- New prompt text defaults to **plain-text Simplified Chinese** unless the user requests another language; preserve user text and machine syntax [→](#output-format)
 
 ---
 
@@ -65,7 +65,7 @@ subject, same movement — with only the one requested change applied.
 
 ## Resolution: run it in 4K
 
-Run everything in **Seedance 2.0, `mode=std`, 4K**. The 4K matters: faces, lip-sync and fine
+For a Seedance 2.0 transform that needs maximum detail, consider **`mode=std`, 4K** after confirming the current schema with the selected executor. The 4K matters: faces, lip-sync and fine
 detail hold at 4K where they warp and fall apart at 1080p — and a footage transform lives or
 dies on the preserved face reading as the *same* face. The `4k` resolution enum is
 model-verified (`../../specs/model-specs.json` → `seedance_2_0`); the "detail holds at 4K"

@@ -33,11 +33,11 @@ prompts that all inherit both.
 - Output = **one self-contained HTML file** (inline CSS/JS, no deps), not loose prompts [→](#what-you-produce)
 - Three structural layers, top to bottom: **Global Style Prefix → `@`-asset glossary → named per-scene prompts** [→](#the-three-layers)
 - Example per-scene structure: `Style → Characters → Scene`, with `CUT` blocks only for planned edits; the 15s envelope and `3a/3b/3c` split are optional [→](#per-scene-prompt-law)
-- [OFFICIAL] Density heuristic: group rows when ALL of {same cast, same location, one emotional unit, ≤15s, inside length limits}; split on ANY of {location cut, cast change, setup change, performance arc, insert} — **don't fragment grief**; complexity budget + auto-enrichment defaults for thin briefs [→](#prompt-density--grouping-shot-rows-into-15s-envelopes)
-- Whole-sequence checks before delivery: **tempo budget** (cut durations sum exactly to runtime; one 6–8s hero hold) + **monotony audit** (no 3 consecutive cuts sharing shot size AND camera move) [→](#sequence-tempo-and-variety)
+- [OFFICIAL] Density heuristic for a planned multi-shot sequence: group related rows within the selected model's length limits; split only where a requested edit or real continuity change calls for it [→](#prompt-density--grouping-shot-rows-into-15s-envelopes)
+- For a planned edit sequence, check that stated cut durations fit the requested runtime and look for accidental visual repetition [→](#sequence-tempo-and-variety)
 - Continuity carries exits too: an **Off-screen line** (exit side + last state) per just-departed character keeps re-entry direction legal [→](#per-scene-prompt-law)
 - **Edit-once-propagates**: change the prefix once → it changes in every prompt; per-scene **override** lets one scene break the global look [→](#edit-once-and-per-scene-override)
-- Differentiators over a bare shotlist generator: **preflight linter**, **reference-role lanes**, **Elements `@`-auto-attach**, **failure-mode awareness**, **acceptance-rate logging** [→](#what-makes-this-outclass-a-bare-generator)
+- Differentiators over a bare shotlist generator: **preflight linter**, **reference-role lanes**, **Elements `@`-auto-attach**, **failure-mode awareness**, and optional acceptance-rate logging [→](#what-makes-this-outclass-a-bare-generator)
 - Default to Simplified Chinese for new prompt text; preserve user text and machine syntax. Translate for execution only when the selected mode has a verified language requirement [→](#workflow)
 
 ---
@@ -53,7 +53,7 @@ user can open it offline and it just works. Structure:
 3. **`@`-asset glossary** — the cast/props/locations declared once.
 4. **Scene list** — numbered scenes, each with a checkbox (progress saved in
    `localStorage`), a one-line scene description, and one or more copy-ready
-   prompt blocks (`Prompt 3a · 15s`, `Prompt 3b · 15s`).
+   prompt blocks labeled with their planned durations.
 5. A short "how to use" note (checkboxes auto-save; ask Claude to revise).
 
 The Style Prefix appears **once** in the collapsible block **and** is prepended
@@ -120,15 +120,17 @@ felt like keeping that day.
 
 ### 3. Named per-scene prompts
 
-Every scene is numbered (`1`, `2`, `3`…) and split into named 15-second prompts
-(`1a`, `1b`, `2a`). One checkbox per **scene**, even when split across `3a/3b/3c`.
+Number scenes (`1`, `2`, `3`…) and split a scene into named prompts (`1a`, `1b`)
+only when its planned edits or the selected model's duration limit require it.
+Use one checkbox per **scene**, including when that scene has multiple prompts.
 
 ---
 
 ## Per-scene prompt law
 
-Every prompt follows this exact order, top to bottom. (This verbatim-prefix
-shape is the **connected-shotlist regime** `[FIELD — 13-project harvest]`;
+The following is an example layout for a planned multi-cut prompt; keep only
+the blocks the approved shot needs. This verbatim-prefix shape is the
+**connected-shotlist regime** `[FIELD — 13-project harvest]`;
 a standalone block-scaffold prompt instead distributes style into its home
 blocks and opens on SCENE CONTEXT — `../higgsfield-seedance/SKILL.md`
 § Distributed style. Which shape ships is decided by the workflow: shotlist →
@@ -159,14 +161,14 @@ does; what the light does; diegetic SFX if relevant.]
 CUT 2 — …
 ```
 
-In this example workflow, prompts **target 15s** when the selected mode supports
-that duration; plan cuts only if the scene needs them. Many 15s prompts hold 1–3 cuts —
+In this example workflow, prompts may **target 15s** when the selected mode supports
+that duration and the brief calls for it; plan cuts only if the scene needs them. Many 15s prompts hold 1–3 cuts —
 that is the **live-action narrative norm**; stylized registers run denser by
 design (3D-animated 6 shots/15s, product montage 8–10 sections with 0.3s macro
 cuts — `../higgsfield-style/SKILL.md` § Style Recipes), and the flash-establish
 / insert durations in `../higgsfield-camera/SKILL.md` § Shot duration by type
 are what make dense shapes fit. If a scene runs longer, split it across
-`3a/3b/3c`, each its own 15s block with the full Style Prefix and Characters
+`3a/3b/3c` only when needed, each with the full Style Prefix and Characters
 block, continuity holding across them.
 
 **Beat-by-beat choreography, not "he dances."** Generic motion verbs mean nothing
@@ -192,59 +194,48 @@ placement per `../higgsfield-audio/SKILL.md` § Cutting to music.
 
 `[OFFICIAL — Higgsfield shotlist-builder + seedance-2-pro-director skills,
 2026-07]` — the shotlist's hardest judgment call is how many script beats
-share one 15s prompt. There is no fixed ratio (canonical productions ran
+share one prompt within the approved runtime. There is no fixed ratio (canonical productions ran
 anywhere from 1.4 rows per prompt to 4.7); decide per scene with this
 heuristic:
 
-**Group shot rows into ONE prompt when ALL of these hold:**
+**Consider grouping shot rows when these conditions hold:**
 
 1. Same character set in frame
 2. Same location (or sub-area of it)
 3. One continuous emotional/temporal unit — no time skip, no mood pivot
-4. Stageable in ≤15 seconds of screen time
+4. Stageable within the requested duration and selected model's limits
 5. The combined prompt stays inside practical length limits (ZH: the
    1,800-char hard cap; EN block prompts run much longer — see
    `../higgsfield-seedance/SKILL.md` § Field calibration)
 
-**Split into separate prompts when ANY of these fire:**
+**Consider a split when the approved edit plan or model limit calls for it:**
 
 1. Hard cut between locations (apartment → flashback)
 2. A major character entrance/exit changes the handle list
 3. A lens/setup change that needs its own envelope (wide establish → tight
    insert)
-4. A performance arc that deserves its own 15 seconds — a reaction that
-   builds across 5–7 beats is never bundled with action. **Don't fragment
-   grief**: one continuous emotional collapse is ONE prompt even if the
-   script writes it as three rows.
-5. An insert/cutaway to a prop or screen (those get their own ECU prompt)
+4. A performance arc that needs a separate shot; preserve a requested
+   continuous performance even if the script lists several beats.
+5. A planned insert/cutaway to a prop or screen
 
-**Complexity budget per prompt** (split triggers): more than 2 strong
+**Complexity budget per prompt** (possible split signals): more than 2 strong
 actions · more than 2 camera moves · more than 3 important characters ·
 more than 1 complex VFX event · more than 1 location change — any of these
-means the scene wants another envelope. Duration ladder: 4–8s = one strong
+may call for another envelope when the plan allows it. Duration ladder: 4–8s = one strong
 action · 8–12s = one action + a reveal · 12–15s = 2–3 simple beats ·
 complex fight/chase/transformation = multiple prompts. **Reconciling the
-ladder with the 15s target:** 15s is the default envelope, not a
-straitjacket — when a scene's beats genuinely fill only 4–8s of screen time,
-generate a deliberately shorter clip (Seedance accepts 4–15s) rather than
-padding dead air into 15; the prompt-law's "don't pad" rule wins.
+ladder with a 15s example:** use the requested runtime and the selected
+model's current limits. A short scene need not be padded to fill an envelope.
 
-**When in doubt, err toward more prompts and shorter envelopes** — Seedance
-handles tight prompts better than overloaded ones, and the user can run them
-in sequence.
+Split an overloaded prompt only when the brief and edit plan support the split.
 
-**Auto-enrichment for thin briefs.** When a scene row is thin ("a guy in a
-room, he's angry"), don't ask — fill in production detail with the default
-cinematic choices, never details that change the meaning: 16:9 · one
-clear physical action · slow controlled dolly-in or locked-off frame ·
-a neutral-to-portrait lens (63°/47° FOV in Seedance block prompts — mm
-vocabulary like "35–50mm" is for non-Seedance surfaces; 29° only if a
-close-up needs it — `../higgsfield-seedance/SKILL.md` § FOV anchors) ·
-motivated practical light · subtle ambience + one meaningful SFX · a clear
-final frame. **Duration is never auto-defaulted** — inside a shotlist the
-envelope law above governs (target 15s, shorter deliberate clips per the
-ladder); for a standalone prompt, ask — the seedance rule "always ask the
-user for runtime, never default" stands.
+**Thin briefs.** Keep unspecified action, emotion, camera, and sound open
+unless a concrete production choice is needed to make the requested scene
+work. Ask when that choice would alter approved intent. A neutral-to-portrait
+lens (63°/47° FOV in Seedance block prompts; 29° for a needed close-up) and
+motivated practical light are available techniques, not automatic additions
+(`../higgsfield-seedance/SKILL.md` § FOV anchors). Confirm runtime rather than
+silently inserting a 15s target.
 
 ---
 
@@ -255,12 +246,11 @@ heuristics, unmeasured here]` — two whole-sequence checks that no per-prompt
 rule can catch, run once before delivery:
 
 **Tempo budget — the arithmetic gate.** Budget the piece before writing it:
-total runtime at ~4–6s average per cut gives the cut count the piece can carry,
-with **one deliberately longer hero hold (6–8s)** reserved for the money moment.
+total runtime at ~4–6s average per cut can estimate the cut count when cuts
+are already part of the edit plan. A longer hero hold (6–8s) is one option.
 Rough bands: ≤15s → ~3 cuts · ~20s → 4–5 · ~30s → ~6 · ~45s → 7–8 · ~60s →
-9–11. Then check the sum: stated cut durations must **add up to the requested
-runtime exactly**. A budget that doesn't add up ships dead air or an impossible
-cut, and the error is invisible until the timeline.
+9–11. When cut durations are stated, check that they add up to the requested
+runtime. A mismatch can hide dead air or an impossible edit.
 
 **Monotony audit — read the column, not the prompt.** After drafting, read only
 the framing + camera-move line of every cut, top to bottom, as one column. No
@@ -299,15 +289,14 @@ scene number, so stable numbering = no lost progress.
 A plain "script → prompts" generator stops at the document. This skill is wired
 into the rest of the repo, which is the whole point:
 
-1. **Preflight every prompt.** Before delivering the shotlist, run each prompt's
+1. **Preflight prompts for the selected Higgsfield model.** Before delivering the shotlist, run each prompt's
    copy-block through the linter — `python3 scripts/seedance_lint.py --preflight
    --regime block --model seedance_2_0 "<prompt>"`
    (`../higgsfield-seedance/SKILL.md` § Pre-flight Linter). Copy-blocks are
    block-scaffold regime: the linter usually auto-detects this, but pin
    `--regime block` so the short-form word caps can never fire on a
    full-density scene prompt. Real names, brand/IP, age markers, conflicting instructions, shot-
-   count drift, and out-of-enum aspect/resolution/mode are caught **before** the
-   user burns credits. A shotlist of 25 prompts is 25 chances to ship a flagged
+   count drift, and out-of-enum aspect/resolution/mode can be caught. A shotlist of 25 prompts is 25 chances to ship a flagged
    one. In the same pass run the § Sequence tempo and variety checks — the
    linter sees one prompt at a time; the sum check and monotony audit see the
    sequence.
@@ -321,7 +310,7 @@ into the rest of the repo, which is the whole point:
    letting them silently break a scene.
 4. **Acceptance-rate honesty.** The finished ad is the best few seconds out of
    many takes — keep candidates, test in motion, lock the winner, and log
-   kept/rejected outcomes to the ledger (`higgsfield-recall`). The shotlist is the
+   kept/rejected outcomes only if the project chose the Higgsfield ledger (`higgsfield-recall`). The shotlist is the
    plan; iteration is still the skill.
 5. **Audio as a driver.** When a `@music_track` locks the choreography, write the
    beat-sync mapping per `../higgsfield-audio/SKILL.md` § Audio as a Conditioning
@@ -411,12 +400,12 @@ scene number as a string):
     <div class="scene-desc">Hero grooves across the kitchen — the world goes quiet.</div>
   </div>
   <div class="prompt-block">
-    <div class="prompt-label"><span>Prompt 3a · 15s</span><button class="copy-btn">Copy</button></div>
-    <pre class="prompt">[FULL PROMPT — Style Prefix verbatim, then Characters, Scene, CUT 1, CUT 2…]</pre>
+    <div class="prompt-label"><span>Prompt 3a · [planned duration]</span><button class="copy-btn">Copy</button></div>
+    <pre class="prompt">[FULL PROMPT — Style Prefix, Characters, Scene; CUT blocks only for planned edits]</pre>
   </div>
   <div class="prompt-block">
-    <div class="prompt-label"><span>Prompt 3b · 15s</span><button class="copy-btn">Copy</button></div>
-    <pre class="prompt">[FULL PROMPT for the second 15s chunk of scene 3]</pre>
+    <div class="prompt-label"><span>Prompt 3b · [planned duration]</span><button class="copy-btn">Copy</button></div>
+    <pre class="prompt">[SECOND PROMPT only if scene 3 needs a split]</pre>
   </div>
 </div>
 ```

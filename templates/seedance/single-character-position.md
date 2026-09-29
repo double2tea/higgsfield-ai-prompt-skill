@@ -16,7 +16,7 @@ delivers-line. For shots with two or more characters, use
 ```
 [At/from N seconds] One character in frame.
 
-[Identity, Soul ID handle].
+[Identity, approved reference handle].
   Screen position: [left third / center / right third],
   x-position [%], y-position [%], frame occupancy [%].
   Depth layer: [foreground / midground / background].

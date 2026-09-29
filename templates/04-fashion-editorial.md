@@ -13,7 +13,7 @@ User asks for fashion content, editorial, lookbook, outfit showcase, model portr
 
 ### Identity Block
 ```
-The Soul ID character — angular jawline, dark skin, close-cropped natural hair.
+The reference character — angular jawline, dark skin, close-cropped natural hair.
 Wearing a structured black wool overcoat, wide-leg trousers, white minimalist sneakers.
 Silver chain necklace. Hands in pockets.
 ```
@@ -26,7 +26,7 @@ Style: Cinematic. High contrast, desaturated cool tones, single overhead strip l
 casting a hard shadow. 2.35:1 anamorphic.
 ```
 
-### Combined prompt (for non-Soul ID use)
+### Combined prompt (without a separate identity reference)
 ```
 Model: Kling 3.0
 Aspect: 16:9 | Duration: 8s | Style: Cinematic

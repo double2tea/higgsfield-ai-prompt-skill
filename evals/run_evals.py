@@ -24,11 +24,9 @@ assertions, an unknown assertion type, an unknown `expect` value, an
 bounds, an empty `names` list — each would otherwise "pass" having checked
 nothing.
 
-When an `enum_legal` verdict flips, the harness re-runs the same check
-against the earlier committed specs snapshots (specs/models_explore_snapshot_
-<date>.json) and says which one the case last held under: a flip the specs
-caused is reported as a spec-driven flip (re-audit the case), not as a
-checker regression.
+Historical flip attribution is unavailable after removing the spec generator.
+The harness checks current committed specs and reports a trap that no longer
+holds without guessing whether the specs or checker changed.
 
 Exit codes: 0 all pass, 1 any failure or harness error.
 """
@@ -193,9 +191,9 @@ def assert_enum_legal(case, response, params, specs) -> list[str]:
                     f"{spec['id']}. The platform changed since the case was last "
                     f"green, not the checker — re-audit the trap (Tier-2 rule: "
                     f"audit evals/cases/ in the same PR as a spec refresh)."]
-        return [f"trap case expected the checker to flag illegal settings for "
-                f"{spec['id']}, but none were flagged — checker regression (the "
-                f"trap holds against no committed specs snapshot either)"]
+        return [f"trap case expected illegal settings for {spec['id']}, but none "
+                f"were flagged against current specs snapshot {now} — re-audit "
+                f"the trap and checker."]
     return []
 
 

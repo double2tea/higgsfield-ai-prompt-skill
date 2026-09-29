@@ -1,6 +1,6 @@
 ---
 name: higgsfield-prompt
-description: "Use when building, writing, refining, or structuring a Higgsfield AI prompt. Covers the MCSLA formula, prompt structure, narrative vs. timestamped formats, and how to write for both text-to-video and image-to-video workflows."
+description: "Use when Higgsfield is the selected platform and the user asks to write or refine a prompt. Covers MCSLA, prompt structure, narrative and timestamped formats, and text-to-video and image-to-video workflows. Preserve approved text and use the selected executor for current schema and submission."
 user-invocable: true
 metadata:
   tags: [higgsfield, prompt, MCSLA, formula, text-to-video, image-to-video]
@@ -13,12 +13,12 @@ metadata:
 
 ## QUICK FACTS
 *Generated-checked block (scripts/build_index.py verifies anchors). Read the linked sections for full context — these lines are routing aids, not the rules themselves.*
-- MCSLA = Model, Camera, Subject, Look, Action — the five layers of every prompt [→](#the-mcsla-formula)
+- MCSLA = Model, Camera, Subject, Look, Action — a useful structure for new short-form Higgsfield video prompts [→](#the-mcsla-formula)
 - I2V: describe ONLY what moves or changes, never what's already in the image [→](#image-to-video-i2v)
 - Keep prompts under 200 words — **short-form MCSLA regime only**; block-scaffold production prompts replace the cap with structural lint (HARD RULE 8 carve-out); Cinema Studio has a hard 512-character cap [→](#high-performing-prompt-patterns)
 - 1 primary action per clip, 1–2 secondary max; Fast Motion Trick: render in Slow Mo, speed up in post [→](#one-action-per-scene)
 - Clarify an ambiguous emotion with only the observable cues needed; stillness may be right [→](#generic-emotion-decomposition--which-kind-of-x)
-- Soul ID / recurring characters: split every prompt into Identity Block + Motion Block — never mix them [→](#identity-vs-motion-separation-rule)
+- For a recurring character with identity drift, consider separate identity and motion notes; preserve an approved prompt structure [→](#identity-vs-motion-separation-rule)
 - Conflict order when sub-skills disagree: explicit user direction > scene archetype > emotion-sync [→](#conflict-resolution-between-sub-skills)
 - Aspect ratio is a per-model enum set in the UI/header, never in the prompt body — verify via `../../specs/model-specs.yaml` [→](#common-prompt-mistakes)
 - Never combine Dolly In + Dolly Out in one shot; @ Elements for static scenes, plain text for action [→](#common-prompt-mistakes)
@@ -221,12 +221,9 @@ Same shape applies to any generic adjective — "tense" / "sad" /
 3-5 distinct physical realizations. The decomposed prompt produces
 a performance; the generic prompt produces AI-video.
 
-> **Preset library alternative.** For named micro-expression presets
-> that drop into a prompt without first-principles decomposition,
-> see [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md) § Micro-Expressions. The catalog
-> covers most common emotional registers with locked physical
-> descriptors. Use the decompose-from-first-principles rule above
-> when no preset matches; use the preset library when one does.
+> **Optional expression reference.** The [archived upstream higgsfield-soul source](https://github.com/OSideMedia/higgsfield-ai-prompt-skill/blob/70754977d1884794963ac0a748eaaa85b6e9c82a/skills/higgsfield-soul/SKILL.md)
+> records named micro-expressions as provenance. Use observable cues only
+> when the brief or a demonstrated acting problem calls for them.
 
 ### Layered emotion states
 
@@ -264,8 +261,9 @@ or a too-generic one.
 
 ## Identity vs. Motion Separation Rule
 
-When a prompt involves Soul ID or any character who must stay consistent across shots,
-**always split the output into two clearly labeled blocks**:
+When a recurring character has an identity-drift problem, separating static
+identity notes from motion can help. Use these blocks when they fit the
+selected model and the user's approved prompt format:
 
 ### Identity Block — Static visual descriptors ONLY
 - Face features, skin tone, body type, distinguishing marks
@@ -288,7 +286,7 @@ camera chasing her at full speed, her auburn hair streaming behind her.
 
 **Identity Block:**
 ```
-The Soul ID character — sharp cheekbones, auburn hair shoulder-length,
+The reference character — sharp cheekbones, auburn hair shoulder-length,
 wearing a blue trench coat with silver buttons, lean athletic build.
 ```
 
@@ -300,16 +298,16 @@ Neon reflections streak across wet concrete.
 Style: Cinematic, cold blue shadows, warm neon accents. 16:9.
 ```
 
-**When to apply this rule:**
-- Always when Soul ID is active
-- Always in multi-shot sequences where the same character appears
-- Always when camera movement is involved alongside a character
-- In Cinema Studio, identity goes in the @ Element definition; motion goes in the prompt
+**When to consider this layout:**
+- The selected model supports a separate identity reference and the shot needs it
+- The same character drifts across shots despite an approved reference
+- In Cinema Studio, an approved @ Element may carry identity while the prompt describes motion
 
 > **Camera matches emotion, not just identity.** The Motion Block describes WHAT
 > the character does and HOW the camera moves. The *quality* of the camera motion
 > — jittery handheld for anger, smooth handheld breathing for calm, static + slow
-> push for revelation — should track the focal character's emotional state. See
+> push for revelation — can track the focal character's emotional state when
+> that choice fits the brief. See
 > `../higgsfield-camera/SKILL.md` § Camera-Emotion Sync for the 6-emotion movement
 > map and the emotional-arcs-within-a-shot pattern. For decomposing the underlying
 > generic emotion before picking a camera prescription, see § Generic-Emotion

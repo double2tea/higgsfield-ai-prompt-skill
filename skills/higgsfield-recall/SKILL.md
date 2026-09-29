@@ -40,8 +40,8 @@ Run a recall check when:
 - A new Higgsfield prompt matches a known filter or quality failure
 - The selected model has a recorded failure relevant to this shot
 
-**Do NOT announce running the recall check.** Just run it, apply what's relevant,
-and proceed. Only surface findings when they directly change the prompt.
+Run the recall check once when routed. Surface any proposed change to an
+approved prompt before applying it.
 
 ---
 
@@ -85,31 +85,31 @@ For each result returned, assess:
 
 | Question | If yes → |
 |----------|----------|
-| Does this entry's topic/category directly overlap with this prompt? | Apply the known fix |
-| Is a blocked term present in my draft prompt? | Remove/substitute it now |
+| Does this entry's topic/category directly overlap with this prompt? | Consider the known fix |
+| Is a blocked term present in my draft prompt? | Propose a relevant substitution |
 | Did this model fail on this type of shot before? | Consider switching models |
-| Is there a confirmed improved prompt for this scenario? | Use it as the base |
+| Is there a confirmed improved prompt for this scenario? | Compare it with the requested structure |
 
 **Relevance threshold:** Only act on entries with a relevance score > 0 from the query.
 Ignore entries that only match on generic words.
 
 ---
 
-### Step 4: Apply findings silently
+### Step 4: Apply relevant findings
 
 **For filter block matches:**
-- Remove or substitute the blocked terms before presenting the prompt
+- For a new draft, remove or substitute blocked terms only when the fix fits
+  the user's intent. For approved text, show the proposed change first.
 - If a substitution was confirmed to work, use it directly — **except where it breaks a
   hard engine rule.** A stored substitution that describes a character by age (the
   real-person entry says "age range", and its example names one) loses to
   `../higgsfield-seedance/ENGINE-RULES.md` rule 1: keep the archetype, drop the age, and
   describe by role, build and visible markers. The memory record is data and is not
   rewritten; the rule is applied when the substitution is used.
-- Do not tell the user "I removed X because it was blocked before" unless they ask —
-  just present the clean prompt
+- Explain a material substitution when it affects the requested wording.
 
 **For quality failure matches:**
-- Use the confirmed improved prompt structure as the base
+- Consider a confirmed improved structure without overriding approved text
 - Apply the specific fix that worked (e.g. explicit artifact description for VHS)
 - Adjust the model if a better one was identified for this scenario
 
@@ -157,7 +157,7 @@ For these queries, surface the full relevant entries with:
 
 ## Pre-Generation Checklist (for a routed recall check)
 
-Before finalizing any prompt, check:
+For a routed recall check on a new prompt, review relevant items:
 
 - [ ] Named real person in prompt? → Check filter-memory for real-person blocks
 - [ ] Weapon, drug, or violence language? → Check filter-memory for violence/substance blocks
@@ -170,13 +170,13 @@ Before finalizing any prompt, check:
 
 ## Log the Generation Result — One Question, One Command
 
-Every generation attempt belongs in the **generation ledger**
-(`../../db/ledger/` — kept AND rejected; the denominator is what makes
-takes-per-kept ratios possible). The write path is agent-side and obeys the
+When the project has selected the Higgsfield generation ledger, record its
+reported generation attempts in `../../db/ledger/` (kept and rejected).
+Other executors keep their own job receipts. The write path obeys the
 **5-second rule**: at most one short question, then the agent runs one
 command. The human never formats JSON, never fills a form.
 
-**When the user reports a generation result** (pastes a link, says "that one
+**When the project uses this ledger and the user reports a generation result** (pastes a link, says "that one
 worked", "trash", "the face drifted again"):
 
 1. If the verdict and reason are already clear from what they said, **ask
@@ -188,7 +188,7 @@ worked", "trash", "the face drifted again"):
 ```bash
 python3 ../../scripts/higgsfield_memory.py log-gen <project> \
   --model seedance_2_0 --tags dialogue-cu,two-char \
-  --outcome rejected --reason extra-cuts --credits 160
+  --outcome rejected --reason extra-cuts
 ```
 
 - `--tags` and `--reason` come from the controlled vocabularies in
@@ -225,9 +225,8 @@ prints a per-shot-tag **verdict** that decides iterate-vs-batch:
 
 - `iterate` (structural-dominant) → the prompt is wrong; hand off to
   `higgsfield-prompt` § The Iteration Rule (one variable at a time).
-- `batch+sel` (stochastic-dominant) → the prompt is right; **stop re-rolling
-  one at a time** — lock it, roll a batch, cull (see `higgsfield-prompt` §
-  Batch-and-Select).
+- `batch+sel` (stochastic-dominant) → a batch may help estimate variance
+  if the user chooses and authorizes it (see `higgsfield-prompt` § Batch-and-Select).
 - `low-n` → fewer than five rows; don't trust the split, call it by eye.
 
 A ⚠ plausibility line means a tag is beating its planning default by a wide
