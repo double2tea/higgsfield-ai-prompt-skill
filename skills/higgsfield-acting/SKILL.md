@@ -33,14 +33,14 @@ prompt. It does not change camera, light, wardrobe, or grade.
 ## QUICK FACTS
 *Generated-checked block (scripts/build_index.py verifies anchors). Routing aids — read the linked sections for the rules.*
 - Write the **objective** (a verb aimed at a partner), never the state — "make him confess", never "be angry" [→](#the-five-pillars-of-every-scene)
-- **2–4 beat changes** per scene, each one visible in behavior: a pause, a posture change, a tempo change, a shift of gaze. Unchanged behavior for the whole shot = played flat [→](#the-five-pillars-of-every-scene)
+- **When a scene needs changing tactics**, 2–4 visible beat changes can help: a pause, posture, tempo, or gaze shift. Preserve a deliberately still performance [→](#the-five-pillars-of-every-scene)
 - **Listening beats speaking.** The reaction starts *before* the partner's line ends; a hard question earns a micro-pause before the answer [→](#listening-and-reaction)
 - The body carries the biography: **center of gravity, tempo, openness, breath** — set all four before any psychology [→](#the-body)
 - **Business** — a physical task the hands are doing — kills theatricality; the strongest accent in a scene is the moment the character **stops** it [→](#the-body)
 - **Distance is drama**; a change of distance *is* a beat change. Status is what you DO, and status **breaks** are the most interesting thing in a performance [→](#the-body)
 - The **master profile** is 150–220 words, one paragraph, fixed block order, written once per character and then rewritten per scene — never pasted [→](#the-acting-master-profile)
 - Every tic carries a **trigger**; every mask carries a **crack** — at least one "However, when X…" clause per profile [→](#the-acting-master-profile)
-- **Eye life is mandatory and never optional** — give the eyes a **task** aimed at the partner, then saccades, blink quality, eyes-lead-thought; catchlights only make the task legible, they never fix a dead stare. Dead eyes are the number-one tell of AI acting [→](#eye-life)
+- **For a diagnosed dead stare**, give the eyes a task aimed at the partner; gaze shifts, blink quality, and catchlights can make that task legible [→](#eye-life)
 - Scene adaptation **transforms, never deletes**: a behavior that can't physically happen is displaced into another outlet, not removed [→](#scene-adaptation)
 - The **voice prompt is locked** — one per character, from one voice bible, never adapted per scene; on 2.0 pasted verbatim into the audio field each time they speak, on 2.5 written in the character's role sentence, not the audio field, because the reused sheet carries the voice (once per prompt or once per project is OPEN, no default — P2-2) [→](#voice--fixed-identity-never-adapted)
 - **States, not transitions.** Models fail process and nail state: "mid-throw, arm extended", not "reaches in, pulls out, winds up" — for a peak reached through a reversing process; simple same-direction motion that must fill the clip is chained instead [→](#states-not-transitions)
@@ -513,7 +513,7 @@ Recognize the symptom, apply the prompt-level fix.
 | 12 | Emotional reset | The character instantly "recovers" after a strong event | States have inertia; the trail carries into the next beat |
 | 13 | Commenting the role | The performance winks at the viewer | Full belief in the circumstances; comedy is played dead serious |
 | 14 | Close-up overload | Active mimicry on a close-up | The tighter the shot, the less movement: only the eyes and the thought |
-| 15 | Dead eyes | Frozen stare, no blinks, no saccades, glassy catchlights | Apply § Eye life in full — it is never optional |
+| 15 | Dead eyes | Frozen stare, no blinks, no saccades, glassy catchlights | Apply the relevant § Eye life cues to this shot |
 
 ## The performance scale
 

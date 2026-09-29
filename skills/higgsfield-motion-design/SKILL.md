@@ -67,7 +67,7 @@ Ask all of these in a **single** message (never split into rounds). Save every a
 
 The core creative step. Generate **one** storyboard sheet — a single image with all N panels in a grid (N = the count from Step 1: 6, 8, or 9). Do **not** generate N separate images.
 
-Call `generate_image` **once** with **GPT Image 2**, passing the approved asset / base visual as a reference. Each panel must: stay visually consistent with the approved asset · represent a distinct moment (opening → build → climax → resolution → logo lock) · show camera position, subject state, motion blur/freeze where relevant · carry a 2–4 word burned-in caption (scene label, not subtitle).
+In the original GPT Image 2 example, one storyboard grid uses the approved asset as a reference. If a grid fits the brief, keep panels visually consistent and give each a distinct moment and clear subject state. Choose the image tool, panel count, and any caption with the selected executor and user brief.
 
 - **classicMD panels:** smooth compositions, elegant typography zones, cinematic lighting.
 - **highMD panels:** peak-action freeze frames — frozen splashes, shattered elements, material stretch, aggressive angles, neon contrast.
@@ -91,7 +91,7 @@ Once the storyboard is approved, generate the final video with **Seedance 2.0** 
 - **classicMD:** `smooth motion design, [scene flow], elegant transitions, [mood] atmosphere, cinematic camera movement, [duration]s, brand reveal at end: [brand], [aspect ratio]`
 - **highMD:** `high-intensity kinetic motion, [scene flow], extreme camera speed, aggressive match-cuts, peak-action freeze frames, [mood] CGI aesthetic, neon contrast, [duration]s, hard-stop logo lock: [brand], [aspect ratio]`
 
-For highMD, the final seconds must be a **static hold** on the brand/logo — build it into the prompt explicitly, scaled to clip length (~1s for 5s, ~2s for 10s, ~2–3s for 15s).
+For highMD, a final static brand/logo hold is an option when the brief calls for one; scale it to the clip length.
 
 Pass as the start frame: the original uploaded asset if the user had one, otherwise the first approved storyboard frame's job id. Seedance 2.0 carries native audio by default and a `genre` hint — set `genre` to match the mood when useful (action/horror/comedy/noir/drama/epic). Display with `job_display`.
 

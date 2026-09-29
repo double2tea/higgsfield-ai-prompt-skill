@@ -32,7 +32,7 @@ prompts that all inherit both.
 ## QUICK FACTS
 - Output = **one self-contained HTML file** (inline CSS/JS, no deps), not loose prompts [→](#what-you-produce)
 - Three structural layers, top to bottom: **Global Style Prefix → `@`-asset glossary → named per-scene prompts** [→](#the-three-layers)
-- Per-scene prompt law: `Style → Characters → Scene → CUT 1..N`; each prompt targets **15s**; split long scenes as `3a/3b/3c` [→](#per-scene-prompt-law)
+- Example per-scene structure: `Style → Characters → Scene`, with `CUT` blocks only for planned edits; the 15s envelope and `3a/3b/3c` split are optional [→](#per-scene-prompt-law)
 - [OFFICIAL] Density heuristic: group rows when ALL of {same cast, same location, one emotional unit, ≤15s, inside length limits}; split on ANY of {location cut, cast change, setup change, performance arc, insert} — **don't fragment grief**; complexity budget + auto-enrichment defaults for thin briefs [→](#prompt-density--grouping-shot-rows-into-15s-envelopes)
 - Whole-sequence checks before delivery: **tempo budget** (cut durations sum exactly to runtime; one 6–8s hero hold) + **monotony audit** (no 3 consecutive cuts sharing shot size AND camera move) [→](#sequence-tempo-and-variety)
 - Continuity carries exits too: an **Off-screen line** (exit side + last state) per just-departed character keeps re-entry direction legal [→](#per-scene-prompt-law)
@@ -159,8 +159,8 @@ does; what the light does; diegetic SFX if relevant.]
 CUT 2 — …
 ```
 
-Each prompt **targets 15s** (Seedance generates a fixed-length clip — design the
-cuts to fill it, don't pad with dead air). Most 15s prompts hold 1–3 cuts —
+In this example workflow, prompts **target 15s** when the selected mode supports
+that duration; plan cuts only if the scene needs them. Many 15s prompts hold 1–3 cuts —
 that is the **live-action narrative norm**; stylized registers run denser by
 design (3D-animated 6 shots/15s, product montage 8–10 sections with 0.3s macro
 cuts — `../higgsfield-style/SKILL.md` § Style Recipes), and the flash-establish

@@ -371,9 +371,11 @@ base) and fix only what's off rather than starting over. This is the footage-tra
 
 ## Output format
 
-Output in **English first**, plain text — no bold, no headers, no bullets inside the prompt, not in
-a code block. Easy to copy as-is. Chinese translation only if asked, after the English, same
-format.
+Default to **Simplified Chinese** for a newly written prompt unless the user
+requests another language. Preserve user-provided text and machine syntax;
+translate for execution only when the selected model/mode has a verified
+language requirement. Keep the copyable prompt plain text — no bold, headers,
+bullets, or code block inside it.
 
 A short label above each prompt (e.g. `Hook_2 · Variant 1 — Through the clouds`) is fine and helps
 when you deliver several variants; the prompt body itself stays plain text.

@@ -326,7 +326,7 @@ asking a bookkeeping question. For a requested ledger row, use
 
 | Resource | What it contains | When to use |
 |----------|-----------------|-------------|
-| `skills/shared/negative-constraints.md` | All generation artifacts + prevention phrases, by category | Check before every prompt — append relevant constraints |
+| `skills/shared/negative-constraints.md` | Generation artifacts + prevention phrases, by category | Consult for a relevant, concrete failure risk; append only the matching constraint |
 | `skills/shared/provenance.md` | Repo-wide provenance legend — what [OFFICIAL]/[DEMO]/[FIELD]/[EMPIRICAL]/[HOUSE]/[MEASURED] mean and the evidence each requires | Before leaning on a tagged claim |
 | `skills/shared/house-rulings.md` | Every contested doctrine question — ruling or OPEN, scope, both sides | When two skill files seem to disagree |
 | `templates/` | 10 annotated genre templates with examples, models, annotations, variations | When user request matches a common genre — use as starting point |

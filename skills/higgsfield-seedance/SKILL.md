@@ -460,8 +460,9 @@ gets ignored; moved to the front, it conflicts with identity.
 - **No director names, signature works, or equipment model names** — they
   get ignored or break complex moves; describe the look instead. (Overrides
   the empirical director-substitute in § Prompt-Craft Laws for this regime.)
-- **English prompts only** (for the historical ZH exception, see
-  § Multi-Language Prompt Workarounds).
+- **Language follows the root skill rule:** default to Simplified Chinese for new
+  prompts; use an execution translation only for a verified model/mode requirement
+  (see § Multi-Language Prompt Workarounds).
 
 ### POSITIVE LOCKS
 
@@ -2058,7 +2059,7 @@ before reaching for it.
   genre hint
 - `../higgsfield-acting/SKILL.md` — the performance layer that fills the
   PERFORMANCE / CHARACTER ACTING block: objective, obstacle, tactics, beats,
-  subtext, status, mandatory eye life, the acting master profile
+  subtext, status, optional eye-life detail and acting master profile
 - `HELL-GRIND.md` (this directory) — Higgsfield's open-sourced feature-film
   pipeline: asset construction, the per-scene GEO SPATIAL LAYOUT block, the
   position-fixing first second, dialogue construction, iteration discipline
