@@ -24,6 +24,7 @@ The rest of this skill library answers *"how do I prompt this?"* This skill answ
 - Specificity beats adjectives: if *any* character could say it, it's a stereotype; keep asking **"why?"** until the answer surprises you [→](#anti-generic-drills)
 - Fillable worksheets live in `../../templates/character-design/` — hand them to the user or fill them together [→](#templates)
 - Construction laws for the sheet as an artifact: **plain grey background** · creature sheets get **two close-ups (mouth open + closed)** · the **face-lock crop** · a **size-ref frame** for scale at extreme ratios no true landmark can express [FIELD] — grey and the one-face law are canonical in `../../templates/ad-asset-prep.md` [→](#sheet-construction-laws)
+- For asset calibration, distinguish casting from locked-identity edits and inspect the readable face, geometry, and material needed by the target shot; optional project methods live in `../shared/production-continuity.md` [→](#sheet-construction-laws)
 - Once the character **looks** right, don't jump to scenes — run a **screen test**: casting read → role options → playable lines → voice triggers → one audition prompt [EMPIRICAL] [→](#screen-test--audition)
 - This skill produces inputs; it does **not** generate. Hand the locked Visual DNA + character sheet to `higgsfield-prompt` [→](#step-6--hand-off-to-generation)
 
@@ -179,6 +180,11 @@ bible is normal, an invented one is not.
 ---
 
 ## Sheet Construction Laws
+
+资产校准或保持式改图有实际需要时，按需读 `../shared/production-continuity.md` § 资产先达到
+当前镜头所需的可读条件：检查实际图中身份、结构和材质，区分选角与锁定后的派生。
+沿用下列设定图方法，不复制来源项目的固定模型、纯白底、分辨率、批量或微表演数量。
+已批准的身份、光线与材质继续按其在当前项目中的范围保留。
 
 `[FIELD — AI-vs-VFX, 2026-08-08]` The sections above decide **what** is on the sheet. These
 are the construction laws for the sheet as an *artifact* — the flaws they prevent are the

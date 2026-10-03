@@ -2,6 +2,9 @@
 
 ## platform-cut — 2026-10-03
 
+- Reconciled two Codex studies and a Qoder asset/template study. Added conditional asset calibration, casting-versus-identity scope, readable surfaces, shot-scoped still reuse, perceivable action cues, physical contact/reflection, sound-perspective boundaries, and revision-conflict checks. Kept project parameters and unverified workflow outcomes out of universal defaults.
+- Two Grok/Qoder discussion rounds clarified the shared reference's relationship to generic directing and realism methods. Removed an incidental schema example and default wear from the material example; scoped one-factor iteration to authorized diagnostic comparisons, allowing requested linked edits without claiming causal proof. Qoder's direct file review was limited by its workspace permission policy; host checks remain the acceptance evidence.
+- Recorded three locally user-confirmed LibTV name mappings, with current directory names checked separately. They inform prompt-family references without equating provider contracts, unconfirmed variants, or comparative model quality.
 - Added an optional, project-derived production-continuity reference: material bindings, state handoff, reverse-shot geometry, two-sided props, process/end-state timing, draft/final provenance, and scoped repairs. One private LibTV corpus informs the methods; raw prompts and project identifiers remain local, and no success-rate claim is made.
 - Routed the new reference from prompt, pipeline, and Seedance 2.5 guidance without duplicating their existing role-map, staging, source-state, or editing templates.
 - Scoped handle-writing conventions to the selected provider across Seedance 2.5, acting, and house rulings; preserve LibTV binding tokens and approved text. Aligned the prompt-length guidance with the root's soft 200-word cue and verified executor limits.

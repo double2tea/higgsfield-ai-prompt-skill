@@ -22,7 +22,7 @@ metadata:
 - Conflict order when sub-skills disagree: explicit user direction > scene archetype > emotion-sync [→](#conflict-resolution-between-sub-skills)
 - Aspect ratio is a per-model enum set in the UI/header, never in the prompt body — verify via `../../specs/model-specs.yaml` [→](#common-prompt-mistakes)
 - Never combine Dolly In + Dolly Out in one shot; @ Elements for static scenes, plain text for action [→](#common-prompt-mistakes)
-- Iterate by changing exactly ONE variable per regeneration [→](#the-iteration-rule--change-one-variable-at-a-time)
+- For an authorized diagnostic comparison, isolate one factor; a requested edit may combine necessary linked changes without claiming which one caused the result [→](#the-iteration-rule--change-one-variable-at-a-time)
 - 6-Pass Diagnostic order: Subject → Action → Camera → Style → Audio → Output; most failures land on Pass 1–2 [→](#when-you-dont-know-whats-wrong-yet--the-6-pass-diagnostic-sequence)
 - Seedance short-form: 30–100 words win; Subject + Action in the first 20–30 words. Block-scaffold production briefs run 218–2,059-word medians by register — see `../higgsfield-seedance/SKILL.md` § Official Prompt Architecture [→](#the-directors-formula--mcsla-mapping)
 - Genre length targets: Product 30–50w, Lifestyle 40–60w, Drama 60–100w, Music Video 50–80w, Anime 50–90w [→](#genre-router--prompt-length--lead-with-targets)
@@ -405,37 +405,35 @@ without a disciplined select. Don't pick "the prettiest"; select against the
 
 ## The Iteration Rule — Change One Variable at a Time
 
-When a prompt is close-but-not-right and you're about to regenerate, change
-**exactly one variable** per attempt. Subject detail, composition, motion
-behavior, lighting, or style — pick the one that's wrong, change only that,
-regenerate.
+When an authorized comparison aims to diagnose a close-but-not-right result, isolate
+**one factor** where possible: subject detail, composition, motion, lighting, or style.
+This is an attribution method, not a rule limiting every requested asset edit to one change.
+Preserve approved text and do not start a regeneration solely to follow this method.
 
-**Why it matters:** if you change two variables and the result improves, you
-don't know which change drove the improvement. If the result regresses, you
-don't know which change broke it. Either way you've spent a generation and
-learned nothing about the prompt. Single-variable iteration gives every
-regeneration a clean cause-and-effect signal — you keep what works, drop what
-doesn't, and converge on the right prompt fast.
+**Why it matters:** changing several factors confounds attribution. Isolating one helps
+comparison, but one stochastic output does not establish causality or guarantee improvement.
+A requested edit may combine linked changes needed for its goal; record the changed scope
+without claiming which individual change caused the outcome.
 
-**The exception:** once the prompt is locked and you're varying purely for
+**Authorized exploration:** once the prompt is locked and you're varying purely for
 stylistic exploration (e.g., five lighting variants of an already-approved
-scene), batching changes is fine. The rule applies during *refinement*, not
-during fan-out. (Don't confuse this stylistic fan-out — N *different* looks —
+scene), combined changes may be appropriate. The one-factor method applies to the
+diagnostic comparison, not all *refinement*. (Don't confuse this stylistic fan-out — N *different* looks —
 with variance-harvesting above, which rolls N *identical* locked prompts to beat
 a stochastic miss. Both batch; only one changes the prompt.)
 
-**Workflow:**
+**Workflow, only for an authorized comparison:**
 
-1. Generate the baseline.
+1. Use the selected existing baseline, or generate one only within the authorized scope.
 2. Identify what's wrong — pick **one** specific thing.
 3. Change only that variable in the prompt; leave everything else untouched.
 4. Regenerate.
 5. Compare against the baseline — did the targeted change move the result the
    way you expected?
-6. Lock that change. Identify the next problem. Repeat.
+6. Keep the accepted change. Further attempts require their own need and authorization.
 
-If you find yourself wanting to "fix everything at once," stop and ask which
-fix matters most. That one goes in this regeneration; the rest wait their turn.
+If linked changes cannot be isolated, keep the approved edit scope and state the attribution
+limit; do not split a clear request into extra paid attempts just to satisfy this method.
 
 ### Prompt-window hygiene
 

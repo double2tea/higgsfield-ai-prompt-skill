@@ -441,7 +441,7 @@ entrance/exit, transition, or beat must land on a moment.
 
 ## Production Continuity — Optional Project Layer
 
-多镜头或接续任务遇到空间、道具、落幅时间、草稿／正片关系等问题时，按需读
+资产、多镜头或接续任务遇到空间、道具、落幅时间、草稿／正片关系或修订残留时，按需读
 `../shared/production-continuity.md`。沿用本文件的素材职责与阶段终态，只补项目实际需要
 的约束。交接记录用于核对，源片已经承载的状态不全文重复进执行提示词。另一平台的
 执行语法由该平台负责，模型同名不构成改写已批准标签或提示词的理由。
