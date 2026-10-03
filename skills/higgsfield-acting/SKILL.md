@@ -392,11 +392,13 @@ when it already serves the shot.
    outlet changes.**
 5. **One flowing paragraph.** Fold the adaptation into prose in the character's register — no
    bullet lists, no headers, no "dial" lines inside the prompt.
-6. **Bind the acting to the right person — by model** (`../shared/house-rulings.md` P2-13).
+6. **Bind the acting to the right person — by model and selected surface** (`../shared/house-rulings.md` P2-13).
    On Seedance **2.0**, lead with the character's reference tag
-   (`../higgsfield-seedance/SKILL.md` § Tag naming) — a house convention. On **2.5**, beat
-   prose names the character plus one visible marker, never a handle; the handle stays in the
-   role map (`../higgsfield-seedance-2-5/SKILL.md` § Reference Roles).
+   (`../higgsfield-seedance/SKILL.md` § Tag naming) — a house convention. On the captured
+   Higgsfield/Dreamina **2.5** surfaces, the house convention names the character plus one
+   visible marker in beat prose and keeps the handle in the role map
+   (`../higgsfield-seedance-2-5/SKILL.md` § Reference Roles). Preserve another provider's binding
+   syntax and approved text; LibTV's `{{Mixed N}}` is scoped in `../shared/production-continuity.md`.
 
 > **The movement lock, reconciled** (`../shared/house-rulings.md` P3-4). The
 > story bible's **movement lock** (`../higgsfield-character-design/SKILL.md` § Ship the bible)

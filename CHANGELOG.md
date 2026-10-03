@@ -1,5 +1,11 @@
 # Changelog
 
+## platform-cut — 2026-10-03
+
+- Added an optional, project-derived production-continuity reference: material bindings, state handoff, reverse-shot geometry, two-sided props, process/end-state timing, draft/final provenance, and scoped repairs. One private LibTV corpus informs the methods; raw prompts and project identifiers remain local, and no success-rate claim is made.
+- Routed the new reference from prompt, pipeline, and Seedance 2.5 guidance without duplicating their existing role-map, staging, source-state, or editing templates.
+- Scoped handle-writing conventions to the selected provider across Seedance 2.5, acting, and house rulings; preserve LibTV binding tokens and approved text. Aligned the prompt-length guidance with the root's soft 200-word cue and verified executor limits.
+
 ## platform-cut — 2026-09-29
 
 - Added an explicit `seedaudio` route for standalone Seed Audio sound effects, ambience, music cues, speech, and mixed scenes; the installed executor keeps its own current syntax, cost, recovery, and delivery rules.

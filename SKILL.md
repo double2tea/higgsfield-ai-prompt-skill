@@ -142,6 +142,10 @@ For local generation, keep prompt craft and execution separate. A user-named pro
 
 If a local skill is unavailable, say so and resolve the intended platform before execution; do not silently change providers. For selected providers, go straight to their executor with the user's approved prompt and references. Prompt design may borrow relevant guidance here, but never force an emotion beat, edit cut, paid retry, or batch without a brief-specific reason and authorization.
 
+**已有项目的连续性提炼：** 多镜头接续、空间轴线、双面道具、草稿／正片交接或局部重拍
+需要补充制作方法时，按需读 `skills/shared/production-continuity.md`。LibTV 的占位符与素材
+顺序由其当前执行器管理，保留已批准文本；不套用 Higgsfield 的标签改写约定。
+
 | User wants | Route to |
 |------------|----------|
 | Write or improve a prompt for selected Higgsfield execution | `higgsfield-prompt` + relevant sub-skills |

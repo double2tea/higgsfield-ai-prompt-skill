@@ -940,6 +940,10 @@ when handing off from a screenshot instead of a clip:
 - **Camera-move phase** — where mid-move the camera is (mid-dolly, mid-arc)
 - **Audio phase** — what sound or dialogue is in progress at the cut point
 
+跨片段有道具左右手、正反面、未完成叙事或正反打关系时，按需使用
+`../shared/production-continuity.md` 的交接记录。记录用于规划核对，已接受源片承载的状态
+不重复抄进执行提示词。
+
 ### Clean-join planning
 
 [EMPIRICAL] Plan the join before generating the extension, not in

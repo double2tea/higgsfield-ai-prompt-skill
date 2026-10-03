@@ -709,6 +709,7 @@ anchors instead of archaeology. Link format: `path#anchor`.
   - [Long Video — Stages and End States](skills/higgsfield-seedance-2-5/SKILL.md#long-video--stages-and-end-states)
     - [Split by JOB, not only by length](skills/higgsfield-seedance-2-5/SKILL.md#split-by-job-not-only-by-length)
     - [Timestamps and pacing](skills/higgsfield-seedance-2-5/SKILL.md#timestamps-and-pacing)
+  - [Production Continuity — Optional Project Layer](skills/higgsfield-seedance-2-5/SKILL.md#production-continuity--optional-project-layer)
   - [Audio and Text — Bracket Syntax](skills/higgsfield-seedance-2-5/SKILL.md#audio-and-text--bracket-syntax)
   - [First-Last Frame and Multi-Keyframe Control](skills/higgsfield-seedance-2-5/SKILL.md#first-last-frame-and-multi-keyframe-control)
   - [Editing, Extension, and the Composite Modes](skills/higgsfield-seedance-2-5/SKILL.md#editing-extension-and-the-composite-modes)

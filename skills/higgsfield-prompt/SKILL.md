@@ -15,7 +15,7 @@ metadata:
 *Generated-checked block (scripts/build_index.py verifies anchors). Read the linked sections for full context — these lines are routing aids, not the rules themselves.*
 - MCSLA = Model, Camera, Subject, Look, Action — a useful structure for new short-form Higgsfield video prompts [→](#the-mcsla-formula)
 - I2V: describe ONLY what moves or changes, never what's already in the image [→](#image-to-video-i2v)
-- Keep prompts under 200 words — **short-form MCSLA regime only**; block-scaffold production prompts replace the cap with structural lint (HARD RULE 8 carve-out); Cinema Studio has a hard 512-character cap [→](#high-performing-prompt-patterns)
+- 200 words is a soft editing cue for new short-form MCSLA prompts (HARD RULE 7); production briefs use structural review, approved text stays intact, and only verified executor limits are enforced [→](#high-performing-prompt-patterns)
 - 1 primary action per clip, 1–2 secondary max; Fast Motion Trick: render in Slow Mo, speed up in post [→](#one-action-per-scene)
 - Clarify an ambiguous emotion with only the observable cues needed; stillness may be right [→](#generic-emotion-decomposition--which-kind-of-x)
 - For a recurring character with identity drift, consider separate identity and motion notes; preserve an approved prompt structure [→](#identity-vs-motion-separation-rule)
@@ -107,6 +107,10 @@ that contradicts it; how much matching identity text may ride beside it is OPEN
 
 ## Narrative Structure
 
+多镜头或跨片段连续性有实际需要时，读 `../shared/production-continuity.md`：补充状态交接、
+正反打几何、双面道具与局部修改。沿用下面的叙事结构和用户已选的剪辑方式，不为加载
+这份参考而增加镜头、情绪或重试。
+
 ### Fluid Narrative (preferred for most use cases)
 Write the scene as continuous action. No timestamps. Most natural for Higgsfield.
 
@@ -153,12 +157,13 @@ Higgsfield understands its own preset names. Always use them explicitly.
 **Lead with subject, end with style:**
 Subject → Action → Camera → Style is the most reliable order.
 
-**Keep it under 200 words (short-form regime):**
-Focused prompts outperform exhaustive ones. One clear intention > ten vague details.
-**Regime exception (HARD RULE 8):** block-scaffold production prompts —
+**Review length in the chosen regime (HARD RULE 7):**
+Use 200 words as a soft editing cue for newly written short-form MCSLA prompts, not a
+provider limit. Preserve approved text and keep the details needed to bind materials,
+actions, and state. Block-scaffold production prompts —
 `../higgsfield-seedance/SKILL.md` § Official Prompt Architecture — replace the
-word cap with structural lint; harvested production briefs run 218–2,059-word
-medians by register. The cap governs single-shot MCSLA prompts only.
+word target with structural review; harvested production briefs run 218–2,059-word
+medians by register. Enforce only the chosen executor's verified input limit.
 
 **Cinema Studio: Keep it under 512 characters:**
 Cinema Studio has a hard 512-character limit on prompts (both 2.5 and 3.0).

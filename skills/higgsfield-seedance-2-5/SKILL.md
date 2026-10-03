@@ -35,10 +35,11 @@ mode.
 - Higgsfield surface: **480p/720p/1080p** (no 4K), duration **4–30s**, `start_image`/`end_image` **only in `omni_reference`**, `t2v` takes zero references, no genre hint, `extension_mode` required for (and only for) `video_extension` [→](#the-higgsfield-parameter-surface)
 - `video_edit` **ignores** `duration` and `aspect_ratio` and bills by the source video's length; `video_extension` inherits the source's aspect ratio [→](#the-higgsfield-parameter-surface)
 - Every reference material gets an explicit role **and** an exclusion — "what to use" plus "what not to use"; never let the model infer the mapping [→](#reference-roles--say-what-to-use-and-what-not-to-use)
-- Each material also declares a **fidelity grade** — full-preserve / partial-preserve / attribute-transfer (name the target) / loose-guide; beat lines name characters (name + one visible marker), never handles [→](#fidelity--say-how-much-of-each-material-must-survive)
+- Each material also declares a **fidelity grade** — full-preserve / partial-preserve / attribute-transfer (name the target) / loose-guide; the house beat-writing convention uses character names, while another provider's binding tokens and approved text stay intact [→](#fidelity--say-how-much-of-each-material-must-survive)
 - Material budget: 30 images / 10 videos ≤30s total / 10 audio ≤30s total, 50 materials max (Dreamina's figures — the platform enforces only the 30-image and 50-material caps) — a platform `start_image`/`end_image` counts against both; stability ranges are 1–8 subjects (images), 1–5 subjects at 5–10s (video/audio) [→](#material-budget)
 - Multi-reference is a 5-step workflow — map → group → profile → select-by-scene, one line per subject; `@Images 1 through 4 define four characters` is the canonical failure [→](#multi-reference--the-five-step-workflow)
 - Long videos are **staged**, not paragraphed: one primary change per stage + an explicit **end state**; timestamps allocate a budget, they are not frame-accurate edit points [→](#long-video--stages-and-end-states)
+- Optional project layer: state handoff, reverse-shot geometry, two-sided props, and draft/final delivery checks — use only where the brief needs them [→](#production-continuity--optional-project-layer)
 - Staging fixes too many EVENTS; two incompatible JOBS in one generation (physics + performance) is a separate cut — split into two prompts and stitch [→](#split-by-job-not-only-by-length)
 - Bracket syntax: `()` music · `<>` SFX · `{}` dialogue · `【】` subtitles; non-Chinese dialogue needs a language line before the line; a music suppression never goes inside `()` — `(no music)` there reads as a music cue (house inference, the default) [→](#audio-and-text--bracket-syntax)
 - First/last frames are `omni_reference` work: the platform `start_image`/`end_image` roles **or** an in-prompt declaration (`@Image 1 is the first frame`) — which holds better is unmeasured; keyframes 3+ are always in the prompt; never merge two anchors into one sentence [→](#first-last-frame-and-multi-keyframe-control)
@@ -60,10 +61,11 @@ label *means* — and the evidence it requires — is the repo-wide legend in
 
 | Label | Source |
 |---|---|
-| `[OFFICIAL — Dreamina]` | ByteDance's *Dreamina Seedance 2.5 Prompt Guide* + *User Guide* — the model vendor's own prompt doctrine. Prompt grammar is model-side, so it carries across to Higgsfield's hosting. |
+| `[OFFICIAL — Dreamina]` | ByteDance's *Dreamina Seedance 2.5 Prompt Guide* + *User Guide* — the model vendor's own prompt doctrine. Creative guidance may inform Higgsfield authoring; binding tokens and executable syntax must still follow the selected provider's verified contract. |
 | `[OFFICIAL — platform]` | Higgsfield's live `models_explore` catalog, snapshot **2026-09-26** (`../../specs/model-specs.json`). Parameters, enums, and media roles come from here and nowhere else. |
 | `[DREAMINA-ONLY]` | A Dreamina *product* feature with no Higgsfield parameter behind it. Never quote these as things the user can do here. |
 | `[EMPIRICAL — sd25-pe]` | `sd25-pe`, a Seedance 2.5 skill file. The repo records only a Discord copy (v0.1.0, noted in the v3.33.0 changelog) and **not who wrote it**, so it is not labelled OFFICIAL. Its mapping-priority claim — material content outranks upload order — agrees with the one measurement here (`MODE-PLAYBOOKS.md` § Panel-to-timestamp mapping — board-first vs board-last, identical order adherence, on Ark). |
+| `[EMPIRICAL — 本地 LibTV 画布学习]` | One private project's prompt and node relationships, reviewed 2026-10-03; three media-metadata checks and three sampled frames. General methods only in `../shared/production-continuity.md`; not a measured success rate or a provider-wide rule. |
 | Secondary labels | `[OFFICIAL — Higgsfield Seedance 2.5 deck]` · `[DEMO — Higgsfield "AI Love Stories" tutorial]` · `[FIELD — AI-vs-VFX]` (the build in `VFX-PIPELINE.md`) · `[EMPIRICAL — MiniMax H3 skill corpus]` · `[EMPIRICAL — nutllwhy/seedance-tvc-director skill]` — each named where it is used. |
 
 Where the two disagree about what is *settable*, the platform snapshot wins — it is what
@@ -219,16 +221,20 @@ Rules:
   layout are the most common character-material leak — the flat gray studio renders as the
   actual set. Pair every character-sheet role with its own exclusion: *"Do not take the
   gray backdrop, the panel borders, or the multi-view layout."*
-- **Beat lines name characters, never handles.** In action/beat prose, a character appears
+- **House beat lines name characters.** In this drafting convention, a character appears
   as name + one visible marker at their first appearance in the beat — *"Mira — silver
-  streak, rust-red jacket — crosses the stall line"* — not as `@Image 2`. The model binds
-  by what it can see in the material, and a handle used as a sentence subject is the
-  classic way one character comes back as two people. `[EMPIRICAL — sd25-pe mapping
+  streak, rust-red jacket — crosses the stall line"* — rather than `@Image 2`. The source
+  associates handle-only subjects with character duplication; this is a drafting heuristic,
+  not a measured prohibition. `[EMPIRICAL — sd25-pe mapping
   priority, re-derived 2026-08-09: material content outranks upload order]` **Scope:**
-  this is the 2.5 rule. On 2.0 the house convention is the opposite — the acting paragraph
+  this is the house convention on the captured Higgsfield/Dreamina surfaces, not a ban on
+  another provider's binding syntax. Preserve LibTV's `{{Mixed N}}` and `{{Image N}}` tokens
+  with their actual material order and preserve approved text
+  (`../shared/production-continuity.md` § 素材职责要落到真实绑定).
+  On 2.0 the house convention is the opposite — the acting paragraph
   *leads* with the character's tag so the model binds the performance to the right person
   (`../higgsfield-acting/SKILL.md` § Scene adaptation, `../higgsfield-seedance/SKILL.md`
-  § Tag naming). Handles stay in the role map on 2.5 — the `[Characters]` lines, a staging
+  § Tag naming). In this 2.5 house convention, handles stay in the role map — the `[Characters]` lines, a staging
   legend (`@A = the BLUE figure`) — and out of the beat prose (`../shared/house-rulings.md`
   P2-13). Handle *spelling* follows the surface: Dreamina's guide writes upload-order
   handles with a space (`@Image 1`); the Higgsfield field build writes the upload-order form
@@ -432,6 +438,13 @@ entrance/exit, transition, or beat must land on a moment.
 > cut list it honours to the frame.
 
 ---
+
+## Production Continuity — Optional Project Layer
+
+多镜头或接续任务遇到空间、道具、落幅时间、草稿／正片关系等问题时，按需读
+`../shared/production-continuity.md`。沿用本文件的素材职责与阶段终态，只补项目实际需要
+的约束。交接记录用于核对，源片已经承载的状态不全文重复进执行提示词。另一平台的
+执行语法由该平台负责，模型同名不构成改写已批准标签或提示词的理由。
 
 ## Audio and Text — Bracket Syntax
 

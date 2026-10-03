@@ -282,14 +282,19 @@ beside it — a file named `image_1` would sit in the character's slot.
 
 ### P2-13 · Handles as sentence subjects
 
-- **Ruling:** SCOPE — by model.
-- **Scope:** on **2.5** beat prose names the character plus one visible marker, never a handle
-  (`../higgsfield-seedance-2-5/SKILL.md` § Reference Roles `[EMPIRICAL — sd25-pe]`); handles live
-  in the role map and legends. On **2.0** the house convention leads the acting line with the tag
+- **Ruling:** SCOPE — by model and selected surface.
+- **Scope:** on the captured Higgsfield/Dreamina **2.5** surfaces, the house convention names
+  the character plus one visible marker in beat prose and keeps handles in the role map
+  and legends (`../higgsfield-seedance-2-5/SKILL.md` § Reference Roles `[EMPIRICAL — sd25-pe]`).
+  On **2.0** the house convention leads the acting line with the tag
   (`../higgsfield-acting/SKILL.md` § Scene adaptation, rule 6 — which now states both models).
 - **Fixed:** the 2.5 prompt in `../higgsfield-seedance-2-5/VFX-PIPELINE.md` § The empty-frame pause
   and the letter example in `../../templates/seedance/staging-reference.md` now follow the scope.
   Handle *spelling* (`@Image 1` vs named tags): one form per project, never mixed in a prompt.
+- **Provider boundary:** preserve another executor's binding syntax and approved text. A local
+  LibTV corpus includes `{{Mixed N}}` in beat prose; it does not establish a success-rate claim,
+  and the house convention does not authorize rewriting those tokens. See
+  `production-continuity.md` § 素材职责要落到真实绑定.
 
 ### P2-14 · Midjourney flags in the staging template — FIXED
 
